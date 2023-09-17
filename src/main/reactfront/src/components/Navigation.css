@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: "SDSamliphopangche_Outline";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff")
+    format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.nav {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav .home-link,
+.nav .recommend-link,
+.nav .festival-link,
+.nav .community-link,
+.nav .login-btn {
+    font-family: "SDSamliphopangche_Outline";
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    margin: 0 10px;
+}
+
+.nav .home-logo {
+    height: 50px;
+}
+
+
+.nav .login-btn {
+    font-family: "Cafe24Supermagic-Bold-v1.0";
+    font-size : 15px;
+    padding: 7px 20px;
+    background-color: palevioletred;
+    color: white;  /* 이 규칙이 로그인 버튼의 텍스트 색상을 지정합니다. */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 네비게이션 바의 높이만큼 컨텐츠를 아래로 이동 */
+body > *:not(.nav) {
+    margin-top: 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        top: 20px;
+        left: 15px;
+        width: auto;
+        flex-direction: column;
+        padding: 5px 10px;
+    }
+
+    .nav a:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    body > *:not(.nav) {
+        margin-top: 200px; /* 모바일에서의 네비게이션 바 높이에 따라 조정 */
+        margin-left: 200px; /* 이 값을 왼쪽에 있는 네비게이션 바의 실제 너비에 맞게 조정할 수 있습니다. */
+    }
+}
