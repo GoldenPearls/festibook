@@ -6,7 +6,6 @@ import Festival from "./routers/Festival";
 import Recommend from "./routers/Recommend";
 import Community from "./routers/Community";
 import Navigation from "./components/Navigation";
-import ArticleForm from './routers/ArticleForm';
 
 function App() {
     return (
@@ -17,7 +16,6 @@ function App() {
                 <Route path="/festival" element={<Festival />} />
                 <Route path="/recommend" element={<Recommend />} />
                 <Route path="/community" element={<Community />} />
-                <Route path="/login" element={<ArticleForm/>} />
             </Routes>
         </Router>
     );
