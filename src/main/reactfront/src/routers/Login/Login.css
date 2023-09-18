@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.logoImage img {
+    float: left;
+    width: 100%;       /* 이미지 너비를 부모의 50%로 설정 */
+    max-width: 700px; /* 이미지 최대 너비를 600px로 제한 */
+    min-height: 200px;
+    height: auto;     /* 이미지 높이를 자동으로 설정하여 원본 비율을 유지 */
+}
+
+.logoName {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    font-size: 30px;
+    padding-top: 14vh;
+}
+
+/* 로그인 폼 컨텐츠 스타일 */
+.contentWrap {
+    display: flex;          /* Flexbox를 사용합니다. */
+    flex-direction: column; /* 자식 요소들을 세로 방향으로 배열합니다. */
+    justify-content: center; /* 자식 요소들을 세로 방향으로 가운데 정렬합니다. */
+    align-items: center;    /* 자식 요소들을 가로 방향으로 가운데 정렬합니다. */
+    margin-top: 2vh;   /* 뷰포트 높이의 2%로 마진 상단 설정 */
+    padding-top: 5vh; /* 뷰포트 높이의 5%로 패딩 상단 설정 */
+    flex: 1;
+}
+
+
+/* 인풋 라벨 스타일 */
+.inputTitle {
+    align-self: flex-start; /* 가로 방향으로 왼쪽 정렬합니다. */
+    font-size: 12px;
+    font-weight: 600;
+    color: #262626;
+}
+/* 인풋 래퍼 스타일 */
+.inputWrap {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+    background-color: white;
+    border: 1px solid #e2e0e0;
+}
+
+/* 인풋에 포커스 되었을 때 테두리 색상 변경 */
+.inputWrap:focus-within {
+    border: 1px solid palevioletred;
+}
+
+.input {
+    width: 500px;
+    outline: none;
+    border: none;
+    height: 17px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* 인풋 placeholder 스타일 */
+.input::placeholder {
+    color: #dadada;
+}
+
+
+.bottomButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 48px;
+    border: none;
+    font-weight: bold;
+    border-radius: 30px;
+    font-family: "Cafe24Supermagic-Bold-v1.0";
+    background-color: palevioletred;
+    color: white;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+/* 하단 버튼 스타일 */
+.buttonContainer {
+    display: flex;
+    justify-content: center; /* 가로 정렬 */
+}
+
+.bottomButton:disabled {
+    background-color: #dadada;
+    color: white;
+}
+
+.errorMessageWrap {
+    margin-top: 8px;
+    color: #ef0000;
+    font-size: 12px;
+}
+
+/* 사이즈가 작아질 때 */
+@media screen and (max-width: 768px) {
+    .bottomButton {
+        width: 100%;
+    }
+
+    .contentWrap {
+        width: 100%;
+    }
+
+    .bottomButton:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    .logoImage img {
+        float: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        min-height: 300px;
+        min-width: 400px;
+    }
+
+    .logoName {
+        padding-top: 1vh;
+    }
+
+    .contentWrap {
+        display: flex;          /* Flexbox를 사용합니다. */
+        flex-direction: column; /* 자식 요소들을 세로 방향으로 배열합니다. */
+        justify-content: center; /* 자식 요소들을 세로 방향으로 가운데 정렬합니다. */
+        align-items: center;    /* 자식 요소들을 가로 방향으로 가운데 정렬합니다. */
+        margin-top: 1vh;   /* 뷰포트 높이의 1%로 마진 상단 설정 */
+        padding-top: 2vh; /* 뷰포트 높이의 2%로 패딩 상단 설정 */
+        flex: 1;
+    }
+}
+

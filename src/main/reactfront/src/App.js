@@ -6,6 +6,7 @@ import Festival from "./routers/Festival";
 import Recommend from "./routers/Recommend";
 import Community from "./routers/Community";
 import Navigation from "./components/Navigation";
+import Login from "./routers/Login/Login";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/festival" element={<Festival />} />
                 <Route path="/recommend" element={<Recommend />} />
                 <Route path="/community" element={<Community />} />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </Router>
     );
