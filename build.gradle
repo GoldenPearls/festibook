@@ -79,6 +79,14 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //스프링시큐리티
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //프론트시큐리티
+    //implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.0.4'
+    //테스트시큐리티
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {

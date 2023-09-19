@@ -58,12 +58,11 @@ export default function Login() {
     return (
         <div className="mainContainer">
         <div className="page">
-            <div className="logoImage">
-                <img src={logoImage} alt="Logo Description"/>
-            </div>
-
 
             <div className="contentWrap">
+                <div className="logoImage">
+                    <img src={logoImage} alt="Logo Description"/>
+                </div>
 
                 <div className="logoName">
                     기억하고 싶은 축제 <br/>FestiBook와 함께 해요!
@@ -100,10 +99,18 @@ export default function Login() {
                         <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
                     )}
                 </div>
+
+                <div className="text">
+                    <div>아이디 찾기</div>
+                    <div>비밀번호 찾기</div>
+                    <div>회원가입</div>
+                </div>
             </div>
 
+
+
             <div className="buttonContainer">
-                <button onClick={onClickConfirmButton} disabled={notAllow} className="bottomButton">
+                <button onClick={onClickConfirmButton} className="bottomButton">
                     LOGIN
                 </button>
             </div>

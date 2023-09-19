@@ -5,18 +5,35 @@
     font-style: normal;
 }
 
+/* 백그라운드 이미지 */
+.mainContainer{
+    margin: 0;
+    font-family: Arial, sans-serif;  /* 원하는 폰트로 변경할 수 있습니다. */
+    background-image: url('../../img/loginbackground.png'); /* 여기에 이미지 경로를 넣습니다. */
+    background-size: cover;  /* 이미지를 화면 크기에 맞게 조정합니다. */
+    background-position: center;  /* 이미지를 화면의 중앙에 배치합니다. */
+    background-repeat: no-repeat;  /* 이미지가 반복되지 않도록 합니다. */
+    background-attachment: fixed;  /* 스크롤할 때 배경 이미지가 고정되도록 합니다. */
+    height: 100vh;  /* 화면 높이를 100%로 설정합니다. */
+    overflow: hidden;  /* 화면을 넘어서는 내용을 숨깁니다. */
+}
+
 .logoImage img {
-    float: left;
-    width: 100%;       /* 이미지 너비를 부모의 50%로 설정 */
-    max-width: 700px; /* 이미지 최대 너비를 600px로 제한 */
+    float: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     min-height: 200px;
-    height: auto;     /* 이미지 높이를 자동으로 설정하여 원본 비율을 유지 */
+    min-width: 200px;
+    max-width: 400px;
 }
 
 .logoName {
     font-family: 'Cafe24Supermagic-Bold-v1.0';
-    font-size: 30px;
-    padding-top: 14vh;
+    font-size: 4vh;
+    padding-top: 2vh;
+    padding-right: 18vh;
 }
 
 /* 로그인 폼 컨텐츠 스타일 */
@@ -53,10 +70,13 @@
 
 /* 인풋에 포커스 되었을 때 테두리 색상 변경 */
 .inputWrap:focus-within {
-    border: 1px solid palevioletred;
+    border: 1px solid #EC7373;
 }
 
 .input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 500px;
     outline: none;
     border: none;
@@ -70,6 +90,20 @@
     color: #dadada;
 }
 
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 아이템 간격을 동일하게 조절 */
+    width: 500px; /* 입력창과 동일한 너비 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* 입력창과의 간격 조절 */
+}
+
+.text > div {
+    cursor: pointer; /* 호버 효과를 위한 포인터 스타일 적용 */
+}
+
 
 .bottomButton {
     display: flex;
@@ -81,7 +115,8 @@
     font-weight: bold;
     border-radius: 30px;
     font-family: "Cafe24Supermagic-Bold-v1.0";
-    background-color: palevioletred;
+    font-size : 3vh;
+    background-color: #EC7373;
     color: white;
     margin-bottom: 16px;
     cursor: pointer;
@@ -92,10 +127,6 @@
     justify-content: center; /* 가로 정렬 */
 }
 
-.bottomButton:disabled {
-    background-color: #dadada;
-    color: white;
-}
 
 .errorMessageWrap {
     margin-top: 8px;
@@ -113,6 +144,10 @@
         width: 100%;
     }
 
+    .contentWrap:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
     .bottomButton:not(:last-child) {
         margin-bottom: 10px;
     }
@@ -123,8 +158,8 @@
         justify-content: center;
         align-items: center;
         width: 80%;
-        min-height: 300px;
-        min-width: 400px;
+        min-height: 200px;
+        min-width: 200px;
     }
 
     .logoName {
