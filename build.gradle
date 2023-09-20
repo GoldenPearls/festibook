@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.0'
-    id 'io.spring.dependency-management' version '1.1.3'
+    id 'org.springframework.boot' version '2.7.10'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 def reactDir = "$projectDir/src/main/reactfront";
 
@@ -51,11 +51,11 @@ task copyReactBuildFiles(type:Copy){
 }
 
 
-group = 'com.example'
+group = 'com.in4mation'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '17'
+    sourceCompatibility = '11'
 }
 
 configurations {
@@ -69,24 +69,34 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.jetbrains:annotations:20.1.0'//spring MVC를 사용해서 RESTful 웹 서비스를 개발할 때 필요한 의존성
+    // validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-    // 스프링 데이터 베이스 JPA
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compileOnly 'org.projectlombok:lombok' // 롬북
-    runtimeOnly 'com.h2database:h2' //인메모리 데이터베이스
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // database
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // ORM 우리는 Mybatis로 간다!!!
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3'
+
+    // lombok
+    implementation 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //tomcat
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
 
-    //스프링시큐리티
+    //JSON
+    implementation 'org.json:json:20230227'
+
+    //시큐리티
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    //프론트시큐리티
-    //implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.0.4'
-    //테스트시큐리티
-    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'com.google.code.gson:gson:2.8.9'
 }
 
 tasks.named('test') {

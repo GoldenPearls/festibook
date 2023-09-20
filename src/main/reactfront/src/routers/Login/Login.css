@@ -8,41 +8,79 @@
 /* 백그라운드 이미지 */
 .mainContainer{
     margin: 0;
-    font-family: Arial, sans-serif;  /* 원하는 폰트로 변경할 수 있습니다. */
-    background-image: url('../../img/loginbackground.png'); /* 여기에 이미지 경로를 넣습니다. */
+    background-image: url('../../img/login/loginbackground.png'); /* 여기에 이미지 경로를 넣습니다. */
     background-size: cover;  /* 이미지를 화면 크기에 맞게 조정합니다. */
     background-position: center;  /* 이미지를 화면의 중앙에 배치합니다. */
     background-repeat: no-repeat;  /* 이미지가 반복되지 않도록 합니다. */
     background-attachment: fixed;  /* 스크롤할 때 배경 이미지가 고정되도록 합니다. */
     height: 100vh;  /* 화면 높이를 100%로 설정합니다. */
-    overflow: hidden;  /* 화면을 넘어서는 내용을 숨깁니다. */
 }
 
+.page {
+    background-color: #ffffffd1;
+    box-shadow: inset 0px 4px 4px #00000040;
+    box-sizing: border-box;
+    height: 90%;
+    right: 60px; /*스크롤 가려지는 현상 해결*/
+    position: fixed;
+    top: 100px;
+    width: 35%;
+    padding-right: 20px;
+    overflow-y: auto;
+}
+
+/* alter */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 로고 이미지 */
 .logoImage img {
     float: none;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    height : 100%;
     min-height: 200px;
     min-width: 200px;
     max-width: 400px;
+    max-height: 400px;
 }
 
+/* 로고 및 이름 */
 .logoName {
     font-family: 'Cafe24Supermagic-Bold-v1.0';
-    font-size: 4vh;
-    padding-top: 2vh;
-    padding-right: 18vh;
+    font-size: 300%;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    /*padding-right: 18vh;*/
 }
 
 /* 로그인 폼 컨텐츠 스타일 */
 .contentWrap {
+    height: 80%;
     display: flex;          /* Flexbox를 사용합니다. */
     flex-direction: column; /* 자식 요소들을 세로 방향으로 배열합니다. */
     justify-content: center; /* 자식 요소들을 세로 방향으로 가운데 정렬합니다. */
     align-items: center;    /* 자식 요소들을 가로 방향으로 가운데 정렬합니다. */
-    margin-top: 2vh;   /* 뷰포트 높이의 2%로 마진 상단 설정 */
+    margin-top: 6vh;   /* 뷰포트 높이의 2%로 마진 상단 설정 */
     padding-top: 5vh; /* 뷰포트 높이의 5%로 패딩 상단 설정 */
     flex: 1;
 }
@@ -57,10 +95,11 @@
 }
 /* 인풋 래퍼 스타일 */
 .inputWrap {
-    width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 500px;
+    height: 48px;
     border-radius: 8px;
     padding: 16px;
     margin-top: 8px;
@@ -90,6 +129,16 @@
     color: #dadada;
 }
 
+.input_login{
+    padding-top: 1vh;
+    padding-right: 49vh;
+}
+
+.input_password{
+    padding-top: 1vh;
+    padding-right: 48vh;
+}
+
 .text {
     display: flex;
     align-items: center;
@@ -103,7 +152,6 @@
 .text > div {
     cursor: pointer; /* 호버 효과를 위한 포인터 스타일 적용 */
 }
-
 
 .bottomButton {
     display: flex;
@@ -121,21 +169,52 @@
     margin-bottom: 16px;
     cursor: pointer;
 }
+
 /* 하단 버튼 스타일 */
 .buttonContainer {
     display: flex;
     justify-content: center; /* 가로 정렬 */
 }
 
+.social_img_text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 아이템 간격을 동일하게 조절 */
+    width: 500px; /* 입력창과 동일한 너비 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* 입력창과의 간격 조절 */
+}
 
-.errorMessageWrap {
-    margin-top: 8px;
-    color: #ef0000;
-    font-size: 12px;
+.social_img_text{
+    font-family: "Cafe24Supermagic-Bold-v1.0";
+}
+
+/* 소셜 로그인 */
+.social_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px; /* 입력창과 동일한 너비 */
+    margin-top: 10px;
+}
+
+.social_img .googleLogin {
+    margin-right: 40px; /* 이미지 사이 간격 설정 */
 }
 
 /* 사이즈가 작아질 때 */
 @media screen and (max-width: 768px) {
+
+    .page {
+        height: 100%;
+        right: 0;
+        position: fixed;
+        top: 0;
+        margin-top: 100px;
+        width: 100%;
+    }
+
     .bottomButton {
         width: 100%;
     }
@@ -148,16 +227,17 @@
         margin-bottom: 10px;
     }
 
-    .bottomButton:not(:last-child) {
+  /*  .bottomButton:not(:last-child) {
         margin-bottom: 10px;
-    }
+    }*/
 
     .logoImage img {
         float: none;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 80%;
+        width: 70%;
+        width: 70%;
         min-height: 200px;
         min-width: 200px;
     }

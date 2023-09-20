@@ -1,62 +1,65 @@
 import React, { useEffect, useState } from 'react'
 import "./Login.css";
-import logoImage from '../../img/Loginlogo.png';
+import logoImage from '../../img/login/Loginlogo.png';
+import with1 from '../../img/login/with1.png';
+import with2 from '../../img/login/with2.png';
+import googleLogin from '../../img/login/googleLogin.png';
+import kakaoLogin from '../../img/login/kakaoLogin.png';
+import { ToastContainer, toast } from "react-toastify";
 
 const User = {
-    email: 'test@example.com',
+    id: 'testuser',  // 변경: email -> id
     pw: 'test2323@@@'
+};
+
+function Modal({ message, onClose }) {
+    return (
+        <div className="modalOverlay">
+            <div className="modalContent">
+                <p>{message}</p>
+                <button onClick={onClose}>Close</button>
+            </div>
+        </div>
+    );
 }
 
 
 export default function Login() {
-    // 사용자 입력과 검증을 위한 상태들
-    const [email, setEmail] = useState('');
+    const [id, setId] = useState('');
     const [pw, setPw] = useState('');
 
-    const [emailValid, setEmailValid] = useState(false);
-    const [pwValid, setPwValid] = useState(false);
-    const [notAllow, setNotAllow] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
-    // email과 pw 검증 상태에 변화가 있을 때마다 실행되는 useEffect
-    useEffect(() => {
-        if(emailValid && pwValid) {
-            setNotAllow(false);
-            return;
-        }
-        setNotAllow(true);
-    }, [emailValid, pwValid]);
-
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-        const regex =
-            /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-        if (regex.test(e.target.value)) {
-            setEmailValid(true);
-        } else {
-            setEmailValid(false);
-        }
+    const handleId = (e) => {
+        setId(e.target.value);
     };
 
     const handlePw = (e) => {
         setPw(e.target.value);
-        const regex =
-            /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\\-_=+]).{8,20}$/;
-        if (regex.test(e.target.value)) {
-            setPwValid(true);
+    };
+
+    const onClickConfirmButton = () => {
+        if (id !== User.id) {
+            toast('아이디가 존재하지 않습니다. 회원가입이 필요합니다.');
+        } else if (pw !== User.pw) {
+            toast('비밀번호가 다릅니다. 확인해주세요.');
         } else {
-            setPwValid(false);
+            toast('로그인에 성공했습니다.');
         }
     };
-    const onClickConfirmButton = () => {
-        if(email === User.email && pw === User.pw) {
-            alert('로그인에 성공했습니다.')
-        } else {
-            alert("등록되지 않은 회원입니다. 회원가입 필요");
-        }
-    }
+
 
     return (
+
         <div className="mainContainer">
+            <ToastContainer
+                position="bottom-center"
+                limit={1}
+                closeButton={false}
+                autoClose={4000}
+                hideProgressBar
+            />
         <div className="page">
 
             <div className="contentWrap">
@@ -68,6 +71,10 @@ export default function Login() {
                     기억하고 싶은 축제 <br/>FestiBook와 함께 해요!
                 </div>
 
+                <div className="input_login">
+                    아이디
+                </div>
+
                 <div
                     className="inputWrap"
                 >
@@ -75,14 +82,13 @@ export default function Login() {
                         className="input"
                         type="text"
                         placeholder="아이디를 입력해주세요"
-                        value={email}
-                        onChange={handleEmail}
+                        value={id}
+                        onChange={handleId}
                     />
                 </div>
-                <div className="errorMessageWrap">
-                    {!emailValid && email.length > 0 && (
-                        <div>올바른 아이디를 입력해주세요.</div>
-                    )}
+
+                <div className="input_password">
+                    비밀번호
                 </div>
 
                 <div className="inputWrap">
@@ -94,26 +100,36 @@ export default function Login() {
                         onChange={handlePw}
                     />
                 </div>
-                <div className="errorMessageWrap">
-                    {!pwValid && pw.length > 0 && (
-                        <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
-                    )}
-                </div>
 
                 <div className="text">
-                    <div>아이디 찾기</div>
-                    <div>비밀번호 찾기</div>
-                    <div>회원가입</div>
+                    <div className="find_id">아이디 찾기</div>
+                    <div clssName="find_password">비밀번호 찾기</div>
+                    <div className="join">회원가입</div>
                 </div>
+
+                <div className="buttonContainer">
+                    <button onClick={onClickConfirmButton} className="bottomButton">
+                        LOGIN
+                    </button>
+
+                </div>
+
+                <div className="soical_login">
+                    <div className="social_img_text">
+                        <div className="img_with1"> <img src={with1} alt="img description"/></div>
+                        <div clssName="social_with_text">Or With </div>
+                        <div className="img_with2"> <img src={with2} alt="img description"/></div>
+                    </div>
+
+                    <div className="social_img">
+                        <div className="googleLogin"> <img src={googleLogin} alt="img description"/></div>
+                        <div className="kakaoLogin"> <img src={kakaoLogin} alt="img description"/></div>
+                    </div>
+                </div>
+
+
             </div>
 
-
-
-            <div className="buttonContainer">
-                <button onClick={onClickConfirmButton} className="bottomButton">
-                    LOGIN
-                </button>
-            </div>
         </div>
         </div>
     );
