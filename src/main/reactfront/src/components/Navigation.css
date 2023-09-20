@@ -25,6 +25,18 @@ html, body {
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'KyoboHandwriting2021sjy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family:'bitbit';
+    src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
+}
+
 .nav {
     z-index: 1;
     position: fixed;
@@ -45,7 +57,7 @@ html, body {
 .nav .festival-link,
 .nav .community-link,
 .nav .login-btn {
-    font-family: "SDSamliphopangche_Outline";
+    font-family: "KyoboHandwriting2021sjy";
     text-decoration: none;
     color: black;
     text-transform: uppercase;
@@ -71,6 +83,18 @@ html, body {
     cursor: pointer;
 }
 
+.recommend-link.active {
+    color: slateblue; /* 원하는 색상으로 변경 */
+}
+
+.festival-link.active {
+    color: slateblue; /* 원하는 색상으로 변경 */
+}
+
+.community-link.active {
+    color: slateblue; /* 원하는 색상으로 변경 */
+}
+
 /* 네비게이션 바의 높이만큼 컨텐츠를 아래로 이동 */
 body > *:not(.nav) {
     margin-top: 70px;
@@ -78,19 +102,36 @@ body > *:not(.nav) {
 
 @media screen and (max-width: 768px) {
     .nav {
-        top: 20px;
-        left: 15px;
-        width: auto;
-        flex-direction: column;
-        padding: 5px 10px;
+        left: initial;
+        top: initial;
+        bottom:0px;
+        width: 100%;
+        height: 13%;
+        justify-content: space-between;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
-    .nav a:not(:last-child) {
-        margin-bottom: 10px;
+    .nav a {
+        font-family: "bitbit";
+        text-decoration: none;
+        color:black;
+        text-transform: uppercase;
+        font-size: 5px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .nav .home-link_mobile{
+        align-items: center;
+
     }
 
     body > *:not(.nav) {
-        margin-top: 200px; /* 모바일에서의 네비게이션 바 높이에 따라 조정 */
-        margin-left: 200px; /* 이 값을 왼쪽에 있는 네비게이션 바의 실제 너비에 맞게 조정할 수 있습니다. */
+        margin-top: 0px;
     }
+
+    .nav a:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
 }

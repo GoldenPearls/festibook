@@ -5,10 +5,13 @@ import with1 from '../../img/login/with1.png';
 import with2 from '../../img/login/with2.png';
 import googleLogin from '../../img/login/googleLogin.png';
 import kakaoLogin from '../../img/login/kakaoLogin.png';
+// toast 사용 라이브러리
 import { ToastContainer, toast } from "react-toastify";
+// react-toastify 제공하는 css
+import 'react-toastify/dist/ReactToastify.css';
 
 const User = {
-    id: 'testuser',  // 변경: email -> id
+    id: 'testuser',
     pw: 'test2323@@@'
 };
 
@@ -40,11 +43,17 @@ export default function Login() {
     };
 
     const onClickConfirmButton = () => {
+        console.log("Button clicked!");          // 1. 로그 확인
+        console.log("ID:", id, "PW:", pw);      // 2. 상태 값 확인
+
         if (id !== User.id) {
+            console.log("Incorrect ID");        // 로그 확인
             toast('아이디가 존재하지 않습니다. 회원가입이 필요합니다.');
         } else if (pw !== User.pw) {
+            console.log("Incorrect Password");  // 로그 확인
             toast('비밀번호가 다릅니다. 확인해주세요.');
         } else {
+            console.log("Login Successful");    // 로그 확인
             toast('로그인에 성공했습니다.');
         }
     };
@@ -57,7 +66,7 @@ export default function Login() {
                 position="bottom-center"
                 limit={1}
                 closeButton={false}
-                autoClose={4000}
+                autoClose={2000}
                 hideProgressBar
             />
         <div className="page">
@@ -103,7 +112,7 @@ export default function Login() {
 
                 <div className="text">
                     <div className="find_id">아이디 찾기</div>
-                    <div clssName="find_password">비밀번호 찾기</div>
+                    <div className="find_password">비밀번호 찾기</div>
                     <div className="join">회원가입</div>
                 </div>
 
@@ -117,7 +126,7 @@ export default function Login() {
                 <div className="soical_login">
                     <div className="social_img_text">
                         <div className="img_with1"> <img src={with1} alt="img description"/></div>
-                        <div clssName="social_with_text">Or With </div>
+                        <div className="social_with_text">Or With </div>
                         <div className="img_with2"> <img src={with2} alt="img description"/></div>
                     </div>
 
