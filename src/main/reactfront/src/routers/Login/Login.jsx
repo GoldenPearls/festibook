@@ -48,13 +48,13 @@ export default function Login() {
 
         if (id !== User.id) {
             console.log("Incorrect ID");        // 로그 확인
-            toast('아이디가 존재하지 않습니다. 회원가입이 필요합니다.');
+            toast.warning('아이디가 존재하지 않습니다. 회원가입이 필요합니다.');
         } else if (pw !== User.pw) {
             console.log("Incorrect Password");  // 로그 확인
-            toast('비밀번호가 다릅니다. 확인해주세요.');
+            toast.warning('비밀번호가 다릅니다. 확인해주세요.');
         } else {
             console.log("Login Successful");    // 로그 확인
-            toast('로그인에 성공했습니다.');
+            toast.success('로그인에 성공했습니다.');
         }
     };
 
@@ -63,10 +63,12 @@ export default function Login() {
 
         <div className="mainContainer">
             <ToastContainer
-                position="bottom-center"
+                position="top-right"
                 limit={1}
                 closeButton={true}
-                autoClose={2000}
+                autoClose={3000}
+                className="custom-toast-container"
+                toastClassName="custom-toast"
             />
         <div className="page">
 
