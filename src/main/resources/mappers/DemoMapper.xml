@@ -4,7 +4,7 @@
 
 <mapper namespace="com.in4mation.festibook.repository.DemoMapper">
 
-    <select id="select" resultType="com.in4mation.festibook.domain.DemoVo">
+    <select id="select" resultType="com.in4mation.festibook.dto.DemoVo">
         SELECT *
         FROM demo_table
     </select>

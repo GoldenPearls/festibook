@@ -1,6 +1,6 @@
 package com.in4mation.festibook.service;
 
-import com.in4mation.festibook.domain.DemoVo;
+import com.in4mation.festibook.dto.DemoVo;
 import com.in4mation.festibook.repository.DemoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

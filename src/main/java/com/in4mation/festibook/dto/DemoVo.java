@@ -1,4 +1,4 @@
-package com.in4mation.festibook.domain;
+package com.in4mation.festibook.dto;
 
 import lombok.Data;
 

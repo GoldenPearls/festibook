@@ -1,9 +1,8 @@
 package com.in4mation.festibook.controller;
 
-import com.in4mation.festibook.domain.DemoVo;
+import com.in4mation.festibook.dto.DemoVo;
 import com.in4mation.festibook.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
