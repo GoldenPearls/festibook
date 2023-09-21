@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./routers/Home";
-import Festival from "./routers/Festival";
-import Recommend from "./routers/Recommend";
-import Community from "./routers/Community";
-import Navigation from "./components/Navigation";
+import Festival from "./routers/Festival/Festival";
+import Recommend from "./routers/Recommend/Recommend";
+import Community from "./routers/Community/Community";
+import Navigation from "./components/nav/Navigation";
 import Login from "./routers/Login/Login";
 
 function App() {

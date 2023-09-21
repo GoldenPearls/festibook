@@ -65,9 +65,8 @@ export default function Login() {
             <ToastContainer
                 position="bottom-center"
                 limit={1}
-                closeButton={false}
+                closeButton={true}
                 autoClose={2000}
-                hideProgressBar
             />
         <div className="page">
 
@@ -77,7 +76,7 @@ export default function Login() {
                 </div>
 
                 <div className="logoName">
-                    기억하고 싶은 축제 <br/>FestiBook와 함께 해요!
+                    <span className="logoName1">기억하고 싶은 축제</span> <br/>FestiBook와 함께 해요!
                 </div>
 
                 <div className="input_login">

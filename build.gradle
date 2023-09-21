@@ -8,7 +8,7 @@ def reactDir = "$projectDir/src/main/reactfront";
 sourceSets{
     main{
         resources{
-            srcDirs = ["$projectDir/src/main/resources"]
+            srcDirs = ["$projectDir/src/main/resources/"]
         }
     }
 }
@@ -85,7 +85,6 @@ dependencies {
 
     // lombok
     implementation 'org.projectlombok:lombok:1.18.20'
-    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
     //tomcat
@@ -94,9 +93,9 @@ dependencies {
     //JSON
     implementation 'org.json:json:20230227'
 
-    //시큐리티
+/*   //시큐리티
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.google.code.gson:gson:2.8.9'*/
 }
 
 tasks.named('test') {
