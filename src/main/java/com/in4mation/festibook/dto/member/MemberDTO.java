@@ -3,6 +3,8 @@ package com.in4mation.festibook.dto.member;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
+import java.sql.Blob;
+
 @Getter
 @Setter
 @Data
@@ -17,7 +19,7 @@ public class MemberDTO {
 
     private String member_nickname;     //닉네임
 
-    private String member_profile_image;    //프로필사진
+    private Blob member_profile_image;    //프로필사진
 
     private String member_introduce;    //소개
 
