@@ -1,7 +1,6 @@
 package com.in4mation.festibook.dto.member;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 import java.sql.Blob;
 
