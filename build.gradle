@@ -74,6 +74,8 @@ dependencies {
 
     // spring
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.jetbrains:annotations:20.1.0'
+    implementation 'org.jetbrains:annotations:20.1.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly 'org.springframework.boot:spring-boot-devtools'
 
@@ -99,10 +101,11 @@ dependencies {
 
 
     // jjwt 라이브러리 추가
-    implementation 'io.jsonwebtoken:jjwt:0.11.2'
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
-    implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
-    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2' // Jackson을 이용하여 JSON을 처리하기 위해 추가
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'  // API 의존성 추가
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2' // 구현 의존성 추가
+    runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.2') { exclude group: 'org.json', module: 'json' } // JSON 처리 의존성 추가
+    //implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    //implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2' // Jackson을 이용하여 JSON을 처리하기 위해 추가
 
     testImplementation 'org.springframework.security:spring-security-test'
 

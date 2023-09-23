@@ -1,9 +1,11 @@
 package com.in4mation.festibook.config;
 
 import com.in4mation.festibook.jwt.JwtUtils;
+import com.in4mation.festibook.service.login.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -19,8 +22,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true) // 메소드 수준에서의 보안을 활성화
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired // JwtUtils Bean을 주입
+   /* @Autowired // JwtUtils Bean을 주입
     private JwtUtils jwtUtils;
+    @Autowired
+    private UserDetailsService loginService;*/
+
+    private final JwtUtils jwtUtils;
+    private final LoginServiceImpl loginService;
+
+    @Autowired
+    public SecurityConfig(@Lazy JwtUtils jwtUtils, LoginServiceImpl loginService) {
+        this.jwtUtils = jwtUtils;
+        this.loginService = loginService;
+    }
 
     @Override // HttpSecurity를 사용하여 Web Security 설정을 오버라이드한다.
     protected void configure(HttpSecurity http) throws Exception {
@@ -34,9 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated(); // 그 외의 모든 요청은 인증을 요구
     }
 
+    // void로 쓰면 안됨!!!!
     @Autowired // AuthenticationManagerBuilder를 주입받아 사용자 세부 서비스를 설정
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
         // 사용자의 세부 서비스를 설정하고, 비밀번호 인코더를 설정합니다.
     }
 

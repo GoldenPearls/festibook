@@ -6,7 +6,8 @@ import java.sql.Blob;
 
 @Getter
 @Setter
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberDTO {
     private String member_id;   //아이디
 
