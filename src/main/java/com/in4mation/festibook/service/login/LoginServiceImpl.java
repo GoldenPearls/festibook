@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
-@Service
+@Service("loginServiceImpl")
 public class LoginServiceImpl implements LoginService, UserDetailsService {
 
     private final LoginMapper loginMapper;
