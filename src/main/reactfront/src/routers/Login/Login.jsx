@@ -42,9 +42,11 @@ export default function Login() {
         setPw(e.target.value);
     };
 
-    const onClickConfirmButton = () => {
+   const onClickConfirmButton = () => {
         console.log("Button clicked!");          // 1. 로그 확인
         console.log("ID:", id, "PW:", pw);      // 2. 상태 값 확인
+
+        const endpoint = 'http://localhost:8080/api/login';
 
         if (id !== User.id) {
             console.log("Incorrect ID");        // 로그 확인
@@ -57,6 +59,10 @@ export default function Login() {
             toast.success('로그인에 성공했습니다.');
         }
     };
+
+
+
+
 
 
     return (

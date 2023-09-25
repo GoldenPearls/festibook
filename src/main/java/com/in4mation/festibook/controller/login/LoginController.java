@@ -29,7 +29,7 @@ public class LoginController {
     @Autowired
     private JwtUtils jwtUtils;
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody MemberDTO memberDTO){
         // 사용자 인증 + memberDTO로부터 사용자 ID와 비밀번호를 가져와 인증을 시도
        try {
@@ -48,6 +48,7 @@ public class LoginController {
            // 생성된 JWT 토큰을 응답 본문에 담아 반환
            return ResponseEntity.ok(new JwtResponse(jwt));
 
+
        }
        catch (AuthenticationException e){
            // 인증 실패한 경우 에러 메세지 + 401 상태 코드 반환
@@ -60,6 +61,30 @@ public class LoginController {
 
 
 
+    }*/
+
+    @PostMapping("/login")
+    public ResponseEntity<?> authenticateUser(@RequestBody MemberDTO memberDTO){
+        try {
+            // 사용자 인증
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            memberDTO.getMember_id(),
+                            memberDTO.getMember_password()
+                    )
+            );
+
+            // JWT 토큰 생성 및 반환
+            String jwt = jwtUtils.createAccessToken(memberDTO.getMember_id(), memberDTO.getMember_name());
+            return ResponseEntity.ok(new JwtResponse(jwt));
+        }
+        catch (AuthenticationException e){
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("인증 실패 : 아이디나 비밀번호 확인해주세요");
+        }
+        catch(Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 내부 오류");
+        }
     }
 
     // JWT 토큰을 담을 내부 클래스를 정의

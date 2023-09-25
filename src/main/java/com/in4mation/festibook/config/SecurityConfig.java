@@ -47,12 +47,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated(); // 그 외의 모든 요청은 인증을 요구
     }
 
-    // void로 쓰면 안됨!!!!
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
+    }
+
+    /* // void로 쓰면 안됨!!!!
     @Autowired // AuthenticationManagerBuilder를 주입받아 사용자 세부 서비스를 설정
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
         // 사용자의 세부 서비스를 설정하고, 비밀번호 인코더를 설정합니다.
-    }
+    }*/
 
     @Bean // AuthenticationManager Bean을 생성하여 Spring Context에 등록
     @Override
