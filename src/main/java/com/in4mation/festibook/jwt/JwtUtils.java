@@ -22,7 +22,8 @@ public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
     // Java JWT (JSON Web Token) 라이브러리인 JJWT에서 제공하는 API를 사용하여, HS256(HMAC SHA-256) 알고리즘을 사용하는 시크릿 키를 생성
-    private static final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+//    private static final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final String secretKey = "abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd";
 
     //accessToken 만료시간 설정
     public final static long ACCESS_TOKEN_VALIDATION_SECOND = 1000L*60*60*12; //12시간
@@ -42,7 +43,8 @@ public class JwtUtils {
                 .claim("name", name)
                 .setIssuedAt(now)
                 .setExpiration(expiration)
-                .signWith(secretKey)
+//                .signWith(secretKey)
+                .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
 
     }

@@ -17,4 +17,6 @@ public interface LoginMapper {
 
     //로그인을 할 때 회원정보 조회 필요 id = #{member_id}이 부분은 실제 컬럼이랑 동일해야함
     LoginDTO findByUsername(@Param("member_id") String username);
+
+    MemberDTO findByUsername2(@Param("member_id") String username);
 }

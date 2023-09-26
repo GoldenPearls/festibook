@@ -1,7 +1,9 @@
 package com.in4mation.festibook.controller.login;
 
 import com.in4mation.festibook.dto.member.MemberDTO;
+import com.in4mation.festibook.exception.LoginException;
 import com.in4mation.festibook.jwt.JwtUtils;
+import com.in4mation.festibook.service.login.LoginService;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -24,6 +23,9 @@ public class LoginController {
     // 사용자 인증을 위해 필요합니다.
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    LoginService loginService;
 
     // JWT 토큰 생성을 위해 필요
     @Autowired
@@ -67,24 +69,26 @@ public class LoginController {
     public ResponseEntity<?> authenticateUser(@RequestBody MemberDTO memberDTO){
         try {
             // 사용자 인증
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            memberDTO.getMember_id(),
-                            memberDTO.getMember_password()
-                    )
-            );
+//            Authentication authentication = authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(
+//                            memberDTO.getMember_id(),
+//                            memberDTO.getMember_password()
+//                    )
+//            );
+            // member_id, password 체크
+            MemberDTO member2 = loginService.checkLoin(memberDTO.getMember_id(), memberDTO.getMember_password());
 
             // JWT 토큰 생성 및 반환
-            String jwt = jwtUtils.createAccessToken(memberDTO.getMember_id(), memberDTO.getMember_name());
+            String jwt = jwtUtils.createAccessToken(member2.getMember_id(), member2.getMember_name());
             return ResponseEntity.ok(new JwtResponse(jwt));
         }
-        catch (AuthenticationException e){
+        catch (LoginException e){
             System.out.println(e);
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("인증 실패 : 아이디나 비밀번호 확인해주세요");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
-        catch(Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 내부 오류");
-        }
+//        catch(Exception e){
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 내부 오류");
+//        }
     }
 
     // JWT 토큰을 담을 내부 클래스를 정의
@@ -99,4 +103,12 @@ public class LoginController {
         }
     }
 
+    @GetMapping("/login-user-test")
+    public MemberDTO loginUserTest() {
+        MemberDTO memberDTO = MemberDTO.builder()
+                .member_id("test")
+                .member_email("test@test.com")
+                .build();
+        return memberDTO;
+    }
 }

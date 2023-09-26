@@ -8,4 +8,8 @@
     <select id="findByUsername" resultType="com.in4mation.festibook.dto.login.LoginDTO">
         SELECT * FROM member_table WHERE member_id  = #{member_id}
     </select>
+
+    <select id="findByUsername2" resultType="com.in4mation.festibook.dto.member.MemberDTO">
+        SELECT * FROM member_table WHERE member_id  = #{member_id}
+    </select>
 </mapper>
