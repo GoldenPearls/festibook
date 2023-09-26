@@ -1,6 +1,7 @@
-import React from "react";
+//import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 import "./Navigation.css";
 import logoImage from '../../img/nav/logo.png';
 import home from '../../img/nav/home.png';
@@ -11,6 +12,10 @@ import fireworks from '../../img/nav/fireworks.png';
 import fireworks_click from '../../img/nav/fireworks_click.png';
 import communication from '../../img/nav/communication.png';
 import communication_click from '../../img/nav/communication_click.png';
+import { useAuth } from '../../routers/Login/AuthProvider'
+import { toast } from 'react-toastify';
+// react-toastify 제공하는 css
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useMediaQuery } from 'react-responsive'
 
@@ -25,7 +30,22 @@ const Default = ({ children }) => {
 
 function Navigation() {
     const location = useLocation();
+    const navigate = useNavigate();
+    const { token, setToken, setIsLoggedIn } = useAuth();
+    console.log('Navigation에서의 토큰:', token);
     const isActive = path => location.pathname === path;
+
+    useEffect(() => {
+        // token 값이 변하면 이 useEffect는 재실행됩니다.
+        console.log('Navigation 컴포넌트에서 토큰 변화 감지:', token);
+    }, [token]);
+
+    const handleLogout = () => {
+        setToken(null); // 로그아웃 시 토큰 제거
+        navigate('/login');
+        toast.success('로그아웃에 성공했습니다.');
+    }
+
     return (
         <div className="nav">
             <Default>
@@ -35,7 +55,13 @@ function Navigation() {
                 <Link to="/recommend" className={`recommend-link ${isActive("/recommend") ? "active" : ""}`}>추천할 수 박에</Link> <br></br>
                 <Link to="/festival" className={`festival-link ${isActive("/festival") ? "active" : ""}`}>축제/행사 소개</Link> <br></br>
                 <Link to="/community" className={`community-link ${isActive("/community") ? "active" : ""}`}>너와 나의 연결고리</Link> <br></br>
-                <Link to="/login" className="login-btn">Login</Link>
+                {/*<Link to="/login" className="login-btn">Login</Link>*/}
+                    {token ? (
+                        <Link to="/" onClick={handleLogout} className="login-btn">Logout</Link>
+                    ) : (
+                        <Link to="/login" className="login-btn">Login</Link>
+                    )
+                    }
                 </>
             </Default>
 
@@ -46,7 +72,13 @@ function Navigation() {
                     <Link to="/recommend" className="recommend-mobile"> <img src={isActive("/recommend")? recommend_click : recommend} alt="recommend Logo" className="recommend"/><br/>추천 할 수 박에</Link> <br></br>
                     <Link to="/festival" className="festival-mobile"><img src={isActive("/festival")? fireworks_click : fireworks} alt="fireworks Logo" className="fireworks"/><br/>축제/행사 소개</Link> <br></br>
                     <Link to="/community" className="community-mobile"> <img src={isActive("/community")? communication_click : communication} alt="communication Logo" className="communication"/><br/>너와 나의 연결고리</Link> <br></br>
-                    <Link to="/login" className="login-btn">Login</Link>
+                    {/*<Link to="/login" className="login-btn">Login</Link>*/}
+                    {token ? (
+                        <Link to="/" onClick={handleLogout} className="login-btn">Logout</Link>
+                    ) : (
+                        <Link to="/login" className="login-btn">Login</Link>
+                    )
+                    }
                 </>
             </Mobile>
         </div>

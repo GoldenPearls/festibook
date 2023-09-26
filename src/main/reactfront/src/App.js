@@ -7,9 +7,11 @@ import Recommend from "./routers/Recommend/Recommend";
 import Community from "./routers/Community/Community";
 import Navigation from "./components/nav/Navigation";
 import Login from "./routers/Login/Login";
+import { AuthProvider } from './routers/Login/AuthProvider'
 
 function App() {
     return (
+        <AuthProvider>
         <Router>
             <Navigation />
             <Routes>
@@ -20,6 +22,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
             </Routes>
         </Router>
+        </AuthProvider>
     );
 }
 
