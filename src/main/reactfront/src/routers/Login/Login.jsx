@@ -95,7 +95,7 @@ export default function Login() {
                    toast.success('로그인에 성공했습니다.');
                    localStorage.setItem("jwt",  response.data?.token);
                    setIsLoggedIn(true);
-                   navigate('/recommend');
+                  /* navigate('/recommend');*/
                } else {
                    toast.warning('로그인 실패했습니다. 아이디나 비밀번호를 확인해주세요');
                }
@@ -180,14 +180,14 @@ export default function Login() {
                 </div>
 
                 <div className="buttonContainer">
-                   {/* {isLoggedIn ? (
+                    {isLoggedIn ? (
                         <button onClick={logout} className="bottomButton">Logout</button>
                     ) : (
                         <button onClick={onClickConfirmButton} className="bottomButton">Login</button>
-                    )}*/}
-                   <button onClick={onClickConfirmButton} className="bottomButton">
+                    )}
+                  {/* <button onClick={onClickConfirmButton} className="bottomButton">
                         LOGIN
-                    </button>
+                    </button>*/}
                 </div>
 
                 <div className="soical_login">
