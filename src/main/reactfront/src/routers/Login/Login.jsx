@@ -10,6 +10,8 @@ import { ToastContainer, toast } from "react-toastify";
 // react-toastify 제공하는 css
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+// .6버전에서 쓰는 것
+import { useNavigate, useLocation } from 'react-router-dom';
 
 /*const User = {
     id: 'testuser',
@@ -34,6 +36,25 @@ export default function Login() {
 
     const [showModal, setShowModal] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
+
+    // localStorge에 토큰이 있는 경우 로그인 상태로 간주, 최상위 레벨에서 호출되어야 한다.
+    useEffect(() => {
+        const token = localStorage.getItem('jwt');
+        if (token) setIsLoggedIn(true);
+    }, []);
+
+    // 로그아웃 함수도 최상위 레벨에 위치
+    const logout = () => {
+        localStorage.removeItem('jwt');
+        setIsLoggedIn(false);
+        toast.success('로그아웃에 성공했습니다.');
+        navigate('/');
+    };
 
     const handleId = (e) => {
         setId(e.target.value);
@@ -64,12 +85,17 @@ export default function Login() {
            data : data
        };
 
+
+
+       //  로컬 스토리지에 토큰을 저장하는 부분
        axios.request(config)
            .then((response) => {
                console.log(JSON.stringify(response.data));
                if( response.data?.token != undefined) {
                    toast.success('로그인에 성공했습니다.');
                    localStorage.setItem("jwt",  response.data?.token);
+                   setIsLoggedIn(true);
+                   navigate('/recommend');
                } else {
                    toast.warning('로그인 실패했습니다. 아이디나 비밀번호를 확인해주세요');
                }
@@ -154,10 +180,14 @@ export default function Login() {
                 </div>
 
                 <div className="buttonContainer">
-                    <button onClick={onClickConfirmButton} className="bottomButton">
+                   {/* {isLoggedIn ? (
+                        <button onClick={logout} className="bottomButton">Logout</button>
+                    ) : (
+                        <button onClick={onClickConfirmButton} className="bottomButton">Login</button>
+                    )}*/}
+                   <button onClick={onClickConfirmButton} className="bottomButton">
                         LOGIN
                     </button>
-
                 </div>
 
                 <div className="soical_login">

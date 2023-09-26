@@ -103,7 +103,7 @@ public class LoginController {
         }
     }
 
-    @GetMapping("/login-user-test")
+   @GetMapping("/login-user-test")
     public MemberDTO loginUserTest() {
         MemberDTO memberDTO = MemberDTO.builder()
                 .member_id("test")
