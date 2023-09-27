@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.member.MemberMapper">
+
+  <!--  <insert id="insert" parameterType="com.in4mation.festibook.dto.member.MemberDTO">
+        INSERT INTO Member_table (member_id, member_password, member_email, member_name, member_nickname)
+        VALUES(#{member_id},#{member_password},#{member_email},#{member_name},#{member_nickname})
+    </insert> -->
+
+    <select id="checkId" parameterType="String" resultType="Boolean">
+        SELECT COUNT(*)
+        FROM Member_table
+        WHERE member_id = #{member_id}
+    </select>
+
+    <insert id="insert" parameterType="com.in4mation.festibook.dto.member.MemberDTO">
+        INSERT INTO Member_table (member_id, member_password, member_email, member_name, member_nickname)
+        VALUES(#{member_id},#{member_password},#{member_email},#{member_name},#{member_nickname})
+    </insert>
+
+</mapper>
