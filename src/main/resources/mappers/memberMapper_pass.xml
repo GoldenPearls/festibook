@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.password.MemberMapper_Pass">
+
+
+    <update id="updateVerificationCode">
+        UPDATE member_table SET verificationcode = #{code} WHERE member_email = #{email}
+    </update>
+
+    <select id="getPasswordByEmailAndVerification" resultType="string">
+        SELECT member_password FROM member_table WHERE member_email = #{email} AND verificationcode = #{code}
+    </select>
+
+
+</mapper>
+
+

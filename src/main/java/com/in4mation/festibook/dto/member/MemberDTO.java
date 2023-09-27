@@ -25,4 +25,6 @@ public class MemberDTO {
     private String member_introduce;    //소개
 
     private boolean member_sns;     //소셜로그인 여부 (default = false)
+
+    private String verificationCode; //인증번호
 }

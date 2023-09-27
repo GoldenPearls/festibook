@@ -99,13 +99,20 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'com.google.code.gson:gson:2.8.9'
 
+    //thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    //이메일 인증 구현
+    //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.0.5'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'javax.mail:javax.mail-api:1.6.2'
+    implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+
 
     // jjwt 라이브러리 추가
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'  // API 의존성 추가
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2' // 구현 의존성 추가
     runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.2') { exclude group: 'org.json', module: 'json' } // JSON 처리 의존성 추가
-    //implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
-    //implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2' // Jackson을 이용하여 JSON을 처리하기 위해 추가
 
     testImplementation 'org.springframework.security:spring-security-test'
 
