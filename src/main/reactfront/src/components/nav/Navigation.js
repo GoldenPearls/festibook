@@ -12,7 +12,8 @@ import fireworks from '../../img/nav/fireworks.png';
 import fireworks_click from '../../img/nav/fireworks_click.png';
 import communication from '../../img/nav/communication.png';
 import communication_click from '../../img/nav/communication_click.png';
-import { useAuth } from '../../routers/Login/AuthProvider'
+import myprofile from '../../img/nav/myprofile.png';
+import { useAuth } from '../../routers/Login/AuthProvider';
 import { toast } from 'react-toastify';
 // react-toastify 제공하는 css
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,6 +32,8 @@ const Default = ({ children }) => {
 function Navigation() {
     const location = useLocation();
     const navigate = useNavigate();
+
+
     const { token, setToken, setIsLoggedIn } = useAuth();
     console.log('Navigation에서의 토큰:', token);
     const isActive = path => location.pathname === path;
@@ -57,11 +60,15 @@ function Navigation() {
                 <Link to="/community" className={`community-link ${isActive("/community") ? "active" : ""}`}>너와 나의 연결고리</Link> <br></br>
                 {/*<Link to="/login" className="login-btn">Login</Link>*/}
                     {token ? (
-                        <Link to="/" onClick={handleLogout} className="login-btn">Logout</Link>
+                        <>
+                            <Link to="/" onClick={handleLogout} className="login-btn">Logout</Link>
+                            <Link to="/mypage" className="mypage-btn">
+                                <img src={myprofile} alt="My Profile" className="mypage" />
+                            </Link>
+                        </>
                     ) : (
                         <Link to="/login" className="login-btn">Login</Link>
-                    )
-                    }
+                    )}
                 </>
             </Default>
 
@@ -74,11 +81,15 @@ function Navigation() {
                     <Link to="/community" className="community-mobile"> <img src={isActive("/community")? communication_click : communication} alt="communication Logo" className="communication"/><br/>너와 나의 연결고리</Link> <br></br>
                     {/*<Link to="/login" className="login-btn">Login</Link>*/}
                     {token ? (
-                        <Link to="/" onClick={handleLogout} className="login-btn">Logout</Link>
+                        <>
+                            <Link to="/" onClick={handleLogout} className="login-btn">Logout</Link>
+                            <Link to="/mypage" className="mypage-btn">
+                                <img src={myprofile} alt="My Profile" className="mypage" />
+                            </Link>
+                        </>
                     ) : (
                         <Link to="/login" className="login-btn">Login</Link>
-                    )
-                    }
+                    )}
                 </>
             </Mobile>
         </div>

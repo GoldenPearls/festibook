@@ -83,6 +83,12 @@ html, body {
     cursor: pointer;
 }
 
+.mypage {
+    width: 40px; /* 원하는 너비로 변경 */
+    height: 40px; /* 원하는 높이로 변경 */
+    object-fit: cover; /* 또는 contain */
+}
+
 .recommend-link.active {
     color: slateblue; /* 원하는 색상으로 변경 */
 }
@@ -132,6 +138,10 @@ body > *:not(.nav) {
 
     .nav a:not(:last-child) {
         margin-bottom: 20px;
+    }
+
+    .nav .login-btn, .nav .mypage-btn {
+        margin-left: 5px;
     }
 
 }
