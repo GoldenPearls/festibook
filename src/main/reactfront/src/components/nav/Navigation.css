@@ -56,7 +56,8 @@ html, body {
 .nav .recommend-link,
 .nav .festival-link,
 .nav .community-link,
-.nav .login-btn {
+.nav .login-btn
+{
     font-family: "KyoboHandwriting2021sjy";
     text-decoration: none;
     color: black;
@@ -67,8 +68,13 @@ html, body {
     margin: 0 10px;
 }
 
+
 .nav .home-logo {
     height: 50px;
+}
+
+a {
+    text-decoration: none;
 }
 
 
@@ -100,6 +106,49 @@ body > *:not(.nav) {
     margin-top: 70px;
 }
 
+.mypage_setting{
+    position: relative;
+}
+
+/*탭 형식*/
+.bottom-tab {
+    left: -40px;
+    position: absolute;
+    bottom: -70px;
+    background-color: #bddeec;
+    width: 130px;
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.nav .mypage-btn
+.nav .logout_text
+{
+    font-family:'Cafe24Supermagic-Bold-v1.0"';
+    font-size: 20px;
+}
+
+.bottom-tab{
+    font-family: "Cafe24Supermagic-Bold-v1.0";
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+/*mypage 이미지 크기 조정*/
+.mypage{
+    height: 40px;
+    width: 40px;
+}
+
+.logout_text {
+    cursor: pointer!important; /* .logout_text에 직접 스타일 적용 */
+}
+
+
+
 @media screen and (max-width: 768px) {
     .nav {
         left: initial;
@@ -111,15 +160,19 @@ body > *:not(.nav) {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
-    .nav a {
+    .nav a,
+    .mypage_text,
+    .logout_text
+    {
         font-family: "bitbit";
         text-decoration: none;
         color:black;
         text-transform: uppercase;
-        font-size: 5px;
+        font-size: 7px;
         text-align: center;
         margin-top: 20px;
     }
+
 
     .nav .home-link_mobile{
         align-items: center;
@@ -132,6 +185,29 @@ body > *:not(.nav) {
 
     .nav a:not(:last-child) {
         margin-bottom: 20px;
+    }
+
+    .mypage{
+        height: 50px;
+        width: 50px;
+    }
+
+    .mypage_text {
+        margin-top: 3px; /* 위쪽 여백을 추가하여 <img> 태그와의 거리를 늘림 */
+    }
+
+
+    .bottom-tab{
+        left: -20px;
+        bottom: 90px;
+        width: 80px;
+        font-family: "Cafe24Supermagic-Bold-v1.0";
+        text-decoration: none;
+        color: black;
+        background: #b8d8e6;
+        font-size: 10px;
+        flex-direction: column;
+        padding: 10px;
     }
 
 }

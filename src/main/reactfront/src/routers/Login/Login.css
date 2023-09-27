@@ -33,6 +33,10 @@
 
 }
 
+a {
+    text-decoration: none;
+}
+
 .custom-toast {
     font-family: "bitbit"; /* 여기에 원하는 폰트 이름을 입력하세요. */
     background-color: #333; /* 원하는 배경색을 설정하세요. */

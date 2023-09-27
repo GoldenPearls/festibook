@@ -179,14 +179,12 @@ export default function Login() {
                     </div>
 
                     <div className="buttonContainer">
-                        {isLoggedIn ? (
+                        {/*{isLoggedIn ? (
                             <button onClick={logout} className="bottomButton">Logout</button>
                         ) : (
                             <button onClick={onClickConfirmButton} className="bottomButton">Login</button>
-                        )}
-                        {/* <button onClick={onClickConfirmButton} className="bottomButton">
-                        LOGIN
-                    </button>*/}
+                        )}*/}
+                        <button onClick={onClickConfirmButton} className="bottomButton">Login</button>
                     </div>
 
                     <div className="soical_login">
