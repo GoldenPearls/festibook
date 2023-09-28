@@ -35,6 +35,11 @@
 
 a {
     text-decoration: none;
+    color: grey;
+}
+
+a:visited {
+    color: grey; /* 방문한 링크의 색상 */
 }
 
 .custom-toast {

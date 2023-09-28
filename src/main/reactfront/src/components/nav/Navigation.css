@@ -123,6 +123,12 @@ body > *:not(.nav) {
     padding: 10px;
 }
 
+.mypage-btn {
+    text-decoration: none;
+    color: black!important;
+}
+
+
 .nav .mypage-btn
 .nav .logout_text
 {
@@ -147,6 +153,10 @@ body > *:not(.nav) {
     cursor: pointer!important; /* .logout_text에 직접 스타일 적용 */
 }
 
+.mypage_setting {
+    cursor: pointer!important;
+}
+
 
 
 @media screen and (max-width: 768px) {
@@ -160,6 +170,10 @@ body > *:not(.nav) {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
+    .mypage_setting {
+        cursor: pointer!important;
+    }
+
     .nav a,
     .mypage_text,
     .logout_text
@@ -171,6 +185,11 @@ body > *:not(.nav) {
         font-size: 7px;
         text-align: center;
         margin-top: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black!important;
     }
 
 
@@ -188,8 +207,8 @@ body > *:not(.nav) {
     }
 
     .mypage{
-        height: 50px;
-        width: 50px;
+        height: 55px;
+        width: 55px;
     }
 
     .mypage_text {
