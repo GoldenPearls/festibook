@@ -189,7 +189,11 @@ body > *:not(.nav) {
 
     a {
         text-decoration: none;
-        color: black!important;
+        color: black;
+    }
+
+    .login-btn{
+        color: white!important;
     }
 
 
