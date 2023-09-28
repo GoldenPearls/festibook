@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 // .6버전에서 쓰는 것
 import { useNavigate, useLocation } from 'react-router-dom';
+import {useAuth} from "./AuthProvider";
 
 /*const User = {
     id: 'testuser',
@@ -40,7 +41,9 @@ export default function Login() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
+    const { setToken, setIsLoggedIn } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
+
+    /*const [isLoggedIn, setIsLoggedIn] = useState(false);*/ //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
 
     // localStorge에 토큰이 있는 경우 로그인 상태로 간주, 최상위 레벨에서 호출되어야 한다.
     useEffect(() => {
@@ -94,7 +97,8 @@ export default function Login() {
                 console.log(JSON.stringify(response.data));
                 if( response.data?.token != undefined) {
                     toast.success('로그인에 성공했습니다.');
-                    localStorage.setItem("jwt",  response.data?.token);
+                    /*localStorage.setItem("jwt",  response.data?.token);*/
+                    setToken(response.data?.token); // 상태에 토큰 저장
                     setIsLoggedIn(true);
 
                     setTimeout(() => {

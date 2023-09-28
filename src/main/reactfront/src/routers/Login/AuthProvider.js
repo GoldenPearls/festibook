@@ -6,6 +6,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(() => {
         console.log('초기 토큰:', localStorage.getItem('jwt'));
+        //로컬에 저장
         return localStorage.getItem('jwt');
     });
     const [isLoggedIn, setIsLoggedIn] = useState(!!token); // 로그인 상태를 관리합니다.

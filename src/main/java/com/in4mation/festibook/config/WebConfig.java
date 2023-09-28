@@ -14,6 +14,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     JwtUtils jwtUtils;
 
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -24,6 +25,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JwtInterceptor(jwtUtils))
+                .addPathPatterns("/**")
+                .excludePathPatterns("/home")
                 .excludePathPatterns("/css/**", "/images/**", "/js/**");
     }
 

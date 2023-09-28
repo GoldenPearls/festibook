@@ -32,11 +32,13 @@ function Navigation() {
     const location = useLocation();
     const navigate = useNavigate();
     const { token, setToken, setIsLoggedIn } = useAuth();
+
     console.log('Navigation에서의 토큰:', token);
     const isActive = path => location.pathname === path;
 
     // 탭 관리를 위한 상태 변수
     const [isTabOpen, setIsTabOpen] = useState(false);
+
 
     const handleTabToggle = () => setIsTabOpen(!isTabOpen); // 상태 변수 토글 함수
 
@@ -63,7 +65,6 @@ function Navigation() {
                 <Link to="/community" className={`community-link ${isActive("/community") ? "active" : ""}`}>너와 나의 연결고리</Link> <br></br>
              {/*   <Link to="/login" className="login-btn">Login</Link>*/}
                     {token ? (
-                        <>
                             <div className="mypage_setting">
                             <div className="mypage-btn" onClick={handleTabToggle}>
                                 <img src={myprofile} alt="My Profile" className="mypage" />
@@ -78,9 +79,9 @@ function Navigation() {
                                 </div>
                                 )}
                             </div>
-                        </>
                     ) : (
-                        <Link to="/login" className="login-btn">Login</Link>
+                        <Link to="/login" className="login-btn">
+                            Login</Link>
                     )
                     }
                 </>
