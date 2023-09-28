@@ -9,6 +9,7 @@ import university_img from '../img/main/university_img.png'
 import university1 from '../img/main/university1.png'
 import university2 from '../img/main/university2.png'
 import university3 from '../img/main/university3.png'
+import famous from '../img/main/famous.png'
 
 function Home() {
     const [scrollY, setScrollY] = useState(0);
@@ -103,6 +104,13 @@ function Home() {
                             </p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div className="famous_div">
+                <div className="famous_text_div">
+                    <img className="famous_img"  src={famous} alt="famous_img"/>
+                    <span className="famous_text"> 사람들이 가장 많이 눌러본 인기 축제 </span>
                 </div>
             </div>
         </div>
