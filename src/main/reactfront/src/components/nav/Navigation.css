@@ -121,6 +121,7 @@ body > *:not(.nav) {
     display: flex;
     flex-direction: column;
     padding: 10px;
+    z-index: 1000;
 }
 
 .mypage-btn {
@@ -155,6 +156,7 @@ body > *:not(.nav) {
 
 .mypage_setting {
     cursor: pointer!important;
+    z-index: 1000;
 }
 
 
@@ -172,7 +174,9 @@ body > *:not(.nav) {
 
     .mypage_setting {
         cursor: pointer!important;
+        z-index: 1000;
     }
+
 
     .nav a,
     .mypage_text,
