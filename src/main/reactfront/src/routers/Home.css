@@ -20,6 +20,25 @@
     background: linear-gradient(to top, rgb(117, 151, 222), transparent);
 }
 
+.university_text_div {
+    display: flex;
+    flex-direction: row; /* 수직 방향으로 정렬하려면 */
+    align-items: center; /* 가로 방향 중앙 정렬 */
+    justify-content: center; /* 세로 방향 중앙 정렬 */
+    text-align: center; /* 텍스트도 중앙 정렬하려면 */
+}
+
+.university_ex {
+    display: flex;
+    justify-content: center; /* 자식 엘리먼트들을 가운데 정렬 */
+    align-items: center; /* 선택적: 수직으로도 가운데 정렬 */
+    gap: 10px;
+    overflow-x: auto;
+    width: 100%;
+    min-height: 100vh; /* 뷰포트의 높이를 100%로 설정, 선택적 */
+}
+
+
 .mainText {
     display: flex;
     justify-content: center;
