@@ -21,7 +21,6 @@ function Home() {
     return (
         <div className="section">
             <div className="bgWrapper" style={{ '--scrollY': scrollY }}>
-                {/*<img className="moon" src={moon} alt="moon" />*/}
                 <h3 className="mainText" style={{
                     top: `${scrollY * 1}px`,
                     marginRight: `${scrollY * 1.5}px`,
@@ -29,11 +28,11 @@ function Home() {
                 }}>
                     기억하고 싶은 축제<br />Festibook과 함께
                 </h3>
-                {/*<img className="bg2" width={1920} height={1080} src={bg2} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />*/}
-                <img className="bg1" width={1920} height={1080} src={bg1} alt="bg1" style={{ top: `${scrollY * 1}px` }} />
+               {/* <img className="bg2" width={1920} height={1080} src={bg2} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />*/}
+                <img className="bg1" width={1920} height={1080} src={bg1} alt="bg1" style={{ top: `${scrollY * 3}px` }} />
                 <img className="star"  src={star} alt="star" style={{
-                    left: `${scrollY * 0.5}px`,
-                    bottom: `${scrollY * 0.5}px`
+                    left: `${scrollY * 1}px`,
+                    bottom: `${scrollY * 1}px`
                 }} />
                 <div className="divideBox" style={{
                     background: "linear-gradient(to top, rgb(28, 5, 34), transparent)"
