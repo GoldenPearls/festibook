@@ -10,9 +10,12 @@ import university1 from '../img/main/university1.png'
 import university2 from '../img/main/university2.png'
 import university3 from '../img/main/university3.png'
 import famous from '../img/main/famous.png'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Home() {
     const [scrollY, setScrollY] = useState(0);
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,6 +27,7 @@ function Home() {
         };
     }, []);
 
+
     return (
         <div className="section">
             <div className="bgWrapper" style={{ '--scrollY': scrollY }}>
@@ -32,8 +36,11 @@ function Home() {
                     marginRight: `${scrollY * 1.5}px`,
                     marginTop: `${300 + scrollY * 0.3}px`
                 }}>
-                    기억하고 싶은 축제<br />Festibook과 함께
+                    기억하고 싶은 축제<br />Festibook과 함께<br/><br/> 스크롤 내리기
                 </h3>
+
+                <span className="main_text"> 스크롤 내리기 </span>
+
                {/* <img className="bg2" width={1920} height={1080} src={bg2} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />*/}
                 <img className="bg1" width={1920} height={1080} src={bg1} alt="bg1" style={{ top: `${scrollY * 3}px` }} />
                 <img className="star"  src={star} alt="star" style={{
@@ -104,6 +111,40 @@ function Home() {
                             </p>
                         </div>
                     </div>
+                    <div className="university_festival">
+                        <span className="university_name">충남대학교</span><br/>
+                        <img className="university_img3"  src={university3} alt="university3"/><br/>
+                        <div>
+                            <p className="element">
+                                <span className="title"> 📍 일정  <br /> </span>
+                                2023. 10. 11(수) - 2023. 10. 12(목)
+                                <br /> <br />
+                                <span className="title"> 📍 장소   <br /> </span>
+                                광주광역시 남구 효덕로 277 광주대학교
+                                <br /> <br />
+                                <span className="title">📍 라인업 <br />  </span>
+                                10월 11일(수) : 미정 <br />
+                                10월 12일(목) : 미정 <br /><br />
+                            </p>
+                        </div>
+                    </div>
+                    <div className="university_festival">
+                        <span className="university_name">충남대학교</span><br/>
+                        <img className="university_img3"  src={university3} alt="university3"/><br/>
+                        <div>
+                            <p className="element">
+                                <span className="title"> 📍 일정  <br /> </span>
+                                2023. 10. 11(수) - 2023. 10. 12(목)
+                                <br /> <br />
+                                <span className="title"> 📍 장소   <br /> </span>
+                                광주광역시 남구 효덕로 277 광주대학교
+                                <br /> <br />
+                                <span className="title">📍 라인업 <br />  </span>
+                                10월 11일(수) : 미정 <br />
+                                10월 12일(목) : 미정 <br /><br />
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -114,6 +155,8 @@ function Home() {
                 </div>
             </div>
         </div>
+
+
 
     );
 }

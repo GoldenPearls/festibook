@@ -213,6 +213,14 @@
     margin-bottom: 10px;
 }
 
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+}
+
 /* 반응형 디자인: 화면 너비가 768px 미만일 때 적용 */
 @media (max-width: 768px) {
     .university_ex {
