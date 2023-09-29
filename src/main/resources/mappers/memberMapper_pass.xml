@@ -5,13 +5,20 @@
 
 
     <update id="updateVerificationCode">
-        UPDATE member_table SET verificationcode = #{code} WHERE member_email = #{email}
+        UPDATE member_table SET verificationcode = #{code} WHERE member_email = #{email} AND delflag != 1
     </update>
 
     <select id="getPasswordByEmailAndVerification" resultType="string">
         SELECT member_password FROM member_table WHERE member_email = #{email} AND verificationcode = #{code}
     </select>
 
+    <select id="getDelflagByEmail" resultType="integer">
+        SELECT delflag FROM member_table WHERE member_email = #{email}
+    </select>
+
+    <select id="findUserByEmail" resultType="string">
+        SELECT member_email FROM member_table WHERE member_email = #{email}
+    </select>
 
 </mapper>
 

@@ -12,6 +12,17 @@ window.onload = function() {
                 var name = nameInput.value;
                 var email = emailInput.value;
 
+
+                if (!name) {
+                    alert("이름을 입력해주세요.");
+                    return;
+                }
+
+                if (!email) {
+                    alert("이메일을 입력해주세요.");
+                    return;
+                }
+
                 fetch('/api/find-id?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email))
                     .then(function(response) {
                         return response.json(); // text() 대신 json() 사용

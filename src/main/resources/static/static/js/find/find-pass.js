@@ -4,6 +4,11 @@ function generateCode() {
     if (emailInput) { // input element가 존재하는지 확인
         var email = emailInput.value;
 
+        if (!email) {
+            alert("이메일을 입력해주세요.");
+            return;
+        }
+
         fetch('/generateCode', {
             method:'POST',
             headers:{
@@ -29,6 +34,16 @@ function verifyCode() {
     if (emailInput && codeInput) { // input elements가 존재하는지 확인
         var email = emailInput.value;
         var code = codeInput.value;
+
+        if (!email) {
+            alert("이메일을 입력해주세요.");
+            return;
+        }
+
+        if (!code) {
+            alert("인증번호를 입력해주세요.");
+            return;
+        }
 
         fetch('/verifyCode', {
             method:'POST',

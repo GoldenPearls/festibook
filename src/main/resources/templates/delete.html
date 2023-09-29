@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>계정 삭제</title>
+    <!--    <link rel="stylesheet" href="/static/css/delete-account.css">-->
+</head>
+<body>
+
+<div class="memberController" style="text-align: center; margin-top: 50px;">
+    <h1>계정 삭제</h1>
+    <p>계정을 삭제하시려면 아이디와 비밀번호를 입력해주세요.</p>
+</div>
+
+<div class="memberServiceId" style="width: 421px; margin: auto;">
+    <form id="deleteAccountForm">
+
+        <label for ="id">아이디 :</label><br>
+        <input type="text" id ="id"name ="id" value=""><br>
+
+        <label for ="password">비밀번호 :</label><br>
+        <input type ="password"id ="password"name ="password" value=""><br>
+
+        <!-- Delete account button -->
+        <button class='button' type='submit' style="
+            width: 100%;
+            height: 62px;
+            background-color: #ec7373;
+            color: white;
+            font-size: 20px;
+            font-weight:bold;
+            border-radius: 5px;
+            margin-top: 20px;">계정 삭제</button>
+
+    </form>
+</div>
+
+
+<script src='/static/js/delete/delete-account.js'></script>
+
+</body>
+</html>
