@@ -85,7 +85,7 @@
     justify-content: center;
     width: 100%;
     font-size: 5rem;
-    color: white;
+    color: #d2c5e4;
     position: absolute;
     z-index: 3;
 }
@@ -94,7 +94,6 @@
     position: relative;
     overflow: hidden;
 }
-
 
 
 
@@ -145,9 +144,9 @@
 
 .firework2, .firework1 {
     position: absolute;
-    width: 400px; /* 원하는 크기로 조절 */
+    width: 500px; /* 원하는 크기로 조절 */
     z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
-    height : 400px;
+    height : 500px;
 }
 
 .lamp {
@@ -168,6 +167,10 @@
     align-items: center; /* 가로 방향 중앙 정렬 */
     justify-content: center; /* 세로 방향 중앙 정렬 */
     text-align: center; /* 텍스트도 중앙 정렬하려면 */
+}
+
+.famous_text_div{
+    margin-top: 30px;
 }
 
 @media (max-width: 1100px) {
@@ -235,6 +238,58 @@
 .university_img3 {
     margin-bottom: 10px;
 }
+
+/*푸터*/
+.footer {
+    background-color: #EE9E9E;
+    padding: 20px;
+    position: relative; /* 수정된 부분 */
+    height: auto;
+}
+
+.footer-links {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+}
+
+.info-links a {
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.info-links a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.icons a {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.github, .notion {
+    width: 40px;
+    height: 40px;
+}
+
+.footer-copyright {
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-logo img {
+    margin-bottom: 20px;
+}
+
 
 /* 반응형 디자인: 화면 너비가 768px 미만일 때 적용 */
 @media (max-width: 768px) {
