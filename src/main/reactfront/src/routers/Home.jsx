@@ -10,6 +10,7 @@ import university1 from '../img/main/university1.png'
 import university2 from '../img/main/university2.png'
 import university3 from '../img/main/university3.png'
 import famous from '../img/main/famous.png'
+import arrow from '../img/main/arrow.png'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -39,7 +40,8 @@ function Home() {
                     기억하고 싶은 축제<br />Festibook과 함께<br/><br/> 스크롤 내리기
                 </h3>
 
-                <span className="main_text"> 스크롤 내리기 </span>
+                <span className="main_text"> 스크롤 내려보세요 </span>
+                <img className="arrow" src={arrow} />
 
                {/* <img className="bg2" width={1920} height={1080} src={bg2} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />*/}
                 <img className="bg1" width={1920} height={1080} src={bg1} alt="bg1" style={{ top: `${scrollY * 3}px` }} />
