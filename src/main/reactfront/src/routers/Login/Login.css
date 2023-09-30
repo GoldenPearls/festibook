@@ -251,6 +251,7 @@ a:visited {
     margin-right: 40px; /* 이미지 사이 간격 설정 */
 }
 
+
 /* 사이즈가 작아질 때 */
 @media screen and (max-width: 768px) {
 

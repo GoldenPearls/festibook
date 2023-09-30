@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './Home.css';
 import styled from "@emotion/styled";
-import star from '../img/main/star.png'
 import moon from '../img/main/moon.png'
 import bg1 from '../img/main/bg1.png'
 import bg2 from '../img/main/bg2.png'
@@ -10,8 +9,17 @@ import university1 from '../img/main/university1.png'
 import university2 from '../img/main/university2.png'
 import university3 from '../img/main/university3.png'
 import famous from '../img/main/famous.png'
-import arrow from '../img/main/arrow.png'
-import AOS from 'aos';
+import cloud from '../img/main/cloud.png'
+import lamp1 from '../img/main/lamp1.png'
+import lamp2 from '../img/main/lamp2.png'
+import lamp3 from '../img/main/lamp3.png'
+import lamp4 from '../img/main/lamp4.png'
+import lamp5 from '../img/main/lamp5.png'
+import lamp6 from '../img/main/lamp1.png'
+import lamp7 from '../img/main/lamp2.png'
+import lamp8 from '../img/main/lamp3.png'
+import firework1 from '../img/main/fireworks1.png'
+import firework2 from '../img/main/fireworks2.png'
 import 'aos/dist/aos.css';
 
 function Home() {
@@ -28,32 +36,52 @@ function Home() {
         };
     }, []);
 
+    const lamps = [
+        { img: lamp1, position: { top: '10%', left: '10%' } },
+        { img: lamp2, position: { top: '10%', right: '10%' } },
+        { img: lamp3, position: { top: '30%', left: '30%' } },
+        { img: lamp4, position: { top: '30%', right: '20%' } },
+        { img: lamp5, position: { top: '60%', left: '25%' } },
+        { img: lamp6, position: { top: '60%', right: '30%' } },
+        { img: lamp7, position: { top: '80%', left: '30%' } },
+        { img: lamp8, position: { top: '90%', right: '25%' } },
+    ];
+
 
     return (
         <div className="section">
+
             <div className="bgWrapper" style={{ '--scrollY': scrollY }}>
+            <img className="bg1" width={1920} height={1200} src={bg1} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />
                 <h3 className="mainText" style={{
                     top: `${scrollY * 1}px`,
                     marginRight: `${scrollY * 1.5}px`,
-                    marginTop: `${300 + scrollY * 0.3}px`
-                }}>
-                    기억하고 싶은 축제<br />Festibook과 함께<br/><br/> 스크롤 내리기
-                </h3>
-
-                <span className="main_text"> 스크롤 내려보세요 </span>
-                <img className="arrow" src={arrow} />
-
-               {/* <img className="bg2" width={1920} height={1080} src={bg2} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />*/}
-                <img className="bg1" width={1920} height={1080} src={bg1} alt="bg1" style={{ top: `${scrollY * 3}px` }} />
-                <img className="star"  src={star} alt="star" style={{
-                    left: `${scrollY * 1}px`,
-                    bottom: `${scrollY * 1}px`
-                }} />
+                    marginTop: `${300 + scrollY * 0.3}px`,
+                    zIndex: 10 // 다른 요소보다 위에 나타나게 하려면 z-index 값을 높게 설정
+                }}>기억하고 싶은 축제<br />Festibook과 함께</h3>
+            <img className="moon" src={moon} alt="Moon" style={{ top: `${20 + scrollY * 0.5}px` }} />
+            <img className="cloud" src={cloud} alt="Cloud" style={{ left: '30%', top: `${70 + scrollY * 0.5}px` }} />
+            <img className="cloud" src={cloud} alt="Cloud" style={{ right: '30%', top: `${70 + scrollY * 0.5}px` }} />
+            {lamps.map((lamp, index) => (
+                <img
+                    key={index}
+                    className="lamp"
+                    src={lamp.img}
+                    alt={`Lamp ${index}`}
+                    style={{
+                        ...lamp.position,
+                        top: `calc(${lamp.position.top} + ${scrollY * 0.5}px)`,
+                    }}
+                />
+            ))}
+                <img className="firework1" src={firework1} alt="firework1" style={{  left: '20%', top: `${20 + scrollY * 0.5}px` }} />
+                <img className="firework2" src={firework2} alt="firework2" style={{  right: '10%', top: `${20 + scrollY * 0.5}px` }} />
                 <div className="divideBox" style={{
                     background: "linear-gradient(to top, rgb(28, 5, 34), transparent)"
                 }}>
                 </div>
             </div>
+
             <div className="university_div">
                 <div className="university_text_div">
                 <img className="university_img"  src={university_img} alt="university_img"/>

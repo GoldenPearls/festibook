@@ -208,11 +208,14 @@ body > *:not(.nav) {
 
     body > *:not(.nav) {
         margin-top: 0px;
+        padding-bottom: 100px;
     }
 
     .nav a:not(:last-child) {
         margin-bottom: 20px;
     }
+
+
 
     .mypage{
         height: 55px;
