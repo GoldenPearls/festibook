@@ -86,7 +86,7 @@ function Home() {
             </div>*/}
 
             <div className="bgWrapper" style={{ '--scrollY': scrollY }}>
-                <img className="bg1" width={1920} height={1200} src={bg1} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />
+                <img className="bg1" width={1920} height={1800} src={bg1} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />
                 <h3 className="mainText" style={{
                     top: `${scrollY * 1}px`,
                     marginRight: `${scrollY * 1.5}px`,
@@ -213,6 +213,10 @@ function Home() {
                     <img className="famous_img"  src={famous} alt="famous_img"/>
                     <span className="famous_text"> 사람들이 가장 많이 눌러본 인기 축제 </span>
                 </div>
+            </div>
+
+            <div id="contentContainer" className="contentContainer">
+
             </div>
 
                     <div className="footer">

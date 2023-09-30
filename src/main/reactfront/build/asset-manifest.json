@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.3e4473ec.css",
-    "main.js": "/static/js/main.332d5778.js",
+    "main.css": "/static/css/main.dbc6adf9.css",
+    "main.js": "/static/js/main.a8fd48c4.js",
     "static/media/loginbackground.png": "/static/media/loginbackground.2bd013d7b32a6ef6764a.png",
     "static/media/moon.png": "/static/media/moon.40b19697f2afefe8ad72.png",
     "static/media/university2.png": "/static/media/university2.b1fc667e2485eeb7bfed.png",
     "static/media/university3.png": "/static/media/university3.5ec888839ef19af6d4eb.png",
     "static/media/university1.png": "/static/media/university1.1ab40a07a2a743cf43d5.png",
-    "static/media/bg1.png": "/static/media/bg1.23865b15fa6adfcd3454.png",
+    "static/media/bg1.png": "/static/media/bg1.375689a07a78254f7257.png",
     "static/media/bg2.png": "/static/media/bg2.328c4ab048d14f5e5663.png",
     "static/media/Loginlogo.png": "/static/media/Loginlogo.23a3f1a7c6402aeeff43.png",
     "static/media/fireworks2.png": "/static/media/fireworks2.d02a23ee20631b73e76f.png",
@@ -18,11 +18,11 @@
     "static/media/famous.png": "/static/media/famous.d20383192df2fd620cce.png",
     "static/media/lamp2.png": "/static/media/lamp2.93c1561dcc4ede4fe2d6.png",
     "index.html": "/index.html",
-    "main.3e4473ec.css.map": "/static/css/main.3e4473ec.css.map",
-    "main.332d5778.js.map": "/static/js/main.332d5778.js.map"
+    "main.dbc6adf9.css.map": "/static/css/main.dbc6adf9.css.map",
+    "main.a8fd48c4.js.map": "/static/js/main.a8fd48c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e4473ec.css",
-    "static/js/main.332d5778.js"
+    "static/css/main.dbc6adf9.css",
+    "static/js/main.a8fd48c4.js"
   ]
 }

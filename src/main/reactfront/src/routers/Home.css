@@ -172,6 +172,13 @@
 .famous_text_div{
     margin-top: 30px;
 }
+.contentContainer {
+    width: 100%;
+    min-height: 200px; /* 원하는 높이로 조절 */
+    background-color: #f9f9f9; /* 원하는 배경색으로 조절 */
+    margin-top: 20px; /* 원하는 마진으로 조절 */
+}
+
 
 @media (max-width: 1100px) {
     .divideBox {
@@ -308,5 +315,12 @@
         position: absolute;
         width: 400px; /* 원하는 크기로 조절 */
         z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
+    }
+
+    .firework2, .firework1 {
+        position: absolute;
+        width: 200px; /* 원하는 크기로 조절 */
+        z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
+        height : 200px;
     }
 }
