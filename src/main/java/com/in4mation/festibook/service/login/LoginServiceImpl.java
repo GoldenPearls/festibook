@@ -9,6 +9,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,9 +48,13 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
         // password 암호화
 
 
-        // password check
+        /*// password check
         if(!password.equals(user.getMember_password()))
-            throw new LoginException("password error");
+            throw new LoginException("password error");*/
+
+       /* // 비밀번호 확인
+        if(!passwordEncoder.matches(password, user.getMember_password()))
+            throw new LoginException("password error");*/
 
         return user;
     }

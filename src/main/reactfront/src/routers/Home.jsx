@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './Home.css';
-import styled from "@emotion/styled";
 import moon from '../img/main/moon.png'
 import bg1 from '../img/main/bg1.png'
 import bg2 from '../img/main/bg2.png'
@@ -28,6 +27,7 @@ import 'aos/dist/aos.css';
 function Home() {
     const [scrollY, setScrollY] = useState(0);
 
+    const isMobile = window.innerWidth < 768;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,9 +40,10 @@ function Home() {
     }, []);
 
     const lamps = [
-        { img: lamp1, position: { top: '10%', left: '10%' } },
-        { img: lamp2, position: { top: '10%', right: '10%' } },
-        { img: lamp3, position: { top: '30%', left: '30%' } },
+        { img: lamp1, position: { top: '10%', left: '5%' } },
+        { img: lamp2, position: { top: '5%', right: '10%' } },
+        { img: lamp3, position: { top: '15%', left: '30%' } },
+        { img: lamp3, position: { top: '20%', left: '9%' } },
         { img: lamp4, position: { top: '30%', right: '20%' } },
         { img: lamp5, position: { top: '60%', left: '25%' } },
         { img: lamp6, position: { top: '60%', right: '30%' } },
@@ -94,9 +95,9 @@ function Home() {
                     zIndex: 10
                 }}>기억하고 싶은 축제<br />Festibook과 함께</h3>
 
-                <img className="moon" src={moon} alt="Moon" style={{ top: `0px`, display: ((70 + scrollY * 0.5) > 0) ? 'none' : 'block' }} />
-                <img className="cloud" src={cloud} alt="Cloud" style={{ left: '30%', top: `15%` }} />
-                <img className="cloud" src={cloud} alt="Cloud" style={{ right: '30%', top: `15%` }} />
+                <img className="moon" src={moon} alt="Moon" style={isMobile ? {} : {}} />
+                <img className="cloud" src={cloud} alt="Cloud" style={isMobile ? {left: '5%', top: `20%` } : { left: '20%', top: `20%` }} />
+                <img className="cloud" src={cloud} alt="Cloud" style={isMobile ? {right: '5%', top: `20%` } :{ right: '20%', top: `20%` }} />
 
                 {lamps.map((lamp, index) => (
                     <img

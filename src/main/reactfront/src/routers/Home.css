@@ -137,9 +137,9 @@
 
 .cloud {
     position: absolute;
-    width: 500px; /* 원하는 크기로 조절 */
+    width: 800px; /* 원하는 크기로 조절 */
     z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
-    height : 400px;
+    height : 600px;
 }
 
 .firework2, .firework1 {
@@ -313,8 +313,9 @@
 
     .cloud {
         position: absolute;
-        width: 400px; /* 원하는 크기로 조절 */
+        width: 380px; /* 원하는 크기로 조절 */
         z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
+        height : 400px;
     }
 
     .firework2, .firework1 {
@@ -322,5 +323,11 @@
         width: 200px; /* 원하는 크기로 조절 */
         z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
         height : 200px;
+    }
+
+    .lamp {
+        width: 60px; /* 원하는 크기로 조절 */
+        position: absolute;
+        z-index: 4; /* 달과 구름보다 아래로 배치 */
     }
 }
