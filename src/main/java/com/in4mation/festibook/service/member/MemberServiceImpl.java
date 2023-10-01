@@ -52,30 +52,6 @@ public class MemberServiceImpl implements MemberService{
     }
 
 
-    /* 암호화 적용 X */
-
-//    @Override
-//    public boolean register(String member_id, String member_password, String member_name, String member_nickname,
-//                            String member_email) {
-
-
-
-//        MemberDTO memberDTO = new MemberDTO();
-//        memberDTO.setMember_id(member_id);
-//        memberDTO.setMember_password(member_password);
-//        memberDTO.setMember_name(member_name);
-//        memberDTO.setMember_nickname(member_nickname);
-//        memberDTO.setMember_email(member_email);
-
-
-//        int result = memberMapper.insert(memberDTO);
-//        return result == 1;
-//    }
-
-
-
-
-
     /* 아이디 중복 검사 */
     @Override
     public boolean isIdDuplicated(String member_id) {
