@@ -1,4 +1,4 @@
-#myPage {
+.myPage {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,6 +22,11 @@
 
 .infoSection {
     text-align: right;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
 }
 
 .inputWrap {
@@ -39,7 +44,44 @@
     justify-content: space-between;
 }
 
-#myPage button {
+/*추가 */
+
+#nickname {
+    align-self: center;
+    margin-bottom: 20px; /* Adjust the spacing as per your design */
+}
+
+.profile_image {
+    margin-right: 20px; /* Adjust the spacing as per your design */
+}
+
+
+.age-group-form {
+    flex-direction: row;
+    gap: 10px; /* To add spacing between radio buttons */
+}
+
+#modifyInfo, #modifyPassword, #withdraw {
+    margin-top: 10px; /* Adjust the spacing as per your design */
+}
+
+.modifySection {
+    text-align: right;
+}
+
+.buttonsSection {
+    display: flex;
+    justify-content: flex-end; /* Aligns buttons to the right */
+    gap: 10px; /* To add spacing between buttons */
+}
+
+#modifyPassword, #withdraw {
+    margin-left: 10px; /* To add spacing between buttons in .modifySection */
+}
+
+
+
+.myPage button {
     background-color: #EC7373;
     color: #ffffff;
     padding: 10px 20px;
@@ -49,12 +91,12 @@
     border-radius: 12px;
 }
 
-#myPage button:hover {
+.myPage button:hover {
     background-color: #da6363;
     transform: scale(1.05);
 }
 
-#myPage button:active {
+.myPage button:active {
     background-color: #ff8c8c;
 }
 

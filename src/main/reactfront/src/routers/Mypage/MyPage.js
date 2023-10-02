@@ -27,19 +27,19 @@ function MyPage() {
 
 
     return (
-        <div id="myPage">
+        <div className="myPage">
+            <h2 id="nickname">나의 계정</h2>
             <div className="infoSection">
-                <h2 id="nickname">나의 계정</h2>
                 <div className="profile_image">
                     <img src={myprofile_image} alt="profile"/>
                     <input type="file" onChange={handleImageChange} id="image_uploadInput" />
-                    <label htmlFor="image_uploadInput" id="image_uploadButton">사진 업로드</label>
                 </div>
 
 
-                <div className="input_text">
+                <div className="inputContainer">
+                <lable className="input_text">
                     이름
-                </div>
+                </lable>
 
                 <div
                     className="inputWrap"
@@ -137,10 +137,11 @@ function MyPage() {
                     </label>
                 </form>
 
-                <div className="input_category">
+                <div className="input_text">
                     내가 좋아하는 축제 유형
                 </div>
 
+            </div>
             </div>
             <div className="buttonsSection">
                 <button id="likedEvents">찜한행사</button>

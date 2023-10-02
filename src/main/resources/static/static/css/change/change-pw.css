@@ -1,4 +1,4 @@
-body {
+/*body {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -25,6 +25,75 @@ body {
     left:585px;
     top :241px;
 
+}*/
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
 }
 
+.container {
+    width: 50%;
+    margin: auto;
+}
 
+.header, .title {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.memberController {
+    margin-top: 50px;
+}
+
+.form_box {
+    border: 2px solid black; /* 테두리 색상은 원하는대로 변경하세요. */
+    border-radius: 10px; /* 테두리 모서리를 둥글게 */
+    padding: 15px; /* 안쪽 패딩 */
+    margin: 10px auto; /* 상하 마진 */
+    background-color: white;
+    width : 40%;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label, input {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.button {
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #EC7373;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    width: calc(100% - 22px); /* Padding 및 Border를 고려하여 width 설정 */
+}
+
+input:focus {
+    outline: none;
+    border-color: #d64b4b;
+}
