@@ -9,6 +9,7 @@ import lombok.Setter;
 public class LoginDTO {
     private String member_id; // id
     private String member_password; // password
+    private int delflag;
 
     public LoginDTO() {
 

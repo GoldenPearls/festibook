@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.delete.MemberMapper_delete">
+
+    <update id="deleteByIdAndPassword">
+        UPDATE member_table SET delflag = 1 WHERE member_id = #{id} AND member_password = #{password}
+    </update>
+
+    <select id="findUserById" resultType="string">
+        SELECT member_id FROM member_table WHERE member_id = #{id}
+    </select>
+
+    <select id="getPasswordById" resultType="string">
+        SELECT member_password FROM member_table WHERE member_id = #{id}
+    </select>
+
+</mapper>

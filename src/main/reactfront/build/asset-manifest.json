@@ -1,28 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.abc5040b.css",
-    "main.js": "/static/js/main.03c843a5.js",
+    "main.css": "/static/css/main.f915423f.css",
+    "main.js": "/static/js/main.bdae7435.js",
     "static/media/loginbackground.png": "/static/media/loginbackground.2bd013d7b32a6ef6764a.png",
     "static/media/moon.png": "/static/media/moon.40b19697f2afefe8ad72.png",
     "static/media/university2.png": "/static/media/university2.b1fc667e2485eeb7bfed.png",
     "static/media/university3.png": "/static/media/university3.5ec888839ef19af6d4eb.png",
     "static/media/university1.png": "/static/media/university1.1ab40a07a2a743cf43d5.png",
-    "static/media/bg1.png": "/static/media/bg1.375689a07a78254f7257.png",
+    "static/media/bg1.png": "/static/media/bg1.d916f223cf827e969db2.png",
     "static/media/bg2.png": "/static/media/bg2.328c4ab048d14f5e5663.png",
+    "static/media/userprofile.png": "/static/media/userprofile.5d2f2695af0f655215d8.png",
     "static/media/Loginlogo.png": "/static/media/Loginlogo.23a3f1a7c6402aeeff43.png",
-    "static/media/fireworks2.png": "/static/media/fireworks2.d02a23ee20631b73e76f.png",
-    "static/media/fireworks1.png": "/static/media/fireworks1.c90e73f70f20b6394195.png",
     "static/media/cloud.png": "/static/media/cloud.1611f22135c8caf17270.png",
     "static/media/university_img.png": "/static/media/university_img.4ec4a44428b7855d0869.png",
     "static/media/lamp1.png": "/static/media/lamp1.4b0d9e5786db2702d1e0.png",
     "static/media/famous.png": "/static/media/famous.d20383192df2fd620cce.png",
     "static/media/lamp2.png": "/static/media/lamp2.93c1561dcc4ede4fe2d6.png",
     "index.html": "/index.html",
-    "main.abc5040b.css.map": "/static/css/main.abc5040b.css.map",
-    "main.03c843a5.js.map": "/static/js/main.03c843a5.js.map"
+    "main.f915423f.css.map": "/static/css/main.f915423f.css.map",
+    "main.bdae7435.js.map": "/static/js/main.bdae7435.js.map"
   },
   "entrypoints": [
-    "static/css/main.abc5040b.css",
-    "static/js/main.03c843a5.js"
+    "static/css/main.f915423f.css",
+    "static/js/main.bdae7435.js"
   ]
 }

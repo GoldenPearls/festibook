@@ -33,12 +33,12 @@
 
 .bgWrapper {
     width: 100%;
-    height: 130vh;
+    height: 230vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     position: relative;
-    background: linear-gradient(to top, rgb(117, 151, 222), transparent);
+    /*background: linear-gradient(to top, rgb(117, 151, 222), transparent);*/
 }
 
 .element{
@@ -85,9 +85,10 @@
     justify-content: center;
     width: 100%;
     font-size: 5rem;
-    color: #d2c5e4;
+    color: whitesmoke;
     position: absolute;
     z-index: 3;
+    text-shadow: 2px 2px 2px black;
 }
 
 .section {
@@ -113,46 +114,48 @@
 .bg1 {
     z-index: 0;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    /*object-fit: contain;*/
+    width: 100%; /* 너비를 100%로 설정 */
+    height: auto; /* 높이를 auto로 설정하여 비율을 유지 */
 }
 
-.moon {
+/*.moon {
     position: fixed;
-    width: 500px; /* 원하는 크기로 조절 */
+    width: 600px; !* 원하는 크기로 조절 *!
     z-index: 2;
     animation: extend 4s ease-in-out infinite;
-}
+}*/
 
-.divideBox {
+/*.divideBox {
     position: absolute;
     bottom: 0px;
     width: 100%;
-    height: 80px;
+    height: 50px;
     z-index: 999;
     background: linear-gradient(to top, rgb(28, 5, 34), transparent);
-}
+
+}*/
 
 
-.cloud {
+/*.cloud {
     position: absolute;
-    width: 800px; /* 원하는 크기로 조절 */
-    z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
+    width: 800px; !* 원하는 크기로 조절 *!
+    z-index: 3; !* 구름이 달을 덮도록 z-index를 조절 *!
     height : 600px;
-}
+}*/
 
-.firework2, .firework1 {
+/*.firework2, .firework1 {
     position: absolute;
-    width: 500px; /* 원하는 크기로 조절 */
-    z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
+    width: 500px; !* 원하는 크기로 조절 *!
+    z-index: 3; !* 구름이 달을 덮도록 z-index를 조절 *!
     height : 500px;
-}
+}*/
 
 .lamp {
-    width: 100px; /* 원하는 크기로 조절 */
+    width: 150px; /* 원하는 크기로 조절 */
     position: absolute;
     z-index: 4; /* 달과 구름보다 아래로 배치 */
+    /*animation: float 2s ease-in-out infinite;*/
 }
 
 /*인기있는 축제*/
@@ -181,9 +184,9 @@
 
 
 @media (max-width: 1100px) {
-    .divideBox {
+    /*.divideBox {
         bottom: -1px;
-    }
+    }*/
 }
 
 @keyframes extend {
@@ -208,6 +211,12 @@
     100% {
         opacity: 0;
     }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
 }
 
 .university_div {
@@ -304,30 +313,52 @@
         flex-direction: column; /* university_festival div들을 수직으로 배열 */
     }
 
-    .moon {
+    /*.moon {
         position: fixed;
-        width: 400px; /* 원하는 크기로 조절 */
+        width: 300px; !* 원하는 크기로 조절 *!
         z-index: 2;
         animation: extend 4s ease-in-out infinite;
-    }
+    }*/
 
-    .cloud {
+    /*.cloud {
         position: absolute;
-        width: 380px; /* 원하는 크기로 조절 */
-        z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
-        height : 400px;
+        width: 380px; !* 원하는 크기로 조절 *!
+        z-index: 3; !* 구름이 달을 덮도록 z-index를 조절 *!
+        height : 420px;
     }
-
-    .firework2, .firework1 {
+*/
+/*    .firework2, .firework1 {
         position: absolute;
-        width: 200px; /* 원하는 크기로 조절 */
-        z-index: 3; /* 구름이 달을 덮도록 z-index를 조절 */
+        width: 200px; !* 원하는 크기로 조절 *!
+        z-index: 3; !* 구름이 달을 덮도록 z-index를 조절 *!
         height : 200px;
-    }
+    }*/
 
     .lamp {
         width: 60px; /* 원하는 크기로 조절 */
         position: absolute;
         z-index: 4; /* 달과 구름보다 아래로 배치 */
+    }
+
+    .bgWrapper {
+        width: 100%;
+        height: 80vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        /*background: linear-gradient(to top, rgb(117, 151, 222), transparent);*/
+    }
+
+    .bg1 {
+        z-index: 0;
+        position: absolute;
+        /*object-fit: contain;*/
+        width: 100%; /* 너비를 100%로 설정 */
+        height: 100%; /* 높이를 auto로 설정하여 비율을 유지 */
+    }
+
+    .lamp {
+        display: none !important;
     }
 }

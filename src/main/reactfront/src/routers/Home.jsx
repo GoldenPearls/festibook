@@ -17,8 +17,6 @@ import lamp5 from '../img/main/lamp5.png'
 import lamp6 from '../img/main/lamp1.png'
 import lamp7 from '../img/main/lamp2.png'
 import lamp8 from '../img/main/lamp3.png'
-import firework1 from '../img/main/fireworks1.png'
-import firework2 from '../img/main/fireworks2.png'
 import footer_logo from '../img/login/Loginlogo.png'
 import github from '../img/main/github.png'
 import notion from '../img/main/Notion.png'
@@ -39,66 +37,56 @@ function Home() {
         };
     }, []);
 
-    const lamps = [
+  /*  const lamps = [
         { img: lamp1, position: { top: '10%', left: '5%' } },
         { img: lamp2, position: { top: '5%', right: '10%' } },
         { img: lamp3, position: { top: '15%', left: '30%' } },
-        { img: lamp3, position: { top: '20%', left: '9%' } },
+        { img: lamp3, position: { top: '30%', left: '9%' } },
         { img: lamp4, position: { top: '30%', right: '20%' } },
         { img: lamp5, position: { top: '60%', left: '25%' } },
-        { img: lamp6, position: { top: '60%', right: '30%' } },
-        { img: lamp7, position: { top: '80%', left: '30%' } },
-        { img: lamp8, position: { top: '90%', right: '25%' } },
+        { img: lamp6, position: { top: '60%', right: '20%' } },
+        { img: lamp7, position: { top: '80%', left: '10%' } },
+        { img: lamp8, position: { top: '90%', right: '15%' } },
+    ];*/
+
+    const lamps = [
+        { img: lamp1, position: { top: '0%', left: '5%' } },
+        { img: lamp2, position: { top: '0%', right: '15%' } },
+        { img: lamp2, position: { top: '10%', right: '10%' } },
+        { img: lamp3, position: { top: '20%', left: '15%' } },
+        { img: lamp4, position: { top: '40%', right: '5%' } },
+        { img: lamp5, position: { top: '50%', left: '20%' } },
+        { img: lamp6, position: { top: '60%', right: '15%' } },
+        { img: lamp7, position: { top: '70%', left: '10%' } },
+        { img: lamp8, position: { top: '80%', right: '20%' } },
+        { img: lamp1, position: { top: '15%', left: '30%' } },
+        { img: lamp2, position: { top: '25%', right: '30%' } },
+        { img: lamp3, position: { top: '35%', left: '20%' } },
+        { img: lamp4, position: { top: '45%', right: '35%' } },
+        { img: lamp5, position: { top: '55%', left: '30%' } },
+        { img: lamp6, position: { top: '65%', right: '40%' } },
+        { img: lamp7, position: { top: '80%', left: '5%' } },
+        { img: lamp8, position: { top: '85%', right: '3%' } },
     ];
+
 
 
     return (
         <div className="section">
 
-           {/* <div className="bgWrapper" style={{ '--scrollY': scrollY }}>
-            <img className="bg1" width={1920} height={1200} src={bg1} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />
-                <h3 className="mainText" style={{
-                    top: `${scrollY * 1}px`,
-                    marginRight: `${scrollY * 1.5}px`,
-                    marginTop: `${300 + scrollY * 0.3}px`,
-                    zIndex: 10 // 다른 요소보다 위에 나타나게 하려면 z-index 값을 높게 설정
-                }}>기억하고 싶은 축제<br />Festibook과 함께</h3>
-                <img className="moon" src={moon} alt="Moon" style={{ top: `${20 + scrollY * 0.5}px`, display: ((90 + scrollY * 0.5) > (20 + scrollY * 0.5)) ? 'none' : 'block' }} />
-                <img className="cloud" src={cloud} alt="Cloud" style={{ left: '30%', top: `${70 + scrollY * 0.5}px` }} />
-            <img className="cloud" src={cloud} alt="Cloud" style={{ right: '30%', top: `${70 + scrollY * 0.5}px` }} />
-            {lamps.map((lamp, index) => (
-                <img
-                    key={index}
-                    className="lamp"
-                    src={lamp.img}
-                    alt={`Lamp ${index}`}
-                    style={{
-                        ...lamp.position,
-                        top: `calc(${lamp.position.top} + ${scrollY * 0.5}px)`,
-                    }}
-                />
-            ))}
-                <img className="firework1" src={firework1} alt="firework1" style={{  left: '20%', top: `${20 + scrollY * 0.5}px` }} />
-                <img className="firework2" src={firework2} alt="firework2" style={{  right: '10%', top: `${20 + scrollY * 0.5}px` }} />
-                <div className="divideBox" style={{
-                    background: "linear-gradient(to top, rgb(28, 5, 34), transparent)"
-                }}>
-                </div>
-            </div>*/}
-
-            <div className="bgWrapper" style={{ '--scrollY': scrollY }}>
-                <img className="bg1" width={1920} height={1800} src={bg1} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />
+            <div className="bgWrapper" style={{ '--scrollY': scrollY }} >
+                <img className="bg1" src={bg1} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />
                 <h3 className="mainText" style={{
                     top: `${scrollY * 1}px`,
                     marginRight: `${scrollY * 1.5}px`,
                     marginTop: `${300 + scrollY * 0.3}px`,
                     zIndex: 10
-                }}>기억하고 싶은 축제<br />Festibook과 함께</h3>
+                }}>기억하고 싶은 축제<br />Festibook과 함께 <br /> (스크롤을 내려주세요!)</h3>
 
-                <img className="moon" src={moon} alt="Moon" style={isMobile ? {} : {}} />
-                <img className="cloud" src={cloud} alt="Cloud" style={isMobile ? {left: '5%', top: `20%` } : { left: '20%', top: `20%` }} />
+               {/* <img className="moon" src={moon} alt="Moon" style={isMobile ? {} : {}} />*/}
+                {/*<img className="cloud" src={cloud} alt="Cloud" style={isMobile ? {left: '10%', top: `20%` } : { left: '20%', top: `20%` }} />
                 <img className="cloud" src={cloud} alt="Cloud" style={isMobile ? {right: '5%', top: `20%` } :{ right: '20%', top: `20%` }} />
-
+*/}
                 {lamps.map((lamp, index) => (
                     <img
                         key={index}
@@ -108,17 +96,15 @@ function Home() {
                         style={{
                             ...lamp.position,
                             top: `calc(${lamp.position.top} + ${scrollY * 0.5}px)`,
+                            animationDuration: `${2 + index % 2}s`,
                         }}
                     />
                 ))}
 
-                <img className="firework1" src={firework1} alt="firework1" style={{  left: '5%' }} />
-                <img className="firework2" src={firework2} alt="firework2" style={{  right: '5%', top: `10%` }} />
-
-                <div className="divideBox" style={{
+               {/* <div className="divideBox" style={{
                     background: "linear-gradient(to top, rgb(28, 5, 34), transparent)"
                 }}>
-                </div>
+                </div>*/}
             </div>
 
             <div className="university_div">

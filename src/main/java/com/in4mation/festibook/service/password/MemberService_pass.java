@@ -3,6 +3,8 @@ package com.in4mation.festibook.service.password;
 import com.in4mation.festibook.repository.password.MemberMapper_Pass;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MemberService_pass {
 
@@ -35,8 +37,15 @@ public class MemberService_pass {
 
     private boolean emailNotExist(String email) {
         // 이메일이 존재하는지 확인하는 코드 작성
-       // return mapper.findUserByEmail(email) == null;
-        return false;
+        return mapper.findUserByEmail(email) == null;
+
+    }
+    public Integer checkUserStatus(String email) {
+        return mapper.getDelflagByEmail(email);
+    }
+
+    public boolean checkEmailExists(String email) {
+        return Optional.ofNullable(mapper.findUserByEmail(email)).isPresent();
     }
 }
 

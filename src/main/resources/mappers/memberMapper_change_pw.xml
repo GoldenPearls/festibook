@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.change.MemberMapper_change_pw">
+
+    <update id="updateNewPassWordByEmail">
+        UPDATE member_table SET member_password = #{password} WHERE member_email = #{email}
+    </update>
+
+    <select id="findUserByEmail" resultType="string">
+        SELECT member_email FROM member_table WHERE member_email = #{email}
+    </select>
+
+    <select id="getPasswordByEmail" resultType="string">
+        SELECT member_password FROM member_table WHERE member_email = #{email}
+    </select>
+
+</mapper>
+
+
