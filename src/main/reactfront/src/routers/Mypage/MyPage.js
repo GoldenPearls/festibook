@@ -37,9 +37,10 @@ function MyPage() {
 
 
                 <div className="inputContainer">
-                <lable className="input_text">
-                    이름
-                </lable>
+
+                    <div className="input_text">
+                        이름
+                    </div>
 
                 <div
                     className="inputWrap"
@@ -81,7 +82,7 @@ function MyPage() {
                         type="text"
                         placeholder="자기소개를 입력해주세요"
                         value={nickname}
-                       /* onChange={handleNickname}*/
+                        /*onChange={handleNickname}*/
                     />
                 </div>
 
@@ -90,50 +91,50 @@ function MyPage() {
                 </div>
 
                 <form className={`age-group-form ${ageGroup}`}>
-                    <label>
+                    <label className="radio">
                         <input
                             type="radio"
                             value="10s"
                             checked={ageGroup === '10s'}
                             onChange={handleAgeGroupChange}
                         />
-                        10대
+                        &nbsp;10대
                     </label>
-                    <label>
+                    <label className="radio">
                         <input
                             type="radio"
                             value="20s"
                             checked={ageGroup === '20s'}
                             onChange={handleAgeGroupChange}
                         />
-                        20대
+                        &nbsp;20대
                     </label>
-                    <label>
+                    <label className="radio">
                         <input
                             type="radio"
                             value="30s"
                             checked={ageGroup === '30s'}
                             onChange={handleAgeGroupChange}
                         />
-                        30대
+                        &nbsp;30대
                     </label>
-                    <label>
+                    <label className="radio">
                         <input
                             type="radio"
                             value="40s-50s"
                             checked={ageGroup === '40s-50s'}
                             onChange={handleAgeGroupChange}
                         />
-                        40대-50대
+                        &nbsp;40대-50대
                     </label>
-                    <label>
+                    <label className="radio">
                         <input
                             type="radio"
                             value="60s and above"
                             checked={ageGroup === '60s and above'}
                             onChange={handleAgeGroupChange}
                         />
-                        60대 이상
+                        &nbsp;60대 이상
                     </label>
                 </form>
 

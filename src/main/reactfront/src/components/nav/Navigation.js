@@ -31,14 +31,13 @@ const Default = ({ children }) => {
 function Navigation() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { token, setToken, setIsLoggedIn } = useAuth();
+    const { token, setToken, setIsLoggedIn, nickname } = useAuth();
 
     console.log('Navigation에서의 토큰:', token);
     const isActive = path => location.pathname === path;
 
     // 탭 관리를 위한 상태 변수
     const [isTabOpen, setIsTabOpen] = useState(false);
-
 
     const handleTabToggle = () => setIsTabOpen(!isTabOpen); // 상태 변수 토글 함수
 

@@ -6,11 +6,18 @@
     margin: 0 auto; /* Center the container */
 }
 
-.profileSection, .infoSection, .buttonsSection, .modifySection, .contentContainer {
+.profileSection, .infoSection,  .modifySection, .contentContainer {
     width: 100%;
     box-sizing: border-box;
     padding: 20px;
-    margin-bottom: 20px; /* Add some spacing between sections */
+    margin-bottom: 5px; /* Add some spacing between sections */
+}
+
+.buttonsSection{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 5px;
 }
 
 .profileSection img, .infoSection .profile_image img {
@@ -33,22 +40,26 @@
     margin-bottom: 20px; /* Add some spacing between input fields */
 }
 
+.input_text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
 .input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
 }
 
-.buttonsSection {
-    display: flex;
-    justify-content: space-between;
-}
-
 /*추가 */
 
 #nickname {
     align-self: center;
-    margin-bottom: 20px; /* Adjust the spacing as per your design */
+    margin-bottom: 20px;
+
+    margin-top: 20px;
 }
 
 .profile_image {
@@ -57,8 +68,12 @@
 
 
 .age-group-form {
+    display: flex;
     flex-direction: row;
-    gap: 10px; /* To add spacing between radio buttons */
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+
 }
 
 #modifyInfo, #modifyPassword, #withdraw {
@@ -79,8 +94,12 @@
     margin-left: 10px; /* To add spacing between buttons in .modifySection */
 }
 
+a:visited {
+    color: inherit;
+}
 
 
+/*버튼*/
 .myPage button {
     background-color: #EC7373;
     color: #ffffff;
@@ -103,4 +122,16 @@
 .contentContainer {
     background-color: #f9f9f9;
     min-height: 200px;
+}
+
+/* 사이즈가 작아질 때 */
+@media screen and (max-width: 768px) {
+    .infoSection {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 20px;
+    }
 }

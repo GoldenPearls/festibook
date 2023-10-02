@@ -76,12 +76,4 @@ public class LoginController {
         }
     }
 
-/*   @GetMapping("/login-user-test")
-    public MemberDTO loginUserTest() {
-        MemberDTO memberDTO = MemberDTO.builder()
-                .member_id("test")
-                .member_email("test@test.com")
-                .build();
-        return memberDTO;
-    }*/
 }
