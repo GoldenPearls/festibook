@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+
+    <link rel="stylesheet" type="text/css"  href="/static/static/css/calendar.css">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                height: 800,
+                initialView: 'dayGridMonth',
+                locale: 'ko',
+                      headerToolbar: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'dayGridMonth,timeGridWeek,listMonth'
+                          },
+                events: {
+                    url: '/calendar/events', // 이벤트 데이터를 제공하는 엔드포인트 URL
+                    method: 'GET',
+                    failure: function() {
+                        alert('이벤트 데이터를 가져오지 못했습니다.');
+                    },
+
+                },
+                eventDataTransform: function(eventData){
+                    return{
+                        id: eventData.festival_no,
+                        title: eventData.festival_name,
+                        start: eventData.start_date,
+                        end: eventData.end_date
+                    };
+                },
+                displayEventTime: false,
+
+                editable: false
+
+            eventClick: function(info) {
+                 if (info.event.url) {
+                window.location.href = info.event.extendedProps.festivalInfo.html;; // 클릭한 이벤트의 URL로 이동
+            }
+        }
+            });
+            calendar.render();
+        });
+
+
+    </script>
+</head>
+<body>
+<div id='calendar'></div>
+</body>
+</html>

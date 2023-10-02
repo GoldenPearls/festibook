@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: "SDSamliphopangche_Outline";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff")
+    format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KyoboHandwriting2021sjy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family:'bitbit';
+    src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
+}
+
+.nav {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav .home-link,
+.nav .recommend-link,
+.nav .festival-link,
+.nav .community-link,
+.nav .login-btn {
+    font-family: "KyoboHandwriting2021sjy";
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    margin: 0 10px;
+}
+
+.nav .home-logo {
+    height: 50px;
+}
+
+
+.nav .login-btn {
+    font-family: "Cafe24Supermagic-Bold-v1.0";
+    font-size : 15px;
+    padding: 7px 20px;
+    background-color: palevioletred;
+    color: white;  /* 이 규칙이 로그인 버튼의 텍스트 색상을 지정합니다. */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.recommend-link.active {
+    color: slateblue; /* 원하는 색상으로 변경 */
+}
+
+.festival-link.active {
+    color: slateblue; /* 원하는 색상으로 변경 */
+}
+
+.community-link.active {
+    color: slateblue; /* 원하는 색상으로 변경 */
+}
+
+/* 네비게이션 바의 높이만큼 컨텐츠를 아래로 이동 */
+body > *:not(.nav) {
+    margin-top: 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        left: initial;
+        top: initial;
+        bottom:0px;
+        width: 100%;
+        height: 13%;
+        justify-content: space-between;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav a {
+        font-family: "bitbit";
+        text-decoration: none;
+        color:black;
+        text-transform: uppercase;
+        font-size: 5px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .nav .home-link_mobile{
+        align-items: center;
+
+    }
+
+    body > *:not(.nav) {
+        margin-top: 0px;
+    }
+
+    .nav a:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+}
