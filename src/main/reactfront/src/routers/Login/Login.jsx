@@ -191,7 +191,7 @@ export default function Login() {
                         <button onClick={onClickConfirmButton} className="bottomButton">Login</button>
                     </div>
 
-                    <div className="soical_login">
+                   {/* <div className="soical_login">
                         <div className="social_img_text">
                             <div className="img_with1"> <img src={with1} alt="img description"/></div>
                             <div className="social_with_text">Or With </div>
@@ -202,7 +202,7 @@ export default function Login() {
                             <div className="googleLogin"> <img src={googleLogin} alt="img description"/></div>
                             <div className="kakaoLogin"> <img src={kakaoLogin} alt="img description"/></div>
                         </div>
-                    </div>
+                    </div>*/}
 
 
                 </div>

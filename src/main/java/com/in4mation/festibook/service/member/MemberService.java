@@ -10,5 +10,7 @@ public interface MemberService {
 
     //아이디 중복 검사
     boolean isIdDuplicated(String member_id);
-}
 
+    //이메일 중복 검사
+    boolean isEmailDuplicated(String member_email);
+}

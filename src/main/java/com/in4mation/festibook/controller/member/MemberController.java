@@ -1,5 +1,7 @@
 package com.in4mation.festibook.controller.member;
 
+
+
 import com.in4mation.festibook.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -32,7 +34,7 @@ public class MemberController {
     }
 
 
-
+    //회원가입
     @PostMapping("/join")
     @ResponseBody
     public ResponseEntity<Void> JoinRegister2(
@@ -57,7 +59,20 @@ public class MemberController {
 
         boolean duplicate = memberService.isIdDuplicated(member_id);
 
-        logger.info("중복검사 : "+duplicate);
+        logger.info("아이디 중복검사 : "+duplicate);
+        Map<String, Boolean> response = Collections.singletonMap("duplicate", duplicate);
+        return ResponseEntity.ok(response);
+    }
+
+
+    //이메일 중복확인
+    @GetMapping("/checkEmailDuplicate/{member_email}")
+    public ResponseEntity<Map<String, Boolean>> checkEmailDuplicate(@PathVariable String member_email) {
+        logger.info("중복검사 넘어온 이메일 : "+member_email);
+
+        boolean duplicate = memberService.isEmailDuplicated(member_email);
+
+        logger.info("이메일 중복검사 : "+duplicate);
         Map<String, Boolean> response = Collections.singletonMap("duplicate", duplicate);
         return ResponseEntity.ok(response);
     }

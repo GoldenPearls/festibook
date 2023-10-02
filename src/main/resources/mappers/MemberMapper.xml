@@ -17,4 +17,11 @@
         WHERE member_id = #{member_id}
     </select>
 
+
+    <select id="isEmailDuplicated" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        SELECT COUNT(*) > 0
+        FROM Member_table
+        WHERE member_email = #{member_email}
+    </select>
+
 </mapper>

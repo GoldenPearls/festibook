@@ -50,12 +50,12 @@
 }
 
 #myPage button:hover {
-    background-color: #ff8c8c;
+    background-color: #da6363;
     transform: scale(1.05);
 }
 
 #myPage button:active {
-    background-color: #da6363;
+    background-color: #ff8c8c;
 }
 
 .contentContainer {

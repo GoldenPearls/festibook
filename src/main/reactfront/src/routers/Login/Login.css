@@ -192,7 +192,7 @@ a:visited {
 
 .logoName1{
     position: absolute;
-    top: 43%;
+    top: 47%;
     left: 45%;
     transform: translate(-43%, -93%);
 }
@@ -321,6 +321,13 @@ a:visited {
         padding-top: 1vh;
         color : lavenderblush;
         font-size: 5vh;
+    }
+
+    .logoName1{
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        transform: translate(-43%, -93%);
     }
 
     .input_login, .input_password, .text{

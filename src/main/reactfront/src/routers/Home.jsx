@@ -37,17 +37,6 @@ function Home() {
         };
     }, []);
 
-  /*  const lamps = [
-        { img: lamp1, position: { top: '10%', left: '5%' } },
-        { img: lamp2, position: { top: '5%', right: '10%' } },
-        { img: lamp3, position: { top: '15%', left: '30%' } },
-        { img: lamp3, position: { top: '30%', left: '9%' } },
-        { img: lamp4, position: { top: '30%', right: '20%' } },
-        { img: lamp5, position: { top: '60%', left: '25%' } },
-        { img: lamp6, position: { top: '60%', right: '20%' } },
-        { img: lamp7, position: { top: '80%', left: '10%' } },
-        { img: lamp8, position: { top: '90%', right: '15%' } },
-    ];*/
 
     const lamps = [
         { img: lamp1, position: { top: '0%', left: '5%' } },
@@ -83,10 +72,6 @@ function Home() {
                     zIndex: 10
                 }}>기억하고 싶은 축제<br />Festibook과 함께 <br /> (스크롤을 내려주세요!)</h3>
 
-               {/* <img className="moon" src={moon} alt="Moon" style={isMobile ? {} : {}} />*/}
-                {/*<img className="cloud" src={cloud} alt="Cloud" style={isMobile ? {left: '10%', top: `20%` } : { left: '20%', top: `20%` }} />
-                <img className="cloud" src={cloud} alt="Cloud" style={isMobile ? {right: '5%', top: `20%` } :{ right: '20%', top: `20%` }} />
-*/}
                 {lamps.map((lamp, index) => (
                     <img
                         key={index}
@@ -101,10 +86,6 @@ function Home() {
                     />
                 ))}
 
-               {/* <div className="divideBox" style={{
-                    background: "linear-gradient(to top, rgb(28, 5, 34), transparent)"
-                }}>
-                </div>*/}
             </div>
 
             <div className="university_div">

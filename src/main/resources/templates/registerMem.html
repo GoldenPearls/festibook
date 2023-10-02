@@ -159,23 +159,28 @@
                     </div>
 
 
-
-
-
-                    <div>
-
-                        <div class=" fv-row mb-5">
-                            <label class="form-label fs-6 fw-bolder text-dark pt-5">이메일</label>
+                    <div class="fv-row mb-5">
+                        <label class="form-label fs-6 fw-bolder text-dark pt-5">이메일</label>
+                        <div class="d-flex align-items-center position-relative">
                             <input autocomplete="off" class="form-control form-control-lg form-control-solid"
                                    id="member_email" name="member_email" placeholder="in4mation@festibook.com" required
-                                   style="border-color: #ffffff;" type="email"/>
-                            <div>
+                                   style="border-color: #ffffff; width: 350px; height: 40px;" type="email">
+                            <button class="btn btn-primary fw-bolder fs-5 px-2 py-3 my-3 text-center"
+                                    style="width: 150px; height: 45px;" id="duplicateBtn2"
+                                    type="button">중복 확인
+                            </button>
+                            <div class="position-absolute w-100" style="top: 55px;">
                                 <div class="invalid-feedback" id="email-empty">필수 입력 정보입니다.</div>
                                 <div class="invalid-feedback" id="email-invalid">이메일 형식이 아닙니다.</div>
+
+                                <div class="valid-feedback" id="email-available" style="display: none;">사용 가능한 이메일입니다.
+                                </div>
+                                <div class="invalid-feedback" id="email-duplicate" style="display: none;">중복된 이메일입니다.
+                                </div>
                             </div>
                         </div>
-
                     </div>
+
 
 
                     <div class="d-flex flex-wrap justify-content-center pb-lg-0 pb-5">

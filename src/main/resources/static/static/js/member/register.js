@@ -165,25 +165,66 @@
         });
 
 
-        // 이메일 유효성 검사
-        const emailInput = document.querySelector('input[name="member_email"]');
-        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,30}$/;
-        emailInput.addEventListener('blur', function (event) {
-            const emailValue = emailInput.value.trim();
-            if (emailValue === "") {
-                // 이메일이 빈 문자열일 경우
-                document.getElementById("email-empty").style.display = "block";
-                document.getElementById("email-invalid").style.display = "none";
-            } else if (!emailRegex.test(emailValue)) {
-                // 이메일 형식이 올바르지 않을 경우
-                document.getElementById("email-invalid").style.display = "block";
-                document.getElementById("email-empty").style.display = "none";
-            } else {
-                document.getElementById("email-empty").style.display = "none";
-                document.getElementById("email-invalid").style.display = "none";
-            }
-        });
 
+
+        // 이메일 유효성 검사
+                const emailInput = document.querySelector('input[name="member_email"]');
+               // const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,30}$/;
+                const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z0-9.-]{1,30}$/;
+                const emailAvailableFeedback = document.getElementById("email-available");
+                const emailDuplicateFeedback = document.getElementById("email-duplicate");
+
+
+                emailInput.addEventListener('blur', function (event) {
+                     const emailValue = emailInput.value.trim();
+
+                      if (emailValue === "") {
+                         // 이메일이 빈 문자열일 경우
+                         document.getElementById("email-empty").style.display = "block";
+                         document.getElementById("email-invalid").style.display = "none";
+                         emailAvailableFeedback.style.display = "none";
+                         emailDuplicateFeedback.style.display = "none";
+                      } else if (!emailRegex.test(emailValue)) {
+                         // 이메일 형식이 올바르지 않을 경우
+                         document.getElementById("email-invalid").style.display = "block";
+                         document.getElementById("email-empty").style.display = "none";
+                         emailAvailableFeedback.style.display = "none";
+                         emailDuplicateFeedback.style.display = "none";
+                      } else {
+                         document.getElementById("email-empty").style.display = "none";
+                         document.getElementById("email-invalid").style.display = "none";
+
+                           // 이메일 중복 검사 버튼 이벤트 핸들러
+                           const duplicateBtn1 = document.querySelector("#duplicateBtn2");
+                           duplicateBtn2.addEventListener("click", function (event) {
+                           event.preventDefault();
+
+                           const EmailInput = document.getElementById("member_email");
+                           const emailValue = EmailInput.value.trim();
+                           if (emailValue !== "") {
+                             // 서버로 중복 검사 요청
+                             fetch(`/member/checkEmailDuplicate/${emailValue}`)
+                             .then(response => response.json())
+                             .then(data => {
+                                  if (data.duplicate) {
+                                   emailAvailableFeedback.style.display = "none";
+                                   emailDuplicateFeedback.style.display = "block";
+                                   document.getElementById("email-available").style.color = "green";
+                                  } else {
+                                   emailAvailableFeedback.style.display = "block";
+                                   document.getElementById("email-available").style.color = "green";
+                                   emailDuplicateFeedback.style.display = "none";
+                                  }
+                             })
+                             .catch(error => console.error(error));
+                             }
+                             });
+
+
+                      }
+
+
+                });
 
     });
 })();
