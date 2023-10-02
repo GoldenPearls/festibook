@@ -54,9 +54,13 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
             throw new LoginException("이미 삭제된 계정입니다.");
         }
 
-       // 비밀번호 확인(암호화된 것 )
-        if(!passwordEncoder.matches(password, user.getMember_password()))
+        // 암호화 거둬내기
+        if(!password.equals(user.getMember_password()))
             throw new LoginException("password error");
+
+ /*      // 비밀번호 확인(암호화된 것 )
+        if(!passwordEncoder.matches(password, user.getMember_password()))
+            throw new LoginException("password error");*/
 
         return user;
     }

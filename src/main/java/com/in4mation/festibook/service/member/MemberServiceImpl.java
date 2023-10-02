@@ -19,11 +19,11 @@ public class MemberServiceImpl implements MemberService{
     private  MemberMapper memberMapper;
 
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+/*    @Autowired
+    private PasswordEncoder passwordEncoder;*/
 
 
-    /* 암호화 적용 O */
+   /* *//* 암호화 적용 O *//*
     @Override
     public boolean register(String member_id, String member_password, String member_name, String member_nickname,
                             String member_email) {
@@ -49,31 +49,25 @@ public class MemberServiceImpl implements MemberService{
 
         int result = memberMapper.insert(memberDTO);
         return result == 1;
-    }
+    }*/
 
 
-    /* 암호화 적용 X */
+ //암호화 적용 X
 
-//    @Override
-//    public boolean register(String member_id, String member_password, String member_name, String member_nickname,
-//                            String member_email) {
+   @Override
+   public boolean register(String member_id, String member_password, String member_name, String member_nickname,
+                         String member_email) {
 
+    MemberDTO memberDTO = new MemberDTO();
+    memberDTO.setMember_id(member_id);
+      memberDTO.setMember_password(member_password);
+       memberDTO.setMember_name(member_name);
+       memberDTO.setMember_nickname(member_nickname);
+       memberDTO.setMember_email(member_email);
 
-
-//        MemberDTO memberDTO = new MemberDTO();
-//        memberDTO.setMember_id(member_id);
-//        memberDTO.setMember_password(member_password);
-//        memberDTO.setMember_name(member_name);
-//        memberDTO.setMember_nickname(member_nickname);
-//        memberDTO.setMember_email(member_email);
-
-
-//        int result = memberMapper.insert(memberDTO);
-//        return result == 1;
-//    }
-
-
-
+       int result = memberMapper.insert(memberDTO);
+     return result == 1;
+   }
 
 
     /* 아이디 중복 검사 */
