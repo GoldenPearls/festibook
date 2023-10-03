@@ -27,13 +27,10 @@ public class MyPageDTO {
         s10, s20, s30, s40, s50, s60_PLUS
     }
 
-
     private Gender gender;   // 성별
 
     private AgeGroup ageGroup; // 연령대
 
     private String categroy_name; //카테고리 이름
-
-
 
 }

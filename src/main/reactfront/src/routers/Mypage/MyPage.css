@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 .myPage {
     display: flex;
     flex-direction: column;
@@ -45,6 +52,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
 }
 
 .input {
@@ -56,6 +64,7 @@
 /*추가 */
 
 #nickname {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
     align-self: center;
     margin-bottom: 20px;
 
