@@ -5,7 +5,7 @@ import com.in4mation.festibook.dto.Mypage.MyPageDTO;
 public interface MyPageService {
 
     // 특정 회원의 상세 정보
-    MyPageDTO getMemberDetails(String memberId);
+    MyPageDTO selectMemberDetailsById(String memberId);
 
     // 회원의 프로필 이미지를 업데이트
     int updateProfileImage(String memberId, byte[] profileImage);
