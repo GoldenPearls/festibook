@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface MypageMapper {
 
     // 회원 정보를 ID를 통해 조회(MemberDetail 및 Member_table 조인)
-    MemberDTO selectMemberById(String memberId);
+    MemberDTO getMemberById(String memberId);
 
     // 이미지 업로드
     int updateProfileImageByMemberId(String memberId, byte[] profileImage);
@@ -18,6 +18,4 @@ public interface MypageMapper {
     // 회원 정보 수정
     int updateMemberInfo(MyPageDTO memberInfo);
 
-    // 회원의 마이페이지 정보 보여주기
-    MyPageDTO getMyPageInfo(String memberId);
 }

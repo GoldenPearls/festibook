@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.mypage.MypageMapper">
+
+    <!-- 회원 상세 정보 조회 -->
+    <select id="getMemberById" resultType="com.in4mation.festibook.dto.Mypage.MyPageDTO">
+        SELECT m.member_id, m.member_name, m.member_nickname, m.member_profile_image,
+               d.gender, d.age_group as ageGroup, d.category_name
+        FROM Member_table m
+                 JOIN MemberDetail_tbl d ON m.member_id = d.member_id
+        WHERE m.member_id = #{memberId}
+    </select>
+
+    <!-- 프로필 이미지 업데이트 -->
+    <update id="updateProfileImageByMemberId">
+        UPDATE Member_table
+        SET member_profile_image = #{profileImage}
+        WHERE member_id = #{memberId}
+    </update>
+
+    <!-- 회원 정보 수정 (기본 정보와 상세 정보) -->
+    <update id="updateMemberInfo">
+        UPDATE Member_table
+        SET member_name = #{member_name}, member_nickname = #{member_nickname}
+        WHERE member_id = #{member_id};
+
+        UPDATE MemberDetail_tbl
+        SET gender = #{gender}, age_group = #{ageGroup}, category_name = #{category_name}
+        WHERE member_id = #{member_id};
+    </update>
+
+</mapper>
+
+
+
+
