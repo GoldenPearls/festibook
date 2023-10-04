@@ -28,6 +28,17 @@
 }*/
 
 
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+label, input, button.button {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -96,4 +107,24 @@ input {
 input:focus {
     outline: none;
     border-color: #d64b4b;
+}
+
+@media only screen and (max-width: 758px) {
+    .memberServiceId {
+        width: 90%; /* 화면 크기에 따라 너비를 90%로 조절합니다. */
+    }
+
+    .form_box {
+        width: 90%; /* .form_box의 너비를 90%로 조절합니다. */
+    }
+
+    input {
+        width: calc(100% - 22px); /* Padding 및 Border를 고려하여 width 설정 */
+    }
+
+    button.button {
+        width: 100%;
+        height: 50px; /* 버튼의 높이를 조절합니다. */
+        font-size: 18px; /* 폰트 사이즈를 조절합니다. */
+    }
 }

@@ -1,13 +1,28 @@
-import { useAuth } from "../Login/AuthProvider";
 import React, { useState } from 'react';
 import "./MyPage.css";
 import myprofile_image from '../../img/mypage/userprofile.png'
+import {useAuth} from "../Login/AuthProvider";
+import axios from "axios";
 
 function MyPage() {
     const [profileImage, setProfileImage] = useState(myprofile_image); // 초기 이미지 설정
     const [ageGroup, setAgeGroup] = useState("");
+    const [category, setCategory] = useState("");
     const [name, setName] = useState("");
     const [nickname, setNickname] = useState("");
+
+  /*  // id 토큰을 가져와서 jsonwebtoken 라이브러리를 사용하여 토큰을 디코드
+    const { token } = useAuth();*/
+
+   /* // 토큰이 있다면 디코딩하여 memberId를 추출
+    let memberId;
+    if (token) {
+        const decodedToken = jwt.decode(token);  // jwt 라이브러리를 사용하여 토큰을 디코딩
+        memberId = decodedToken.sub;  // "sub" 필드에서 memberId를 가져온다.
+    }
+
+    const formData = new FormData();
+    formData.append("memberId", memberId);*/
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -22,6 +37,10 @@ function MyPage() {
 
     const handleAgeGroupChange = (event) => {
         setAgeGroup(event.target.value);
+    }
+
+    const handleCategoryChange = (event) => {
+        setCategory(event.target.value);
     }
 
 
@@ -130,8 +149,8 @@ function MyPage() {
                     <label className="radio">
                         <input
                             type="radio"
-                            value="60s and above"
-                            checked={ageGroup === '60s and above'}
+                            value="s60_PLUS"
+                            checked={ageGroup === 's60_PLUS'}
                             onChange={handleAgeGroupChange}
                         />
                         &nbsp;60대 이상
@@ -139,8 +158,56 @@ function MyPage() {
                 </form>
 
                 <div className="input_text">
-                    내가 좋아하는 축제 유형
+                    내가 관심있는 축제 카테고리
                 </div>
+
+                    <form className={`category-form ${category}`}>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="culture"
+                                checked={category === 'culture'}
+                                onChange={handleCategoryChange}
+                            />
+                            &nbsp;문화예술
+                        </label>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="harmony among residents"
+                                checked={category === 'harmony'}
+                                onChange={handleCategoryChange}
+                            />
+                            &nbsp;주민화합
+                        </label>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="traditional"
+                                checked={category === 'traditional'}
+                                onChange={handleCategoryChange}
+                            />
+                            &nbsp;전통역사
+                        </label>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="local_specialty"
+                                checked={category === 'local_specialty'}
+                                onChange={handleCategoryChange}
+                            />
+                            &nbsp;지역특산물
+                        </label>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="nature"
+                                checked={category === 'nature'}
+                                onChange={handleCategoryChange}
+                            />
+                            &nbsp;생태자연
+                        </label>
+                    </form>
 
             </div>
             </div>
@@ -152,12 +219,10 @@ function MyPage() {
 
             </div>
             <div className="modifySection">
-                <button id="modifyInfo">수정 완료</button>
+                <button id="modifyInfo">수정하기</button>
                 <button id="modifyPassword"><a href="http://localhost:8080/change_pw/"
-                                               target="_blank"
                                                rel="noopener noreferrer">비밀번호 수정</a></button>
                 <button id="withdraw"><a href="http://localhost:8080/delete/"
-                                         target="_blank"
                                          rel="noopener noreferrer">회원탈퇴</a></button>
             </div>
         </div>
