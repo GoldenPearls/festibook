@@ -172,13 +172,10 @@ export default function Login() {
 
                     <div className="text">
                         <div className="find_id"><a href="http://localhost:8080/find-id"
-                                                    target="_blank"
                                                     rel="noopener noreferrer">아이디 찾기</a></div>
                         <div className="find_password"><a href="http://localhost:8080/find_pass"
-                                                          target="_blank"
                                                           rel="noopener noreferrer">비밀번호 찾기</a></div>
                         <div className="join"><a href="http://localhost:8080/member/register"
-                                                    target="_blank"
                                                     rel="noopener noreferrer">회원가입</a></div>
                     </div>
 

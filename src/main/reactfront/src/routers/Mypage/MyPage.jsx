@@ -6,23 +6,26 @@ import axios from "axios";
 
 function MyPage() {
     const [profileImage, setProfileImage] = useState(myprofile_image); // 초기 이미지 설정
-    const [ageGroup, setAgeGroup] = useState("");
-    const [category, setCategory] = useState("");
+    const [ageGroup, setAgeGroup] = useState(""); //연령별 그룹 관리
+    const [category, setCategory] = useState(""); //카테고리 관리
     const [name, setName] = useState("");
     const [nickname, setNickname] = useState("");
+    const [introduce, setIntroduce] = useState(""); // 자기소개 상태 관리
 
-  /*  // id 토큰을 가져와서 jsonwebtoken 라이브러리를 사용하여 토큰을 디코드
-    const { token } = useAuth();*/
 
-   /* // 토큰이 있다면 디코딩하여 memberId를 추출
-    let memberId;
-    if (token) {
-        const decodedToken = jwt.decode(token);  // jwt 라이브러리를 사용하여 토큰을 디코딩
-        memberId = decodedToken.sub;  // "sub" 필드에서 memberId를 가져온다.
-    }
+    // useAuth 훅을 통해 토큰 정보를 가져온다.
+    const { token } = useAuth();
 
-    const formData = new FormData();
-    formData.append("memberId", memberId);*/
+
+    /* // 토큰이 있다면 디코딩하여 memberId를 추출
+     let memberId;
+     if (token) {
+         const decodedToken = jwt.decode(token);  // jwt 라이브러리를 사용하여 토큰을 디코딩
+         memberId = decodedToken.sub;  // "sub" 필드에서 memberId를 가져온다.
+     }
+
+     const formData = new FormData();
+     formData.append("memberId", memberId);*/
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -61,105 +64,102 @@ function MyPage() {
                         이름
                     </div>
 
-                <div
-                    className="inputWrap"
-                >
-                    <input
-                        className="input"
-                        type="text"
-                        placeholder="이름을 입력해주세요"
-                        value={name}
-                        /*onChange={handleName}*/
-                    />
-                </div>
-
-                <div className="input_text">
-                    닉네임
-                </div>
-
-                <div
-                    className="inputWrap"
-                >
-                    <input
-                        className="input"
-                        type="text"
-                        placeholder="닉네임을 입력해주세요"
-                        value={nickname}
-                        /*onChange={handleNickname}*/
-                    />
-                </div>
-
-                <div className="input_text">
-                    자기소개
-                </div>
-
-                <div
-                    className="inputWrap"
-                >
-                    <input
-                        className="input"
-                        type="text"
-                        placeholder="자기소개를 입력해주세요"
-                        value={nickname}
-                        /*onChange={handleNickname}*/
-                    />
-                </div>
-
-                <div className="input_text">
-                    연령대
-                </div>
-
-                <form className={`age-group-form ${ageGroup}`}>
-                    <label className="radio">
+                    <div
+                        className="inputWrap"
+                    >
                         <input
-                            type="radio"
-                            value="10s"
-                            checked={ageGroup === '10s'}
-                            onChange={handleAgeGroupChange}
+                            className="input"
+                            type="text"
+                            value={name}
+                            /*onChange={handleName}*/
                         />
-                        &nbsp;10대
-                    </label>
-                    <label className="radio">
-                        <input
-                            type="radio"
-                            value="20s"
-                            checked={ageGroup === '20s'}
-                            onChange={handleAgeGroupChange}
-                        />
-                        &nbsp;20대
-                    </label>
-                    <label className="radio">
-                        <input
-                            type="radio"
-                            value="30s"
-                            checked={ageGroup === '30s'}
-                            onChange={handleAgeGroupChange}
-                        />
-                        &nbsp;30대
-                    </label>
-                    <label className="radio">
-                        <input
-                            type="radio"
-                            value="40s-50s"
-                            checked={ageGroup === '40s-50s'}
-                            onChange={handleAgeGroupChange}
-                        />
-                        &nbsp;40대-50대
-                    </label>
-                    <label className="radio">
-                        <input
-                            type="radio"
-                            value="s60_PLUS"
-                            checked={ageGroup === 's60_PLUS'}
-                            onChange={handleAgeGroupChange}
-                        />
-                        &nbsp;60대 이상
-                    </label>
-                </form>
+                    </div>
 
-                <div className="input_text">
-                    내가 관심있는 축제 카테고리
-                </div>
+                    <div className="input_text">
+                        닉네임
+                    </div>
+
+                    <div
+                        className="inputWrap"
+                    >
+                        <input
+                            className="input"
+                            type="text"
+                            value={nickname}
+                            /*onChange={handleNickname}*/
+                        />
+                    </div>
+
+                    <div className="input_text">
+                        자기소개
+                    </div>
+
+                    <div
+                        className="inputWrap"
+                    >
+                        <input
+                            className="input"
+                            type="text"
+                            value={introduce}
+                            /*onChange={handleNickname}*/
+                        />
+                    </div>
+
+                    <div className="input_text">
+                        연령대
+                    </div>
+
+                    <form className={`age-group-form ${ageGroup}`}>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="10s"
+                                checked={ageGroup === '10s'}
+                                onChange={handleAgeGroupChange}
+                            />
+                            &nbsp;10대
+                        </label>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="20s"
+                                checked={ageGroup === '20s'}
+                                onChange={handleAgeGroupChange}
+                            />
+                            &nbsp;20대
+                        </label>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="30s"
+                                checked={ageGroup === '30s'}
+                                onChange={handleAgeGroupChange}
+                            />
+                            &nbsp;30대
+                        </label>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="40s-50s"
+                                checked={ageGroup === '40s-50s'}
+                                onChange={handleAgeGroupChange}
+                            />
+                            &nbsp;40대-50대
+                        </label>
+                        <label className="radio">
+                            <input
+                                type="radio"
+                                value="s60_PLUS"
+                                checked={ageGroup === 's60_PLUS'}
+                                onChange={handleAgeGroupChange}
+                            />
+                            &nbsp;60대 이상
+                        </label>
+                    </form>
+
+                    <div className="input_text">
+                        내가 관심있는 축제 카테고리
+                    </div>
 
                     <form className={`category-form ${category}`}>
                         <label className="radio">
@@ -209,7 +209,7 @@ function MyPage() {
                         </label>
                     </form>
 
-            </div>
+                </div>
             </div>
             <div className="buttonsSection">
                 <button id="likedEvents">찜한행사</button>
