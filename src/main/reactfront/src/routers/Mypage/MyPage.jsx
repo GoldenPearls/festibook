@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./MyPage.css";
 import myprofile_image from '../../img/mypage/userprofile.png'
 import {useAuth} from "../Login/AuthProvider";
@@ -21,6 +21,35 @@ function MyPage() {
 
     const handleButtonClick = () => {
         if (isEditing) { // 편집모드에서 '저장' 버튼을 클릭했을 때
+
+            let data = JSON.stringify({
+                "member_id": "dummyId1",
+                "member_name": name,
+                "member_nickname": nickname,
+                "member_introduce": introduce,
+                "ageGroup": 's20',
+                "category_name": 'culture'
+            });
+
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:8080/mypage/updateInfo',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdW1teUlkMSIsIm5hbWUiOiJkdW1teU5hbWUiLCJleHAiOjE2OTY1NTM4MDksImlhdCI6MTY5NjUxMDYwOX0.LBhsIGruykNU5jMWM3xDkTB_tZ5HPl7o7N2dOy6EqJw'
+                },
+                data : data
+            };
+
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
             toast.success("수정완료되었습니다");
         } else { // '수정하기' 버튼을 클릭했을 때
             setMessage(""); // 메시지 초기화
@@ -81,6 +110,39 @@ function MyPage() {
     }, []);
 */
 
+    useEffect(() => {
+        let jwt = localStorage.getItem("jwt");
+        let data = parseJwt(jwt);
+        let memberId = data.sub;
+        // console.log("----------------------------------------")
+        // console.log(data);
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:8080/mypage/${memberId}/detail`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+            },
+            data : data
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(response.data);
+                setName(response.data.member_name)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+    const parseJwt = (token) => {
+        if (!token) { return; }
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    }
 
     /* // 토큰이 있다면 디코딩하여 memberId를 추출
      let memberId;
@@ -146,6 +208,7 @@ function MyPage() {
                             value={name}
                             /*onChange={handleName}*/
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
+                            onChange={e => setName(e.target.value)}
                         />
                     </div>
 
@@ -162,6 +225,7 @@ function MyPage() {
                             value={nickname}
                             /*onChange={handleNickname}*/
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
+                            onChange={e => setNickname(e.target.value)}
                         />
                     </div>
 
@@ -178,6 +242,7 @@ function MyPage() {
                             value={introduce}
                             /*onChange={handleIntroduce}*/
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
+                            onChange={e => setIntroduce(e.target.value)}
                         />
                     </div>
 

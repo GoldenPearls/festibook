@@ -16,5 +16,6 @@ public interface MyPageMapper {
 
     // 회원 정보 수정
     int updateMemberInfo(MyPageDTO memberInfo);
+    int updateMemberInfoDetail(MyPageDTO memberInfo);
 
 }

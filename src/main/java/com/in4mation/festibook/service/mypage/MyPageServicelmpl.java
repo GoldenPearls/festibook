@@ -4,6 +4,7 @@ import com.in4mation.festibook.dto.Mypage.MyPageDTO;
 import com.in4mation.festibook.repository.mypage.MyPageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MyPageServicelmpl implements MyPageService{
@@ -26,7 +27,10 @@ public class MyPageServicelmpl implements MyPageService{
 
     //회원의 정보를 업데이트(수정)
     @Override
+    @Transactional
     public int updateMemberInfo(MyPageDTO memberInfo) {
-        return mypageMapper.updateMemberInfo(memberInfo);
+        mypageMapper.updateMemberInfo(memberInfo);
+        mypageMapper.updateMemberInfoDetail(memberInfo);
+        return 1;
     }
 }

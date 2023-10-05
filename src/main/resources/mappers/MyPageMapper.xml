@@ -23,12 +23,14 @@
     <!-- 회원 정보 수정 (기본 정보와 상세 정보) -->
     <update id="updateMemberInfo">
         UPDATE Member_table
-        SET member_name = #{member_name}, member_nickname = #{member_nickname}, member_introduce=#{member_introduece}
-        WHERE member_id = #{member_id};
+        SET member_name = #{member_name}, member_nickname = #{member_nickname}, member_introduce=#{member_introduce}
+        WHERE member_id = #{member_id}
+    </update>
 
-        UPDATE MemberDetail_tbl
-        SET gender = #{gender}, age_group = #{ageGroup}, category_name = #{category_name}
-        WHERE member_id = #{member_id};
+    <update id="updateMemberInfoDetail">
+    UPDATE MemberDetail_tbl
+    SET age_group = #{ageGroup}, category_name = #{category_name}
+    WHERE member_id = #{member_id}
     </update>
 
 </mapper>

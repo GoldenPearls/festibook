@@ -14,10 +14,6 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {useAuth} from "./AuthProvider";
 
-/*const User = {
-    id: 'testuser',
-    pw: 'test2323@@@'
-};*/
 
 function Modal({ message, onClose }) {
     return (

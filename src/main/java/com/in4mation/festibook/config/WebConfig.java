@@ -3,6 +3,7 @@ package com.in4mation.festibook.config;
 import com.in4mation.festibook.jwt.JwtInterceptor;
 import com.in4mation.festibook.jwt.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -27,8 +28,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new JwtInterceptor(jwtUtils))
                 .addPathPatterns("/**")
                 .excludePathPatterns("/home")
-                .excludePathPatterns("/css/**", "/images/**", "/js/**")
-                .excludePathPatterns("/");
+                .excludePathPatterns("/css/**", "/images/**", "/js/**");
     }
 
 }

@@ -23,9 +23,10 @@ public class MyPageController {
 
     //회원 상세 페이지
     // memberId 파라미터를 받아 해당 회원의 상세 정보 페이지를 반환
-    @GetMapping("/{member_id}/detail")
+    @GetMapping("/{memberId}/detail")
     public ResponseEntity<MyPageDTO> selectMemberDetailsById(@PathVariable String memberId){
-
+        System.out.println("=================================");
+        System.out.println("memberId:" + memberId);
         // 서비스를 통해 회원의 상세 정보를 가져옴
         MyPageDTO memberDetails = myPageServicelmpl.getMemberDetails(memberId);
         /*model.addAttribute("memberDetails", memberDetails);  // View에서 사용할 수 있도록 상세 정보를 모델에 추가*/
@@ -55,7 +56,9 @@ public class MyPageController {
 
     // 회원의 상세 정보를 업데이트하는 로직을 처리
     @PostMapping("/updateInfo")
-    public String updateMemberInfo(MyPageDTO memberInfo) {
+    public String updateMemberInfo(@RequestBody MyPageDTO memberInfo) {
+        System.out.println("---------------------------------");
+        System.out.println("memberInfo:" + memberInfo);
         myPageServicelmpl.updateMemberInfo(memberInfo);
         return "redirect:/mypage/detail?memberId=" + memberInfo.getMember_id();
     }

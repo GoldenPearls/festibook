@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class MyPageDTO {
 
     private int details_id; //설문으로 받는 정보들을 판별할 id
@@ -33,8 +34,12 @@ public class MyPageDTO {
 
     private Gender gender;   // 성별
 
-    private AgeGroup ageGroup; // 연령대
+//    private AgeGroup ageGroup; // 연령대
+    private String ageGroup; // 연령대
 
-    private CategoryGroup categroy_name; //카테고리 이름
+//    private CategoryGroup category_name; //카테고리 이름
+    private String category_name; //카테고리 이름
+
+    private String member_introduce;
 
 }
