@@ -19,6 +19,56 @@ function MyPage() {
 
     const [message, setMessage] = useState(""); //메세지 상태변수
 
+
+    // 멤버 디테일 조회
+
+    useEffect(() => {
+        let jwt = localStorage.getItem("jwt");
+        let data = parseJwt(jwt);
+        let memberId = data.sub;
+        // console.log("----------------------------------------")
+        // console.log(data);
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `http://localhost:8080/mypage/${memberId}/detail`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+            },
+            data : data
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(response.data);
+                setName(response.data.member_name)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+    const parseJwt = (token) => {
+        if (!token) { return; }
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    }
+
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfileImage(reader.result); // 이미지 로드가 완료되면 상태를 업데이트합니다.
+            }
+            reader.readAsDataURL(file); // 파일을 읽어 data URL로 변환합니다.
+        }
+    };
+
+
     const handleButtonClick = () => {
         if (isEditing) { // 편집모드에서 '저장' 버튼을 클릭했을 때
 
@@ -72,98 +122,8 @@ function MyPage() {
         setIntroduce(e.target.value);
     }
 
-    /*useEffect(() => {
-        const fetchMemberDetails = async () => {
-
-            const endpoint = 'http://localhost:8080/mypage/${member_id}/detail';
-
-            let data = JSON.stringify({
-                "member_id": id,
-                "member_name": name,
-                "member_introduce" : introduce,
-                "member_nickname" : nickname,
-                "ageGroup" : ageGroup,
-                "category_name" : category
-            });
-
-            let config = {
-                method: 'get',
-                maxBodyLength: Infinity,
-                url: endpoint,
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data : data
-            };
 
 
-           try {
-                const response = await axios.endpoint;
-                setName(response.data.member_name);
-
-            } catch (error) {
-                console.error("Error fetching member details:", error);
-            }
-        };
-
-        fetchMemberDetails();
-    }, []);
-*/
-
-    useEffect(() => {
-        let jwt = localStorage.getItem("jwt");
-        let data = parseJwt(jwt);
-        let memberId = data.sub;
-        // console.log("----------------------------------------")
-        // console.log(data);
-        let config = {
-            method: 'get',
-            maxBodyLength: Infinity,
-            url: `http://localhost:8080/mypage/${memberId}/detail`,
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem("jwt")}`
-            },
-            data : data
-        };
-
-        axios.request(config)
-            .then((response) => {
-                console.log(response.data);
-                setName(response.data.member_name)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
-
-    const parseJwt = (token) => {
-        if (!token) { return; }
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64));
-    }
-
-    /* // 토큰이 있다면 디코딩하여 memberId를 추출
-     let memberId;
-     if (token) {
-         const decodedToken = jwt.decode(token);  // jwt 라이브러리를 사용하여 토큰을 디코딩
-         memberId = decodedToken.sub;  // "sub" 필드에서 memberId를 가져온다.
-     }
-
-     const formData = new FormData();
-     formData.append("memberId", memberId);*/
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setProfileImage(reader.result); // 이미지 로드가 완료되면 상태를 업데이트합니다.
-            }
-            reader.readAsDataURL(file); // 파일을 읽어 data URL로 변환합니다.
-        }
-    };
 
     const handleAgeGroupChange = (event) => {
         setAgeGroup(event.target.value);
@@ -365,14 +325,14 @@ function MyPage() {
 
             {!isEditing && (
                 <>
-            <div className="buttonsSection">
-                <button id="likedEvents">찜한행사</button>
-                <button id="myPosts">내가 쓴 글</button>
-            </div>
-            <div id="contentContainer" className="contentContainer">
+                    <div className="buttonsSection">
+                        <button id="likedEvents">찜한행사</button>
+                        <button id="myPosts">내가 쓴 글</button>
+                    </div>
+                    <div id="contentContainer" className="contentContainer">
 
 
-            </div>
+                    </div>
 
                 </>
             )}
@@ -382,12 +342,12 @@ function MyPage() {
                 {/*편집모드가 아닐 때만 두 버튼 랜더링*/}
                 {!isEditing && (
                     <>
-                <button id="modifyPassword"><a href="http://localhost:8080/change_pw/"
-                                               rel="noopener noreferrer">비밀번호 수정</a></button>
-                <button id="withdraw"><a href="http://localhost:8080/delete/"
-                                         rel="noopener noreferrer">회원탈퇴</a></button>
+                        <button id="modifyPassword"><a href="http://localhost:8080/change_pw/"
+                                                       rel="noopener noreferrer">비밀번호 수정</a></button>
+                        <button id="withdraw"><a href="http://localhost:8080/delete/"
+                                                 rel="noopener noreferrer">회원탈퇴</a></button>
                     </>
-                    )}
+                )}
             </div>
         </div>
     );

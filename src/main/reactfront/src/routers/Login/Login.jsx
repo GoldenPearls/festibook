@@ -57,7 +57,6 @@ export default function Login() {
     };
 
 
-
     const handleId = (e) => {
         setId(e.target.value);
     };
@@ -88,7 +87,6 @@ export default function Login() {
         };
 
 
-
         //  로컬 스토리지에 토큰을 저장하는 부분
         axios.request(config)
             .then((response) => {
@@ -97,11 +95,16 @@ export default function Login() {
                     toast.success('로그인에 성공했습니다.');
                     /*localStorage.setItem("jwt",  response.data?.token);*/
                     setToken(response.data?.token); // 상태에 토큰 저장
+
+
                     setIsLoggedIn(true);
 
                     setTimeout(() => {
                         navigate('/recommend');
                     }, 2000);
+
+
+
 
                 } else {
                     toast.warning('로그인 실패했습니다. 아이디나 비밀번호를 확인해주세요');

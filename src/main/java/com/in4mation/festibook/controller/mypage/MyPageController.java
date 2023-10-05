@@ -29,7 +29,6 @@ public class MyPageController {
         System.out.println("memberId:" + memberId);
         // 서비스를 통해 회원의 상세 정보를 가져옴
         MyPageDTO memberDetails = myPageServicelmpl.getMemberDetails(memberId);
-        /*model.addAttribute("memberDetails", memberDetails);  // View에서 사용할 수 있도록 상세 정보를 모델에 추가*/
         return ResponseEntity.ok(memberDetails);
     }
 

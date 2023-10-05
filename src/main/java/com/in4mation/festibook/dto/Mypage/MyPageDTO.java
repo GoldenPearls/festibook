@@ -20,26 +20,27 @@ public class MyPageDTO {
 
     private byte[] member_profile_image;    //프로필사진
 
-    public enum Gender {
-        M, F, O
-    }
+    private String ageGroup; // 연령대
 
-    public enum AgeGroup {
+    private String category_name; //카테고리 이름
+
+    private String member_introduce; //멤버 소개
+
+
+    //    private AgeGroup ageGroup; // 연령대
+
+    //    private CategoryGroup category_name; //카테고리 이름
+
+   /* public enum AgeGroup {
         s10, s20, s30, s40, s50, s60_PLUS
     }
 
     public enum CategoryGroup{
         culture, harmony, traditional, local_specialty, nature
-    }
+    }*/
 
-    private Gender gender;   // 성별
 
-//    private AgeGroup ageGroup; // 연령대
-    private String ageGroup; // 연령대
 
-//    private CategoryGroup category_name; //카테고리 이름
-    private String category_name; //카테고리 이름
 
-    private String member_introduce;
 
 }

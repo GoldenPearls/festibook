@@ -3,6 +3,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
+
+
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(() => {
         console.log('초기 토큰:', localStorage.getItem('jwt'));
@@ -10,11 +12,15 @@ export const AuthProvider = ({ children }) => {
         return localStorage.getItem('jwt');
     });
     const [isLoggedIn, setIsLoggedIn] = useState(!!token); // 로그인 상태를 관리합니다.
+    const [userId, setUserId] = useState(null);
+
 
     useEffect(() => {
         console.log('토큰 변경됨:', token);
         if (token) {
+
             localStorage.setItem('jwt', token);
+
             setIsLoggedIn(true);
         } else {
             localStorage.removeItem('jwt');
@@ -23,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     }, [token]);
 
     return (
-        <AuthContext.Provider value={{ token, setToken, isLoggedIn, setIsLoggedIn }}>
+        <AuthContext.Provider value={{ token, setToken, isLoggedIn, setIsLoggedIn, userId, setUserId  }}>
             {children}
         </AuthContext.Provider>
     );
@@ -36,3 +42,6 @@ export const useAuth = () => {
     }
     return context;
 };
+
+
+
