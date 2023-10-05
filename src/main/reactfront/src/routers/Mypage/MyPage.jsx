@@ -133,7 +133,7 @@ function MyPage() {
             <ToastContainer
                 position="top-right"
                 limit={1}
-                closeButton={true}
+                closeButton={false}
                 autoClose={3000}
                 className="custom-toast-container"
                 toastClassName="custom-toast"
