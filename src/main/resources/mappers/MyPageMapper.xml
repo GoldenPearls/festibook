@@ -29,7 +29,7 @@
 
     <update id="updateMemberInfoDetail">
     UPDATE MemberDetail_tbl
-    SET age_group = #{ageGroup}, category_name = #{category_name}
+    SET age_group = #{age_group}, category_name = #{category_name}
     WHERE member_id = #{member_id}
     </update>
 

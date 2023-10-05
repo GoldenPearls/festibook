@@ -41,8 +41,14 @@ function MyPage() {
 
         axios.request(config)
             .then((response) => {
+                //dto 기준으로 뒤에 데이터를 맞춰줘야 함
                 console.log(response.data);
-                setName(response.data.member_name)
+                setName(response.data.member_name);
+                setNickname(response.data.member_nickname);
+                setIntroduce(response.data.member_introduce);
+                setAgeGroup(response.data.ageGroup);
+                setCategory(response.data.category_name);
+
             })
             .catch((error) => {
                 console.log(error);
