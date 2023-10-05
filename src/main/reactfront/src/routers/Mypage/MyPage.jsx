@@ -19,8 +19,47 @@ function MyPage() {
 
     const [message, setMessage] = useState(""); //메세지 상태변수
 
+    const handleButtonClick = () => {
+        if (isEditing) { // 편집모드에서 '저장' 버튼을 클릭했을 때
 
-    // 멤버 디테일 조회
+            let data = JSON.stringify({
+                "member_id": "dummyId1",
+                "member_name": name,
+                "member_nickname": nickname,
+                "member_introduce": introduce,
+                "ageGroup": ageGroup,
+                "category_name": category
+            });
+
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: 'http://localhost:8080/mypage/updateInfo',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+                },
+                data : data
+            };
+
+            axios.request(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+            toast.success("수정완료되었습니다");
+        } else { // '수정하기' 버튼을 클릭했을 때
+            setMessage(""); // 메시지 초기화
+        }
+        setIsEditing(prev => !prev); // 현재 상태를 반전시킴
+    }
+
+    // useAuth 훅을 통해 토큰 정보를 가져온다.
+    const { token } = useAuth();
+
 
     useEffect(() => {
         let jwt = localStorage.getItem("jwt");
@@ -41,14 +80,13 @@ function MyPage() {
 
         axios.request(config)
             .then((response) => {
-                //dto 기준으로 뒤에 데이터를 맞춰줘야 함
                 console.log(response.data);
+                /*dto와 맞춰줘야 함*/
                 setName(response.data.member_name);
                 setNickname(response.data.member_nickname);
                 setIntroduce(response.data.member_introduce);
                 setAgeGroup(response.data.ageGroup);
                 setCategory(response.data.category_name);
-
             })
             .catch((error) => {
                 console.log(error);
@@ -73,63 +111,6 @@ function MyPage() {
             reader.readAsDataURL(file); // 파일을 읽어 data URL로 변환합니다.
         }
     };
-
-
-    const handleButtonClick = () => {
-        if (isEditing) { // 편집모드에서 '저장' 버튼을 클릭했을 때
-
-            let data = JSON.stringify({
-                "member_id": "dummyId1",
-                "member_name": name,
-                "member_nickname": nickname,
-                "member_introduce": introduce,
-                "ageGroup": 's20',
-                "category_name": 'culture'
-            });
-
-            let config = {
-                method: 'post',
-                maxBodyLength: Infinity,
-                url: 'http://localhost:8080/mypage/updateInfo',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkdW1teUlkMSIsIm5hbWUiOiJkdW1teU5hbWUiLCJleHAiOjE2OTY1NTM4MDksImlhdCI6MTY5NjUxMDYwOX0.LBhsIGruykNU5jMWM3xDkTB_tZ5HPl7o7N2dOy6EqJw'
-                },
-                data : data
-            };
-
-            axios.request(config)
-                .then((response) => {
-                    console.log(JSON.stringify(response.data));
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-
-            toast.success("수정완료되었습니다");
-        } else { // '수정하기' 버튼을 클릭했을 때
-            setMessage(""); // 메시지 초기화
-        }
-        setIsEditing(prev => !prev); // 현재 상태를 반전시킴
-    }
-
-    // useAuth 훅을 통해 토큰 정보를 가져온다.
-    const { token } = useAuth();
-
-    const handleName = (e) => {
-        setName(e.target.value);
-    };
-
-    const handleNickname = (e) => {
-        setNickname(e.target.value);
-    };
-
-    const handleIntroduce = (e) => {
-        setIntroduce(e.target.value);
-    }
-
-
-
 
     const handleAgeGroupChange = (event) => {
         setAgeGroup(event.target.value);
@@ -172,7 +153,6 @@ function MyPage() {
                             className="input"
                             type="text"
                             value={name}
-                            /*onChange={handleName}*/
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
                             onChange={e => setName(e.target.value)}
                         />
@@ -189,7 +169,6 @@ function MyPage() {
                             className="input"
                             type="text"
                             value={nickname}
-                            /*onChange={handleNickname}*/
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
                             onChange={e => setNickname(e.target.value)}
                         />
@@ -206,7 +185,6 @@ function MyPage() {
                             className="input"
                             type="text"
                             value={introduce}
-                            /*onChange={handleIntroduce}*/
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
                             onChange={e => setIntroduce(e.target.value)}
                         />
@@ -287,7 +265,7 @@ function MyPage() {
                         <label className="radio">
                             <input
                                 type="radio"
-                                value="harmony among residents"
+                                value="harmony"
                                 checked={category === 'harmony'}
                                 onChange={handleCategoryChange}
                                 disabled={!isEditing} // isEditing이 false일 때 disabled 적용

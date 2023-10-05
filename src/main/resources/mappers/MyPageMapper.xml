@@ -7,7 +7,7 @@
 
     <!-- 회원 상세 정보 조회 -->
     <select id="selectMemberDetailsById" resultType="com.in4mation.festibook.dto.Mypage.MyPageDTO">
-        SELECT m.member_id, m.member_name, m.member_nickname, m.member_profile_image, m.member_introduce, d.age_group as ageGroup, d.category_name
+        SELECT m.member_id, m.member_name, m.member_nickname, m.member_profile_image, m.member_introduce, d.ageGroup, d.category_name
         FROM Member_table m
                  JOIN MemberDetail_tbl d ON m.member_id = d.member_id
         WHERE m.member_id = #{memberId}
@@ -29,7 +29,7 @@
 
     <update id="updateMemberInfoDetail">
     UPDATE MemberDetail_tbl
-    SET age_group = #{age_group}, category_name = #{category_name}
+    SET ageGroup = #{ageGroup}, category_name = #{category_name}
     WHERE member_id = #{member_id}
     </update>
 
