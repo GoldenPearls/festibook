@@ -23,10 +23,11 @@ public class MyPageController {
 
     //회원 상세 페이지
     // memberId 파라미터를 받아 해당 회원의 상세 정보 페이지를 반환
-    @GetMapping("/{memberId}/detail")
+    @GetMapping("/{member_id}/detail")
     public ResponseEntity<MyPageDTO> selectMemberDetailsById(@PathVariable String memberId){
+
         // 서비스를 통해 회원의 상세 정보를 가져옴
-        MyPageDTO memberDetails = myPageServicelmpl.selectMemberDetailsById(memberId);
+        MyPageDTO memberDetails = myPageServicelmpl.getMemberDetails(memberId);
         /*model.addAttribute("memberDetails", memberDetails);  // View에서 사용할 수 있도록 상세 정보를 모델에 추가*/
         return ResponseEntity.ok(memberDetails);
     }

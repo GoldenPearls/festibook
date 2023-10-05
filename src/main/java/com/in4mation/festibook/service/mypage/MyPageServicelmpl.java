@@ -13,7 +13,7 @@ public class MyPageServicelmpl implements MyPageService{
 
     //회원 데이터베이스에 저장된 데이터들을 가져옴
     @Override
-    public MyPageDTO selectMemberDetailsById(String memberId) {
+    public MyPageDTO getMemberDetails(String memberId) {
         return mypageMapper.selectMemberDetailsById(memberId);
     }
 

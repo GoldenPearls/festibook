@@ -60,6 +60,8 @@ export default function Login() {
         navigate('/');
     };
 
+
+
     const handleId = (e) => {
         setId(e.target.value);
     };
@@ -104,6 +106,7 @@ export default function Login() {
                     setTimeout(() => {
                         navigate('/recommend');
                     }, 2000);
+
                 } else {
                     toast.warning('로그인 실패했습니다. 아이디나 비밀번호를 확인해주세요');
                 }

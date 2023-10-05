@@ -27,7 +27,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new JwtInterceptor(jwtUtils))
                 .addPathPatterns("/**")
                 .excludePathPatterns("/home")
-                .excludePathPatterns("/css/**", "/images/**", "/js/**");
+                .excludePathPatterns("/css/**", "/images/**", "/js/**")
+                .excludePathPatterns("/");
     }
 
 }
