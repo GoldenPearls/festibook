@@ -27,20 +27,5 @@ public class MyPageDTO {
     private String member_introduce; //멤버 소개
 
 
-    //    private AgeGroup ageGroup; // 연령대
-
-    //    private CategoryGroup category_name; //카테고리 이름
-
-  /* public enum AgeGroup {
-        s10, s20, s30, s40, s50, s60_PLUS
-    }
-
-    public enum CategoryGroup{
-        culture, harmony, traditional, local_specialty, nature
-    }*/
-
-
-
-
 
 }

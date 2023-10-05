@@ -19,11 +19,17 @@ function MyPage() {
 
     const [message, setMessage] = useState(""); //메세지 상태변수
 
+   /* const [memberId, setMemberId] = useState(""); //로그인된 아이디 가져와야 함
+*/
     const handleButtonClick = () => {
         if (isEditing) { // 편집모드에서 '저장' 버튼을 클릭했을 때
 
+            let jwt = localStorage.getItem("jwt");
+            let data1 = parseJwt(jwt);
+            let memberId = data1.sub;
+
             let data = JSON.stringify({
-                "member_id": "dummyId1",
+                "member_id": memberId,
                 "member_name": name,
                 "member_nickname": nickname,
                 "member_introduce": introduce,
