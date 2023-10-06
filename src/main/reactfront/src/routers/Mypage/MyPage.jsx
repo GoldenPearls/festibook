@@ -111,12 +111,12 @@ function MyPage() {
         axios.request(config)
             .then((response) => {
                 console.log(response.data);
-                /*dto와 맞춰줘야 함*/
                 setName(response.data.member_name);
                 setNickname(response.data.member_nickname);
                 setIntroduce(response.data.member_introduce);
                 setAgeGroup(response.data.ageGroup);
                 setCategory(response.data.category_name);
+                setProfileImage("/"+response.data.member_profile_image);
             })
             .catch((error) => {
                 console.log(error);
@@ -132,7 +132,7 @@ function MyPage() {
 
 
     const handleImageChange = (e) => {
-        const file = e.target.files[0];
+       const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -140,6 +140,40 @@ function MyPage() {
             }
             reader.readAsDataURL(file); // 파일을 읽어 data URL로 변환합니다.
         }
+
+        let jwt = localStorage.getItem("jwt");
+        let data1 = parseJwt(jwt);
+        let memberId = data1.sub;
+
+        // 서버에 파일 업로드
+        let data = new FormData();
+        data.append("member_id", memberId);
+        data.append('profileImage', file);
+
+        let config = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: 'http://localhost:8080/mypage/uploadProfileImage',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("jwt")}`,
+                'Content-Type': 'multipart/form-data'
+            },
+            data : data
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                if(response.data.success == 'success') {
+                    let filename = response.data.data;
+                    let imageUrl = '/' + filename;
+                    setProfileImage(imageUrl);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
     };
 
     const handleAgeGroupChange = (event) => {
@@ -166,7 +200,7 @@ function MyPage() {
             <h2 id="nickname">나의 계정</h2>
             <div className="infoSection">
                 <div className="profile_image">
-                    <img src={myprofile_image} alt="profile"/>
+                    <img src={profileImage} alt="profile"/>
                     <input type="file" onChange={handleImageChange} id="image_uploadInput" />
                 </div>
 

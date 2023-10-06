@@ -12,10 +12,12 @@ public interface MyPageMapper {
     MyPageDTO selectMemberDetailsById(String memberId);
 
     // 이미지 업로드
-    int updateProfileImageByMemberId(String memberId, byte[] profileImage);
+//    int updateProfileImageByMemberId(String memberId, byte[] profileImage);
+    int updateProfileImage(MyPageDTO myPageDTO);
 
     // 회원 정보 수정(두개의 테이블 업데이트로 인해 2번)
     int updateMemberInfo(MyPageDTO memberInfo);
     int updateMemberInfoDetail(MyPageDTO memberInfo);
+
 
 }

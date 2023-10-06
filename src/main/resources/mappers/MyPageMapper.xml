@@ -7,16 +7,21 @@
 
     <!-- 회원 상세 정보 조회 -->
     <select id="selectMemberDetailsById" resultType="com.in4mation.festibook.dto.Mypage.MyPageDTO">
-        SELECT m.member_id, m.member_name, m.member_nickname, m.member_profile_image, m.member_introduce, d.ageGroup, d.category_name
+        SELECT m.member_id, m.member_name, m.member_nickname, m.member_profile_image, m.member_introduce, d.ageGroup, d.category_name, m.member_profile_image
         FROM Member_table m
                  JOIN MemberDetail_tbl d ON m.member_id = d.member_id
         WHERE m.member_id = #{member_id}
     </select>
 
     <!-- 프로필 이미지 업데이트 -->
-    <update id="updateProfileImageByMemberId">
-        UPDATE Member_table
-        SET member_profile_image = #{profileImage}
+<!--    <update id="updateProfileImageByMemberId">-->
+<!--        UPDATE Member_table-->
+<!--        SET member_profile_image = #{profileImage}-->
+<!--        WHERE member_id = #{member_id}-->
+<!--    </update>-->
+    <update id="updateProfileImage" parameterType="com.in4mation.festibook.dto.Mypage.MyPageDTO">
+        UPDATE member_table
+        SET member_profile_image = #{member_profile_image}
         WHERE member_id = #{member_id}
     </update>
 

@@ -1,5 +1,6 @@
 package com.in4mation.festibook.controller.mypage;
 
+import com.in4mation.festibook.dto.Mypage.CommonResponseDTO;
 import com.in4mation.festibook.dto.Mypage.MyPageDTO;
 import com.in4mation.festibook.service.mypage.MyPageServicelmpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,23 +35,28 @@ public class MyPageController {
 
     // 회원의 프로필 이미지를 업로드하는 로직
     @PostMapping("/uploadProfileImage")
-    public String uploadProfileImage(@RequestParam String memberId, @RequestParam MultipartFile profileImage, Model model) throws Exception {
-       try{
-           //이미지 파일 검증 로직
-           if(profileImage.isEmpty() || profileImage.getSize() > MAX_IMAGE_SIZE){
-               throw new IllegalArgumentException("사이즈가 너무 큰 이미지");
-           }
+    public ResponseEntity<CommonResponseDTO> uploadProfileImage(
+            @RequestParam String member_id,
+            @RequestPart MultipartFile profileImage) {
+//        System.out.println("==============================");
+//        System.out.println("memberId:" + memberId);
 
-           else{
-               byte[] imageData = profileImage.getBytes();  // MultipartFile로부터 바이트 배열 형태의 이미지 데이터를 가져온다
-               myPageServicelmpl.updateProfileImage(memberId, imageData);  // 서비스를 통해 이미지 데이터를 업데이트
-           }
+        try {
+            if (profileImage.isEmpty() || profileImage.getSize() > MAX_IMAGE_SIZE) {
+                throw new IllegalArgumentException("사이즈가 너무 큽니다.");
+            }
+
+//            byte[] imageData = profileImage.getBytes();
+//            myPageServicelmpl.updateProfileImage(memberId, imageData);
+            String filename = myPageServicelmpl.updateProfileImage(member_id, profileImage);
+            if(filename != null)
+                return ResponseEntity.ok(new CommonResponseDTO("success", filename));
+            else
+                return ResponseEntity.ok(new CommonResponseDTO("fail", ""));
+        } catch (Exception e) {
+//            return ResponseEntity.badRequest().body("이미지 업로드 문제: " + e.getMessage());
+            return ResponseEntity.ok(new CommonResponseDTO("fail", "이미지 업로드 문제: " + e.getMessage()));
         }
-       catch (Exception e){
-           model.addAttribute("errorMessage", e.getMessage());
-       }
-
-        return "redirect:/mypage/detail?memberId=" + memberId;
     }
 
     // 회원의 상세 정보를 업데이트하는 로직을 처리
