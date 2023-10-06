@@ -71,6 +71,7 @@ export default function Login() {
 
         const endpoint = 'http://localhost:8080/api/login';
 
+
         let data = JSON.stringify({
             "member_id": id,
             "member_password": pw

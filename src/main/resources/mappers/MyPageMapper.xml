@@ -10,14 +10,14 @@
         SELECT m.member_id, m.member_name, m.member_nickname, m.member_profile_image, m.member_introduce, d.ageGroup, d.category_name
         FROM Member_table m
                  JOIN MemberDetail_tbl d ON m.member_id = d.member_id
-        WHERE m.member_id = #{memberId}
+        WHERE m.member_id = #{member_id}
     </select>
 
     <!-- 프로필 이미지 업데이트 -->
     <update id="updateProfileImageByMemberId">
         UPDATE Member_table
         SET member_profile_image = #{profileImage}
-        WHERE member_id = #{memberId}
+        WHERE member_id = #{member_id}
     </update>
 
     <!-- 회원 정보 수정 (기본 정보와 상세 정보) -->

@@ -19,8 +19,32 @@ function MyPage() {
 
     const [message, setMessage] = useState(""); //메세지 상태변수
 
-   /* const [memberId, setMemberId] = useState(""); //로그인된 아이디 가져와야 함
-*/
+    // 길이 확인을 위한 핸들러
+    const [isNameTooLong, setIsNameTooLong] = useState(false);
+    const [isNicknameTooLong, setIsNicknameTooLong] = useState(false);
+    const [isIntroduceTooLong, setIsIntroduceTooLong] = useState(false);
+
+
+    // 이벤트 길이 확인
+    const handleNameChange = (e) => {
+        const value = e.target.value;
+        setIsNameTooLong(value.length > 10);
+        setName(value);
+    };
+
+    const handleNicknameChange = (e) => {
+        const value = e.target.value;
+        setIsNicknameTooLong(value.length > 10);
+        setNickname(value);
+    };
+
+    const handleIntroduceChange = (e) => {
+        const value = e.target.value;
+        setIsIntroduceTooLong(value.length > 35);
+        setIntroduce(value);
+    };
+
+
     const handleButtonClick = () => {
         if (isEditing) { // 편집모드에서 '저장' 버튼을 클릭했을 때
 
@@ -128,6 +152,7 @@ function MyPage() {
 
 
 
+
     return (
         <div className="myPage">
             <ToastContainer
@@ -160,8 +185,14 @@ function MyPage() {
                             type="text"
                             value={name}
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
-                            onChange={e => setName(e.target.value)}
+                            /*onChange={e => setName(e.target.value)}*/
+                            onChange={handleNameChange}
                         />
+
+                        </div>
+
+                    <div>
+                        {isNameTooLong && <span className="error-message" >이름이 너무 깁니다. 10글자 밑으로 지정해주세요.</span>}
                     </div>
 
                     <div className="input_text">
@@ -176,8 +207,13 @@ function MyPage() {
                             type="text"
                             value={nickname}
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
-                            onChange={e => setNickname(e.target.value)}
+                            /*onChange={e => setNickname(e.target.value)}*/
+                            onChange={handleNicknameChange}
                         />
+                    </div>
+                    <div>
+                     {isNicknameTooLong&& <span className="error-message">닉네임이 너무 깁니다. 10글자 밑으로 지정해주세요 </span>}
+
                     </div>
 
                     <div className="input_text">
@@ -192,13 +228,18 @@ function MyPage() {
                             type="text"
                             value={introduce}
                             readOnly={!isEditing} // isEditing이 false일 때 readOnly 적용
-                            onChange={e => setIntroduce(e.target.value)}
+                            /*onChange={e => setIntroduce(e.target.value)}*/
+                            onChange={handleIntroduceChange}
                         />
+                    </div>
+                    <div>
+                    {isIntroduceTooLong && <span className="error-message" >자기소개글이 너무 깁니다. 35자 밑으로 설정해주세요.</span>}
                     </div>
 
                     <div className="input_text">
                         연령대
                     </div>
+
 
                     <form className={`age-group-form ${ageGroup}`}>
                         <label className="radio">
@@ -327,7 +368,12 @@ function MyPage() {
                 </>
             )}
             <div className="modifySection">
-                <button id="modifyInfo" onClick={handleButtonClick}>{isEditing ? '저장' : '수정하기'}</button>
+                <button id="modifyInfo" onClick={handleButtonClick}
+                        disabled={isNameTooLong || isNicknameTooLong || isIntroduceTooLong}
+                        style={{
+                            backgroundColor: (isNameTooLong || isNicknameTooLong || isIntroduceTooLong) ? 'grey' : '#EC7373'
+                        }}
+                >{isEditing ? '저장' : '수정하기'}</button>
 
                 {/*편집모드가 아닐 때만 두 버튼 랜더링*/}
                 {!isEditing && (
