@@ -32,8 +32,8 @@ export default function Login() {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { setToken, auth } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.*/
 
+    const { setToken, auth } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
 
     const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
 
@@ -45,6 +45,7 @@ export default function Login() {
 
     // 로그아웃 함수도 최상위 레벨에 위치
     const logout = () => {
+
         localStorage.removeItem("memberId");
         localStorage.removeItem("jwt");
 
@@ -94,6 +95,7 @@ export default function Login() {
                     toast.success('로그인에 성공했습니다.');
                     auth.setToken(response.data?.token);
                     /*setToken(response.data?.token); // 상태에 토큰 저장*/
+
 
 
                     if (response.data.memberId) { //  member_id 대신  memberId 사용
