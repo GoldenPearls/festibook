@@ -121,14 +121,31 @@ function MyPage() {
             .catch((error) => {
                 console.log(error);
             });
+
+
+
     }, []);
+
+/*    const parseJwt = (token) => {
+        if (!token) { return; }
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    }*/
 
     const parseJwt = (token) => {
         if (!token) { return; }
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64));
+        try {
+            return JSON.parse(window.atob(base64));
+        } catch (error) {
+            console.error("잘못된 JWT 제공:", error);
+            return 0;
+        }
     }
+
+
 
 
     const handleImageChange = (e) => {
