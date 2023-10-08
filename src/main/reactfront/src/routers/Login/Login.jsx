@@ -36,10 +36,9 @@ export default function Login() {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const { setToken, auth } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
 
-    const { setToken, setIsLoggedIn } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
-
-    /*const [isLoggedIn, setIsLoggedIn] = useState(false);*/ //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
+    const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
 
     // localStorge에 토큰이 있는 경우 로그인 상태로 간주, 최상위 레벨에서 호출되어야 한다.
     useEffect(() => {
@@ -49,7 +48,9 @@ export default function Login() {
 
     // 로그아웃 함수도 최상위 레벨에 위치
     const logout = () => {
+        localStorage.removeItem('memberId');
         localStorage.removeItem('jwt');
+
         console.log('토큰 삭제 완료:', localStorage.getItem('jwt'));
         setIsLoggedIn(false);
         toast.success('로그아웃에 성공했습니다.');
@@ -98,13 +99,17 @@ export default function Login() {
                     setToken(response.data?.token); // 상태에 토큰 저장
 
 
+                    if (response.data.member_id) { //  member_id 대신  memberId 사용
+                        localStorage.setItem('memberId', response.data.member_id);
+                        console.log("Member ID:", response.data.member_id);  // 추가된 부분
+                    }
+
                     setIsLoggedIn(true);
 
                     setTimeout(() => {
-                        navigate('/recommend');
+                        let { from } = location.state || { from: { pathname: "/recommand" } };
+                        navigate(from);
                     }, 2000);
-
-
 
 
                 } else {

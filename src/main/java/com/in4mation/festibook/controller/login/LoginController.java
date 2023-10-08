@@ -15,6 +15,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 public class LoginController {
@@ -35,20 +38,19 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody MemberDTO memberDTO){
         try {
-            // 사용자 인증
-//            Authentication authentication = authenticationManager.authenticate(
-//                    new UsernamePasswordAuthenticationToken(
-//                            memberDTO.getMember_id(),
-//                            memberDTO.getMember_password()
-//                    )
-//            );
             // member_id, password 체크
-            MemberDTO member2 = loginService.checkLoin(memberDTO.getMember_id(), memberDTO.getMember_password());
+            MemberDTO authenticatedMember = loginService.checkLoin(memberDTO.getMember_id(), memberDTO.getMember_password());
 
             // JWT 토큰 생성 및 반환
-            String jwt = jwtUtils.createAccessToken(member2.getMember_id(), member2.getMember_name());
-            // 생성된 JWT 토큰을 응답 본문에 담아 반환
-            return ResponseEntity.ok(new JwtResponse(jwt));
+            String jwt = jwtUtils.createAccessToken(authenticatedMember.getMember_id(), authenticatedMember.getMember_name());
+
+
+            // 토큰을 응답 본문과 함께 전송
+            Map<String, String> response = new HashMap<>();
+            response.put("token", jwt);
+            response.put("memberId", authenticatedMember.getMember_id());//추가로 적은것
+            System.out.println("Authenticated Member ID: " + authenticatedMember.getMember_id());
+            return ResponseEntity.ok(response);
         }
         catch (LoginException e){
             System.out.println(e);

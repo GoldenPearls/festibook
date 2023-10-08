@@ -3,8 +3,6 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
-
-
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(() => {
         console.log('초기 토큰:', localStorage.getItem('jwt'));
@@ -18,12 +16,12 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         console.log('토큰 변경됨:', token);
         if (token) {
-
             localStorage.setItem('jwt', token);
 
             setIsLoggedIn(true);
         } else {
             localStorage.removeItem('jwt');
+            localStorage.removeItem('memberId'); //추가된 부분
             setIsLoggedIn(false);
         }
     }, [token]);
