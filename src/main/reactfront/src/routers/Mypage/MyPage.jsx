@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 function MyPage() {
-    const [profileImage, setProfileImage] = useState(myprofile_image); // 초기 이미지 설정
+    const [profileImage, setProfileImage] = useState({myprofile_image}); // 초기 이미지 설정
     const [ageGroup, setAgeGroup] = useState(""); //연령별 그룹 관리
     const [category, setCategory] = useState(""); //카테고리 관리
     const [name, setName] = useState("");
@@ -126,14 +126,14 @@ function MyPage() {
 
     }, []);
 
-/*    const parseJwt = (token) => {
+    const parseJwt = (token) => {
         if (!token) { return; }
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace('-', '+').replace('_', '/');
         return JSON.parse(window.atob(base64));
-    }*/
+    }
 
-    const parseJwt = (token) => {
+/*    const parseJwt = (token) => {
         if (!token) { return; }
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace('-', '+').replace('_', '/');
@@ -143,7 +143,7 @@ function MyPage() {
             console.error("잘못된 JWT 제공:", error);
             return 0;
         }
-    }
+    }*/
 
 
 

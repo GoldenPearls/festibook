@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./Login.css";
 import logoImage from '../../img/login/Loginlogo.png';
-import with1 from '../../img/login/with1.png';
-import with2 from '../../img/login/with2.png';
-import googleLogin from '../../img/login/googleLogin.png';
-import kakaoLogin from '../../img/login/kakaoLogin.png';
 // toast 사용 라이브러리
 import { ToastContainer, toast } from "react-toastify";
 // react-toastify 제공하는 css
@@ -36,10 +32,10 @@ export default function Login() {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const { setToken, auth } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.*/
 
-    const { setToken, setIsLoggedIn } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
 
-    /*const [isLoggedIn, setIsLoggedIn] = useState(false);*/ //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
+    const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
 
     // localStorge에 토큰이 있는 경우 로그인 상태로 간주, 최상위 레벨에서 호출되어야 한다.
     useEffect(() => {
@@ -49,7 +45,9 @@ export default function Login() {
 
     // 로그아웃 함수도 최상위 레벨에 위치
     const logout = () => {
-        localStorage.removeItem('jwt');
+        localStorage.removeItem("memberId");
+        localStorage.removeItem("jwt");
+
         console.log('토큰 삭제 완료:', localStorage.getItem('jwt'));
         setIsLoggedIn(false);
         toast.success('로그아웃에 성공했습니다.');
@@ -94,17 +92,21 @@ export default function Login() {
                 console.log(JSON.stringify(response.data));
                 if( response.data?.token != undefined) {
                     toast.success('로그인에 성공했습니다.');
-                    /*localStorage.setItem("jwt",  response.data?.token);*/
-                    setToken(response.data?.token); // 상태에 토큰 저장
+                    auth.setToken(response.data?.token);
+                    /*setToken(response.data?.token); // 상태에 토큰 저장*/
 
+
+                    if (response.data.memberId) { //  member_id 대신  memberId 사용
+                        localStorage.setItem('memberId', response.data.memberId);
+                        console.log("Member ID:", response.data.memberId);
+                    }
 
                     setIsLoggedIn(true);
 
                     setTimeout(() => {
-                        navigate('/recommend');
+                        let { from } = location.state || { from: { pathname: "/recommand" } };
+                        navigate(from);
                     }, 2000);
-
-
 
 
                 } else {
@@ -179,7 +181,7 @@ export default function Login() {
                         <div className="find_password"><a href="http://localhost:8080/find_pass"
                                                           rel="noopener noreferrer">비밀번호 찾기</a></div>
                         <div className="join"><a href="http://localhost:8080/member/register"
-                                                    rel="noopener noreferrer">회원가입</a></div>
+                                                 rel="noopener noreferrer">회원가입</a></div>
                     </div>
 
                     <div className="buttonContainer">
@@ -191,7 +193,7 @@ export default function Login() {
                         <button onClick={onClickConfirmButton} className="bottomButton">Login</button>
                     </div>
 
-                   {/* <div className="soical_login">
+                    {/* <div className="soical_login">
                         <div className="social_img_text">
                             <div className="img_with1"> <img src={with1} alt="img description"/></div>
                             <div className="social_with_text">Or With </div>
