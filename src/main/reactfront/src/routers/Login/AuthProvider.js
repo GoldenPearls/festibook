@@ -4,13 +4,20 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState(() => {
-        console.log('초기 토큰:', localStorage.getItem('jwt'));
-        //로컬에 저장
-        return localStorage.getItem('jwt');
-    });
+    // const [token, setToken] = useState(() => {
+    //     console.log('초기 토큰:', localStorage.getItem('jwt'));
+    //     //로컬에 저장
+    //     return localStorage.getItem('jwt');
+    // });
+    const [token, setToken] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(!!token); // 로그인 상태를 관리합니다.
     const [userId, setUserId] = useState(null);
+
+    useEffect(() => {
+        let jwt = localStorage.getItem('jwt');
+        if(jwt !== undefined)
+            setToken(jwt);
+    },[])
 
 
     useEffect(() => {

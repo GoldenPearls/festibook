@@ -33,7 +33,9 @@ export default function Login() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { setToken, auth } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
+    // const { setToken, auth } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
+    // const { setToken } = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
+    const auth = useAuth(); // AuthContext에서 필요한 값과 함수를 가져옵니다.
 
     const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인과 로그아웃 상태 관리를 위한 상태 변수*/
 
@@ -94,13 +96,15 @@ export default function Login() {
                 if( response.data?.token != undefined) {
                     toast.success('로그인에 성공했습니다.');
                     auth.setToken(response.data?.token);
+                    // setToken(response.data?.token);
                     /*setToken(response.data?.token); // 상태에 토큰 저장*/
 
 
 
-                    if (response.data.memberId) { //  member_id 대신  memberId 사용
-                        localStorage.setItem('memberId', response.data.memberId);
-                        console.log("Member ID:", response.data.memberId);
+                    if (response.data?.memberId) { //  member_id 대신  memberId 사용
+                        localStorage.setItem('memberId', response.data?.memberId);
+                        console.log("Member ID:", response.data?.memberId);
+                        auth.setUserId(response.data?.memberId);
                     }
 
                     setIsLoggedIn(true);

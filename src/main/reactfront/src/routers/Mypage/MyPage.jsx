@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 function MyPage() {
-    const [profileImage, setProfileImage] = useState({myprofile_image}); // 초기 이미지 설정
+    const [profileImage, setProfileImage] = useState(myprofile_image); // 초기 이미지 설정
     const [ageGroup, setAgeGroup] = useState(""); //연령별 그룹 관리
     const [category, setCategory] = useState(""); //카테고리 관리
     const [name, setName] = useState("");
@@ -23,7 +23,9 @@ function MyPage() {
     const [isNameTooLong, setIsNameTooLong] = useState(false);
     const [isNicknameTooLong, setIsNicknameTooLong] = useState(false);
     const [isIntroduceTooLong, setIsIntroduceTooLong] = useState(false);
-
+    // useAuth 훅을 통해 토큰 정보를 가져온다.
+    // const { token } = useAuth();
+    const auth = useAuth();
 
     // 이벤트 길이 확인
     const handleNameChange = (e) => {
@@ -48,9 +50,11 @@ function MyPage() {
     const handleButtonClick = () => {
         if (isEditing) { // 편집모드에서 '저장' 버튼을 클릭했을 때
 
-            let jwt = localStorage.getItem("jwt");
-            let data1 = parseJwt(jwt);
-            let memberId = data1.sub;
+            // let jwt = localStorage.getItem("jwt");
+            // let data1 = parseJwt(jwt);
+            // let memberId = data1.sub;
+            let memberId = auth.userId;
+            if( !memberId ) return;
 
             let data = JSON.stringify({
                 "member_id": memberId,
@@ -87,16 +91,18 @@ function MyPage() {
         setIsEditing(prev => !prev); // 현재 상태를 반전시킴
     }
 
-    // useAuth 훅을 통해 토큰 정보를 가져온다.
-    const { token } = useAuth();
 
 
     useEffect(() => {
-        let jwt = localStorage.getItem("jwt");
-        let data = parseJwt(jwt);
-        let memberId = data.sub;
         // console.log("----------------------------------------")
-        // console.log(data);
+        // let jwt = localStorage.getItem("jwt");
+        // if( jwt == undefined) return;
+        // let data = parseJwt(jwt);
+        // let memberId = data.sub;
+        let memberId = auth.userId;
+        if( !memberId ) return;
+        console.log("----------------------------------------")
+        console.log(memberId);
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
@@ -105,7 +111,7 @@ function MyPage() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("jwt")}`
             },
-            data : data
+            data : memberId
         };
 
         axios.request(config)
@@ -126,30 +132,34 @@ function MyPage() {
 
     }, []);
 
-    const parseJwt = (token) => {
+/*    const parseJwt = (token) => {
+        console.log('==========================================');
+        console.log(token);
         if (!token) { return; }
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace('-', '+').replace('_', '/');
         return JSON.parse(window.atob(base64));
-    }
-
-/*    const parseJwt = (token) => {
-        if (!token) { return; }
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace('-', '+').replace('_', '/');
-        try {
-            return JSON.parse(window.atob(base64));
-        } catch (error) {
-            console.error("잘못된 JWT 제공:", error);
-            return 0;
-        }
+        // return '';
     }*/
+
+    /*    const parseJwt = (token) => {
+            if (!token) { return; }
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace('-', '+').replace('_', '/');
+            try {
+                return JSON.parse(window.atob(base64));
+            } catch (error) {
+                console.error("잘못된 JWT 제공:", error);
+                return 0;
+            }
+        }*/
 
 
 
 
     const handleImageChange = (e) => {
-       const file = e.target.files[0];
+        console.log('==========================================222');
+        const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -158,9 +168,11 @@ function MyPage() {
             reader.readAsDataURL(file); // 파일을 읽어 data URL로 변환합니다.
         }
 
-        let jwt = localStorage.getItem("jwt");
-        let data1 = parseJwt(jwt);
-        let memberId = data1.sub;
+        // let jwt = localStorage.getItem("jwt");
+        // let data1 = parseJwt(jwt);
+        // let memberId = data1.sub;
+        let memberId = auth.userId;
+        if( !memberId ) return;
 
         // 서버에 파일 업로드
         let data = new FormData();
@@ -240,7 +252,7 @@ function MyPage() {
                             onChange={handleNameChange}
                         />
 
-                        </div>
+                    </div>
 
                     <div>
                         {isNameTooLong && <span className="error-message" >이름이 너무 깁니다. 10글자 밑으로 지정해주세요.</span>}
@@ -263,7 +275,7 @@ function MyPage() {
                         />
                     </div>
                     <div>
-                     {isNicknameTooLong&& <span className="error-message">닉네임이 너무 깁니다. 10글자 밑으로 지정해주세요 </span>}
+                        {isNicknameTooLong&& <span className="error-message">닉네임이 너무 깁니다. 10글자 밑으로 지정해주세요 </span>}
 
                     </div>
 
@@ -284,7 +296,7 @@ function MyPage() {
                         />
                     </div>
                     <div>
-                    {isIntroduceTooLong && <span className="error-message" >자기소개글이 너무 깁니다. 35자 밑으로 설정해주세요.</span>}
+                        {isIntroduceTooLong && <span className="error-message" >자기소개글이 너무 깁니다. 35자 밑으로 설정해주세요.</span>}
                     </div>
 
                     <div className="input_text">
