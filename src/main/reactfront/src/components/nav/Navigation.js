@@ -62,6 +62,8 @@ function Navigation() {
                 <Link to="/recommend" className={`recommend-link ${isActive("/recommend") ? "active" : ""}`}>추천할 수 박에</Link> <br></br>
                 <Link to="/festival" className={`festival-link ${isActive("/festival") ? "active" : ""}`}>축제/행사 소개</Link> <br></br>
                 <Link to="/community" className={`community-link ${isActive("/community") ? "active" : ""}`}>너와 나의 연결고리</Link> <br></br>
+
+
              {/*   <Link to="/login" className="login-btn">Login</Link>*/}
                     {token ? (
                             <div className="mypage_setting">

@@ -132,29 +132,6 @@ function MyPage() {
 
     }, []);
 
-/*    const parseJwt = (token) => {
-        console.log('==========================================');
-        console.log(token);
-        if (!token) { return; }
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64));
-        // return '';
-    }*/
-
-    /*    const parseJwt = (token) => {
-            if (!token) { return; }
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace('-', '+').replace('_', '/');
-            try {
-                return JSON.parse(window.atob(base64));
-            } catch (error) {
-                console.error("잘못된 JWT 제공:", error);
-                return 0;
-            }
-        }*/
-
-
 
 
     const handleImageChange = (e) => {
@@ -167,10 +144,6 @@ function MyPage() {
             }
             reader.readAsDataURL(file); // 파일을 읽어 data URL로 변환합니다.
         }
-
-        // let jwt = localStorage.getItem("jwt");
-        // let data1 = parseJwt(jwt);
-        // let memberId = data1.sub;
         let memberId = auth.userId;
         if( !memberId ) return;
 
