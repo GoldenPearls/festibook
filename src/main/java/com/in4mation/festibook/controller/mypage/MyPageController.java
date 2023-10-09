@@ -19,7 +19,7 @@ public class MyPageController {
     private MyPageServicelmpl myPageServicelmpl;
 
     // 이미지 사이즈 제한을 위함
-    private static final long MAX_IMAGE_SIZE = 500 * 1024; // 500KB
+    private static final long MAX_IMAGE_SIZE = 1024 * 1024; // 500KB
 
 
     //회원 상세 페이지
@@ -46,8 +46,6 @@ public class MyPageController {
                 throw new IllegalArgumentException("사이즈가 너무 큽니다.");
             }
 
-//            byte[] imageData = profileImage.getBytes();
-//            myPageServicelmpl.updateProfileImage(memberId, imageData);
             String filename = myPageServicelmpl.updateProfileImage(member_id, profileImage);
             if(filename != null)
                 return ResponseEntity.ok(new CommonResponseDTO("success", filename));
@@ -66,6 +64,13 @@ public class MyPageController {
         System.out.println("memberInfo:" + memberInfo);
         myPageServicelmpl.updateMemberInfo(memberInfo);
         return "redirect:/mypage/detail?memberId=" + memberInfo.getMember_id();
+    }
+
+    //네비게이션 바 이미지 띄우기
+    @GetMapping("/{memberId}/image")
+    public ResponseEntity<String> getProfileImage(@PathVariable  String memberId) {
+        String imageUrl = myPageServicelmpl.getProfileImageByMemberId(memberId);
+        return ResponseEntity.ok(imageUrl);
     }
 
 }

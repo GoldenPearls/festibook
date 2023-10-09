@@ -18,6 +18,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useMediaQuery } from 'react-responsive'
+import myprofile_image from "../../img/mypage/userprofile.png";
+import axios from "axios";
 
 const Mobile = ({ children }) => {
     const isMobile = useMediaQuery({ maxWidth: 768 })
@@ -29,12 +31,17 @@ const Default = ({ children }) => {
 }
 
 function Navigation() {
+    const [profileImage, setProfileImage] = useState(myprofile_image); // 초기 이미지 설정
     const location = useLocation();
     const navigate = useNavigate();
-    const { token, setToken, setIsLoggedIn, nickname } = useAuth();
+    /*const { token, setToken } = useAuth();*/
+    const auth = useAuth();
 
-    console.log('Navigation에서의 토큰:', token);
+
+    console.log('Navigation에서의 토큰:', auth.token);
     const isActive = path => location.pathname === path;
+
+
 
     // 탭 관리를 위한 상태 변수
     const [isTabOpen, setIsTabOpen] = useState(false);
@@ -44,11 +51,37 @@ function Navigation() {
 
     useEffect(() => {
         // token 값이 변하면 이 useEffect는 재실행됩니다.
-        console.log('Navigation 컴포넌트에서 토큰 변화 감지:', token);
-    }, [token]);
+        console.log('Navigation 컴포넌트에서 토큰 변화 감지:', auth.token);
+
+        let memberId = auth.userId;
+        if( !memberId ) return;
+        console.log("----------------------------------------")
+        console.log(memberId);
+
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: 'http://localhost:8080/mypage/${memberId}/image',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+            },
+            data : memberId
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(response.data);
+                setProfileImage("/"+response.data.member_profile_image);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    }, []);
 
     const handleLogout = () => {
-        setToken(null); // 로그아웃 시 토큰 제거
+        auth.setToken(null); // 로그아웃 시 토큰 제거
         navigate('/login');
         toast.success('로그아웃에 성공했습니다.');
     }
@@ -57,18 +90,18 @@ function Navigation() {
         <div className="nav">
             <Default>
                 <>
-                <Link to="/" className="home-link">
-                    <img src={logoImage} alt="Home Logo" className="home-logo"/></Link> <br></br>
-                <Link to="/recommend" className={`recommend-link ${isActive("/recommend") ? "active" : ""}`}>추천할 수 박에</Link> <br></br>
-                <Link to="/festival" className={`festival-link ${isActive("/festival") ? "active" : ""}`}>축제/행사 소개</Link> <br></br>
-                <Link to="/community" className={`community-link ${isActive("/community") ? "active" : ""}`}>너와 나의 연결고리</Link> <br></br>
+                    <Link to="/" className="home-link">
+                        <img src={logoImage} alt="Home Logo" className="home-logo"/></Link> <br></br>
+                    <Link to="/recommend" className={`recommend-link ${isActive("/recommend") ? "active" : ""}`}>추천할 수 박에</Link> <br></br>
+                    <Link to="/festival" className={`festival-link ${isActive("/festival") ? "active" : ""}`}>축제/행사 소개</Link> <br></br>
+                    <Link to="/community" className={`community-link ${isActive("/community") ? "active" : ""}`}>너와 나의 연결고리</Link> <br></br>
 
 
-             {/*   <Link to="/login" className="login-btn">Login</Link>*/}
-                    {token ? (
-                            <div className="mypage_setting">
+                    {/*   <Link to="/login" className="login-btn">Login</Link>*/}
+                    {auth.token ? (
+                        <div className="mypage_setting">
                             <div className="mypage-btn" onClick={handleTabToggle}>
-                                <img src={myprofile} alt="My Profile" className="mypage" />
+                                <img src={profileImage} alt="My Profile" className="mypage" />
                             </div>
                             {isTabOpen && (
                                 <div className="bottom-tab">
@@ -78,8 +111,8 @@ function Navigation() {
                                         setIsTabOpen(false);
                                     }}>로그아웃</div>
                                 </div>
-                                )}
-                            </div>
+                            )}
+                        </div>
                     ) : (
                         <Link to="/login" className="login-btn">
                             Login</Link>
@@ -95,21 +128,21 @@ function Navigation() {
                     <Link to="/recommend" className="recommend-mobile"> <img src={isActive("/recommend")? recommend_click : recommend} alt="recommend Logo" className="recommend"/><br/>추천 할 수 박에</Link> <br></br>
                     <Link to="/festival" className="festival-mobile"><img src={isActive("/festival")? fireworks_click : fireworks} alt="fireworks Logo" className="fireworks"/><br/>축제/행사 소개</Link> <br></br>
                     <Link to="/community" className="community-mobile"> <img src={isActive("/community")? communication_click : communication} alt="communication Logo" className="communication"/><br/>너와 나의 연결고리</Link> <br></br>
-                    {token ? (
+                    {auth.token ? (
                         <>
                             <div className="mypage_setting">
-                            <div className="mypage-btn" onClick={handleTabToggle}>
-                                <br/><br/><img src={myprofile} alt="My Profile" className="mypage" /> <br/><p className="mypage_text">마이페이지</p><br></br>
-                            </div>
-                            {isTabOpen && (
-                                <div className="bottom-tab">
-                                    <Link to="/mypage" className="mypage-btn" onClick={() => setIsTabOpen(false)}>마이페이지</Link>
-                                    <div className="logout_text" onClick={() => {
-                                        handleLogout();
-                                        setIsTabOpen(false);
-                                    }}>로그아웃</div>
+                                <div className="mypage-btn" onClick={handleTabToggle}>
+                                    <br/><br/><img src={myprofile} alt="My Profile" className="mypage" /> <br/><p className="mypage_text">마이페이지</p><br></br>
                                 </div>
-                            )}
+                                {isTabOpen && (
+                                    <div className="bottom-tab">
+                                        <Link to="/mypage" className="mypage-btn" onClick={() => setIsTabOpen(false)}>마이페이지</Link>
+                                        <div className="logout_text" onClick={() => {
+                                            handleLogout();
+                                            setIsTabOpen(false);
+                                        }}>로그아웃</div>
+                                    </div>
+                                )}
                             </div>
                         </>
                     ) : (

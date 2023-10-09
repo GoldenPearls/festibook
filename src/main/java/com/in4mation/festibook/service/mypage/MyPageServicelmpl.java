@@ -67,4 +67,10 @@ public class MyPageServicelmpl implements MyPageService{
         mypageMapper.updateMemberInfoDetail(memberInfo);
         return 1;
     }
+
+    // 네비게이션에 이미지 띄우기
+    @Override
+    public String getProfileImageByMemberId(String memberId) {
+        return mypageMapper.selectProfileImageByMemberId(memberId);
+    }
 }

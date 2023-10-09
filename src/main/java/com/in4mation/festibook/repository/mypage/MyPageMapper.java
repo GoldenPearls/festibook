@@ -19,5 +19,7 @@ public interface MyPageMapper {
     int updateMemberInfo(MyPageDTO memberInfo);
     int updateMemberInfoDetail(MyPageDTO memberInfo);
 
+    // 네비게이션에 이미지 띄우기
+    String selectProfileImageByMemberId(String memberId);
 
 }

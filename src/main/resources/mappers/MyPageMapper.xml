@@ -7,7 +7,7 @@
 
     <!-- 회원 상세 정보 조회 -->
     <select id="selectMemberDetailsById" resultType="com.in4mation.festibook.dto.Mypage.MyPageDTO">
-        SELECT m.member_id, m.member_name, m.member_nickname, m.member_profile_image, m.member_introduce, d.ageGroup, d.category_name, m.member_profile_image
+        SELECT m.member_id, m.member_name, m.member_nickname, m.member_profile_image, m.member_introduce, d.ageGroup, d.category_name
         FROM Member_table m
                  JOIN MemberDetail_tbl d ON m.member_id = d.member_id
         WHERE m.member_id = #{member_id}
@@ -19,6 +19,7 @@
 <!--        SET member_profile_image = #{profileImage}-->
 <!--        WHERE member_id = #{member_id}-->
 <!--    </update>-->
+    
     <update id="updateProfileImage" parameterType="com.in4mation.festibook.dto.Mypage.MyPageDTO">
         UPDATE member_table
         SET member_profile_image = #{member_profile_image}
@@ -37,6 +38,15 @@
     SET ageGroup = #{ageGroup}, category_name = #{category_name}
     WHERE member_id = #{member_id}
     </update>
+    
+    <!-- 네비게이션 이미지 띄우기 -->
+    <select id="selectProfileImageByMemberId" resultType="string">
+        SELECT member_profile_image
+        FROM Member_table
+        WHERE member_id = #{memberId}
+    </select>
+
+
 
 </mapper>
 
