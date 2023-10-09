@@ -31,5 +31,12 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/css/**", "/images/**", "/js/**");
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/uploadimg/**")
+                .addResourceLocations("file:/C:/rcp/teamproject_test_1/src/main/resources/static/uploadimg/"); // 배포시 경로 일치해야함
+    }
+
 
 }

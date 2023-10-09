@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.board1.BoardMapper">
+
+    <select id="selectBoardList" parameterType="com.in4mation.festibook.board1.PageRequestDTO" resultType="com.in4mation.festibook.board1.BoardDto">
+        <![CDATA[
+		SELECT board_idx, classification, title, hit_cnt, creator_id, created_datetime
+		FROM t_board
+		WHERE classification = '공지사항' AND deleted_yn = 'N'
+
+		UNION
+
+		SELECT board_idx, classification, title, hit_cnt, creator_id, created_datetime
+		FROM t_board
+		WHERE classification <> '공지사항' AND deleted_yn = 'N'
+		ORDER BY CASE WHEN classification = '공지사항' THEN 0 ELSE 1 END ASC,
+				 board_idx DESC
+			LIMIT #{size} OFFSET #{skip}
+		]]>
+    </select>
+
+    <select id="countTotal" resultType="int">
+        SELECT COUNT(*) FROM t_board WHERE deleted_yn = 'N'
+    </select>
+
+    <select id="selectBoardDetail" parameterType="int" resultType="com.in4mation.festibook.board1.BoardDto">
+        SELECT *
+        FROM t_board
+        WHERE board_idx = #{id} AND deleted_yn = 'N'
+    </select>
+
+    <update id="updateHitCount" parameterType="int">
+        UPDATE t_board SET hit_cnt = hit_cnt + 1 WHERE board_idx = #{id}
+    </update>
+
+    <insert id ="insertBoard">
+        INSERT INTO t_board (title, contents,  classification ,creator_id)
+        VALUES (#{title}, #{contents},  #{classification}, #{creator_id})
+    </insert>
+
+    <select id="searchBoards" parameterType="map" resultType="com.in4mation.festibook.board1.BoardDto">
+        SELECT board_idx, classification, title, hit_cnt, creator_id,
+        created_datetime
+        FROM t_board
+        WHERE deleted_yn = 'N'
+        <choose>
+            <when test="condition == 'id'">
+                AND creator_id = #{keyword}
+            </when>
+            <when test="condition == 'title'">
+                AND title LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+            <otherwise>
+                AND (title LIKE CONCAT('%', #{keyword}, '%') OR creator_id = #{keyword})
+            </otherwise>
+        </choose>
+        ORDER BY CASE WHEN classification = '공지사항' THEN 0 ELSE 1 END ASC,
+        board_idx DESC
+    </select>
+
+
+
+    <select id="selectCommunityBoardList" parameterType="com.in4mation.festibook.board1.PageRequestDTO" resultType="com.in4mation.festibook.board1.BoardDto">
+
+        SELECT board_idx, classification, title, hit_cnt, creator_id, created_datetime
+        FROM t_board
+        WHERE classification = '커뮤니티' AND deleted_yn = 'N'
+        ORDER BY board_idx DESC
+        LIMIT #{size} OFFSET #{skip}
+    </select>
+
+    <select id="countCommunityTotal" resultType="int">
+        SELECT COUNT(*) FROM t_board WHERE classification = '커뮤니티' AND deleted_yn = 'N'
+    </select>
+
+    <select id="selectAnnouncementBoardList" parameterType="com.in4mation.festibook.board1.PageRequestDTO" resultType="com.in4mation.festibook.board1.BoardDto">
+
+        SELECT board_idx, classification, title, hit_cnt, creator_id, created_datetime
+        FROM t_board
+        WHERE classification = '공지사항' AND deleted_yn = 'N'
+        ORDER BY board_idx DESC
+        LIMIT #{size} OFFSET #{skip}
+    </select>
+
+    <select id="countAnnouncementTotal" resultType="int">
+        SELECT COUNT(*) FROM t_board WHERE classification = '공지사항' AND deleted_yn = 'N'
+    </select>
+
+    <select id="selectQuestionAnswersBoardList" parameterType="com.in4mation.festibook.board1.PageRequestDTO" resultType="com.in4mation.festibook.board1.BoardDto">
+
+        SELECT board_idx, classification, title, hit_cnt, creator_id, created_datetime
+        FROM t_board
+        WHERE classification = 'Q&amp;A' AND deleted_yn = 'N'
+        ORDER BY board_idx DESC
+        LIMIT #{size} OFFSET #{skip}
+    </select>
+
+    <select id="countQuestionAnswersTotal" resultType="int">
+        SELECT COUNT(*) FROM t_board WHERE classification = 'Q&amp;A' AND deleted_yn = 'N'
+    </select>
+
+    <select id="selectLostItemBoardList" parameterType="com.in4mation.festibook.board1.PageRequestDTO" resultType="com.in4mation.festibook.board1.BoardDto">
+
+        SELECT board_idx, classification, title, hit_cnt, creator_id, created_datetime
+        FROM t_board
+        WHERE classification = '분실물 찾기' AND deleted_yn = 'N'
+        ORDER BY board_idx DESC
+        LIMIT #{size} OFFSET #{skip}
+    </select>
+
+    <select id="countLostItemTotal" resultType="int">
+        SELECT COUNT(*) FROM t_board WHERE classification = '분실물 찾기' AND deleted_yn = 'N'
+    </select>
+
+    <delete id="deleteBoard" parameterType="int">
+        UPDATE t_board SET deleted_yn = 'Y' WHERE board_idx = #{id}
+    </delete>
+
+    <update id="updateBoard" parameterType="com.in4mation.festibook.board1.BoardDto">
+        UPDATE t_board
+        SET title = #{title}, contents = #{contents}, classification = #{classification}, updated_datetime = NOW()
+        WHERE board_idx = #{board_idx}
+    </update>
+
+
+
+</mapper>
