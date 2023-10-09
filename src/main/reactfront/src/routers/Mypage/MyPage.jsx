@@ -94,12 +94,15 @@ function MyPage() {
 
 
     useEffect(() => {
-        // console.log("----------------------------------------")
+        console.log("--------- My Page -------------------------------")
         // let jwt = localStorage.getItem("jwt");
         // if( jwt == undefined) return;
         // let data = parseJwt(jwt);
         // let memberId = data.sub;
-        let memberId = auth.userId;
+        // let memberId = auth.userId;
+        // console.log('auth.userId', memberId);
+        let memberId = localStorage.getItem("memberId");
+        console.log('memberId', memberId);
         if( !memberId ) return;
         console.log("----------------------------------------")
         console.log(memberId);
@@ -122,7 +125,8 @@ function MyPage() {
                 setIntroduce(response.data.member_introduce);
                 setAgeGroup(response.data.ageGroup);
                 setCategory(response.data.category_name);
-                setProfileImage("/"+response.data.member_profile_image);
+                // setProfileImage("/uploadimg/"+response.data.member_profile_image);
+                setProfileImage("http://localhost:8080/uploadimg/"+response.data.member_profile_image); // 배포시 스프링주소로 바꿔야함
             })
             .catch((error) => {
                 console.log(error);
@@ -168,7 +172,8 @@ function MyPage() {
                 console.log(JSON.stringify(response.data));
                 if(response.data.success == 'success') {
                     let filename = response.data.data;
-                    let imageUrl = '/' + filename;
+                    // let imageUrl = '/uploadimg/' + filename;
+                    let imageUrl = 'http://localhost:8080/uploadimg/' + filename; // 배포시 스프링주소로 바꿔야함
                     setProfileImage(imageUrl);
                 }
             })

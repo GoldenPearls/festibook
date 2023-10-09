@@ -53,34 +53,55 @@ function Navigation() {
         // token 값이 변하면 이 useEffect는 재실행됩니다.
         console.log('Navigation 컴포넌트에서 토큰 변화 감지:', auth.token);
 
-        let memberId = auth.userId;
+        // let memberId = auth.userId;
+        let memberId = localStorage.getItem("memberId");
+        console.log('1.============================');
         if( !memberId ) return;
-        console.log("----------------------------------------")
-        console.log(memberId);
+        // console.log("----------------------------------------")
+        // console.log(memberId);
 
+        // let config = {
+        //     method: 'get',
+        //     maxBodyLength: Infinity,
+        //     url: 'http://localhost:8080/mypage/${memberId}/image',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+        //     }
+        // };
+        //
+        // console.log('2.============================' + memberId);
+        // axios.request(config)
+        //     .then((response) => {
+        //         console.log('3.profile image============================', response.data);
+        //         setProfileImage("/"+response.data.member_profile_image);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: 'http://localhost:8080/mypage/${memberId}/image',
+            url: `http://localhost:8080/mypage/${memberId}/image`,
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("jwt")}`
-            },
-            data : memberId
+            }
         };
 
         axios.request(config)
             .then((response) => {
                 console.log(response.data);
-                setProfileImage("/"+response.data.member_profile_image);
+                setProfileImage("http://localhost:8080/uploadimg/"+response.data); // 배포시서버주소 변경 필요
             })
             .catch((error) => {
                 console.log(error);
             });
 
-    }, []);
+
+    });
 
     const handleLogout = () => {
+        console.log("----------------------------------------------- logout !!!!!!!!!!")
         auth.setToken(null); // 로그아웃 시 토큰 제거
         navigate('/login');
         toast.success('로그아웃에 성공했습니다.');

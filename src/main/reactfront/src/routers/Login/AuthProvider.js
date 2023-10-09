@@ -14,9 +14,13 @@ export const AuthProvider = ({ children }) => {
     const [userId, setUserId] = useState(null);
 
     useEffect(() => {
+        console.log("AuthProvider 실행됨!!")
         let jwt = localStorage.getItem('jwt');
         if(jwt !== undefined)
             setToken(jwt);
+        let memberId = localStorage.getItem('memberId');
+        if(memberId !== undefined)
+            setUserId(memberId);
     },[])
 
 
@@ -24,11 +28,11 @@ export const AuthProvider = ({ children }) => {
         console.log('토큰 변경됨:', token);
         if (token) {
             localStorage.setItem('jwt', token);
-
+            // localStorage.setItem('memberId', userId); //추가된 부분
             setIsLoggedIn(true);
         } else {
             localStorage.removeItem('jwt');
-            localStorage.removeItem('memberId'); //추가된 부분
+            // localStorage.removeItem('memberId'); //추가된 부분
             setIsLoggedIn(false);
         }
     }, [token]);

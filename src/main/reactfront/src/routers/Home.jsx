@@ -34,9 +34,7 @@ function Home() {
             setScrollY(window.scrollY);
         };
         window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+
 
         let config = {
             method: 'get',
@@ -47,7 +45,8 @@ function Home() {
 
         axios.request(config)
             .then((response) => {
-                console.log(JSON.stringify(response.data));
+                console.log('festivals======>',JSON.stringify(response.data));
+
                 setFestivals(response.data);
             })
             .catch((error) => {
@@ -55,7 +54,9 @@ function Home() {
             });
 
 
-
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
 
