@@ -21,9 +21,11 @@ import footer_logo from '../img/login/Loginlogo.png'
 import github from '../img/main/github.png'
 import notion from '../img/main/Notion.png'
 import 'aos/dist/aos.css';
+import axios from "axios";
 
 function Home() {
     const [scrollY, setScrollY] = useState(0);
+    const [festivals, setFestivals] = useState([]);
 
     const isMobile = window.innerWidth < 768;
 
@@ -35,6 +37,25 @@ function Home() {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
+
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: 'http://localhost:8080/festivals/top5',
+            headers: {'Content-Type': 'application/json' }
+        };
+
+        axios.request(config)
+            .then((response) => {
+                console.log(JSON.stringify(response.data));
+                setFestivals(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+
+
     }, []);
 
 
@@ -165,7 +186,15 @@ function Home() {
             </div>
 
             <div id="contentContainer" className="contentContainer">
-
+                <div>
+                    {festivals.map((festival, index) => (
+                        <div key={festival.festival_no}>
+                            <h2>Top {index + 1}: {festival.festival_name}</h2>
+                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} />
+                            <p> {festival.festival_category}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
 
                     <div className="footer">

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.main.FestivalImageMapper">
+
+
+    <select id="getTop5FestivalsByViews" resultType="com.in4mation.festibook.dto.main.FestivalDTO">
+        SELECT festival_no, festival_name, festival_category, festival_image FROM Festival_table ORDER BY festival_view DESC LIMIT 5
+    </select>
+
+
+</mapper>
