@@ -23,12 +23,35 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+// 카테고리 이미지
+import cultural from "../img/main/문화예술.png"
+import harmony from "../img/main/주민화합.png"
+import traditional from "../img/main/전통역사.png"
+import regional  from "../img/main/지역특산물.png"
+import natural  from "../img/main/생태자연.png"
+
+
+function renderIconAndStyle(category) {
+    switch(category) {
+        case '문화예술':
+            return { icon: cultural, className: 'cultural-class' };
+        case '주민화합':
+            return { icon: harmony, className: 'harmony-class' };
+        case '전통역사':
+            return { icon: traditional, className: 'traditional-class' };
+        case '지역특산물':
+            return { icon: regional, className: 'regional-class' };
+        case '생태자연':
+            return { icon: natural, className: 'natural-class' };
+        default:
+            return { icon: null, className: '' };
+    }
+}
 
 function Home() {
     const [scrollY, setScrollY] = useState(0);
     const [festivals, setFestivals] = useState([]);
 
-    /*const isMobile = window.innerWidth < 768;*/
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     useEffect(() => {
@@ -248,7 +271,7 @@ function Home() {
                                     <span className="title">📍 라인업 <br />  </span>
                                     10월 11일(수) : 하하&스컬 <br />
                                     10월 12일(목) : 청하, 케이시 <br /><br />
-                                    <span className="title">📍 관련 인스타 그램  </span>
+                                    <span className="title">📍 관련 인스타 그램  </span><br/>
                                     <a href="https://instagram.com/honam_neul_37th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a><br /><br />
                                 </p>
                             </div>
@@ -266,28 +289,34 @@ function Home() {
                     <span className="famous_text"> 사람들이 가장 많이 본 인기 축제 TOP 5</span>
                 </div>
 
+                <div id="contentContainer" className="contentContainer">
+                    <Slider {...settings} className="famous_slider">
+                        {festivals.map((festival, index) => {
+                            // 각 festival 항목에 대해 아이콘과 클래스 정보를 가져옵니다.
+                            const { icon, className } = renderIconAndStyle(festival.festival_category);
 
-            <div id="contentContainer" className="contentContainer">
-                <Slider {...settings} className="famous_slider">
-                    {festivals.map((festival, index) => (
-                        <div
-                            key={festival.festival_no}
-                            className="festivalItem">
-                            <div>
-                                <p className="element">
-                            <p className="festival_name">Top {index + 1}  {festival.festival_name}</p><br/>
-                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
-                            <p className="festival_category"> {festival.festival_category}</p> <br />
-                                    <span className="title">📍 상세 내용 <br />  </span>
-                            <p className="festival_contents"> {festival.festival_contents}</p>  <br />
-                            <span className="title">🔗 홈페이지 <br />  </span>
-                            <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </Slider>
-            </div>
+                            return (
+                                <div
+                                    key={festival.festival_no}
+                                    className="festivalItem">
+                                    <div>
+                                        <p className="element">
+                                            <p className="festival_name">Top {index + 1}  {festival.festival_name}</p><br/>
+                                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
+                                            {icon && <img src={icon} alt="category-icon" />}
+                                            <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
+                                            <span className="title">📍 상세 내용 <br /></span>
+                                            <p className="festival_contents"> {festival.festival_contents}</p>  <br />
+                                            <span className="title">🔗 홈페이지 <br /></span>
+                                            <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </Slider>
+                </div>
+
             </div>
                     <div className={`footer ${isMobile ? 'mobile' : ''}`}>
                         <div className="footer-logo">

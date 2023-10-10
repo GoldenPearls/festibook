@@ -247,6 +247,42 @@
     margin-top: 20px; /* 원하는 마진으로 조절 */
 }
 
+/*카테고리 색*/
+.cultural-class {
+    background-color: #BBDFF7;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 3px 6px;
+}
+
+.harmony-class {
+    background-color: #7367f0; /* 주민화합의 백그라운드 색상 */
+    border-radius: 15px;
+    display: inline-block;
+    padding: 3px 6px;
+}
+
+.traditional-class {
+    background-color: chocolate; /* 전통역사의 백그라운드 색상 */
+    border-radius: 15px;
+    display: inline-block;
+    padding: 3px 6px;
+}
+
+.regional-class {
+    background-color: #FEC775;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 3px 6px;
+}
+
+.natural-class {
+    background-color: #EE9E9E; /* 생태자연의 백그라운드 색상 */
+    border-radius: 15px;
+    display: inline-block;
+    padding: 3px 6px;
+}
+
 /*푸터*/
 .footer {
     background-color: #EE9E9E;
