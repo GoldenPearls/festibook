@@ -1,0 +1,23 @@
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.festival.FestivalInfoMapper">
+
+    <!-- 축제 정보 조회하는 쿼리 -->
+    <select id="getFestivalInfoByNo" parameterType="int" resultType="com.in4mation.festibook.dto.festival.FestivalInfoVo">
+            SELECT *,
+                DATE_FORMAT(start_date, '%Y-%m-%d') AS start_date,
+                DATE_FORMAT(end_date, '%Y-%m-%d') AS end_date
+                from festival_table
+        where festival_no = #{festival_no};
+
+    </select>
+
+
+    <select id="getLocation" parameterType="int" resultType="com.in4mation.festibook.dto.festival.LocationVo">
+            SELECT x, y
+            FROM festival_table
+            WHERE festival_no = #{festival_no};
+    </select>
+
+</mapper>
