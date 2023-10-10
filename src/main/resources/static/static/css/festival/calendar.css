@@ -1,0 +1,39 @@
+
+
+/*.fc-day-sun a{
+  color: red;
+}
+
+.fc-day-sat a{
+  color: blue;
+}*/
+
+.fc .fc-button-primary{
+    background-color: #EC7373;
+    border-color: white;
+}
+.fc .fc-button-primary.fc-button-active{
+    background-color: #EC7373;
+
+}
+
+.fc-event-title-container{
+    background-color: #FFC3C3;
+}
+
+.fc-daygrid-event{
+    border-color: #fff;
+}
+
+.fc th {
+    background-color: #EC7373;
+    color: #fff;
+}
+
+
+
+/*
+.fc .fc-button-group > .fc-button {
+   background-color: yellow;
+}
+*/

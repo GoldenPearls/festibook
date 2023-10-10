@@ -9,7 +9,9 @@
 
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
 
-    <link rel="stylesheet" type="text/css"  href="/static/static/css/calendar.css">
+
+    <link rel="stylesheet" type="text/css"  href="/static/static/css/festival/calendar.css">
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -41,13 +43,20 @@
                 },
                 displayEventTime: false,
 
-                editable: false
+                editable: false,
 
-            eventClick: function(info) {
-                 if (info.event.url) {
-                window.location.href = info.event.extendedProps.festivalInfo.html;; // 클릭한 이벤트의 URL로 이동
-            }
-        }
+
+
+                eventClick: function(info) {
+                    console.log(info);
+                    //var festivalNo = info.event.extendedProps.festival_no;
+                    var festivalNo = info.event._def.publicId;
+                    var festivalNoInt = Number(festivalNo);
+
+                    window.location.href = '/festivalInfo/' + festivalNoInt;
+                }
+
+
             });
             calendar.render();
         });
