@@ -189,7 +189,11 @@ function Home() {
             <div id="contentContainer" className="contentContainer">
                 <div>
                     {festivals.map((festival, index) => (
-                        <div key={festival.festival_no}>
+                        <div
+                            key={festival.festival_no}
+                            className="festivalItem"
+                            onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}
+                        >
                             <h2>Top {index + 1}: {festival.festival_name}</h2>
                             <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} />
                             <p> {festival.festival_category}</p>

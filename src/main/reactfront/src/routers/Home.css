@@ -223,6 +223,10 @@
     margin-bottom: 10px;
 }
 
+.festivalItem:hover {
+    cursor: pointer;
+}
+
 /*푸터*/
 .footer {
     background-color: #EE9E9E;

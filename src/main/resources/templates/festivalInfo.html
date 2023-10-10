@@ -30,7 +30,7 @@
             <p th:text="${festivalInfoVo.festival_addr}"></p>
             <p th:text="${festivalInfoVo.festival_zipcode}"></p>
             <p th:text="${festivalInfoVo.festival_phone}"></p>
-            <p th:text="${festivalInfoVo.festival_homepage}"></p>
+        <a th:href="${festivalInfoVo.festival_homepage}" target="_blank" th:text="${festivalInfoVo.festival_homepage}"></a>
 
              <img th:src="@{${imagePath}}" alt="Festival Image">
 
