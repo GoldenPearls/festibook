@@ -34,6 +34,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 .section {
     width: 100%;
     height: fit-content;
@@ -57,28 +64,20 @@
     color: #EC7373;
 }
 
-
-
 .mainText {
     display: flex;
     justify-content: center;
-    width: 100%;
-    font-size: 5rem;
+    font-size: 30px;
     color: whitesmoke;
     position: absolute;
-    z-index: 3;
-    text-shadow: 2px 2px 2px black;
+    z-index: 10;
+    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    /*text-shadow: 2px 2px 2px black;*/
 }
 
 .section {
     position: relative;
     overflow: hidden;
-}
-
-
-.mainText {
-    z-index: 5;
-    font-family: 'KyoboHandwriting2021sjy';
 }
 
 
@@ -96,15 +95,6 @@
     position: absolute;
     z-index: 4; /* 달과 구름보다 아래로 배치 */
     /*animation: float 2s ease-in-out infinite;*/
-}
-
-
-
-
-@media (max-width: 1100px) {
-    /*.divideBox {
-        bottom: -1px;
-    }*/
 }
 
 @keyframes extend {
@@ -224,7 +214,7 @@
     margin: 0 auto;
 }
 
-.festivalItem:hover {
+.festival_image:hover {
     cursor: pointer;
 }
 
@@ -250,7 +240,7 @@
     font-size : 18px;
 }
 
-.contentContainer {
+.famous_div {
     width: 100%;
     min-height: 200px; /* 원하는 높이로 조절 */
     background-color: #f9f9f9; /* 원하는 배경색으로 조절 */
@@ -308,22 +298,18 @@
     margin-bottom: 20px;
 }
 
-@media (max-width: 735px) {
-    .mainText {
-        font-size: 2rem;
-    }
-}
-
 /* 반응형 디자인: 화면 너비가 768px 미만일 때 적용 */
 @media (max-width: 768px) {
-  /*  .university_ex {
-        flex-direction: column; !* university_festival div들을 수직으로 배열 *!
-    }*/
+
+    body .mainText {
+        font-size: 40px;
+    }
+
 
     .lamp {
-        width: 60px; /* 원하는 크기로 조절 */
+        width: 60px;
         position: absolute;
-        z-index: 4; /* 달과 구름보다 아래로 배치 */
+        z-index: 4;
     }
 
     .bgWrapper {
@@ -347,8 +333,17 @@
         display: none !important;
     }
 
-    .festivalItem{
-        transform: scale(0.9);      /* 원하는 스케일 값으로 조절. 0.8은 원래 크기의 80% */
+
+
+    .university_text_div{
+        margin-bottom : 0px;
+    }
+
+    .university_ex {
+        min-height: 110vh; /* 뷰포트의 높이를 100%로 설정, 선택적 */
+        gap: 0px;
+        overflow: hidden;
+        margin-top: 0px;
     }
 
     /*인기 있는 축제*/
@@ -363,6 +358,11 @@
 
     .famous_text{
        font-size: 25px;
+    }
+
+    /*footer*/
+    .footer.mobile {
+        display: none;
     }
 
 

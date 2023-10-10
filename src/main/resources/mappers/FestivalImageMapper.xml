@@ -7,7 +7,7 @@
 
 
     <select id="getTop5FestivalsByViews" resultType="com.in4mation.festibook.dto.main.FestivalDTO">
-        SELECT festival_no, festival_name, festival_category, festival_image, festival_contents, festival_local, start_date, end_date FROM Festival_table ORDER BY festival_view DESC LIMIT 5
+        SELECT festival_no, festival_name, festival_category, festival_image, festival_contents, festival_homepage FROM Festival_table ORDER BY festival_view DESC LIMIT 5
     </select>
 
 

@@ -105,7 +105,7 @@ function Home() {
                 <h3 className="mainText" style={{
                     top: `${scrollY * 1}px`,
                     marginRight: `${scrollY * 1.5}px`,
-                    marginTop: `${300 + scrollY * 0.3}px`,
+                    marginTop: `${200 + scrollY * 0.3}px`,
                     zIndex: 10
                 }}>기억하고 싶은 축제<br />Festibook과 함께 <br /> (스크롤을 내려주세요!)</h3>
 
@@ -248,8 +248,8 @@ function Home() {
                                     <span className="title">📍 라인업 <br />  </span>
                                     10월 11일(수) : 하하&스컬 <br />
                                     10월 12일(목) : 청하, 케이시 <br /><br />
-                                    <span className="title">📍 관련 인스타 그램 <br /><br />  </span>
-                                    <a href="https://instagram.com/honam_neul_37th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a>
+                                    <span className="title">📍 관련 인스타 그램  </span>
+                                    <a href="https://instagram.com/honam_neul_37th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a><br /><br />
                                 </p>
                             </div>
                         </div>
@@ -260,13 +260,12 @@ function Home() {
             </div>
 
 
-
             <div className="famous_div">
                 <div className="famous_text_div">
                     <img className="famous_img"  src={famous} alt="famous_img"/>
                     <span className="famous_text"> 사람들이 가장 많이 본 인기 축제 TOP 5</span>
                 </div>
-            </div>
+
 
             <div id="contentContainer" className="contentContainer">
                 <Slider {...settings} className="famous_slider">
@@ -274,15 +273,23 @@ function Home() {
                         <div
                             key={festival.festival_no}
                             className="festivalItem">
+                            <div>
+                                <p className="element">
                             <p className="festival_name">Top {index + 1}  {festival.festival_name}</p><br/>
-                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
-                            <p className="festival_category"> {festival.festival_category}</p>
+                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
+                            <p className="festival_category"> {festival.festival_category}</p> <br />
+                                    <span className="title">📍 상세 내용 <br />  </span>
+                            <p className="festival_contents"> {festival.festival_contents}</p>  <br />
+                            <span className="title">🔗 홈페이지 <br />  </span>
+                            <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </Slider>
             </div>
-
-                    <div className="footer">
+            </div>
+                    <div className={`footer ${isMobile ? 'mobile' : ''}`}>
                         <div className="footer-logo">
                             <img className="footer_logo" src={footer_logo} alt="footer_logo" />
                         </div>
