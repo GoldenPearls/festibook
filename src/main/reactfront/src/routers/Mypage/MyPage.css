@@ -25,7 +25,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .profileSection img, .infoSection .profile_image img {
@@ -106,7 +106,7 @@
 
 .buttonsSection {
     display: flex;
-    justify-content: flex-end; /* Aligns buttons to the right */
+    justify-content: flex-start; /* Aligns buttons to the right */
     gap: 10px; /* To add spacing between buttons */
 }
 

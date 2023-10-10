@@ -113,10 +113,12 @@ function Home() {
 
     const settings = {
         dots: true, // 슬라이더 아래에 도트 표시
-        infinite: false, // 무한 반복
+        infinite: true, // 무한 반복
         speed: 400, // 애니메이션 속도
         slidesToShow: isMobile ? 1 : 3,
         slidesToScroll: 1, // 한 번에 스크롤되는 슬라이드 개수
+        autoplay: true,
+        autoplaySpeed: 3000
     };
 
 
@@ -283,7 +285,7 @@ function Home() {
             </div>
 
 
-            <div className="famous_div">
+            {/*<div className="famous_div">
                 <div className="famous_text_div">
                     <img className="famous_img"  src={famous} alt="famous_img"/>
                     <span className="famous_text"> 사람들이 가장 많이 본 인기 축제 TOP 5</span>
@@ -317,7 +319,7 @@ function Home() {
                     </Slider>
                 </div>
 
-            </div>
+            </div>*/}
                     <div className={`footer ${isMobile ? 'mobile' : ''}`}>
                         <div className="footer-logo">
                             <img className="footer_logo" src={footer_logo} alt="footer_logo" />

@@ -398,7 +398,6 @@ function MyPage() {
             {!isEditing && (
                 <>
                     <div className="buttonsSection">
-                        <button id="likedEvents">찜한행사</button>
                         <button id="myPosts">내가 쓴 글</button>
                     </div>
                     <div id="contentContainer" className="contentContainer">
