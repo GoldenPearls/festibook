@@ -26,6 +26,14 @@
     font-style: normal;
 }
 
+/* university_name이랑 festival_name에 적용시킬 폰트*/
+@font-face {
+    font-family: 'KCCMurukmuruk';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCMurukmuruk.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .section {
     width: 100%;
     height: fit-content;
@@ -66,9 +74,6 @@
     position: relative;
     overflow: hidden;
 }
-
-
-
 
 
 .mainText {
@@ -173,7 +178,7 @@
 .university_name {
     margin-left: auto;
     margin-right: auto;
-    font-family: 'Cafe24Supermagic-Bold-v1.0';
+    font-family: 'KCCMurukmuruk';
     font-size: 30px;
 }
 
@@ -239,6 +244,12 @@
 .famous_text_div{
     margin-top: 30px;
 }
+
+.festival_name{
+    font-family: 'KCCMurukmuruk';
+    font-size : 18px;
+}
+
 .contentContainer {
     width: 100%;
     min-height: 200px; /* 원하는 높이로 조절 */
@@ -305,9 +316,9 @@
 
 /* 반응형 디자인: 화면 너비가 768px 미만일 때 적용 */
 @media (max-width: 768px) {
-    .university_ex {
-        flex-direction: column; /* university_festival div들을 수직으로 배열 */
-    }
+  /*  .university_ex {
+        flex-direction: column; !* university_festival div들을 수직으로 배열 *!
+    }*/
 
     .lamp {
         width: 60px; /* 원하는 크기로 조절 */
@@ -334,6 +345,10 @@
 
     .lamp {
         display: none !important;
+    }
+
+    .festivalItem{
+        transform: scale(0.9);      /* 원하는 스케일 값으로 조절. 0.8은 원래 크기의 80% */
     }
 
     /*인기 있는 축제*/
