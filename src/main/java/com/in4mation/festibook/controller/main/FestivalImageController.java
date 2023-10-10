@@ -22,4 +22,11 @@ public class FestivalImageController {
         List<FestivalDTO> festivals = festivalImageService.getTop5FestivalsByViews();
         return ResponseEntity.ok(festivals);
     }
+
+    @GetMapping("/currentMonth")
+    public ResponseEntity<List<FestivalDTO>> getCurrentMonthFestivals() {
+        List<FestivalDTO> festivals = festivalImageService.getCurrentMonthFestivals();
+        return ResponseEntity.ok(festivals);
+    }
+
 }

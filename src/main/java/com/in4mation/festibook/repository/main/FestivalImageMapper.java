@@ -8,4 +8,7 @@ import java.util.List;
 @Mapper
 public interface FestivalImageMapper {
     List<FestivalDTO> getTop5FestivalsByViews();
+
+    // 랜덤으로 이달의 행사 가지고 오는 것
+    List<FestivalDTO> findCurrentMonthFestivals();
 }

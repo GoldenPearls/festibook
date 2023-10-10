@@ -18,4 +18,9 @@ public class FestivalImageServiceImpl implements FestivalImageService{
     public List<FestivalDTO> getTop5FestivalsByViews() {
         return festivalImageMapper.getTop5FestivalsByViews();
     }
+
+    @Override
+    public List<FestivalDTO> getCurrentMonthFestivals() {
+        return festivalImageMapper.findCurrentMonthFestivals();
+    }
 }
