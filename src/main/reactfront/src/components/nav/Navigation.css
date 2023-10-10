@@ -100,6 +100,13 @@ a {
 .community-link.active {
     color: slateblue; /* 원하는 색상으로 변경 */
 }
+.mypage {
+    width: 100px;      /* 이미지의 가로 크기를 지정. 필요한 크기로 조절하세요. */
+    height: 100px;     /* 이미지의 세로 크기를 지정. 필요한 크기로 조절하세요. */
+    border-radius: 50%; /* 이 속성이 이미지를 동그랗게 만들어줍니다. */
+    object-fit: cover; /* 이미지 비율을 유지하면서, 지정된 너비와 높이에 맞게 조정합니다. */
+}
+
 
 /* 네비게이션 바의 높이만큼 컨텐츠를 아래로 이동 */
 body > *:not(.nav) {
