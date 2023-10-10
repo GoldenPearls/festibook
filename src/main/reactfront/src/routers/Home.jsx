@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import './Home.css';
-import moon from '../img/main/moon.png'
 import bg1 from '../img/main/bg1.png'
-import bg2 from '../img/main/bg2.png'
 import university_img from '../img/main/university_img.png'
 import university1 from '../img/main/university1.png'
 import university2 from '../img/main/university2.png'
 import university3 from '../img/main/university3.png'
 import famous from '../img/main/famous.png'
-import cloud from '../img/main/cloud.png'
 import lamp1 from '../img/main/lamp1.png'
 import lamp2 from '../img/main/lamp2.png'
 import lamp3 from '../img/main/lamp3.png'
@@ -22,12 +19,17 @@ import github from '../img/main/github.png'
 import notion from '../img/main/Notion.png'
 import 'aos/dist/aos.css';
 import axios from "axios";
+// 슬라이더를 위한 라이브러리
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Home() {
     const [scrollY, setScrollY] = useState(0);
     const [festivals, setFestivals] = useState([]);
 
-    const isMobile = window.innerWidth < 768;
+    /*const isMobile = window.innerWidth < 768;*/
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,6 +37,11 @@ function Home() {
         };
         window.addEventListener("scroll", handleScroll);
 
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
 
         let config = {
             method: 'get',
@@ -56,6 +63,7 @@ function Home() {
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
@@ -80,6 +88,13 @@ function Home() {
         { img: lamp8, position: { top: '85%', right: '3%' } },
     ];
 
+    const settings = {
+        dots: true, // 슬라이더 아래에 도트 표시
+        infinite: false, // 무한 반복
+        speed: 400, // 애니메이션 속도
+        slidesToShow: isMobile ? 1 : 3,
+        slidesToScroll: 1, // 한 번에 스크롤되는 슬라이드 개수
+    };
 
 
     return (
@@ -182,24 +197,22 @@ function Home() {
             <div className="famous_div">
                 <div className="famous_text_div">
                     <img className="famous_img"  src={famous} alt="famous_img"/>
-                    <span className="famous_text"> 사람들이 가장 많이 눌러본 인기 축제 </span>
+                    <span className="famous_text"> 사람들이 가장 많이 본 인기 축제 TOP 5</span>
                 </div>
             </div>
 
             <div id="contentContainer" className="contentContainer">
-                <div>
+                <Slider {...settings} className="famous_slider">
                     {festivals.map((festival, index) => (
                         <div
                             key={festival.festival_no}
-                            className="festivalItem"
-                            onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}
-                        >
-                            <h2>Top {index + 1}: {festival.festival_name}</h2>
-                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} />
+                            className="festivalItem">
+                            <p>Top {index + 1}  {festival.festival_name}</p><br/>
+                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
                             <p> {festival.festival_category}</p>
                         </div>
                     ))}
-                </div>
+                </Slider>
             </div>
 
                     <div className="footer">

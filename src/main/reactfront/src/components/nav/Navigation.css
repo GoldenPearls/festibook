@@ -230,7 +230,7 @@ body > *:not(.nav) {
     }
 
     .mypage_text {
-        margin-top: 3px; /* 위쪽 여백을 추가하여 <img> 태그와의 거리를 늘림 */
+        margin-top: 10px; /* 위쪽 여백을 추가하여 <img> 태그와의 거리를 늘림 */
     }
 
 

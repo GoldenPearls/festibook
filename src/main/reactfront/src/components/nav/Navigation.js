@@ -153,7 +153,7 @@ function Navigation() {
                         <>
                             <div className="mypage_setting">
                                 <div className="mypage-btn" onClick={handleTabToggle}>
-                                    <br/><br/><img src={profileImage} alt="My Profile" className="mypage" /> <br/><p className="mypage_text">마이페이지</p><br></br>
+                                    <br/><img src={profileImage} alt="My Profile" className="mypage" /> <br/><p className="mypage_text">마이페이지</p><br></br>
                                 </div>
                                 {isTabOpen && (
                                     <div className="bottom-tab">
