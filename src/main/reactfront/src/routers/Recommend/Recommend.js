@@ -14,7 +14,7 @@ import traditional from "../../img/main/전통역사.png"
 import regional  from "../../img/main/지역특산물.png"
 import natural  from "../../img/main/생태자연.png"
 import famous from "../../img/main/famous.png";
-
+import cal from "../../img/main/cal.png";
 
 function renderIconAndStyle(category) {
     switch(category) {
@@ -147,7 +147,7 @@ function Recommend() {
             </div>
             <div className="famous_div">
                 <div className="famous_text_div">
-                    <img className="famous_img"  src={famous} alt="famous_img"/>
+                    <img className="famous_img"  src={cal} alt="famous_img"/>
                     <span className="famous_text">  이달의 축제 </span>
                 </div>
 
@@ -163,7 +163,7 @@ function Recommend() {
                                     className="festivalItem">
                                     <div>
                                         <p className="element">
-                                            <p className="festival_name">Top {index + 1}  {festival.festival_name}</p><br/>
+                                            <p className="festival_name"> {festival.festival_name}</p><br/>
                                             <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
                                             {icon && <img src={icon} alt="category-icon" />}
                                             <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />

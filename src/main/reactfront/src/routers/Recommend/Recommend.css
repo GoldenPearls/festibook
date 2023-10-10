@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Katuri';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .mainText {
     position: relative;
     justify-content: center;
@@ -55,7 +62,7 @@
 }
 
 .famous_text{
-    font-family: 'PyeongChangPeace-Bold';
+    font-family: 'Katuri';
     font-size: 30px;
 }
 
