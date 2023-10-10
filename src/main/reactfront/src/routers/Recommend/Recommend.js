@@ -38,6 +38,9 @@ function Recommend() {
     const { isLoggedIn } = useAuth();
     const [festivals, setFestivals] = useState([]);
 
+    const [topFestivals, setTopFestivals] = useState([]);  // 상위 5개 축제
+    const [currentMonthFestivals, setCurrentMonthFestivals] = useState([]); // 이번 달 축제
+
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     useEffect(() => {
@@ -47,7 +50,7 @@ function Recommend() {
 
         window.addEventListener('resize', handleResize);
 
-        let config = {
+        /*let config = {
             method: 'get',
             maxBodyLength: Infinity,
             url: 'http://localhost:8080/festivals/top5',
@@ -59,6 +62,26 @@ function Recommend() {
                 console.log('festivals======>',JSON.stringify(response.data));
 
                 setFestivals(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });*/
+
+        const fetchTop5 = axios.get('http://localhost:8080/festivals/top5', {
+            headers: {'Content-Type': 'application/json'}
+        });
+
+        const fetchCurrentMonth = axios.get('http://localhost:8080/festivals/currentMonth', {
+            headers: {'Content-Type': 'application/json'}
+        });
+
+        Promise.all([fetchTop5, fetchCurrentMonth])
+            .then(([top5Response, currentMonthResponse]) => {
+                console.log('Top 5 Festivals======>', JSON.stringify(top5Response.data));
+                console.log('Current Month Festivals======>', JSON.stringify(currentMonthResponse.data));
+
+                setTopFestivals(top5Response.data);
+                setCurrentMonthFestivals(currentMonthResponse.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -96,7 +119,41 @@ function Recommend() {
 
                 <div id="contentContainer" className="contentContainer">
                     <Slider {...settings} className="famous_slider">
-                        {festivals.map((festival, index) => {
+                        {topFestivals.map((festival, index) => {
+                            // 각 festival 항목에 대해 아이콘과 클래스 정보를 가져옵니다.
+                            const { icon, className } = renderIconAndStyle(festival.festival_category);
+
+                            return (
+                                <div
+                                    key={festival.festival_no}
+                                    className="festivalItem">
+                                    <div>
+                                        <p className="element">
+                                            <p className="festival_name">Top {index + 1}  {festival.festival_name}</p><br/>
+                                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
+                                            {icon && <img src={icon} alt="category-icon" />}
+                                            <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
+                                            <span className="title">📍 상세 내용 <br /></span>
+                                            <p className="festival_contents"> {festival.festival_contents}</p>  <br />
+                                            <span className="title">🔗 홈페이지 <br /></span>
+                                            <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </Slider>
+                </div>
+            </div>
+            <div className="famous_div">
+                <div className="famous_text_div">
+                    <img className="famous_img"  src={famous} alt="famous_img"/>
+                    <span className="famous_text">  이달의 축제 </span>
+                </div>
+
+                <div id="contentContainer" className="contentContainer">
+                    <Slider {...settings} className="famous_slider">
+                        {currentMonthFestivals.map((festival, index) => {
                             // 각 festival 항목에 대해 아이콘과 클래스 정보를 가져옵니다.
                             const { icon, className } = renderIconAndStyle(festival.festival_category);
 
