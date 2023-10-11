@@ -50,7 +50,9 @@ export default function Login() {
 
     // 로그아웃 함수도 최상위 레벨에 위치
     const logout = () => {
+        localStorage.removeItem('memberId'); //바꾼거
         localStorage.removeItem('jwt');
+
         console.log('토큰 삭제 완료:', localStorage.getItem('jwt'));
         setIsLoggedIn(false);
         toast.success('로그아웃에 성공했습니다.');
@@ -88,7 +90,7 @@ export default function Login() {
 
 
 
-        //  로컬 스토리지에 토큰을 저장하는 부분
+        //  로컬 스토리지에 토큰을 저장하는 부분  건드림 ㅇㅇ
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
@@ -96,8 +98,14 @@ export default function Login() {
                     toast.success('로그인에 성공했습니다.');
                     auth.setToken(response.data?.token);  // 수정된 부분
 
+                    if (response.data.memberId) { // 'member_id' 대신 'memberId' 사용
+                        localStorage.setItem('memberId', response.data.memberId);
+                        console.log("Member ID:", response.data.memberId);  // 추가된 부분
+                    }
+
                     setTimeout(() => {
-                        navigate('/recommend');
+                        let { from } = location.state || { from: { pathname: "/" } };
+                        navigate(from);
                     }, 2000);
                 } else {
                     toast.warning('로그인 실패했습니다. 아이디나 비밀번호를 확인해주세요');

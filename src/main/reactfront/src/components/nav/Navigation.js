@@ -59,9 +59,9 @@ function Navigation() {
                     {token ? (
                         <Link to="/" onClick={handleLogout} className="login-btn">Logout</Link>
                     ) : (
-                        <Link to="/login" className="login-btn">Login</Link>
-                    )
-                    }
+                        <Link to={{ pathname: "/login", state: { from: location } }} className="login-btn">Login</Link>
+                    )}
+
                 </>
             </Default>
 
@@ -76,9 +76,8 @@ function Navigation() {
                     {token ? (
                         <Link to="/" onClick={handleLogout} className="login-btn">Logout</Link>
                     ) : (
-                        <Link to="/login" className="login-btn">Login</Link>
-                    )
-                    }
+                        <Link to={{ pathname: "/login", state: { from: location } }} className="login-btn">Login</Link>
+                    )}
                 </>
             </Mobile>
         </div>

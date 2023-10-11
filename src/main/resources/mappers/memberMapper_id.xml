@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.in4mation.festibook.dto.MemberMapper_id">
+<mapper namespace="com.in4mation.festibook.repository.id.MemberMapper_id">
     <select id="findMemberIdByNameAndEmail" parameterType="map" resultType="string">
         SELECT member_id FROM member_table WHERE member_name = #{name} AND member_email = #{email} AND delflag != 1
     </select>

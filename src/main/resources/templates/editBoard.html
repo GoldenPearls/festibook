@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="<http://www.thymeleaf.org>">
+
+<head>
+    <script src="/static/js/board/boardEdit.js"></script>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" th:href="@{/static/css/board/style.css}"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 글 수정하기</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Festibook</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0"> <!-- ms-auto 에서 mr-auto 로 변경 -->
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/recommend">추천할수박에</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/festival">축제/행사 소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/community">너와 나의 연결 고리</a></li>
+            </ul>
+            <!-- 로그인/로그아웃 링크를 별도의 ul 태그 안에 넣고 ml-auto 클래스 적용 -->
+            <ul  id ="loginStatusNavItem"class ="navbar-nav ml-auto"> </ul>
+        </div>
+    </div>
+</nav>
+
+<div class = "container">
+    <h1 class = "mb-4">너와 나의 연결고리 작성글 수정하기</h1>
+
+    <form id="editBoardForm">
+
+        <!-- Title input field -->
+        <div class ="form-group mb-3">
+            <label for ="title">제목 : </label >
+            <input type="text" id="title" class="form-control" name="title" value="${board.title}"><br/>
+        </div >
+
+        <!-- Contents input field -->
+        <div class ="form-group mb-3">
+            <label for = "contents">내용 : </label >
+            <textarea id="contents" class="form-control" name="contents">${board.contents}</textarea><br/>
+        </div >
+        <!-- Classification select dropdown menu-->
+        <div class="form-group mb-3">
+            <label for="classification">글 종류 : </label>
+            <select id="classification" class="form-control" name = "classification">
+                <option value="">쓴 글의 종류를 골라 주세요</option>
+                <option value ="커뮤니티" th:selected="${board.classification == '커뮤니티'}">커뮤니티</option>
+                <option value ="분실물 찾기" th:selected="${board.classification == '분실물 찾기'}">분실물 찾기</option>
+                <option value ="Q&A" th:selected="${board.classification == 'Q&A'}">Q&A</option>
+            </select>
+        </div>
+
+
+
+
+
+        <input type="hidden" id="board_idx" name="board_idx" th:value="${board.board_idx}" />
+
+        <div class="write-button-container">
+            <button type="submit" class="btn btn-primary"
+                    STYLE="display: inline-block;
+            color: #E6E6FA;
+            background-color: #ec7373;
+            padding: 10px 20px;
+            margin-top: 20px; /* 상단 여백 조정 */
+            text-align: center;
+            border-radius: 5px; /* 둥근 모서리 효과 */
+            text-decoration: none; /* 링크 밑줄 제거 */"
+            >수정하기</button>
+        </div>
+    </form >
+</div>
+<script src="/static/js/board/boardEdit.js"></script>
+<script src= "https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body >
+</html >

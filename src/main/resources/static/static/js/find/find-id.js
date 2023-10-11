@@ -28,7 +28,20 @@ window.onload = function() {
                         return response.json(); // text() 대신 json() 사용
                     })
                     .then(function(data) {
-                        alert(data.message); // data 자체가 객체이므로 .message 속성 바로 접근 가능
+                        Swal.fire({
+                            title: '아이디 찾기',
+                            text: data.message,
+                            confirmButtonText: '로그인 페이지로',
+                            cancelButtonText: '돌아가기',
+                            showCancelButton: true
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "http://localhost:8080/login";
+                            }
+                        });
+
+
+
                     })
                     .catch(function(error) {
                         console.error(error);

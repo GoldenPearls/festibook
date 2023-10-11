@@ -1,0 +1,39 @@
+<!-- boardWrite.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Board</title>
+</head>
+<body>
+<h1>Write Board</h1>
+
+<form action="/write/board" method="post">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br><br>
+
+    <label for="contents">Contents:</label><br>
+    <textarea id="contents" name="contents"></textarea><br><br>
+
+    <!-- 분류 선택 -->
+    <label for="classification">Classification:</label><br>
+    <select id="classification" name ="classification">
+        <!-- 선택 안 함 -->
+        <option value="">Select classification</option>
+        <!-- Q&A -->
+        <option value = "QNA">Q&A</option>
+        <!-- Community -->
+        <option value = "COMMUNITY">Community</option>
+        <!-- Lost and Found -->
+        <option value = "LOSTANDFOUND">Lost and Found</option>
+    </select><br><br>
+
+    <!-- Submit 버튼 -->
+    <input type ="submit"value= "Submit">
+
+</form>
+
+</body >
+</html >

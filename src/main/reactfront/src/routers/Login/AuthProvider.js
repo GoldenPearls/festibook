@@ -14,9 +14,11 @@ export const AuthProvider = ({ children }) => {
         console.log('토큰 변경됨:', token);
         if (token) {
             localStorage.setItem('jwt', token);
+
             setIsLoggedIn(true);
         } else {
             localStorage.removeItem('jwt');
+            localStorage.removeItem('memberId'); //추가된 부분
             setIsLoggedIn(false);
         }
     }, [token]);

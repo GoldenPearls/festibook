@@ -5,10 +5,10 @@ function Festival() {
               target="_blank"
               rel="noopener noreferrer">
                이동</a>
-           <a href="http://localhost:8080/change_pw/"
+           <a href="http://localhost:8080/write/board/"
               target="_blank"
               rel="noopener noreferrer">
-               이동</a>
+               글쓰기</a>
        </div>
 
 

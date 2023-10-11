@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="<http://www.thymeleaf.org>">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/static/css/board/style.css}"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Festibook</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0"> <!-- ms-auto 에서 mr-auto 로 변경 -->
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/recommend">추천할수박에</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/festival">축제/행사 소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/community">너와 나의 연결 고리</a></li>
+            </ul>
+            <!-- 로그인/로그아웃 링크를 별도의 ul 태그 안에 넣고 ml-auto 클래스 적용 -->
+            <ul  id ="loginStatusNavItem"class ="navbar-nav ml-auto"> </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <h2 class="special-title">너와 나의 연결고리 페이지</h2>
+    <form id="searchForm" class="form-inline my-2 my-lg-0">
+
+        <select class="form-control" id="classification">
+            <option value="">Q&A</option>
+            <option value="전체">전체</option>
+            <option value="공지사항">공지사항</option>
+            <option value="커뮤니티">커뮤니티</option>
+            <option value="분실물 찾기">분실물 찾기</option>
+        </select>
+
+    </form>
+</div>
+
+<div class="container">
+    <table class="board_list table table-striped">
+        <colgroup>
+            <col width="10%"/> <!-- 글번호 칼럼 너비 조정 -->
+            <col width="15%"/>
+            <col width="45%"/> <!-- 제목 칼럼 너비 조정 -->
+            <col width="10%"/> <!-- 작성자 칼럼 너비 조정 -->
+            <col width="10%"/> <!-- 작성일 칼럼 너비 조정 -->
+            <col width="10%"/> <!-- 조회수 칼럼 너비 조정 -->
+        </colgroup>
+        <thead>
+        <tr>
+            <th scope="col">글번호</th>
+            <th scope="col">분류</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">작성일</th>
+            <th scope="col">조회수</th>
+        </tr>
+        </thead>
+
+        <tr th:each="board  : ${questionAnswers}">
+            <td th:text="${board.board_idx}"></td>
+            <td th:text="${board.classification}"></td>
+            <td><a th:href="@{/board/{id}(id=${board.board_idx})}" th:text="${board.title}"></a></td> <!-- 링크 추가 -->
+            <td th:text="${board.creator_id}"></td>
+            <td th:text="${#dates.format(board.created_datetime, 'YY.MM.dd')}"></td>
+            <td th:text="${board.hit_cnt}"></td> <!-- 컬럼명 변경 -->
+        </tr>
+
+
+    </table>
+
+    <!-- Pagination -->
+
+    <nav aria-label="">
+        <ul class="pagination justify-content-center">
+            <li th:class="${questionAnswersPageResult.prev ? '' : 'disabled'}"
+                th:if="${questionAnswersPageResult.start > 1}">
+                <a th:href="@{/board/questionAnswers(page=${questionAnswersPageResult.start-1}, size=${questionAnswersPageResult.size})}"
+                   class='page-link' tabindex='-1'>Previous</a></li>
+
+            <li th:each='pageNum : ${#numbers.sequence(questionAnswersPageResult.start, questionAnswersPageResult.end)}'
+                th:class="${pageNum == questionAnswersPageResult.page ? 'active' : ''}">
+                <a th:href="@{/board/questionAnswers(page=${pageNum}, size=${questionAnswersPageResult.size})}"
+                   class='page-link' th:text='${pageNum}'></a></li>
+
+            <li th:class="${questionAnswersPageResult.next ? '' : 'disabled'}"
+                th:if="${questionAnswersPageResult.end * questionAnswersPageResult.size< questionAnswersPageResult.total}">
+                <a th:href="@{/board/questionAnswers(page=${questionAnswersPageResult.end+1}, size=${questionAnswersPageResult.size})}"
+                   class='page-link'>Next</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Categories widget-->
+
+    <div class="write-button-container">
+        <a href="/write/board" class="btn write-board-button"
+            style="display: inline-block;
+            color: #E6E6FA;
+            background-color: #ec7373;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px; /* 둥근 모서리 효과 */
+            text-decoration: none; /* 링크 밑줄 제거 */">
+            글쓰기</a>
+    </div>
+
+
+</div>
+
+<!-- Optional JavaScript for Bootstrap-->
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src='/static/js/board/boardList.js'></script>
+<script src='/static/js/board/selectBoardList.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
+
+

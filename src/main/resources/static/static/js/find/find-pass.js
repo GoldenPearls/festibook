@@ -60,7 +60,18 @@ function verifyCode() {
                 return response.text();
             })
             .then(function(password) {
-                alert("회원님의 비밀번호는 :" + password + " 입니다.");
+                Swal.fire({
+                    title: '비밀번호 찾기',
+                    text: '임시 비밀번호는 '+ password + '입니다.',
+                    confirmButtonText: '비밀번호 변경으로 가기',
+                    cancelButtonText: '돌아가기',
+                    showCancelButton: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/change_pw";
+                    }
+                });
+
             })
             .catch(function(error) { // 예외 처리
                 //alert("An error occurred: " + error.message);
