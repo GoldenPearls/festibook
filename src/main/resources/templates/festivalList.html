@@ -109,7 +109,11 @@
 <!-- 버튼 이동 -->
 <div class="button-container">
   <button id="mapButton">위치로 보기</button>
-
+  <script>
+    document.getElementById("mapButton").addEventListener("click", function() {
+      window.location.href = "http://localhost:8080/festival/map";
+    });
+  </script>
   <button id="calendarButton">날짜로 보기</button>
   <script>
     document.getElementById("calendarButton").addEventListener("click", function() {

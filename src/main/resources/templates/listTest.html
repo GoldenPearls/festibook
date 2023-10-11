@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+</head>
+<body>
+<div id="map" style="float:left;width:800px;height:800px"></div>
+<!-- 축제정보 -->
+<div class="festiInfo" style="float:right;width:500px;height:600px;">
+    <h1>FESTIVAL</h1>
+    <div>
+        <ul th:each="list:${festival}" style="cursor: pointer">
+            <div id="sideList">
+                <div id="content" style="display: inline-block; margin-right:10px">
+                    <h3 th:text="${list.festival_name}"></h3>
+                    <p><strong>장소 : </strong><span th:text="${list.festival_addr}"></span></p>
+                    <p><strong>개최일자 : </strong><span th:text="${list.start_date}"></span><strong> - </strong><span th:text="${list.end_date}"></span></p>
+                </div>
+                <div id="image" style="display: inline-block;">
+                    <img th:src="${list.festival_image}" alt="이미지공간" width="85px" height="85px">
+                </div>
+                <hr/>
+            </div>
+        </ul>
+    </div>
+
+    <!-- 페이징 -->
+    <div id="pagination">
+        <!-- 맨 처음 페이지로 이동하는 버튼 -->
+        <span th:if="${pageDto.startPage > 1}">
+        <a th:href="@{'/festival/map?page=1'}" th:text="'처음&emsp;'"></a>
+        </span>
+
+        <!-- 이전 블록으로 이동하는 버튼 -->
+        <span th:if="${pageDto.isPrev == true}">
+    	<a th:href="@{'/festival/map?page='+${pageDto.startPage - 1}}" th:text="'이전'"></a>
+        </span>
+
+        <!-- 시퀀스 보여주는 값을 변경. -->
+        <span th:each="pageNum : ${#numbers.sequence(pageDto.startPage, pageDto.endPage)}">
+        <a class="div2" th:href="@{'/festival/map?page='+${pageNum}}" th:text="|&emsp;${pageNum}&emsp;|"></a>
+        </span>
+
+        <!-- 다음 블록으로 이동하는 버튼 -->
+        <span th:if="${pageDto.isNext == true}">
+	    <a th:href="@{'/festival/map?page='+|${pageDto.endPage + 1}|}" th:text="'다음'"></a>
+        </span>
+
+        <!-- 맨 뒷 페이지로 이동하는 버튼 -->
+        <span th:if="${pageDto.endPage < pageDto.totalPageCount}">
+	    <a th:href="@{'/festival/map?page='+${pageDto.totalPageCount}}" th:text="|&emsp;끝|"></a>
+        </span>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44e85932510e66adc4073ed0e3aa2f6a&libraries=services,clusterer"></script>
+<script th:src="@{/static/js/map/map.js}"></script>>
+</body>
+</html>
