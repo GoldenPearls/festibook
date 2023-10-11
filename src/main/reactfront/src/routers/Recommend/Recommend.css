@@ -28,6 +28,10 @@
     /*background: linear-gradient(to top, rgb(117, 151, 222), transparent);*/
 }
 
+a:visited {
+    color: inherit;
+}
+
 .recommancBackground{
     z-index: 0;
     width: 100%;

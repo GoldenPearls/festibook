@@ -56,6 +56,10 @@
     /*background: linear-gradient(to top, rgb(117, 151, 222), transparent);*/
 }
 
+a:visited {
+    color: inherit;
+}
+
 .element{
     font-family: 'KCC-Ganpan';
 }
