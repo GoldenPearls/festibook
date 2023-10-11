@@ -57,28 +57,7 @@ function Navigation() {
         let memberId = localStorage.getItem("memberId");
         console.log('1.============================');
         if( !memberId ) return;
-        // console.log("----------------------------------------")
-        // console.log(memberId);
 
-        // let config = {
-        //     method: 'get',
-        //     maxBodyLength: Infinity,
-        //     url: 'http://localhost:8080/mypage/${memberId}/image',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `Bearer ${localStorage.getItem("jwt")}`
-        //     }
-        // };
-        //
-        // console.log('2.============================' + memberId);
-        // axios.request(config)
-        //     .then((response) => {
-        //         console.log('3.profile image============================', response.data);
-        //         setProfileImage("/"+response.data.member_profile_image);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
