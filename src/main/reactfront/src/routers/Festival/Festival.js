@@ -1,9 +1,11 @@
+import React, { useState, useEffect } from 'react';
+
 function Festival() {
-   return (
-       <div>
-          페스티벌 페이지
-       </div>
-   );
+    useEffect(() => {
+        window.location.href = "http://localhost:8080/festival";
+    }, []);
+
+    return null;
 }
 
 export default Festival;
