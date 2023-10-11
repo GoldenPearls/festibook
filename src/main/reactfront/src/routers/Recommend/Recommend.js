@@ -163,7 +163,7 @@ function Recommend() {
                                     className="festivalItem">
                                     <div>
                                         <p className="element">
-                                            <p className="festival_name"> {festival.festival_name}</p><br/>
+                                            <p className="festival_name"> {index + 1} {festival.festival_name}</p><br/>
                                             <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
                                             {icon && <img src={icon} alt="category-icon" />}
                                             <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />

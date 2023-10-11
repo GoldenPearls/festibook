@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.recommend.RecommendMapper">
+    <select id="findFestivalsByMemberCategory" parameterType="string" resultType="com.in4mation.festibook.dto.main.FestivalImageDTO">
+        SELECT f.*
+        FROM festival_table f
+                 JOIN MemberDetail_tbl m ON f.festival_category = m.category_name
+        WHERE m.member_id = #{memberId}
+            LIMIT 4
+    </select>
+
+</mapper>
