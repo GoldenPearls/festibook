@@ -70,7 +70,13 @@ function Navigation() {
         axios.request(config)
             .then((response) => {
                 console.log(response.data);
-                setProfileImage("http://localhost:8080/uploadimg/"+response.data); // 배포시서버주소 변경 필요
+                if (!response.data) {
+                    setProfileImage(myprofile_image);
+                }
+                else {
+                    setProfileImage("http://localhost:8080/uploadimg/"+response.data); // 배포시 스프링주소로 바꿔야함
+                }
+                //setProfileImage("http://localhost:8080/uploadimg/"+response.data); // 배포시서버주소 변경 필요
             })
             .catch((error) => {
                 console.log(error);

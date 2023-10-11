@@ -126,7 +126,13 @@ function MyPage() {
                 setAgeGroup(response.data.ageGroup);
                 setCategory(response.data.category_name);
                 // setProfileImage("/uploadimg/"+response.data.member_profile_image);
-                setProfileImage("http://localhost:8080/uploadimg/"+response.data.member_profile_image); // 배포시 스프링주소로 바꿔야함
+                //setProfileImage("http://localhost:8080/uploadimg/"+response.data.member_profile_image); // 배포시 스프링주소로 바꿔야함
+                // 만약 응답 데이터에 member_profile_image가 없거나 null이면 기본 이미지를 사용
+                if (!response.data.member_profile_image) {
+                    setProfileImage(myprofile_image);
+                } else {
+                    setProfileImage("http://localhost:8080/uploadimg/"+response.data.member_profile_image); // 배포시 스프링주소로 바꿔야함
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -343,8 +349,8 @@ function MyPage() {
                         <label className="radio">
                             <input
                                 type="radio"
-                                value="culture"
-                                checked={category === 'culture'}
+                                value="문화예술"
+                                checked={category === '문화예술'}
                                 onChange={handleCategoryChange}
                                 disabled={!isEditing} // isEditing이 false일 때 disabled 적용
                             />
@@ -353,8 +359,8 @@ function MyPage() {
                         <label className="radio">
                             <input
                                 type="radio"
-                                value="harmony"
-                                checked={category === 'harmony'}
+                                value="주민화합"
+                                checked={category === '주민화합'}
                                 onChange={handleCategoryChange}
                                 disabled={!isEditing} // isEditing이 false일 때 disabled 적용
                             />
@@ -363,8 +369,8 @@ function MyPage() {
                         <label className="radio">
                             <input
                                 type="radio"
-                                value="traditional"
-                                checked={category === 'traditional'}
+                                value="전통역사"
+                                checked={category === '전통역사'}
                                 onChange={handleCategoryChange}
                                 disabled={!isEditing} // isEditing이 false일 때 disabled 적용
                             />
@@ -373,8 +379,8 @@ function MyPage() {
                         <label className="radio">
                             <input
                                 type="radio"
-                                value="local_specialty"
-                                checked={category === 'local_specialty'}
+                                value="지역특산물"
+                                checked={category === '지역특산물'}
                                 onChange={handleCategoryChange}
                                 disabled={!isEditing} // isEditing이 false일 때 disabled 적용
                             />
@@ -383,8 +389,8 @@ function MyPage() {
                         <label className="radio">
                             <input
                                 type="radio"
-                                value="nature"
-                                checked={category === 'nature'}
+                                value="생태자연"
+                                checked={category === '생태자연'}
                                 onChange={handleCategoryChange}
                                 disabled={!isEditing} // isEditing이 false일 때 disabled 적용
                             />
