@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.board1.reply.ReplyMapper">
+    <select id="selectReplies" resultType="com.in4mation.festibook.board1.reply.ReplyDto">
+        SELECT * FROM t_reply WHERE bno = #{bno} AND deleted_yn = 'N'
+    </select>
+
+    <insert id="insertReply">
+        INSERT INTO t_reply (bno, creator_id, r_contents)
+        VALUES (#{bno}, #{creator_id}, #{r_contents})
+    </insert>
+
+    <update id="updateReply">
+        UPDATE t_reply SET r_contents = #{r_contents} WHERE rno = #{rno} AND deleted_yn = 'N'
+    </update>
+
+    <delete id="deleteReply">
+        UPDATE t_reply SET deleted_yn = 'Y' WHERE rno = #{rno}
+    </delete>
+</mapper>
