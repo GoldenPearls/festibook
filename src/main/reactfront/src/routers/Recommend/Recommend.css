@@ -130,6 +130,14 @@ a:visited {
     padding: 3px 6px;
 }
 
+.horizontalLayout{
+    display: flex;
+    justify-content: center;
+    align-item:center;
+    flex-wrap: wrap;
+    gap:20px;
+}
+
 @media (max-width: 768px) {
     .recommancBackground{
         z-index: 0;
