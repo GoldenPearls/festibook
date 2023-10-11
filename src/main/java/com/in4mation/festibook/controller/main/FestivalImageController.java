@@ -1,6 +1,6 @@
 package com.in4mation.festibook.controller.main;
 
-import com.in4mation.festibook.dto.main.FestivalDTO;
+import com.in4mation.festibook.dto.main.FestivalImageDTO;
 import com.in4mation.festibook.service.main.FestivalImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,14 +18,14 @@ public class FestivalImageController {
     private FestivalImageService festivalImageService;
 
     @GetMapping("/top5")
-    public ResponseEntity<List<FestivalDTO>> getTop5FestivalsByViews() {
-        List<FestivalDTO> festivals = festivalImageService.getTop5FestivalsByViews();
+    public ResponseEntity<List<FestivalImageDTO>> getTop5FestivalsByViews() {
+        List<FestivalImageDTO> festivals = festivalImageService.getTop5FestivalsByViews();
         return ResponseEntity.ok(festivals);
     }
 
     @GetMapping("/currentMonth")
-    public ResponseEntity<List<FestivalDTO>> getCurrentMonthFestivals() {
-        List<FestivalDTO> festivals = festivalImageService.getCurrentMonthFestivals();
+    public ResponseEntity<List<FestivalImageDTO>> getCurrentMonthFestivals() {
+        List<FestivalImageDTO> festivals = festivalImageService.getCurrentMonthFestivals();
         return ResponseEntity.ok(festivals);
     }
 

@@ -6,11 +6,11 @@
 <mapper namespace="com.in4mation.festibook.repository.main.FestivalImageMapper">
 
 
-    <select id="getTop5FestivalsByViews" resultType="com.in4mation.festibook.dto.main.FestivalDTO">
+    <select id="getTop5FestivalsByViews" resultType="com.in4mation.festibook.dto.main.FestivalImageDTO">
         SELECT festival_no, festival_name, festival_category, festival_image, festival_contents, festival_homepage FROM Festival_table ORDER BY festival_view DESC LIMIT 5
     </select>
 
-    <select id="findCurrentMonthFestivals" resultType="com.in4mation.festibook.dto.main.FestivalDTO">
+    <select id="findCurrentMonthFestivals" resultType="com.in4mation.festibook.dto.main.FestivalImageDTO">
         SELECT festival_no, festival_name, festival_category, festival_image, festival_contents, festival_homepage FROM Festival_table
         WHERE MONTH(start_date) = MONTH(CURDATE())
         ORDER BY RAND()

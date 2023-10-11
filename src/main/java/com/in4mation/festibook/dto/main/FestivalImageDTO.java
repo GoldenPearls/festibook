@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @ToString
-public class FestivalDTO {
+public class FestivalImageDTO {
     private int festival_no;
     private String festival_category;
     private String festival_name;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserMapper.xml -->
+<mapper namespace="com.in4mation.festibook.repository.festival.FestivalMapper">
+    <select id="selectFestivalAll" resultType="com.in4mation.festibook.dto.festival.FestivalDTO">
+        SELECT festival_no, festival_name, festival_image, festival_category FROM festival_table;
+    </select>
+    <select id="searchFestivals" parameterType="java.lang.String" resultType="com.in4mation.festibook.dto.festival.FestivalDTO">
+        SELECT * FROM festival_table
+        WHERE festival_name LIKE CONCAT('%', #{keyword}, '%');
+    </select>
+
+</mapper>
