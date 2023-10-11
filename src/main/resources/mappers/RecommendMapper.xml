@@ -4,10 +4,11 @@
 
 <mapper namespace="com.in4mation.festibook.repository.recommend.RecommendMapper">
     <select id="findFestivalsByMemberCategory" parameterType="string" resultType="com.in4mation.festibook.dto.main.FestivalImageDTO">
-        SELECT f.*
+        SELECT f.festival_no, f.festival_category, f.festival_name, f.festival_contents, f.festival_homepage, f.festival_image
         FROM festival_table f
                  JOIN MemberDetail_tbl m ON f.festival_category = m.category_name
         WHERE m.member_id = #{memberId}
+        ORDER BY RAND()
             LIMIT 4
     </select>
 
