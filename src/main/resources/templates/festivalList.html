@@ -109,13 +109,23 @@
 <!-- 버튼 이동 -->
 <div class="button-container">
   <button id="mapButton">위치로 보기</button>
+
   <button id="calendarButton">날짜로 보기</button>
+  <script>
+    document.getElementById("calendarButton").addEventListener("click", function() {
+      window.location.href = "http://localhost:8080/calendar";
+    });
+  </script>
 </div>
 
 <!-- 이미지 그리드 추가 -->
 <div class="image-grid">
   <div th:each="festival : ${festivals}" class="festival-item">
-    <img th:src="${festival.festival_image}" alt="Festival Image"/>
+    <!--<img th:src="${festival.festival_image}" alt="Festival Image"/>-->
+    <img th:src="${festival.festival_image}"
+         alt="Festival Image"
+         th:onclick="'window.location.href=\'http://localhost:8080/festivalInfo/' + ${festival.festival_no} + '\''"
+         style="cursor: pointer;"/>
     <div class="festival-info">
       <!--<p th:text="${festival.festival_no}"></p>-->
       <p th:text="${festival.festival_name}"></p>
