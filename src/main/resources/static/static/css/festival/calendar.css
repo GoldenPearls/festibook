@@ -1,35 +1,44 @@
 
 
-/*.fc-day-sun a{
+.fc-day-sun a{
   color: red;
 }
 
 .fc-day-sat a{
   color: blue;
-}*/
+}
 
 .fc .fc-button-primary{
     background-color: #EC7373;
     border-color: white;
+    /*color: #fff;*/
+
 }
+
+
 .fc .fc-button-primary.fc-button-active{
-    background-color: #EC7373;
+    background-color: #FFDBDB;
+    color: EA7A7A;
 
 }
 
 .fc-event-title-container{
-    background-color: #FFC3C3;
+    background-color: #BBBABA;
+    /*color: #000;*/
+
 }
 
 .fc-daygrid-event{
-    border-color: #fff;
+   border-color: #fff;
+   color: black;
+    font-size: large;
+
 }
 
 .fc th {
-    background-color: #EC7373;
-    color: #fff;
+    background-color: #FFF9F9;
+    font-size: large;
 }
-
 
 
 /*

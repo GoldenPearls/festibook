@@ -1,7 +1,63 @@
+@font-face {
+    font-family: 'Katuri';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff') format('woff');
+/*    font-weight: normal;
+    font-style: normal;*/
+}
 
+body {
+    font-family: 'Katuri', sans-serif;
+}
+
+
+
+.row date{
+         vertical-align: middle; /* 이미지와 텍스트를 수직 가운데 정렬합니다. */
+}
+
+.row justify-content-center map{
+    margin-bottom: 20px;
+    margin-top: 50px;
+
+}
+
+.row.festivalLocation {
+    margin-top: 20px;
+    margin-bottom: 50px; /* 원하는 값으로 조정할 수 있습니다. */
+}
 
 h1 {
+     letter-spacing: 5px;
      margin-top: 80px;
-     margin-bottom: 30px;
+     margin-bottom: 50px;
      font-weight: 700;
+     font-size: 45px;
 }
+
+h2{
+    font-size: 35px;
+
+}
+
+p{
+    font-size: 25px;
+}
+
+/*
+body {
+    background-image: url('/static/static/images/festivalInfoBG.png'); */
+/* 배경 이미지의 경로를 지정하세요 *//*
+
+    background-size: contain; */
+/* 이미지 비율을 유지하며 보이도록 설정 *//*
+
+    background-repeat: no-repeat; */
+/* 이미지 반복 없음 *//*
+
+    background-position: center top; */
+/* 이미지를 가운데 정렬하고 상단에 배치합니다 *//*
+
+}
+
+*/
+
