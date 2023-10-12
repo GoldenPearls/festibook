@@ -50,7 +50,7 @@
       gap: 10px; /* 이미지 간격을 10px로 조정 */
       justify-content: center; /* 가로 중앙 정렬 */
       align-items: center; /* 세로 중앙 정렬 */
-      height: 90vh; /* 뷰포트 높이의 80%만큼을 사용 */
+      height: 60vh; /* 뷰포트 높이의 80%만큼을 사용 */
       position: relative; /* 상대 위치 설정 */
     }
 
@@ -60,6 +60,7 @@
       border-radius: 10px;
       display: block;
       margin: 0 auto;
+       margin-bottom: 20px;
     }
 
     /* Festival 정보 스타일 */
@@ -108,13 +109,13 @@
 
 <!-- 버튼 이동 -->
 <div class="button-container">
-  <button id="mapButton">위치로 보기</button>
+  <button id="mapButton" style="padding: 10px 12px; font-size: 10px;">위치로 보기</button>
   <script>
     document.getElementById("mapButton").addEventListener("click", function() {
       window.location.href = "http://localhost:8080/festival/map";
     });
   </script>
-  <button id="calendarButton">날짜로 보기</button>
+  <button id="calendarButton" style="padding: 10px 12px; font-size: 10px;">날짜로 보기</button>
   <script>
     document.getElementById("calendarButton").addEventListener("click", function() {
       window.location.href = "http://localhost:8080/calendar";
@@ -139,4 +140,3 @@
 </div>
 </body>
 </html>
-
