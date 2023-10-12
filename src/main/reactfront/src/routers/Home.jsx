@@ -334,7 +334,7 @@ function Home() {
                                 <span>Link </span>
                                 <div className="icons">
                                     <a href="https://github.com/GoldenPearls/festibook"><img className="github" src={github} alt="github" /></a>
-                                    <a href="https://incredible-gem-98e.notion.site/in4mation-festibook-844ae8d62e784c8d82f374a03277f523?pvs=4"><img className="notion" src={notion} alt="notion" /></a>
+                                    <a href="https://www.notion.so/in4mation-festibook-bcd05345a2364eaf9ace7d0890651980?pvs=4"><img className="notion" src={notion} alt="notion" /></a>
                                 </div>
                             </div>
                         </div>
