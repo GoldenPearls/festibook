@@ -92,7 +92,7 @@ export default function Login() {
         //  로컬 스토리지에 토큰을 저장하는 부분
         axios.request(config)
             .then((response) => {
-                console.log(JSON.stringify(response.data));
+                // console.log(JSON.stringify(response.data));
                 if( response.data?.token != undefined) {
                     toast.success('로그인에 성공했습니다.');
                     auth.setToken(response.data?.token);

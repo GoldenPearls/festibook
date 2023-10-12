@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     const [userId, setUserId] = useState(null);
 
     useEffect(() => {
-        console.log("AuthProvider 실행됨!!")
+        // console.log("AuthProvider 실행됨!!")
         let jwt = localStorage.getItem('jwt');
         if(jwt !== undefined)
             setToken(jwt);
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        console.log('토큰 변경됨:', token);
+        // console.log('토큰 변경됨:', token);
         if (token) {
             localStorage.setItem('jwt', token);
             // localStorage.setItem('memberId', userId); //추가된 부분

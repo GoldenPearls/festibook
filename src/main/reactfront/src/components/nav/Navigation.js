@@ -38,7 +38,7 @@ function Navigation() {
     const auth = useAuth();
 
 
-    console.log('Navigation에서의 토큰:', auth.token);
+    // console.log('Navigation에서의 토큰:', auth.token);
     const isActive = path => location.pathname === path;
 
 
@@ -51,11 +51,11 @@ function Navigation() {
 
     useEffect(() => {
         // token 값이 변하면 이 useEffect는 재실행됩니다.
-        console.log('Navigation 컴포넌트에서 토큰 변화 감지:', auth.token);
+        // console.log('Navigation 컴포넌트에서 토큰 변화 감지:', auth.token);
 
         // let memberId = auth.userId;
         let memberId = localStorage.getItem("memberId");
-        console.log('1.============================');
+        // console.log('1.============================');
         if( !memberId ) return;
 
         let config = {
@@ -69,7 +69,7 @@ function Navigation() {
 
         axios.request(config)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 if (!response.data) {
                     setProfileImage(myprofile_image);
                 }
@@ -88,6 +88,10 @@ function Navigation() {
     const handleLogout = () => {
         console.log("----------------------------------------------- logout !!!!!!!!!!")
         auth.setToken(null); // 로그아웃 시 토큰 제거
+        auth.setUserId(undefined);
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('memberId');
+
         navigate('/login');
         toast.success('로그아웃에 성공했습니다.');
     }

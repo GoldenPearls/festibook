@@ -44,13 +44,22 @@ function Recommend() {
     const [recommendedFestivals, setRecommendedFestivals] = useState([]);
 
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [memberId, setMemberId] = useState(null);
+    const {userId} = useAuth();
+
+    // useEffect(() => {
+    //     setMemberId(userId);
+    // }, [userId])
 
     useEffect(() => {
         // 아이디 추가
-        let memberId = localStorage.getItem("memberId");
+        // let memberId = localStorage.getItem("memberId");
+        // setMemberId(localStorage.getItem("memberId"));
+        // console.log("---------------------------------------");
+        console.log('userId', userId);
+        setMemberId(userId);
         console.log('memberId', memberId);
-        if( !memberId ) return;
-        console.log(memberId);
+
 
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768);
@@ -78,35 +87,49 @@ function Recommend() {
         const fetchTop5 = axios.get('http://localhost:8080/festivals/top5', {
             headers: {'Content-Type': 'application/json'}
         });
+        fetchTop5.then((top5Response) => {
+            // console.log('top5Response.data', top5Response.data)
+            setTopFestivals(top5Response.data);
+        })
 
         const fetchCurrentMonth = axios.get('http://localhost:8080/festivals/currentMonth', {
             headers: {'Content-Type': 'application/json'}
         });
+        fetchCurrentMonth.then((currentMonthResponse)=>{
+            setCurrentMonthFestivals(currentMonthResponse.data);
+        })
 
         //추천된 축제들을 불러옴
-        const fetchRecommendedFestivals = axios.get(`http://localhost:8080/recommend/festivals?memberId=${memberId}`, {
-            headers: {'Content-Type': 'application/json'},
-            data : memberId
-        });
-
-        Promise.all([fetchTop5, fetchCurrentMonth, fetchRecommendedFestivals])
-            .then(([top5Response, currentMonthResponse, recommendedFestivalsResponse]) => {
-                console.log('Top 5 Festivals======>', JSON.stringify(top5Response.data));
-                console.log('Current Month Festivals======>', JSON.stringify(currentMonthResponse.data));
-
-                setTopFestivals(top5Response.data);
-                setCurrentMonthFestivals(currentMonthResponse.data);
+        if( userId != null) {
+            const fetchRecommendedFestivals = axios.get(`http://localhost:8080/recommend/festivals?memberId=${userId}`, {
+                headers: {'Content-Type': 'application/json'},
+                data : userId
+            });
+            fetchRecommendedFestivals.then((recommendedFestivalsResponse)=>{
                 setRecommendedFestivals(recommendedFestivalsResponse.data);
             })
-            .catch((error) => {
-                console.log(error);
-            });
+        }
+
+        // Promise.all([fetchTop5, fetchCurrentMonth, fetchRecommendedFestivals])
+        //     .then(([top5Response, currentMonthResponse, recommendedFestivalsResponse]) => {
+        //         console.log('Top 5 Festivals======>', JSON.stringify(top5Response.data));
+        //         console.log('Current Month Festivals======>', JSON.stringify(currentMonthResponse.data));
+        //
+        //         setTopFestivals(top5Response.data);
+        //         setCurrentMonthFestivals(currentMonthResponse.data);
+        //         setRecommendedFestivals(recommendedFestivalsResponse.data);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+
+
 
 
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    },[userId]);
 
 
     const settings = {
@@ -135,7 +158,7 @@ function Recommend() {
         <div className="bgWrapper"  >
             <img className="recommancBackground" src={recommancBackground} alt="bg2"  />
             <h3 className="mainText" >당신만을 위한 추천 <br/> 추천할 수 박에</h3>
-        </div>{/*
+        </div>{/* 1개 이용시 필요
             <div className="famous_div">
                 <div className="famous_text_div">
                     <img className="famous_img"  src={recommand_click} alt="famous_img"/>
@@ -175,8 +198,7 @@ function Recommend() {
                     <img className="famous_img" src={recommand_click} alt="famous_img"/>
                     <span className="famous_text">당신만을 위한 추천</span>
                 </div>
-
-                <div id="contentContainer" className="contentContainer">
+               {/* <div id="contentContainer" className="contentContainer">
                     <div className={recommendedFestivals.length < 3 ? "horizontalLayout" : ""}>
                     {recommendedFestivals.length < 3 ? (
                         recommendedFestivals.map((festival, index) => {
@@ -228,7 +250,59 @@ function Recommend() {
                         </Slider>
                     )}
                     </div>
+                </div>*/}
+                <div id="contentContainer" className="contentContainer">
+
+                    {memberId==null ? (
+                        <div className="login_text">
+                            회원가입 혹은 로그인 해주시면 <br/>
+                            관심카테고리 추천 해드립니다!
+                        </div>
+                    ) : (
+                        <div className={recommendedFestivals.length < 3 ? "horizontalLayout" : ""}>
+                            {recommendedFestivals.length < 3 ? (
+                                recommendedFestivals.map((festival, index) => {
+                                    const { icon, className } = renderIconAndStyle(festival.festival_category);
+                                    return (
+                                        <div key={festival.festival_no} className="festivalItem">
+                                            <div className="element">
+                                                <p className="festival_name"> {index + 1}. {festival.festival_name}</p>
+                                                <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/>
+                                                {icon && <img src={icon} alt="category-icon" />}
+                                                <p className={`festival_category ${className}`}># {festival.festival_category}</p>
+                                                <span className="title">📍 상세 내용</span>
+                                                <p className="festival_contents">{festival.festival_contents}</p>
+                                                <span className="title">🔗 홈페이지</span><br/>
+                                                <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a>
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            ) : (
+                                <Slider {...settings} className="famous_slider">
+                                    {recommendedFestivals.map((festival, index) => {
+                                        const { icon, className } = renderIconAndStyle(festival.festival_category);
+                                        return (
+                                            <div key={festival.festival_no} className="festivalItem">
+                                                <div className="element">
+                                                    <p className="festival_name"> {index + 1}. {festival.festival_name}</p>
+                                                    <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/>
+                                                    {icon && <img src={icon} alt="category-icon" />}
+                                                    <p className={`festival_category ${className}`}># {festival.festival_category}</p>
+                                                    <span className="title">📍 상세 내용</span>
+                                                    <p className="festival_contents">{festival.festival_contents}</p>
+                                                    <span className="title">🔗 홈페이지</span>
+                                                    <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </Slider>
+                            )}
+                        </div>
+                    )}
                 </div>
+
             </div>
 
             <div className="famous_div">
@@ -248,7 +322,7 @@ function Recommend() {
                                     key={festival.festival_no}
                                     className="festivalItem">
                                     <div>
-                                        <p className="element">
+                                        <div className="element">
                                             <p className="festival_name"> {index + 1} {festival.festival_name}</p><br/>
                                             <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
                                             {icon && <img src={icon} alt="category-icon" />}
@@ -257,7 +331,7 @@ function Recommend() {
                                             <p className="festival_contents"> {festival.festival_contents}</p>  <br />
                                             <span className="title">🔗 홈페이지 <br /></span>
                                             <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             );
@@ -282,7 +356,7 @@ function Recommend() {
                                     key={festival.festival_no}
                                     className="festivalItem">
                                     <div>
-                                        <p className="element">
+                                        <div className="element">
                                             <p className="festival_name">Top {index + 1}.  {festival.festival_name}</p><br/>
                                             <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
                                             {icon && <img src={icon} alt="category-icon" />}
@@ -291,7 +365,7 @@ function Recommend() {
                                             <p className="festival_contents"> {festival.festival_contents}</p>  <br />
                                             <span className="title">🔗 홈페이지 <br /></span>
                                             <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             );
