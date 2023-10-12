@@ -10,6 +10,7 @@ window.onload = function() {
         optionNode.value ='공지사항';
         classificationSelect.add(optionNode);
     }
+
     // 기존 게시글 데이터 가져오기
     fetch(`/boardEdit/${boardId}`)
         .then(response => response.json())

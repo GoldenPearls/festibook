@@ -73,6 +73,7 @@ window.onload = function() {
     }
 };
 
+
 // 게시글 삭제 함수 정의
 function deleteBoard() {
     const boardId = document.getElementById('boardId').value;  // 현재 게시글 ID
