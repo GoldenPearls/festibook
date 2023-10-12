@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Festivals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
   <style>
     /* 검색 폼 스타일 */
     form {
@@ -69,14 +71,6 @@
       margin-top: 10px;
     }
 
-    /* 추가된 스타일: 이미지와 정보를 가로로 나열 */
-    .festival-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
     /* 버튼 위치 설정 */
     .button-container {
       position: absolute;
@@ -89,33 +83,58 @@
       max-width: 100%;
       height: auto;
     }
+/* 미디어 쿼리: 화면 크기가 600px 이하일 때 스타일 조정 */
+@media screen and (max-width: 600px) {
+  /* 화면 크기가 600px 이하일 때 버튼 컨테이너 스타일 조정 */
+  .button-container {
+    position: static; /* static으로 변경하여 위치 속성 초기화 */
+    margin-top: 10px; /* 필요에 따라 조절 */
+    text-align: center;
+  }
+
+  .button-container button {
+    padding: 1px 20px; /* 작은 화면에 대한 크기 조정 */
+    font-size: 14px; /* 작은 화면에 대한 크기 조정 */
+  }
+}
+
   </style>
 </head>
 
 <body>
+
 <!-- 상단 JPG 이미지 띄우기 -->
-<!-- 상단 JPG 이미지 띄우기 -->
-<img src="/static/festival_search_img/header1.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: 100%;">
+
+<img src="/static/festival_search_img/header1.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: auto;">
+<!--
+<img src="/static/nori2.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: auto;">
+-->
 
 
+<!--img src="C:\merged_project\festibook\src\main\resources\static\static\css\festival_search_img\nori2.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: auto;">
+-->
 <h1></h1>
 
 <!-- 검색 폼 추가 -->
 <form th:action="@{/festival/search}" method="get" style="display: flex; align-items: center; margin-top: 30px;">
-  <input type="text" name="keyword" placeholder="축제명을 입력해주세요." style="flex-grow: 1; padding: 20px; font-size: 20px; border: 1px solid #ccc; border-radius: 10px; margin-right: 10px;">
-  <button type="submit" style="padding: 20px 20px; font-size: 20px; background-color: #EC7373; color: #fff; border: none; border-radius: 100%; cursor: pointer; writing-mode: horizontal-tb;">검색</button>
+  <input type="text" name="keyword" placeholder="축제명을 입력해주세요." style="flex-grow: 1; padding: 10px; font-size: 10px; border: 1px solid #ccc; border-radius: 10px; margin-right: 10px;">
+  <button type="submit" style="padding: 10px 10px; font-size: 10px; background-color: #EC7373; color: #fff; border: none; border-radius: 100%; cursor: pointer;">
+    <i class="fas fa-search"></i>
+  </button>
 </form>
 
-
-<!-- 버튼 이동 -->
 <div class="button-container">
-  <button id="mapButton" style="padding: 10px 12px; font-size: 10px;">위치로 보기</button>
+  <button id="mapButton" style="padding: 4px 4px; font-size: 4px;">
+    <i class="fas fa-map-marker-alt"></i> 위치로 보기
+  </button>
   <script>
     document.getElementById("mapButton").addEventListener("click", function() {
       window.location.href = "http://localhost:8080/festival/map";
     });
   </script>
-  <button id="calendarButton" style="padding: 10px 12px; font-size: 10px;">날짜로 보기</button>
+  <button id="calendarButton" style="padding: 4px 4px; font-size: 4px;">
+    <i class="far fa-calendar-alt"></i> 날짜로 보기
+  </button>
   <script>
     document.getElementById("calendarButton").addEventListener("click", function() {
       window.location.href = "http://localhost:8080/calendar";
@@ -123,16 +142,15 @@
   </script>
 </div>
 
+
 <!-- 이미지 그리드 추가 -->
 <div class="image-grid">
   <div th:each="festival : ${festivals}" class="festival-item">
-    <!--<img th:src="${festival.festival_image}" alt="Festival Image"/>-->
     <img th:src="${festival.festival_image}"
          alt="Festival Image"
          th:onclick="'window.location.href=\'http://localhost:8080/festivalInfo/' + ${festival.festival_no} + '\''"
          style="cursor: pointer;"/>
     <div class="festival-info">
-      <!--<p th:text="${festival.festival_no}"></p>-->
       <p th:text="${festival.festival_name}"></p>
       <p th:text="${festival.festival_category}"></p>
     </div>
