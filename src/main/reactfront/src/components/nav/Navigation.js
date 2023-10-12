@@ -76,7 +76,6 @@ function Navigation() {
                 else {
                     setProfileImage("http://localhost:8080/uploadimg/"+response.data); // 배포시 스프링주소로 바꿔야함
                 }
-                //setProfileImage("http://localhost:8080/uploadimg/"+response.data); // 배포시서버주소 변경 필요
             })
             .catch((error) => {
                 console.log(error);

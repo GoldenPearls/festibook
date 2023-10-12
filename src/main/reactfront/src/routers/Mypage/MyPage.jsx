@@ -401,7 +401,7 @@ function MyPage() {
                 </div>
             </div>
 
-            {!isEditing && (
+            {/*{!isEditing && (
                 <>
                     <div className="buttonsSection">
                         <button id="myPosts">내가 쓴 글</button>
@@ -412,7 +412,7 @@ function MyPage() {
                     </div>
 
                 </>
-            )}
+            )}*/}
             <div className="modifySection">
                 <button id="modifyInfo" onClick={handleButtonClick}
                         disabled={isNameTooLong || isNicknameTooLong || isIntroduceTooLong}

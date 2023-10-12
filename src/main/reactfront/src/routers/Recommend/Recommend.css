@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .mainText {
     position: relative;
     justify-content: center;
@@ -40,6 +47,43 @@ a:visited {
 .section {
     position: relative;
     overflow: hidden;
+}
+
+/*로그인 안했을 때*/
+/*.contentContainer {
+    display: flex;
+    justify-content: center; !* 가로 중앙 정렬 *!
+    align-items: center; !* 세로 중앙 정렬 *!
+}*/
+
+.login_text {
+    text-align: center; /* 텍스트 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 버튼 및 텍스트 중앙 정렬 */
+    align-items: center;
+    font-family: 'omyu_pretty';
+    font-size: 25px;
+}
+
+.login_button {
+    margin-top: 20px; /* 위 텍스트와의 간격 */
+    background-color: #EC7373;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 12px;
+}
+
+.login_button:hover {
+    background-color: #da6363;
+    transform: scale(1.05);
+}
+
+.login_button:active {
+    background-color: #ff8c8c;
 }
 
 /*인기 있는 축제*/
