@@ -331,7 +331,7 @@ function Home() {
                                 <a href="https://incredible-gem-98e.notion.site/in4mation-festibook-844ae8d62e784c8d82f374a03277f523?pvs=4">사이트 소개</a>
                             </div>
                             <div className="social-links">
-                                <span>Link: </span>
+                                <span>Link </span>
                                 <div className="icons">
                                     <a href="https://github.com/GoldenPearls/festibook"><img className="github" src={github} alt="github" /></a>
                                     <a href="https://incredible-gem-98e.notion.site/in4mation-festibook-844ae8d62e784c8d82f374a03277f523?pvs=4"><img className="notion" src={notion} alt="notion" /></a>

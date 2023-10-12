@@ -48,7 +48,7 @@
 
 .bgWrapper {
     width: 100%;
-    height: 300vh;
+    height: 350vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -95,7 +95,7 @@ a:visited {
     position: absolute;
     /*object-fit: contain;*/
     width: 100%; /* 너비를 100%로 설정 */
-    height: auto; /* 높이를 auto로 설정하여 비율을 유지 */
+    height: 700px;
 }
 
 .lamp {

@@ -183,8 +183,8 @@ function Recommend() {
                                             <div className="element">
                                                 <p className="festival_name"> {index + 1}. {festival.festival_name}</p>
                                                 <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/>
-                                                {icon && <img src={icon} alt="category-icon" />}
-                                                <p className={`festival_category ${className}`}># {festival.festival_category}</p>
+                                                {icon && <img src={icon} alt="category-icon" />}<br/>
+                                                <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
                                                 <span className="title">📍 상세 내용</span>
                                                 <p className="festival_contents">{festival.festival_contents}</p>
                                                 <span className="title">🔗 홈페이지</span><br/>
@@ -203,7 +203,7 @@ function Recommend() {
                                                     <p className="festival_name"> {index + 1}. {festival.festival_name}</p>
                                                     <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
                                                     {icon && <img src={icon} alt="category-icon" />}
-                                                    <p className={`festival_category ${className}`}># {festival.festival_category}</p><br />
+                                                    <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
                                                     <span className="title">📍 상세 내용</span><br/>
                                                     <p className="festival_contents">{festival.festival_contents}</p> <br/>
                                                     <span className="title">🔗 홈페이지</span> <br/>
