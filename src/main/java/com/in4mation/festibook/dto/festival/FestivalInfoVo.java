@@ -33,5 +33,5 @@ public class FestivalInfoVo {
 
     private String festival_image;
 
-
+    private int festival_view;
 }

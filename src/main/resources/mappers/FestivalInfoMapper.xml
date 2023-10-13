@@ -20,4 +20,23 @@
             WHERE festival_no = #{festival_no};
     </select>
 
+    <!-- 조회수를 가져오는 SQL -->
+    <select id="getViewsByNo" parameterType="int" resultType="int">
+        SELECT festival_view FROM festival_table WHERE festival_no = #{festival_no}
+    </select>
+
+    <!-- 조회수를 업데이트하는 SQL -->
+    <update id="incrementViews" parameterType="int">
+        UPDATE festival_table
+        SET festival_view = festival_view + 1
+        WHERE festival_no = #{festival_no}
+    </update>
+
+    <update id="updateViews" parameterType="map">
+        UPDATE festival_table
+        SET festival_view = #{festival_view}
+        WHERE festival_no = #{festival_no}
+    </update>
+
+
 </mapper>
