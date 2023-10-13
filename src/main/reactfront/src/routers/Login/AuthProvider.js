@@ -16,8 +16,9 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         // console.log("AuthProvider 실행됨!!")
         let jwt = localStorage.getItem('jwt');
-        if(jwt !== undefined)
+        if(jwt !== undefined) {
             setToken(jwt);
+        }
         let memberId = localStorage.getItem('memberId');
         if(memberId !== undefined)
             setUserId(memberId);

@@ -213,7 +213,7 @@ function Home() {
                                 10월 11일(수) : 하하&스컬 <br />
                                 10월 12일(목) : 청하, 케이시 <br /><br />
                                 <span className="title">📍 관련 인스타 그램 <br /><br />  </span>
-                                <a href="https://instagram.com/honam_neul_37th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a>
+                                <a href="https://www.instagram.com/gwangjuuniv/" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a>
                             </p>
                         </div>
                     </div>
