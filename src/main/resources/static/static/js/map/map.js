@@ -1,7 +1,7 @@
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 var options = { //지도를 생성할 때 필요한 기본 옵션
-	center: new kakao.maps.LatLng(37.56669, 126.9784), //지도의 중심좌표.
-	level: 3 //지도의 레벨(확대, 축소 정도)
+    center: new kakao.maps.LatLng(37.56669, 126.9784), //지도의 중심좌표.
+    level: 3 //지도의 레벨(확대, 축소 정도)
 };
 
 var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -18,7 +18,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 
 var markers = [];
 
- // 마커 클러스터러를 생성합니다
+// 마커 클러스터러를 생성합니다
 var clusterer = new kakao.maps.MarkerClusterer({
     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
     averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
@@ -70,43 +70,43 @@ function allFestival(data){
                     //사이드리스트를 html에 만들어놓고 getElementById로 가져와서 하려니깐
                     //실행순서 때문에 오류가 나는거 같아서 js로 사이드리스트를 만들어서 진행
 
-/*                    var li = document.createElement('li');
-                    li.id = record.festival_no;
+                    /*                    var li = document.createElement('li');
+                                        li.id = record.festival_no;
 
-                    li.style.padding = '18px';
-                    li.style.borderTop = '1px solid rgb(204, 204, 204)';
-                    li.style.display = 'flex';
-                    li.style.alignItems = 'center';
+                                        li.style.padding = '18px';
+                                        li.style.borderTop = '1px solid rgb(204, 204, 204)';
+                                        li.style.display = 'flex';
+                                        li.style.alignItems = 'center';
 
-                    // 왼쪽 div 생성
-                    var contentWrapper = document.createElement('div');
-                    contentWrapper.style.flexGrow = '1';
-                    // 왼쪽 div 내용 추가
-                    var name = document.createElement('h3');
-                    name.innerText = record.festival_name;
-                    var location = document.createElement('p');
-                    location.innerHTML = '<strong>장소: </strong>' + record.festival_addr;
-                    var date = document.createElement('p');
-                    date.innerHTML = '<strong>개최 일자: </strong>' + record.startDate + ' ~ ' + record.endDate;
+                                        // 왼쪽 div 생성
+                                        var contentWrapper = document.createElement('div');
+                                        contentWrapper.style.flexGrow = '1';
+                                        // 왼쪽 div 내용 추가
+                                        var name = document.createElement('h3');
+                                        name.innerText = record.festival_name;
+                                        var location = document.createElement('p');
+                                        location.innerHTML = '<strong>장소: </strong>' + record.festival_addr;
+                                        var date = document.createElement('p');
+                                        date.innerHTML = '<strong>개최 일자: </strong>' + record.startDate + ' ~ ' + record.endDate;
 
-                    contentWrapper.appendChild(name);
-                    contentWrapper.appendChild(location);
-                    contentWrapper.appendChild(date);
+                                        contentWrapper.appendChild(name);
+                                        contentWrapper.appendChild(location);
+                                        contentWrapper.appendChild(date);
 
 
-                    // 오른쪽 이미지 div 생성
-                    var imageWrapper = document.createElement('div');
-                    imageWrapper.classList.add('image-wrapper');
-                    imageWrapper.style.width = '100px';
-                    imageWrapper.style.height = '100px';
-                    imageWrapper.style.flexShrink = '0';
-                    imageWrapper.style.marginLeft = 'auto';
-                    // 오른쪽 이미지 div 내용 추가
-                    var image = document.createElement('img');
-                    var imgUrl = record.image;
-                    image.src = imgUrl;
-                    image.alt = '이미지공간';
-                    imageWrapper.appendChild(image);*//*
+                                        // 오른쪽 이미지 div 생성
+                                        var imageWrapper = document.createElement('div');
+                                        imageWrapper.classList.add('image-wrapper');
+                                        imageWrapper.style.width = '100px';
+                                        imageWrapper.style.height = '100px';
+                                        imageWrapper.style.flexShrink = '0';
+                                        imageWrapper.style.marginLeft = 'auto';
+                                        // 오른쪽 이미지 div 내용 추가
+                                        var image = document.createElement('img');
+                                        var imgUrl = record.image;
+                                        image.src = imgUrl;
+                                        image.alt = '이미지공간';
+                                        imageWrapper.appendChild(image);*//*
 
                     // 왼쪽 div과 오른쪽 이미지 div을 li에 추가
                     li.appendChild(contentWrapper);
@@ -132,7 +132,7 @@ function allFestival(data){
                     var sideList = document.getElementById('sideList');
                     sideList.id = record.festival_no;
                     sideList.addEventListener('mouseover', () => {
-                    	var position = marker.getPosition();
+                        var position = marker.getPosition();
                         map.setCenter(position);
                         clickMakerListener(map, marker, infowindow)();
                     });
@@ -198,12 +198,13 @@ function getContent(record) {
             </div>`;
 
 
-   //이름을 가운데로 정렬
+    //이름을 가운데로 정렬
     const titleStyle = "text-align: center;";
     result = result.replace('class="infowindow-title"', `class="infowindow-title" style="${titleStyle}; margin-top:10px; margin-bottom:10px;"`);
 
     return result;
 }
+
 
 
 
