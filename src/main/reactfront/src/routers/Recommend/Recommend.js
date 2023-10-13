@@ -14,7 +14,7 @@ import harmony from "../../img/main/주민화합.png"
 import traditional from "../../img/main/전통역사.png"
 import regional  from "../../img/main/지역특산물.png"
 import natural  from "../../img/main/생태자연.png"
-import famous from "../../img/main/famous.png";
+import famous from "../../img/mypage/recommend.png";
 import cal from "../../img/main/cal.png";
 import recommand_click from "../../img/nav/recommend_click.png"
 
@@ -257,7 +257,7 @@ function Recommend() {
             <div className="famous_div">
                 <div className="famous_text_div">
                     <img className="famous_img"  src={famous} alt="famous_img"/>
-                    <span className="famous_text"> 사람들이 가장 많이 본 인기 축제 TOP 5</span>
+                    <span className="famous_text">사람들이 가장 많이 본 인기 축제 TOP 5</span>
                 </div>
 
                 <div id="contentContainer" className="contentContainer">

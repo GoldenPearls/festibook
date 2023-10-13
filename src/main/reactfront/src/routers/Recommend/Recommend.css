@@ -109,7 +109,12 @@ a:visited {
     cursor: pointer;
 }
 
+.famous_img {
+    margin-top: 5px;
+}
+
 .famous_text{
+    padding-left: 10px;
     font-family: 'Katuri';
     font-size: 30px;
 }

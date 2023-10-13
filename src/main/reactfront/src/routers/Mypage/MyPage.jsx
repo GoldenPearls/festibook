@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./MyPage.css";
-import myprofile_image from '../../img/mypage/userprofile.png'
+import myprofile_image from '../../img/nav/myprofile_click.png'
 import {useAuth} from "../Login/AuthProvider";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";

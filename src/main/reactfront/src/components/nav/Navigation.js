@@ -11,14 +11,14 @@ import fireworks from '../../img/nav/fireworks.png';
 import fireworks_click from '../../img/nav/fireworks_click.png';
 import communication from '../../img/nav/communication.png';
 import communication_click from '../../img/nav/communication_click.png';
-import myprofile from '../../img/nav/myprofile.png'
+import myprofile from '../../img/nav/myprofile1.png'
 import { useAuth } from '../../routers/Login/AuthProvider'
 import { toast } from 'react-toastify';
 // react-toastify 제공하는 css
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useMediaQuery } from 'react-responsive'
-import myprofile_image from "../../img/mypage/userprofile.png";
+import myprofile_image from "../../img/nav/myprofile.png";
 import axios from "axios";
 
 const Mobile = ({ children }) => {
