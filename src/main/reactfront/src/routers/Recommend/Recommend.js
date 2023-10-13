@@ -122,7 +122,7 @@ function Recommend() {
 
     return (
         <div className="section">
-        <div className="bgWrapper"  >
+        <div className="Wrapper"  >
             <img className="recommancBackground" src={recommancBackground} alt="bg2"  />
             <h3 className="mainText" >당신만을 위한 추천 <br/> 추천할 수 박에</h3>
         </div>{/* 1개 이용시 필요
