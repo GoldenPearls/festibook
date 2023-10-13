@@ -38,6 +38,10 @@ public class FestivalInfoController {
         String imagePath = "/static/static/images/" + festival_no + ".jpg"; // 예를 들어 이미지 파일 이름은 festivalNo에 따라 동적으로 생성
         model.addAttribute("imagePath", imagePath);
 
+        // 조회수 가져오기
+        int updatedViews = festivalInfoService.incrementViews(festival_no);
+        model.addAttribute("updatedViews", updatedViews);
+
         //위치 정보
         LocationVo locationVo = festivalInfoService.getLocation(festival_no);
 
