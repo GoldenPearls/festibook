@@ -1,32 +1,3 @@
-/*body {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
-.container {
-    width:1280px;
-    height:818px;
-    position:relative;
-    overflow:hidden;
-    background-color:white;
-}
-
-.header {
-    width:36px;
-    height:8px;
-}
-
-.title {
-    width:36px;
-    height:8px;
-    position:absolute;
-    left:585px;
-    top :241px;
-
-}*/
-
 @font-face {
     font-family: 'Cafe24Supermagic-Bold-v1.0';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
@@ -34,14 +5,13 @@
     font-style: normal;
 }
 
-label, input, button.button {
-    font-family: 'Cafe24Supermagic-Bold-v1.0';
+body, label, input, button {
+    font-family: 'Cafe24Supermagic-Bold-v1.0', 'Arial', sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
 }
 
@@ -50,7 +20,7 @@ body {
     margin-top: 50px;
 }
 
-.memberServiceId {
+.form_box {
     border: 2px solid black;
     border-radius: 10px;
     padding: 15px;
@@ -69,12 +39,19 @@ label, input {
 }
 
 .button {
+    width: 100%;
+    height: 62px;
+    background-color: #ec7373;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
 }
 
 .button:hover {
-    background-color: #EC7373;
+    background-color: #d64b4b;
 }
 
 h1 {
@@ -100,7 +77,7 @@ input:focus {
 }
 
 @media only screen and (max-width: 758px) {
-    .memberServiceId {
+    .form_box {
         width: 90%;
     }
 
@@ -108,10 +85,9 @@ input:focus {
         width: calc(100% - 22px);
     }
 
-    button.button {
+    .button {
         width: 100%;
         height: 50px;
         font-size: 18px;
     }
 }
-
