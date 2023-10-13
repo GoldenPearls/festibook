@@ -47,7 +47,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: white;
+    background-color: black;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -60,7 +60,7 @@ html, body {
 {
     font-family: "KyoboHandwriting2021sjy";
     text-decoration: none;
-    color: black;
+    color: white;
     text-transform: uppercase;
     font-size: 20px;
     text-align: center;
@@ -93,13 +93,6 @@ a {
     color: slateblue; /* 원하는 색상으로 변경 */
 }
 
-.festival-link.active {
-    color: slateblue; /* 원하는 색상으로 변경 */
-}
-
-.community-link.active {
-    color: slateblue; /* 원하는 색상으로 변경 */
-}
 .mypage {
     width: 100px;      /* 이미지의 가로 크기를 지정. 필요한 크기로 조절하세요. */
     height: 100px;     /* 이미지의 세로 크기를 지정. 필요한 크기로 조절하세요. */
@@ -177,7 +170,9 @@ body > *:not(.nav) {
         height: 13%;
         justify-content: space-between;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        background-color: white;
     }
+
 
     .mypage_setting {
         cursor: pointer!important;
@@ -191,7 +186,7 @@ body > *:not(.nav) {
     {
         font-family: "bitbit";
         text-decoration: none;
-        color:black;
+        color:white;
         text-transform: uppercase;
         font-size: 7px;
         text-align: center;
@@ -200,7 +195,7 @@ body > *:not(.nav) {
 
     a {
         text-decoration: none;
-        color: black;
+        color: white;
     }
 
     .login-btn{

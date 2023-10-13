@@ -125,8 +125,8 @@ function Home() {
     return (
         <div className="section">
 
-            <div className="bgWrapper" style={{ '--scrollY': scrollY }} >
-                <img className="bg1" src={bg1} alt="bg2" style={{ top: `${scrollY * 0.5}px` }} />
+            <div className="bgWrapper">
+                <img className="bg1" src={bg1} alt="bg2"  />
                 <h3 className="mainText" style={{
                     top: `${scrollY * 1}px`,
                     marginRight: `${scrollY * 1.5}px`,
