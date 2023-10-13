@@ -57,12 +57,12 @@ window.onload = function() {
                         Swal.fire({
                             title: '비밀번호 변경',
                             text: data.message,
-                            confirmButtonText: '마이 페이지로',
+                            confirmButtonText: '메인 페이지로 돌아가기',
                             cancelButtonText: '돌아가기',
                             showCancelButton: true
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = "http://localhost:8080/";
+                                window.location.href = "/";
                             }
                         });
 

@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Festivals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
   <style>
     /* 검색 폼 스타일 */
     form {
       max-width: 600px; /* 폼의 최대 너비를 조정하세요 */
       margin: 0 auto;   /* 가운데 정렬을 위한 마진 설정 */
       display: flex;    /* 요소들을 가로로 나열하기 위해 Flexbox를 사용합니다 */
+      margin-bottom: 20px; /* 검색 폼 아래에 20px의 공간을 띄웁니다
     }
 
     input[type="text"] {
@@ -44,42 +47,49 @@
     }
 
     /* 이미지 그리드 스타일 */
-    .image-grid {
+<!--    .image-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr); /* 1열에 3개의 열로 그리드 설정 */
       gap: 10px; /* 이미지 간격을 10px로 조정 */
       justify-content: center; /* 가로 중앙 정렬 */
       align-items: center; /* 세로 중앙 정렬 */
-      height: 90vh; /* 뷰포트 높이의 80%만큼을 사용 */
+      height: 60vh; /* 뷰포트 높이의 80%만큼을 사용 */
       position: relative; /* 상대 위치 설정 */
-    }
+    }-->
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 1열에 4개의 열로 그리드 설정 */
+  gap: 10px; /* 이미지 간격을 10px로 조정 */
+  grid-row-gap: 5px; /* 행 간격을 조절 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  height: 80vh; /* 뷰포트 높이의 80%만큼을 사용 */
+  position: relative; /* 상대 위치 설정 */
+}
 
+<!--
+
+/* 축제 이미지 스타일 */
     .image-grid img {
       max-width: 100%;
       height: auto;
       border-radius: 10px;
       display: block;
       margin: 0 auto;
+       margin-bottom: 20px;
     }
 
-    /* Festival 정보 스타일 */
+    /* 축제 카테고리, 축제명 스타일 */
     .festival-info {
       text-align: center;
       margin-top: 10px;
     }
-
-    /* 추가된 스타일: 이미지와 정보를 가로로 나열 */
-    .festival-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+-->
 
     /* 버튼 위치 설정 */
     .button-container {
       position: absolute;
-      top: 150px;
+      top: 200px;
       right: 200px;
     }
 
@@ -87,17 +97,30 @@
     .header-image {
       max-width: 100%;
       height: auto;
-    }
-  </style>
-  <link href="/static/css/board/de/stylesFestival.css" rel="stylesheet" />
-</head>
 
+/* 미디어 쿼리: 화면 크기가 600px 이하일 때 스타일 조정 */
+@media screen and (max-width: 600px) {
+  /* 화면 크기가 600px 이하일 때 버튼 컨테이너 스타일 조정 */
+  .button-container {
+    position: static; /* static으로 변경하여 위치 속성 초기화 */
+    margin-top: 10px; /* 필요에 따라 조절 */
+    text-align: center;
+  }
+
+  .button-container button {
+    padding: 1px 20px; /* 작은 화면에 대한 크기 조정 */
+    font-size: 14px; /* 작은 화면에 대한 크기 조정 */
+  }
+}
+
+  </style>
+  <link href="/static/css/festival/festivalstyles.css" rel="stylesheet" />
+</head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="logo" href="/"><img src="/static/nav/logo.png" alt="상단 이미지" class="header-image">
-    </a>
+    <a class="navbar-brand" href="/">Festibook</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -109,29 +132,43 @@
     </div>
   </div>
 </nav>
+
 <!-- 상단 JPG 이미지 띄우기 -->
-<!-- 상단 JPG 이미지 띄우기 -->
-<img src="/static/festival_search_img/header1.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: 100%;">
+<img src="/static/css/festival_search_img/nori2.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: 100%;">
+<!--
+<img src="/static/css/festival_search_img/firework.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: 100%;">
+
+-->
+
+<!--
+<img src="/static/nori2.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: auto;">
+-->
 
 
+<!--img src="C:\merged_project\festibook\src\main\resources\static\static\css\festival_search_img\nori2.jpg" alt="상단 이미지" class="header-image" style="max-height: 300px; width: auto;">
+-->
 <h1></h1>
 
 <!-- 검색 폼 추가 -->
 <form th:action="@{/festival/search}" method="get" style="display: flex; align-items: center; margin-top: 30px;">
-  <input type="text" name="keyword" placeholder="축제명을 입력해주세요." style="flex-grow: 1; padding: 20px; font-size: 20px; border: 1px solid #ccc; border-radius: 10px; margin-right: 10px;">
-  <button type="submit" style="padding: 20px 20px; font-size: 20px; background-color: #EC7373; color: #fff; border: none; border-radius: 100%; cursor: pointer; writing-mode: horizontal-tb;">검색</button>
+  <input type="text" name="keyword" placeholder="축제명을 입력해주세요." style="flex-grow: 1; padding: 10px; font-size: 10px; border: 1px solid #ccc; border-radius: 10px; margin-right: 10px;">
+  <button type="submit" style="padding: 10px 10px; font-size: 10px; background-color: #EC7373; color: #fff; border: none; border-radius: 100%; cursor: pointer;">
+    <i class="fas fa-search"></i>
+  </button>
 </form>
 
-
-<!-- 버튼 이동 -->
 <div class="button-container">
-  <button id="mapButton">위치로 보기</button>
+  <button id="mapButton" style="padding: 4px 4px; font-size: 4px;">
+    <i class="fas fa-map-marker-alt"></i> 위치로 보기
+  </button>
   <script>
     document.getElementById("mapButton").addEventListener("click", function() {
       window.location.href = "http://localhost:8080/festival/map";
     });
   </script>
-  <button id="calendarButton">날짜로 보기</button>
+  <button id="calendarButton" style="padding: 4px 4px; font-size: 4px;">
+    <i class="far fa-calendar-alt"></i> 날짜로 보기
+  </button>
   <script>
     document.getElementById("calendarButton").addEventListener("click", function() {
       window.location.href = "http://localhost:8080/calendar";
@@ -139,25 +176,36 @@
   </script>
 </div>
 
+
 <!-- 이미지 그리드 추가 -->
-<div class="image-grid">
+<!--<div class="image-grid">
   <div th:each="festival : ${festivals}" class="festival-item">
-    <!--<img th:src="${festival.festival_image}" alt="Festival Image"/>-->
     <img th:src="${festival.festival_image}"
          alt="Festival Image"
          th:onclick="'window.location.href=\'http://localhost:8080/festivalInfo/' + ${festival.festival_no} + '\''"
          style="cursor: pointer;"/>
     <div class="festival-info">
-      <!--<p th:text="${festival.festival_no}"></p>-->
+      <p th:text="${festival.festival_name}"></p>
+      <p th:text="${festival.festival_category}"></p>
+    </div>
+  </div>
+</div>-->
+<div class="image-grid">
+  <div th:each="festival : ${festivals}" class="festival-item">
+    <img th:src="${festival.festival_image}"
+         alt="Festival Image"
+         th:onclick="'window.location.href=\'http://localhost:8080/festivalInfo/' + ${festival.festival_no} + '\''"
+         style="cursor: pointer; max-width: 400px; max-height: 300px;"/>
+    <div class="festival-info">
       <p th:text="${festival.festival_name}"></p>
       <p th:text="${festival.festival_category}"></p>
     </div>
   </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/static/js/board/boardDetail.js"></script>
 <script src="/static/js/board/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
-
