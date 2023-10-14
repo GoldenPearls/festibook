@@ -1,11 +1,16 @@
 
-
 .fc-day-sun a{
-  color: red;
+  color: red !important;
 }
 
 .fc-day-sat a{
-  color: blue;
+  color: blue !important;
+}
+
+
+.fc-day a {
+  text-decoration: none !important; /* 하이퍼링크 밑줄 제거 */
+  color: black !important; /* 링크 색상 변경 */
 }
 
 .fc .fc-button-primary{
@@ -41,8 +46,9 @@
 }
 
 
-/*
-.fc .fc-button-group > .fc-button {
-   background-color: yellow;
+.navbar {
+    margin-bottom: 70px;
+
 }
-*/
+
+
