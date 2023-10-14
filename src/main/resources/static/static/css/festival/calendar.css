@@ -8,6 +8,11 @@
   color: blue;
 }
 
+.fc-day a {
+    text-decoration: none !important; /* 하이퍼링크 밑줄 제거 */
+    color: black !important; /* 링크 색상 변경 */
+}
+
 .fc .fc-button-primary{
     background-color: #EC7373;
     border-color: white;
