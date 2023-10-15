@@ -110,7 +110,7 @@ export default function Login() {
                     setIsLoggedIn(true);
 
                     setTimeout(() => {
-                        let { from } = location.state || { from: { pathname: "/recommend" } };
+                        let { from } = location.state || { from: { pathname: "/" } };
                         navigate(from);
                     }, 2000);
 
