@@ -263,10 +263,10 @@ a:visited {
         padding: 0 0px;
 
         left: 80%;
-        transform: translate(-75%, -10%); /*위치 바꿀때 유용*/
-        height: 100%;
+        transform: translate(-78%, -3%); /*위치 바꿀때 유용*/
+        height: 90%;
         position: fixed;
-        width: 90vh;
+        width: 60vh;
     }
 
     .custom-toast-container {
@@ -283,11 +283,11 @@ a:visited {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 400px;
-        height: 48px;
+        width: 330px;
+        height: 43px;
         border-radius: 8px;
         padding: 16px;
-        margin-top: 8px;
+        margin-top: 4px;
         background-color: white;
         border: 1px solid #e2e0e0;
     }
@@ -312,22 +312,22 @@ a:visited {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 70%;
-        min-height: 200px;
-        min-width: 200px;
+        height: 40px!important;
+        width: 210px;
     }
 
     .logoName {
-        padding-top: 1vh;
+        padding-top: 0vh;
         color : lavenderblush;
         font-size: 5vh;
     }
 
+
     .logoName1{
         position: absolute;
-        top: 45%;
+        top: 42%;
         left: 42%;
-        transform: translate(-43%, -93%);
+        transform: translate(-43%, -92%);
     }
 
     .input_login, .input_password, .text{
@@ -337,23 +337,23 @@ a:visited {
 
     .input_login{
         padding-top: 1vh;
-        padding-right: 40vh;
+        padding-right: 44vh;
     }
 
     .input_password{
         padding-top: 1vh;
-        padding-right: 39vh;
+        padding-right: 43vh;
     }
 
     .text{
-        width: 400px;
+        width: 350px;
     }
 
     .bottomButton {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 400px;
+        width: 350px;
         height: 48px;
     }
 }
