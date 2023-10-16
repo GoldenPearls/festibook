@@ -325,8 +325,8 @@ a:visited {
 
     .logoName1{
         position: absolute;
-        top: 42%;
-        left: 42%;
+        top: 43%;
+        left: 43%;
         transform: translate(-43%, -92%);
     }
 
@@ -354,7 +354,7 @@ a:visited {
         justify-content: center;
         align-items: center;
         width: 350px;
-        height: 48px;
+        height: 40px;
     }
 }
 

@@ -259,6 +259,26 @@ function Home() {
                                 </p>
                             </div>
                         </div>
+                            <div className="university_festival">
+                                <span className="university_name">광주대학교</span><br/>
+                                <img className="university_img3" src={university3} alt="university3"/><br/>
+                                <div>
+                                    <p className="element">
+                                        <span className="title"> 📍 일정  <br /> </span>
+                                        2023. 10. 11(수) - 2023. 10. 12(목)
+                                        <br /> <br />
+                                        <span className="title"> 📍 장소   <br /> </span>
+                                        광주광역시 남구 효덕로 277 광주대학교
+                                        <br /> <br />
+                                        <span className="title">📍 라인업 <br />  </span>
+                                        [2일간만 진행]<br />
+                                        10월 11일(수) : 하하&스컬 <br />
+                                        10월 12일(목) : 청하, 케이시 <br /><br />
+                                        <span className="title">📍 관련 인스타 그램 <br />  </span>
+                                        <a href="https://www.instagram.com/gwangjuuniv/" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a><br />
+                                    </p>
+                                </div>
+                            </div>
                         <div className="university_festival">
                             <span className="university_name">광주대학교</span><br/>
                             <img className="university_img3"  src={university3} alt="university3"/><br/>
@@ -271,10 +291,11 @@ function Home() {
                                     광주광역시 남구 효덕로 277 광주대학교
                                     <br /> <br />
                                     <span className="title">📍 라인업 <br />  </span>
+                                    [2일간만 진행]<br />
                                     10월 11일(수) : 하하&스컬 <br />
                                     10월 12일(목) : 청하, 케이시 <br /><br />
-                                    <span className="title">📍 관련 인스타 그램  </span><br/>
-                                    <a href="https://instagram.com/honam_neul_37th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a><br /><br />
+                                    <span className="title">📍 관련 인스타 그램 <br />  </span>
+                                    <a href="https://www.instagram.com/gwangjuuniv/" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a><br />
                                 </p>
                             </div>
                         </div>
@@ -284,42 +305,6 @@ function Home() {
 
             </div>
 
-
-            {/*<div className="famous_div">
-                <div className="famous_text_div">
-                    <img className="famous_img"  src={famous} alt="famous_img"/>
-                    <span className="famous_text"> 사람들이 가장 많이 본 인기 축제 TOP 5</span>
-                </div>
-
-                <div id="contentContainer" className="contentContainer">
-                    <Slider {...settings} className="famous_slider">
-                        {festivals.map((festival, index) => {
-                            // 각 festival 항목에 대해 아이콘과 클래스 정보를 가져옵니다.
-                            const { icon, className } = renderIconAndStyle(festival.festival_category);
-
-                            return (
-                                <div
-                                    key={festival.festival_no}
-                                    className="festivalItem">
-                                    <div>
-                                        <p className="element">
-                                            <p className="festival_name">Top {index + 1}  {festival.festival_name}</p><br/>
-                                            <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
-                                            {icon && <img src={icon} alt="category-icon" />}
-                                            <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
-                                            <span className="title">📍 상세 내용 <br /></span>
-                                            <p className="festival_contents"> {festival.festival_contents}</p>  <br />
-                                            <span className="title">🔗 홈페이지 <br /></span>
-                                            <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
-                                        </p>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </Slider>
-                </div>
-
-            </div>*/}
                     <div className={`footer ${isMobile ? 'mobile' : ''}`}>
                         <div className="footer-logo">
                             <img className="footer_logo" src={footer_logo} alt="footer_logo" />

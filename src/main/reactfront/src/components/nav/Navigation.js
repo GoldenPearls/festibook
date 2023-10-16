@@ -117,7 +117,7 @@ function Navigation() {
                                     <Link to="/mypage" className="mypage-btn" onClick={() => setIsTabOpen(false)}>마이페이지</Link>
                                     <div className="logout_text"onClick={() => {
                                         handleLogout();
-                                        setIsTabOpen(false);
+                                        setIsTabOpen(false);  
                                     }}>로그아웃</div>
                                 </div>
                             )}
