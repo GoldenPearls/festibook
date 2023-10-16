@@ -52,10 +52,10 @@ a:visited {
 
 .page {
     position: absolute;
-    top: 80px;
+    top: 150px;
     bottom: 0;
     width: 100%;
-    height : 90%;
+    height : 80%;
     max-width: 600px;
     padding: 0 20px;
 
@@ -172,12 +172,12 @@ a:visited {
 
 .input_login{
     padding-top: 1vh;
-    padding-right: 49vh;
+    padding-right: 39vh;
 }
 
 .input_password{
     padding-top: 1vh;
-    padding-right: 48vh;
+    padding-right: 38vh;
 }
 
 .text {
