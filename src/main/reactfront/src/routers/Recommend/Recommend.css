@@ -98,6 +98,7 @@ a:visited {
     padding: 20px;
     max-width: 380px; /* 선택적: div의 최대 너비 */
     width: 100%; /* 선택적: div의 너비를 100%로 설정 */
+    margin-right: 20px;
 }
 
 .famous_slider {

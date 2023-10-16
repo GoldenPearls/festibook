@@ -5,6 +5,14 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 
 .myPage {
     display: flex;
@@ -79,6 +87,8 @@
 
 
 .age-group-form {
+    font-size: 20px;
+    font-family: 'omyu_pretty';
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -88,12 +98,13 @@
 }
 
 .category-form {
+    font-family: 'omyu_pretty';
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 7px;
     margin-top: 10px;
-    font-size : 15px;
+    font-size : 20px;
 }
 
 #modifyInfo, #modifyPassword, #withdraw {
@@ -132,9 +143,12 @@ a:visited {
 
 /*버튼*/
 .myPage button {
+    font-family: 'omyu_pretty';
     background-color: #EC7373;
     color: #ffffff;
     padding: 10px 20px;
+    font-size : 18px;
+    width: 150px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -158,11 +172,11 @@ a:visited {
 /* 사이즈가 작아질 때 */
 @media screen and (max-width: 768px) {
     .infoSection {
-        text-align: right;
-        display: flex;
+        text-align: left;
+        /*display: flex;*/
         flex-direction: column;
         align-items: flex-start;
-        width: 100%;
+        width: 120%;
         padding: 20px;
     }
 
@@ -174,4 +188,32 @@ a:visited {
         margin-top: 10px;
         font-size : 13px;
     }
+
+    .age-group-form, .category-form {
+        font-size: 13px;
+        font-family: 'omyu_pretty';
+    }
+    .myPage button {
+        font-family: 'omyu_pretty';
+        width: 100px;
+        height: 30px;
+        font-size: 13px;
+        background-color: #EC7373;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .buttonsSection {
+        display: flex;
+        justify-content: flex-start; /* Aligns buttons to the right */
+        gap: 10px; /* To add spacing between buttons */
+    }
+
+    .modifySection {
+        width : 120%;
+        text-align: right;
+    }
+
+
 }

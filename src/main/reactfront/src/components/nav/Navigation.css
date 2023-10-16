@@ -203,10 +203,10 @@ body > *:not(.nav) {
     }
 
     .nav .login-btn {
-        font-family: "Cafe24Supermagic-Bold-v1.0";
-        font-size: 20px;
-        padding: 4px 8px;
-        margin: 0 8px;
+        font-family: "KyoboHandwriting2021sjy";
+        font-size: 19px;
+        padding: 8px 5px;
+        margin: 0 10px;
         text-decoration: none;
         text-transform: uppercase;
         background-color: palevioletred;
@@ -214,7 +214,7 @@ body > *:not(.nav) {
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        width : 50px !important;
+        width : 80px !important;
     }
 
 
