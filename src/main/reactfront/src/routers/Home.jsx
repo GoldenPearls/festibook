@@ -210,9 +210,10 @@ function Home() {
                                 광주광역시 남구 효덕로 277 광주대학교
                                 <br /> <br />
                                 <span className="title">📍 라인업 <br />  </span>
+                                [2일간만 진행]<br />
                                 10월 11일(수) : 하하&스컬 <br />
                                 10월 12일(목) : 청하, 케이시 <br /><br />
-                                <span className="title">📍 관련 인스타 그램 <br /><br />  </span>
+                                <span className="title">📍 관련 인스타 그램 <br /> </span>
                                 <a href="https://www.instagram.com/gwangjuuniv/" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a>
                             </p>
                         </div>
@@ -279,26 +280,6 @@ function Home() {
                                     </p>
                                 </div>
                             </div>
-                        <div className="university_festival">
-                            <span className="university_name">광주대학교</span><br/>
-                            <img className="university_img3"  src={university3} alt="university3"/><br/>
-                            <div>
-                                <p className="element">
-                                    <span className="title"> 📍 일정  <br /> </span>
-                                    2023. 10. 11(수) - 2023. 10. 12(목)
-                                    <br /> <br />
-                                    <span className="title"> 📍 장소   <br /> </span>
-                                    광주광역시 남구 효덕로 277 광주대학교
-                                    <br /> <br />
-                                    <span className="title">📍 라인업 <br />  </span>
-                                    [2일간만 진행]<br />
-                                    10월 11일(수) : 하하&스컬 <br />
-                                    10월 12일(목) : 청하, 케이시 <br /><br />
-                                    <span className="title">📍 관련 인스타 그램 <br />  </span>
-                                    <a href="https://www.instagram.com/gwangjuuniv/" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a><br />
-                                </p>
-                            </div>
-                        </div>
                         </>
                         )}
                 </div>

@@ -186,7 +186,7 @@ function Recommend() {
                                                 {icon && <img src={icon} alt="category-icon" />}<br/>
                                                 <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
                                                 <span className="title">📍 상세 내용</span>
-                                                <p className="festival_contents">{festival.festival_contents}</p>
+                                                <p className="festival_contents">{festival.festival_contents}</p><br/><br />
                                                 <span className="title">🔗 홈페이지</span><br/>
                                                 <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a>
                                             </div>
@@ -204,9 +204,9 @@ function Recommend() {
                                                     <img src={process.env.PUBLIC_URL + festival.festival_image} alt={festival.festivalName} className="festival_image" onClick={() => window.location.href=`http://localhost:8080/festivalInfo/${festival.festival_no}`}/><br/>
                                                     {icon && <img src={icon} alt="category-icon" />}
                                                     <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
-                                                    <span className="title">📍 상세 내용</span><br/>
-                                                    <p className="festival_contents">{festival.festival_contents}</p> <br/>
-                                                    <span className="title">🔗 홈페이지</span> <br/>
+                                                    <span className="title">📍 상세 내용<br /></span>
+                                                    <p className="festival_contents">{festival.festival_contents}</p><br/>
+                                                    <span className="title">🔗 홈페이지<br /></span>
                                                     <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a>
                                                 </div>
                                             </div>
@@ -243,7 +243,7 @@ function Recommend() {
                                             {icon && <img src={icon} alt="category-icon" />}
                                             <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
                                             <span className="title">📍 상세 내용 <br /></span>
-                                            <p className="festival_contents"> {festival.festival_contents}</p>  <br />
+                                            <p className="festival_contents"> {festival.festival_contents}</p> <br />
                                             <span className="title">🔗 홈페이지 <br /></span>
                                             <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
                                         </div>
@@ -277,7 +277,7 @@ function Recommend() {
                                             {icon && <img src={icon} alt="category-icon" />}
                                             <p className={`festival_category ${className}`}># {festival.festival_category}</p><br /><br />
                                             <span className="title">📍 상세 내용 <br /></span>
-                                            <p className="festival_contents"> {festival.festival_contents}</p>  <br />
+                                            <p className="festival_contents"> {festival.festival_contents}</p> <br />
                                             <span className="title">🔗 홈페이지 <br /></span>
                                             <a href={festival.festival_homepage} target="_blank" rel="noopener noreferrer" className="festival_homepage">바로가기</a><br /><br />
                                         </div>
