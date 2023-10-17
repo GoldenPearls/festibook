@@ -146,7 +146,7 @@ function Home() {
                             animationDuration: `${2 + index % 2}s`,
                         }}
                     />
-                ))}
+                ))}G
 
             </div>
 

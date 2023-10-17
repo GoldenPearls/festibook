@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate} from 'react-router-dom';
@@ -6,22 +5,12 @@ import "./Navigation.css";
 import logoImage from '../../img/nav/logo.png';
 import home from '../../img/nav/home1.png';
 import home_click from '../../img/nav/home_click1.png';
-=======
-import React from "react";
-import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
-import "./Navigation.css";
-import logoImage from '../../img/nav/logo.png';
-import home from '../../img/nav/home.png';
-import home_click from '../../img/nav/home_click.png';
->>>>>>> calendarFDetail_ch
 import recommend from '../../img/nav/recommend.png';
 import recommend_click from '../../img/nav/recommend_click.png';
 import fireworks from '../../img/nav/fireworks.png';
 import fireworks_click from '../../img/nav/fireworks_click.png';
 import communication from '../../img/nav/communication.png';
 import communication_click from '../../img/nav/communication_click.png';
-<<<<<<< HEAD
 import myprofile from '../../img/nav/myprofile1.png'
 import { useAuth } from '../../routers/Login/AuthProvider'
 import { toast } from 'react-toastify';
@@ -31,10 +20,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useMediaQuery } from 'react-responsive'
 import myprofile_image from "../../img/nav/myprofile.png";
 import axios from "axios";
-=======
-
-import { useMediaQuery } from 'react-responsive'
->>>>>>> calendarFDetail_ch
 
 const Mobile = ({ children }) => {
     const isMobile = useMediaQuery({ maxWidth: 768 })
@@ -46,11 +31,9 @@ const Default = ({ children }) => {
 }
 
 function Navigation() {
-<<<<<<< HEAD
     const [profileImage, setProfileImage] = useState(myprofile_image); // 초기 이미지 설정
     const location = useLocation();
     const navigate = useNavigate();
-
     /*const { token, setToken } = useAuth();*/
     const auth = useAuth();
 
@@ -112,16 +95,10 @@ function Navigation() {
         toast.success('로그아웃에 성공했습니다.');
     }
 
-=======
-    const location = useLocation();
-    const isActive = path => location.pathname === path;
->>>>>>> calendarFDetail_ch
     return (
         <div className="nav">
             <Default>
                 <>
-<<<<<<< HEAD
-
                     <Link to="/" className="home-link">
                         <img src={logoImage} alt="Home Logo" className="home-logo"/></Link> <br></br>
                     <Link to="/recommend" className={`recommend-link ${isActive("/recommend") ? "active" : ""}`}>추천할 수 박에</Link> <br></br>
@@ -140,7 +117,7 @@ function Navigation() {
                                     <Link to="/mypage" className="mypage-btn" onClick={() => setIsTabOpen(false)}>마이페이지</Link>
                                     <div className="logout_text"onClick={() => {
                                         handleLogout();
-                                        setIsTabOpen(false);  
+                                        setIsTabOpen(false);
                                     }}>로그아웃</div>
                                 </div>
                             )}
@@ -150,15 +127,6 @@ function Navigation() {
                             Login</Link>
                     )
                     }
-=======
-                <Link to="/" className="home-link">
-                    <img src={logoImage} alt="Home Logo" className="home-logo"/></Link> <br></br>
-                <Link to="/recommend" className={`recommend-link ${isActive("/recommend") ? "active" : ""}`}>추천할 수 박에</Link> <br></br>
-                <Link to="/festival" className={`festival-link ${isActive("/festival") ? "active" : ""}`}>축제/행사 소개</Link> <br></br>
-                <Link to="/community" className={`community-link ${isActive("/community") ? "active" : ""}`}>너와 나의 연결고리</Link> <br></br>
-                <Link to="/login" className="login-btn">Login</Link>
-
->>>>>>> calendarFDetail_ch
                 </>
             </Default>
 
@@ -169,8 +137,6 @@ function Navigation() {
                     <Link to="/recommend" className="recommend-mobile"> <img src={isActive("/recommend")? recommend_click : recommend} alt="recommend Logo" className="recommend"/><br/>추천 할 수 박에</Link> <br></br>
                     <Link to="/festival" className="festival-mobile"><img src={isActive("/festival")? fireworks_click : fireworks} alt="fireworks Logo" className="fireworks"/><br/>축제/행사 소개</Link> <br></br>
                     <Link to="/community" className="community-mobile"> <img src={isActive("/community")? communication_click : communication} alt="communication Logo" className="communication"/><br/>너와 나의 연결고리</Link> <br></br>
-<<<<<<< HEAD
-
                     {auth.token ? (
                         <>
                             <div className="mypage_setting">
@@ -190,10 +156,8 @@ function Navigation() {
                         </>
                     ) : (
                         <Link to="/login" className="login-btn">Login</Link>
-                    )}
-=======
-                    <Link to="/login" className="login-btn">Login</Link>
->>>>>>> calendarFDetail_ch
+                    )
+                    }
                 </>
             </Mobile>
         </div>

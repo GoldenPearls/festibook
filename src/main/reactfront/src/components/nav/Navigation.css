@@ -47,11 +47,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-<<<<<<< HEAD
     background-color: black;
-=======
-    background-color: white;
->>>>>>> calendarFDetail_ch
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -59,19 +55,11 @@ html, body {
 .nav .home-link,
 .nav .recommend-link,
 .nav .festival-link,
-<<<<<<< HEAD
 .nav .community-link
 {
     font-family: "KyoboHandwriting2021sjy";
     text-decoration: none;
     color: white;
-=======
-.nav .community-link,
-.nav .login-btn {
-    font-family: "KyoboHandwriting2021sjy";
-    text-decoration: none;
-    color: black;
->>>>>>> calendarFDetail_ch
     text-transform: uppercase;
     font-size: 20px;
     text-align: center;
@@ -79,15 +67,11 @@ html, body {
     margin: 0 10px;
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> calendarFDetail_ch
 .nav .home-logo {
     height: 50px;
 }
 
-<<<<<<< HEAD
 a {
     text-decoration: none;
 }
@@ -101,13 +85,6 @@ a {
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
-=======
-
-.nav .login-btn {
-    font-family: "Cafe24Supermagic-Bold-v1.0";
-    font-size : 15px;
-    padding: 7px 20px;
->>>>>>> calendarFDetail_ch
     background-color: palevioletred;
     color: white;  /* 이 규칙이 로그인 버튼의 텍스트 색상을 지정합니다. */
     border: none;
@@ -115,20 +92,10 @@ a {
     cursor: pointer;
 }
 
-<<<<<<< HEAD
-.mypage {
-    width: 40px; /* 원하는 너비로 변경 */
-    height: 40px; /* 원하는 높이로 변경 */
-    object-fit: cover; /* 또는 contain */
-}
-
-=======
->>>>>>> calendarFDetail_ch
 .recommend-link.active {
     color: slateblue; /* 원하는 색상으로 변경 */
 }
 
-<<<<<<< HEAD
 .mypage {
     width: 100px;      /* 이미지의 가로 크기를 지정. 필요한 크기로 조절하세요. */
     height: 100px;     /* 이미지의 세로 크기를 지정. 필요한 크기로 조절하세요. */
@@ -136,22 +103,12 @@ a {
     object-fit: cover; /* 이미지 비율을 유지하면서, 지정된 너비와 높이에 맞게 조정합니다. */
 }
 
-=======
-.festival-link.active {
-    color: slateblue; /* 원하는 색상으로 변경 */
-}
-
-.community-link.active {
-    color: slateblue; /* 원하는 색상으로 변경 */
-}
->>>>>>> calendarFDetail_ch
 
 /* 네비게이션 바의 높이만큼 컨텐츠를 아래로 이동 */
 body > *:not(.nav) {
     margin-top: 70px;
 }
 
-<<<<<<< HEAD
 .mypage_setting{
     position: relative;
 }
@@ -207,15 +164,12 @@ body > *:not(.nav) {
 
 
 
-=======
->>>>>>> calendarFDetail_ch
 @media screen and (max-width: 768px) {
     .nav {
         left: initial;
         top: initial;
         bottom:0px;
         width: 100%;
-<<<<<<< HEAD
         height: 12%;
         /*justify-content: space-between;*/
         justify-content: flex-start!important;
@@ -234,28 +188,15 @@ body > *:not(.nav) {
     .mypage_text,
     .logout_text
     {
-=======
-        height: 13%;
-        justify-content: space-between;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .nav a {
->>>>>>> calendarFDetail_ch
         font-family: "bitbit";
         text-decoration: none;
         color:black;
         text-transform: uppercase;
-<<<<<<< HEAD
         font-size: 7px;
-=======
-        font-size: 5px;
->>>>>>> calendarFDetail_ch
         text-align: center;
         margin-top: 20px;
     }
 
-<<<<<<< HEAD
     a {
         text-decoration: none;
         color: white;
@@ -278,8 +219,6 @@ body > *:not(.nav) {
 
 
 
-=======
->>>>>>> calendarFDetail_ch
     .nav .home-link_mobile{
         align-items: center;
 
@@ -287,17 +226,13 @@ body > *:not(.nav) {
 
     body > *:not(.nav) {
         margin-top: 0px;
-<<<<<<< HEAD
         padding-bottom: 100px;
-=======
->>>>>>> calendarFDetail_ch
     }
 
     .nav a:not(:last-child) {
         margin-bottom: 20px;
     }
 
-<<<<<<< HEAD
 
     .mypage{
         height: 55px;
@@ -322,6 +257,4 @@ body > *:not(.nav) {
         padding: 10px;
     }
 
-=======
->>>>>>> calendarFDetail_ch
 }
