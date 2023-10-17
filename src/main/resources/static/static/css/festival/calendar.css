@@ -1,12 +1,4 @@
 
-.fc-day-sun a{
-  color: red !important;
-}
-
-.fc-day-sat a{
-  color: blue !important;
-}
-
 
 .fc-day a {
   text-decoration: none !important; /* 하이퍼링크 밑줄 제거 */
