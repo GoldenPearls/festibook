@@ -152,74 +152,12 @@ function Home() {
 
             <div className="university_div">
                 <div className="university_text_div">
-                <img className="university_img"  src={university_img} alt="university_img"/>
+                    <img className="university_img"  src={university_img} alt="university_img"/>
                     <span className="university_text"> 10월의 대학 축제</span>
                 </div>
 
                 <div className="university_ex">
                     {isMobile ?( <Slider {...settings} className="famous_slider">
-                    <div className="university_festival">
-                        <span className="university_name">조선대학교</span><br/>
-                        <img className="university_img1"  src={university1} alt="university1"/><br/>
-                        <div>
-                            <p className="element">
-                               <span className="title"> 📍 일정  <br /> </span>
-                                   2023. 10. 04(수) - 2023. 10. 06(금) 18:00
-                                <br /> <br />
-                                <span className="title"> 📍 장소   <br /> </span>
-                                광주광역시 동구 필문대로 309 조선대학교
-                                <br /> <br />
-                                <span className="title">📍 라인업 <br />  </span>
-                                10월 4일(수) : 신스/마크툽 <br />
-                                10월 5일(목) : 김나영/2F 신용재 X 김원주 <br />
-                                10월 6일(금) : 프로미스나인 신용재 <br /><br />
-                                <span className="title">📍 관련 인스타 그램 <br />  </span>
-                                <a href="https://instagram.com/chosun_36th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">조선대학교 인스타 바로가기</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="university_festival">
-                        <span className="university_name">호남대학교</span><br/>
-                        <img className="university_img2"  src={university2} alt="university2"/><br/>
-                        <div>
-                            <p className="element">
-                                <span className="title"> 📍 일정  <br /> </span>
-                                2023. 10. 10(화) - 2023. 10. 12(목)
-                                <br /> <br />
-                                <span className="title"> 📍 장소   <br /> </span>
-                                광주광역시 광산구 호남대길 120 호남대학교
-                                <br /> <br />
-                                <span className="title">📍 라인업 <br />  </span>
-                                10월 10일(화) : 전상근 <br />
-                                10월 11일(수) : 비와이 <br />
-                                10월 12일(목) : 최예나 <br /><br />
-                                <span className="title">📍 관련 인스타 그램 <br />  </span>
-                                <a href="https://instagram.com/honam_neul_37th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">호남대학교 인스타 바로가기</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="university_festival">
-                        <span className="university_name">광주대학교</span><br/>
-                        <img className="university_img3"  src={university3} alt="university3"/><br/>
-                        <div>
-                            <p className="element">
-                                <span className="title"> 📍 일정  <br /> </span>
-                                2023. 10. 11(수) - 2023. 10. 12(목)
-                                <br /> <br />
-                                <span className="title"> 📍 장소   <br /> </span>
-                                광주광역시 남구 효덕로 277 광주대학교
-                                <br /> <br />
-                                <span className="title">📍 라인업 <br />  </span>
-                                [2일간만 진행]<br />
-                                10월 11일(수) : 하하&스컬 <br />
-                                10월 12일(목) : 청하, 케이시 <br /><br />
-                                <span className="title">📍 관련 인스타 그램 <br /> </span>
-                                <a href="https://www.instagram.com/gwangjuuniv/" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a>
-                            </p>
-                        </div>
-                    </div>
-                    </Slider>):(
-                        <>
                         <div className="university_festival">
                             <span className="university_name">조선대학교</span><br/>
                             <img className="university_img1"  src={university1} alt="university1"/><br/>
@@ -260,6 +198,68 @@ function Home() {
                                 </p>
                             </div>
                         </div>
+                        <div className="university_festival">
+                            <span className="university_name">광주대학교</span><br/>
+                            <img className="university_img3"  src={university3} alt="university3"/><br/>
+                            <div>
+                                <p className="element">
+                                    <span className="title"> 📍 일정  <br /> </span>
+                                    2023. 10. 11(수) - 2023. 10. 12(목)
+                                    <br /> <br />
+                                    <span className="title"> 📍 장소   <br /> </span>
+                                    광주광역시 남구 효덕로 277 광주대학교
+                                    <br /> <br />
+                                    <span className="title">📍 라인업 <br />  </span>
+                                    [2일간만 진행]<br />
+                                    10월 11일(수) : 하하&스컬 <br />
+                                    10월 12일(목) : 청하, 케이시 <br /><br />
+                                    <span className="title">📍 관련 인스타 그램 <br /> </span>
+                                    <a href="https://www.instagram.com/gwangjuuniv/" target="_blank" rel="noopener noreferrer">광주대학교 인스타 바로가기</a>
+                                </p>
+                            </div>
+                        </div>
+                    </Slider>):(
+                        <>
+                            <div className="university_festival">
+                                <span className="university_name">조선대학교</span><br/>
+                                <img className="university_img1"  src={university1} alt="university1"/><br/>
+                                <div>
+                                    <p className="element">
+                                        <span className="title"> 📍 일정  <br /> </span>
+                                        2023. 10. 04(수) - 2023. 10. 06(금) 18:00
+                                        <br /> <br />
+                                        <span className="title"> 📍 장소   <br /> </span>
+                                        광주광역시 동구 필문대로 309 조선대학교
+                                        <br /> <br />
+                                        <span className="title">📍 라인업 <br />  </span>
+                                        10월 4일(수) : 신스/마크툽 <br />
+                                        10월 5일(목) : 김나영/2F 신용재 X 김원주 <br />
+                                        10월 6일(금) : 프로미스나인 신용재 <br /><br />
+                                        <span className="title">📍 관련 인스타 그램 <br />  </span>
+                                        <a href="https://instagram.com/chosun_36th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">조선대학교 인스타 바로가기</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="university_festival">
+                                <span className="university_name">호남대학교</span><br/>
+                                <img className="university_img2"  src={university2} alt="university2"/><br/>
+                                <div>
+                                    <p className="element">
+                                        <span className="title"> 📍 일정  <br /> </span>
+                                        2023. 10. 10(화) - 2023. 10. 12(목)
+                                        <br /> <br />
+                                        <span className="title"> 📍 장소   <br /> </span>
+                                        광주광역시 광산구 호남대길 120 호남대학교
+                                        <br /> <br />
+                                        <span className="title">📍 라인업 <br />  </span>
+                                        10월 10일(화) : 전상근 <br />
+                                        10월 11일(수) : 비와이 <br />
+                                        10월 12일(목) : 최예나 <br /><br />
+                                        <span className="title">📍 관련 인스타 그램 <br />  </span>
+                                        <a href="https://instagram.com/honam_neul_37th?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">호남대학교 인스타 바로가기</a>
+                                    </p>
+                                </div>
+                            </div>
                             <div className="university_festival">
                                 <span className="university_name">광주대학교</span><br/>
                                 <img className="university_img3" src={university3} alt="university3"/><br/>
@@ -281,35 +281,35 @@ function Home() {
                                 </div>
                             </div>
                         </>
-                        )}
+                    )}
                 </div>
 
             </div>
 
-                    <div className={`footer ${isMobile ? 'mobile' : ''}`}>
-                        <div className="footer-logo">
-                            <img className="footer_logo" src={footer_logo} alt="footer_logo" />
-                        </div>
+            <div className={`footer ${isMobile ? 'mobile' : ''}`}>
+                <div className="footer-logo">
+                    <img className="footer_logo" src={footer_logo} alt="footer_logo" />
+                </div>
 
-                        <div className="footer-links">
-                            <div className="info-links">
-                                <a href="/team-introduction">조원 소개</a>
-                                <a href="https://incredible-gem-98e.notion.site/in4mation-festibook-844ae8d62e784c8d82f374a03277f523?pvs=4">사이트 소개</a>
-                            </div>
-                            <div className="social-links">
-                                <span>Link </span>
-                                <div className="icons">
-                                    <a href="https://github.com/GoldenPearls/festibook"><img className="github" src={github} alt="github" /></a>
-                                    <a href="https://www.notion.so/in4mation-festibook-bcd05345a2364eaf9ace7d0890651980?pvs=4"><img className="notion" src={notion} alt="notion" /></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="footer-copyright">
-                            © 2023, Festibook의 In4mation. 모든 권리 보유.
+                <div className="footer-links">
+                    <div className="info-links">
+                        <a href="/team-introduction">조원 소개</a>
+                        <a href="https://incredible-gem-98e.notion.site/in4mation-festibook-844ae8d62e784c8d82f374a03277f523?pvs=4">사이트 소개</a>
+                    </div>
+                    <div className="social-links">
+                        <span>Link </span>
+                        <div className="icons">
+                            <a href="https://github.com/GoldenPearls/festibook"><img className="github" src={github} alt="github" /></a>
+                            <a href="https://www.notion.so/in4mation-festibook-bcd05345a2364eaf9ace7d0890651980?pvs=4"><img className="notion" src={notion} alt="notion" /></a>
                         </div>
                     </div>
+                </div>
+
+                <div className="footer-copyright">
+                    © 2023, Festibook의 In4mation. 모든 권리 보유.
+                </div>
             </div>
+        </div>
 
 
 
