@@ -268,6 +268,7 @@ function allFestival(data){
 
                     festival.appendChild(li);   //html <ul id="festival">
 
+
                     image.addEventListener('click',function(){
                         goToFestivalInfo(record.festival_no);
                     })
