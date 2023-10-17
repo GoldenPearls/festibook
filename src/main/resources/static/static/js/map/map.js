@@ -18,12 +18,12 @@ var geocoder = new kakao.maps.services.Geocoder();
 
 var markers = [];
 
- // 마커 클러스터러를 생성합니다
+/* // 마커 클러스터러를 생성합니다
 var clusterer = new kakao.maps.MarkerClusterer({
     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
     averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
     minLevel: 7 // 클러스터 할 최소 지도 레벨
-});
+});*/
 
 // 모든 마커 정보를 가져와서 출력
 var xhr = new XMLHttpRequest();
@@ -32,7 +32,6 @@ xhr.onload = function () {
     if (xhr.status === 200) {
         var data = JSON.parse(xhr.responseText);
         allFestival(data);
-        //allFestivalList(data);
     }
 };
 xhr.send();
@@ -57,7 +56,7 @@ function allFestival(data){
                     });
                     markers.push(marker);
 
-                    clusterer.addMarkers(markers);
+                    /*clusterer.addMarkers(markers);*/
 
                     // 마커에 표시할 인포윈도우를 생성
                     var infowindow = new kakao.maps.InfoWindow({
@@ -216,7 +215,9 @@ function allFestival(data){
                     li.id = record.festival_no;
 
                     li.style.padding = '18px';
-                    li.style.borderTop = '1px solid rgb(204, 204, 204)';
+                    li.style.margin = '15px';
+                    li.style.borderRadius = '10px';
+                    li.style.border = '2px solid #d7d7d7';
                     li.style.display = 'flex';
                     li.style.alignItems = 'center';
 
@@ -226,10 +227,18 @@ function allFestival(data){
                     // 왼쪽 div 내용 추가
                     var name = document.createElement('h3');
                     name.innerText = record.festival_name;
+                    name.style.fontFamily = 'Single Day';
+                    name.style.fontSize = '20px';
+
                     var location = document.createElement('p');
-                    location.innerHTML = '<strong>장소: </strong>' + record.festival_addr;
+                    location.innerHTML = '<strong>장소 : </strong>' + record.festival_addr;
+                    location.style.fontFamily = 'NanumGothic';
+                    location.style.paddingTop = '10px';
+                    location.style.paddingBottom = '5px';
+
                     var date = document.createElement('p');
-                    date.innerHTML = '<strong>개최 일자: </strong>' + record.start_date + ' ~ ' + record.end_date;
+                    date.innerHTML = '<strong>개최 일자 : </strong>' + record.start_date + ' ~ ' + record.end_date;
+                    date.style.fontFamily = 'NanumGothic';
 
                     contentWrapper.appendChild(name);
                     contentWrapper.appendChild(location);
@@ -257,12 +266,9 @@ function allFestival(data){
                     li.appendChild(contentWrapper);
                     li.appendChild(imageWrapper);
 
-                    li.style.padding='18px';
-                    li.style.borderTop = '1px solid #ccc';
                     festival.appendChild(li);   //html <ul id="festival">
 
-
-                    li.addEventListener('click',function(){
+                    image.addEventListener('click',function(){
                         goToFestivalInfo(record.festival_no);
                     })
 
@@ -470,7 +476,7 @@ function categorization(record){
         markerImageSrc = '/static/생태자연.png';
     }
 
-    var markerImageSize = new kakao.maps.Size(35, 35);
+    var markerImageSize = new kakao.maps.Size(40, 40);
 
     var makerImage = new kakao.maps.MarkerImage(markerImageSrc, markerImageSize);
 
@@ -498,14 +504,21 @@ function clickMapListener(infowindow) {
 function getContent(record) {
 
     let result;
+    const infowindow_imgURL =record.festival_imgURL;
+    console.log(infowindow_imgURL);
 
-    result = `<div class="infowindow" style="background-color: LightYellow; width: 200px; height: 120px; overflow: auto;">
+    result = `<div class="infowindow" style="background-color: rgb(255,255,242); width: 230px; height: 230px; overflow: auto;">
                 <div class="infowindow-content">
-                    <h4 style="text-align:center; font-weight: bold; margin-top:10px; margin-bottom:10px;">${record.festival_name}</h4>
-                    <p style="text-align:center;"><strong>시작일 : </strong>${record.start_date}</p>
-                    <p style="text-align:center;"><strong>종료일 : </strong>${record.end_date}</p>
+                    <h4 style="text-align:center; font-weight: bold; margin-top:15px; margin-bottom:3px;">${record.festival_name}</h4>
+                </div>
+                <div class="infowindow-image" style="display: flex; justify-content: center; align-items: center;">
+                      <img src="${infowindow_imgURL}" class="infowindow-img" alt="이미지공간">
                 </div>
               </div>`;
+
+    // 이미지 크기를 작게 조정
+    const imgStyle = "max-width: 150px; max-height: 150px;";
+    result = result.replace('class="infowindow-img"', `class="infowindow-img" style="${imgStyle}; margin-top:10px;"`);
 
     return result;
 }
@@ -517,9 +530,6 @@ function goToFestivalInfo(id){
     window.location.href = detailPageUrl;
 }
 
-function goToFestival(){
-    window.location.href = '/';
-}
 
 
 

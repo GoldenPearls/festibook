@@ -11,6 +11,5 @@ public class FestivalMapDTO {
     private String start_date;
     private String end_date;
     private String festival_image;
-    private double x;
-    private double y;
+    private String festival_imgURL;
 }

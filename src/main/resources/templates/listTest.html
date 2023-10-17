@@ -8,9 +8,9 @@
     <title>Map</title>
 </head>
 <body>
-<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="logo" href="/"><img src="/static/nav/logo.png" alt="상단 이미지" class="header-image">
+        <a class="logo" href="/"><img src="/static/nav/logo4.png" alt="상단 이미지" class="header-image">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,14 +22,14 @@
             </ul>
         </div>
     </div>
-</nav>-->
+</nav>
 
 <div class="wrap">
     <div class="left-side">
-        <div id="map" style="width:100%;height:100%"></div>
-        <div class="nav_toggleBtn">
+        <div id="map" style="width:100%; height:100%;"></div>
+<!--        <div class="nav_toggleBtn">
             <button class="btn btn-icon btn-accent me-2 me-lg-6" id="kt_mega_menu_toggle">
-                <!--begin::Svg Icon | path: icons/duotune/general/gen059.svg-->
+                &lt;!&ndash;begin::Svg Icon | path: icons/duotune/general/gen059.svg&ndash;&gt;
                 <span class="svg-icon svg-icon-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
                 <rect y="6" width="16" height="3" rx="1.5" fill="black" />
@@ -37,14 +37,14 @@
                 <rect opacity="0.3" width="12" height="3" rx="1.5" fill="black" />
             </svg>
                 </span>
-                <!--end::Svg Icon-->
+                &lt;!&ndash;end::Svg Icon&ndash;&gt;
             </button>
-        </div>
+        </div>-->
     </div>
     <div class="right-side">
         <!--축제정보 리스트-->
         <div class="festiInfo">
-            <h1 onclick ="goToFestival()" style="text-align:center; font-size: 32px; color:#FF0099; letter-spacing:5px; padding:10px; cursor: pointer">FESTIVAL</h1>
+            <h1 style="text-align:center; font-size: 32px; color:#FF0099; letter-spacing:5px; padding:10px; cursor: pointer">FESTIVAL</h1>
                 <ul id="festival" style="cursor: pointer"></ul>
         </div>
 
@@ -117,9 +117,9 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63a758b165cde7d2cf61dc5e04399158&libraries=services,clusterer"></script>
 <script th:src="@{/static/js/map/map.js}"></script>
 <!--nav바 적용하면서 추가한것-->
-<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/static/js/board/boardDetail.js"></script>
 <script src="/static/js/board/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
