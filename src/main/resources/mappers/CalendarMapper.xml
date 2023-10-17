@@ -1,0 +1,17 @@
+
+    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<<<<<<< HEAD
+    <mapper namespace="com.in4mation.festibook.repository.festival.CalendarMapper">
+
+    <select id="getAllEvents" resultType="com.in4mation.festibook.dto.festival.CalendarVo">
+=======
+    <mapper namespace="com.in4mation.festibook.repository.CalendarMapper">
+
+    <select id="getAllEvents" resultType="com.in4mation.festibook.dto.CalendarVo">
+>>>>>>> calendarFDetail_ch
+        SELECT festival_no, festival_name, start_date, end_date FROM Festival_table;
+    </select>
+
+    <!-- 필요한 다른 쿼리 정의 -->
+</mapper>

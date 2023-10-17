@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.in4mation.festibook.repository.festival.mapDAO">
+
+    <select id="mapFestival" parameterType="com.in4mation.festibook.dto.festival.paginationDTO" resultType="com.in4mation.festibook.dto.festival.FestivalMapDTO">
+
+        <![CDATA[
+        SELECT *
+        FROM Festival_table
+        ORDER BY festival_no DESC
+        LIMIT #{rowCount}
+        OFFSET #{offset};
+        ]]>
+
+    </select>
+
+    <select id="allFestival" resultType="com.in4mation.festibook.dto.festival.FestivalMapDTO">
+
+        <![CDATA[
+        SELECT *
+        FROM Festival_table
+        ]]>
+
+    </select>
+
+    <!-- ??? ? ?? ??? -->
+    <select id="getCount" resultType="int">
+        SELECT count(*) as listCnt
+        FROM Festival_table;
+    </select>
+
+</mapper>

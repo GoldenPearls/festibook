@@ -54,7 +54,22 @@ window.onload = function() {
                         return response.json();
                     })
                     .then(function(data) {
+<<<<<<< HEAD
                         alert(data.message); // 받아온 JSON 데이터 중 message 값을 alert로 띄웁니다.
+=======
+                        Swal.fire({
+                            title: '비밀번호 변경',
+                            text: data.message,
+                            confirmButtonText: '메인 페이지로 돌아가기',
+                            cancelButtonText: '돌아가기',
+                            showCancelButton: true
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "/";
+                            }
+                        });
+
+>>>>>>> c00362a86538ae2c20ae6dfb49002896df30b21e
                     })
                     .catch(function(error) {
                         console.error(error);

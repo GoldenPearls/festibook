@@ -28,5 +28,7 @@ public class MemberDTO {
 
     private String verificationCode; //인증번호
 
+
     private int delflag;
+
 }

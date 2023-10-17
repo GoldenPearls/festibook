@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--begin::Head-->
+
 
 <head>
     <title>Festibook</title>
-    <link rel="icon" th:href="@{/img/E114_logo.png}" type="image/x-icon"/>
+    <link rel="icon" th:href="@{/static/media/Loginlogo.23a3f1a7c6402aeeff43.png}" type="image/x-icon"/>
     <meta charset="utf-8"/>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
     <script crossorigin="anonymous"
@@ -20,15 +20,15 @@
     <link rel="stylesheet" th:href="@{/static/css/member/join2.css}" type="text/css"/>
     <!--end::Global Stylesheets Bundle-->
 </head>
-<!--end::Head-->
-<!--begin::Body-->
+
 
 <body class="bg-white" id="kt_body">
-<!--begin::Main-->
+
 <div class="d-flex flex-column flex-root">
-    <!--begin::Login-->
+
     <div class="d-flex flex-column flex-lg-row flex-column-fluid" id="kt_login">
 
+        <!--모달-->
         <div class="modal fade" id="result_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin-left: 220px;">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -36,8 +36,8 @@
                         <h1 class="modal-title text-center">회원가입 성공</h1>
                     </div>
                     <div class="modal-body">
-                        <p id="result_message" style="font-size: larger;">환영합니다!
-                            <br>Festibook에 어서오세요:)</p>
+                        <p id="result_message" style="font-size: larger;">WELCOME!<br>
+                            Festibook에 오신 걸 환영합니다.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
@@ -62,24 +62,31 @@
             </div>
         </div>
 
+
+
+
         <div class="login-content flex-lg-row-fluid d-flex flex-column position-relative overflow-hidden py-10 py-lg-20 px-10 p-lg-7 mw-550px w-100">
-            <!--begin::Wrapper-->
+
             <div class="d-flex flex-column-fluid flex-center py-10">
-
-
-                <!--begin::Signin Form-->
+                <!-- form 시작-->
                 <form action="/member/join" class="form w-100 needs-validation" id="myForm" method="post" novalidate>
-                    <!--begin::Title-->
+
+                    <!--로고 클릭시 메인으로 이동-->
+                    <a class="mb-6" th:href="@{/}">
+                        <div class="pb-5 pb-lg-1">
+                            <img alt="로고" class="form-logo"  th:src="@{/static/css/member/festibooklogo.png}"/>
+                        </div>
+                    </a>
+
                     <div class="pb-5 pb-lg-1">
                         <h3 class="fw-bolder text-dark display-6">회원가입</h3>
                     </div>
-
 
                     <div class="fv-row mb-5">
                         <label class="form-label fs-6 fw-bolder text-dark pt-5" for="member_id">아이디</label>
                         <div class="d-flex align-items-center position-relative">
                             <input autocomplete="off" class="form-control form-control-lg form-control-solid me-2"
-                                   id="member_id" name="member_id" placeholder="5~20자의 영문, 숫자만 사용 가능" required
+                                   id="member_id" name="member_id" placeholder="6~15자의 영문, 숫자만 사용 가능" required
                                    style="border-color: #ffffff; width: 350px; height: 40px;" type="text">
                             <button class="btn btn-primary fw-bolder fs-5 px-2 py-3 my-3 text-center"
                                     style="width: 150px; height: 45px;" id="duplicateBtn1"
@@ -87,8 +94,8 @@
                             </button>
                             <div class="position-absolute w-100" style="top: 55px;">
                                 <div class="invalid-feedback" id="id-empty">필수 입력 정보입니다.</div>
-                                <div class="invalid-feedback" id="id-length">아이디는 5~20자의 영문, 숫자만 사용 가능합니다.</div>
-                                <div class="invalid-feedback" id="id-alphanumeric">아이디는 5~20자의 영문, 숫자만 사용 가능합니다.</div>
+                                <div class="invalid-feedback" id="id-length">아이디는 6~15자의 영문, 숫자만 사용 가능합니다.</div>
+                                <div class="invalid-feedback" id="id-alphanumeric">아이디는 6~15자의 영문, 숫자만 사용 가능합니다.</div>
                                 <div class="valid-feedback" id="id-available" style="display: none;">사용 가능한 아이디입니다.
                                 </div>
                                 <div class="invalid-feedback" id="id-duplicate" style="display: none;">중복된 아이디입니다.
@@ -101,17 +108,17 @@
                     <div class="fv-row mb-5">
                         <label class="form-label fs-6 fw-bolder text-dark pt-5">비밀번호</label>
                         <input autocomplete="off" class="form-control form-control-lg form-control-solid"
-                               id="member_password" name="member_password" placeholder="대소문자, 숫자, 특수문자를 포함한 8자 이상 20자" required
+                               id="member_password" name="member_password" placeholder="영문, 숫자, 특수문자를 포함한 8자 이상 20자" required
                                style="border-color: #ffffff;" type="password"/>
                         <div>
                             <div class="invalid-feedback" id="password-empty">필수 입력 정보입니다.</div>
-                            <div class="invalid-feedback" id="password-invalid">비밀번호는 대소문자, 숫자, 특수문자를 포함한 8자 이상 20자 이하이어야 합니다.
+                            <div class="invalid-feedback" id="password-invalid">비밀번호는 영문, 숫자, 특수문자를 포함한 8자 이상 20자 이하이어야 합니다.
                             </div>
                         </div>
                     </div>
 
                     <div class=" fv-row mb-5">
-                        <label class="form-label fs-6 fw-bolder text-dark pt-5">비밀번호 재확인</label>
+                        <label class="form-label fs-6 fw-bolder text-dark pt-5">비밀번호 확인</label>
                         <input autocomplete="off" class="form-control form-control-lg form-control-solid" id="member_password2"
                                name="member_password2" placeholder="" required style="border-color: #ffffff;"
                                type="password"/>
@@ -130,43 +137,53 @@
                                style="border-color: #ffffff;" type="text"/>
                         <div>
                             <div class="invalid-feedback" id="name-empty">필수 입력 정보입니다.</div>
-                            <div class="invalid-feedback" id="name-invalid">자음, 모음만 있는 한글은 불가합니다.</div>
+                            <div class="invalid-feedback" id="name-invalid">1~20자의 한글만 가능합니다. 자음, 모음만 있는 한글은 불가합니다.</div>
                             <div class="invalid-feedback" id="name-vowel">한글만 입력 해주세요.</div>
                         </div>
                     </div>
 
-                    <div class=" fv-row mb-5">
+                    <div class="fv-row mb-5">
                         <label class="form-label fs-6 fw-bolder text-dark pt-5">닉네임</label>
-                        <input autocomplete="off" class="form-control form-control-lg form-control-solid" id="member_nickname"
-                               name="member_nickname" placeholder="한글만 입력 해주세요." required
-                               style="border-color: #ffffff;" type="text"/>
+                        <div class="d-flex align-items-center">
+
+
+                            <input autocomplete="off" class="form-control form-control-lg form-control-solid" id="member_nickname"
+                                   name="member_nickname" placeholder="1~15자의 한글, 영문, 숫자만 사용 가능" required
+                                   style="border-color: #ffffff;" type="text"/>
+                        </div>
                         <div>
-                            <div class="invalid-feedback" id="nickname-empty">필수 입력 정보입니다.</div>
-                            <div class="invalid-feedback" id="nickname-invalid">자음, 모음만 있는 한글은 불가합니다.</div>
-                            <div class="invalid-feedback" id="nickname-vowel">한글만 입력 해주세요.</div>
+                            <div class="invalid-feedback" id="nid-empty">필수 입력 정보입니다.</div>
+                            <div class="invalid-feedback" id="nid-invalid">1~15자의 한글, 영문, 숫자만 사용 가능합니다.</div>
+
                         </div>
                     </div>
 
 
-                    <div>
-
-                        <div class=" fv-row mb-5">
-                            <label class="form-label fs-6 fw-bolder text-dark pt-5">이메일</label>
+                    <div class="fv-row mb-5">
+                        <label class="form-label fs-6 fw-bolder text-dark pt-5">이메일</label>
+                        <div class="d-flex align-items-center position-relative">
                             <input autocomplete="off" class="form-control form-control-lg form-control-solid"
-                                   id="member_email" name="member_email" placeholder="you@example.com" required
-                                   style="border-color: #ffffff;" type="email"/>
-                            <div>
+                                   id="member_email" name="member_email" placeholder="in4mation@festibook.com" required
+                                   style="border-color: #ffffff; width: 350px; height: 40px;" type="email">
+                            <button class="btn btn-primary fw-bolder fs-5 px-2 py-3 my-3 text-center"
+                                    style="width: 150px; height: 45px;" id="duplicateBtn2"
+                                    type="button">중복 확인
+                            </button>
+                            <div class="position-absolute w-100" style="top: 55px;">
                                 <div class="invalid-feedback" id="email-empty">필수 입력 정보입니다.</div>
                                 <div class="invalid-feedback" id="email-invalid">이메일 형식이 아닙니다.</div>
+
+                                <div class="valid-feedback" id="email-available" style="display: none;">사용 가능한 이메일입니다.
+                                </div>
+                                <div class="invalid-feedback" id="email-duplicate" style="display: none;">중복된 이메일입니다.
+                                </div>
                             </div>
                         </div>
-
                     </div>
 
 
 
                     <div class="d-flex flex-wrap justify-content-center pb-lg-0 pb-5">
-                        <!-- justify-content-end 클래스를 추가하여 오른쪽으로 정렬 -->
                         <button class="btn btn-primary fw-bolder fs-4 px-8 py-4 my-3 me-4" type="submit" id="joinButton">회원 가입</button>
                     </div>
                 </form>

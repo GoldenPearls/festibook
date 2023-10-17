@@ -39,8 +39,8 @@ public class JwtUtils {
 
         // JWT 생성 AccessToken 생성하여 반환, member_id를 주체로 함
         return Jwts.builder()
-                .setSubject(member_id)
-                .claim("name", name)
+                .setSubject(member_id) // 이 부분에서 "sub" 필드로 member_id를 설정
+                .claim("name", name) // 이 부분에서 "name" 필드로 name 값을 설정
                 .setIssuedAt(now)
                 .setExpiration(expiration)
 //                .signWith(secretKey)

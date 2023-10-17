@@ -15,6 +15,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api")
 public class LoginController {
@@ -31,64 +34,35 @@ public class LoginController {
     @Autowired
     private JwtUtils jwtUtils;
 
-    /*@PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@RequestBody MemberDTO memberDTO){
-        // 사용자 인증 + memberDTO로부터 사용자 ID와 비밀번호를 가져와 인증을 시도
-       try {
-           // 성공시 내부적으로 200 OK 상태 코드와 함께 응답 본문에 JwtResponser 객체를 JSON 형식으로 담음
-           Authentication authentication = authenticationManager.authenticate(
-                   new UsernamePasswordAuthenticationToken(memberDTO.getMember_id(), memberDTO.getMember_password()));
-
-           // member_id와 name 가져오기
-           String member_id = memberDTO.getMember_id();
-           String member_name = memberDTO.getMember_name();
-
-           // JWT 토큰 생성
-           String jwt = jwtUtils.createAccessToken(member_id, member_name);
-
-
-           // 생성된 JWT 토큰을 응답 본문에 담아 반환
-           return ResponseEntity.ok(new JwtResponse(jwt));
-
-
-       }
-       catch (AuthenticationException e){
-           // 인증 실패한 경우 에러 메세지 + 401 상태 코드 반환
-           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("인증 실패 : 아이디나 비밀번호 확인해주세요");
-       }
-       catch(Exception e){
-           // 그 외 에러의 경우 500 메세지
-           return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("DpRLCL AHTGKS DPFJ");
-       }
-
-
-
-    }*/
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody MemberDTO memberDTO){
         try {
-            // 사용자 인증
-//            Authentication authentication = authenticationManager.authenticate(
-//                    new UsernamePasswordAuthenticationToken(
-//                            memberDTO.getMember_id(),
-//                            memberDTO.getMember_password()
-//                    )
-//            );
             // member_id, password 체크
-            MemberDTO member2 = loginService.checkLoin(memberDTO.getMember_id(), memberDTO.getMember_password());
+            MemberDTO authenticatedMember = loginService.checkLoin(memberDTO.getMember_id(), memberDTO.getMember_password());
 
             // JWT 토큰 생성 및 반환
-            String jwt = jwtUtils.createAccessToken(member2.getMember_id(), member2.getMember_name());
-            return ResponseEntity.ok(new JwtResponse(jwt));
+            String jwt = jwtUtils.createAccessToken(authenticatedMember.getMember_id(), authenticatedMember.getMember_name());
+
+            // 토큰을 응답 본문과 함께 전송
+            Map<String, String> response = new HashMap<>();
+            response.put("token", jwt);
+            response.put("memberId", authenticatedMember.getMember_id());//추가로 적은것
+            System.out.println("Authenticated Member ID: " + authenticatedMember.getMember_id());
+            return ResponseEntity.ok(response);
         }
         catch (LoginException e){
             System.out.println(e);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
-//        catch(Exception e){
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 내부 오류");
-//        }
+        catch (AuthenticationException e){
+            // 인증 실패한 경우 에러 메세지 + 401 상태 코드 반환
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("인증 실패 : 아이디나 비밀번호 확인해주세요");
+        }
+        catch(Exception e){
+            // 그 외 에러의 경우 500 메세지
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 내부 오류");
+        }
     }
 
     // JWT 토큰을 담을 내부 클래스를 정의
@@ -103,12 +77,9 @@ public class LoginController {
         }
     }
 
-   @GetMapping("/login-user-test")
-    public MemberDTO loginUserTest() {
-        MemberDTO memberDTO = MemberDTO.builder()
-                .member_id("test")
-                .member_email("test@test.com")
-                .build();
-        return memberDTO;
+    @GetMapping("test")
+    public String test() {
+        return "test";
     }
+
 }

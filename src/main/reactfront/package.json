@@ -3,18 +3,57 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "10.0",
     "@testing-library/user-event": "^13.5.0",
+    "aos": "^3.0.0-beta.6",
     "axios": "^1.5.0",
     "bootstrap": "^5.3.2",
+    "jsonwebtoken": "^9.0.2",
+    "next": "^10.2.3",
     "react": "^16.12.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^16.12.0",
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
     "react-toastify": "^9.1.3",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.0.8",
+=======
+    "@fullcalendar/core": "^6.1.9",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/interaction": "^6.1.9",
+    "@fullcalendar/list": "^6.1.9",
+    "@fullcalendar/multimonth": "^6.1.9",
+    "@fullcalendar/react": "^6.1.9",
+    "@fullcalendar/timegrid": "^6.1.9",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "10.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.5.0",
+    "bootstrap": "^5.3.2",
+    "css-loader": "^6.8.1",
+    "express": "^4.18.2",
+    "fullcalendar": "^6.1.9",
+    "mssql": "^10.0.1",
+    "mysql": "github:mysqljs/mysql",
+    "node-sass": "^7.0.3",
+    "react": "^16.12.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "^16.14.0",
+    "react-responsive": "^9.0.2",
+    "react-router": "^6.16.0",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.3",
+    "request": "^2.88.2",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+>>>>>>> calendarFDetail_ch
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,5 +80,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+=======
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.16.0"
+>>>>>>> calendarFDetail_ch
   }
 }

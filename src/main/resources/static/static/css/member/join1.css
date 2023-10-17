@@ -31270,8 +31270,9 @@ body {
     border-radius: .65rem
 }
 
-.btn.btn-primary {
-    color: #ffffff;
-    border-color: #062d92;
-    background-color: #e14b4b;
+
+.form-logo {
+    top: -58px;
+    position: relative;
+    left: 25%;
 }
