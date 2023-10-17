@@ -10,24 +10,6 @@ public class LoginDTO {
     private String member_id; // id
     private String member_password; // password
     private int delflag;
-<<<<<<< HEAD
-=======
-
->>>>>>> c00362a86538ae2c20ae6dfb49002896df30b21e
-    public LoginDTO() {
-
-    }
-
-    public LoginDTO(String userId, String userPw) {
-        this.member_id = userId;
-        this.member_password = userPw;
-    }
-
-
-    public LoginDTO(MemberDTO memberDTO) {
-        this.member_id = memberDTO.getMember_id();
-        this.member_password = memberDTO.getMember_password();
-    }
 
 }
 

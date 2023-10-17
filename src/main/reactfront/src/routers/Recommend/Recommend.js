@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useAuth } from "../Login/AuthProvider";
 import './Recommend.css';
 import recommancBackground from "../../img/recommand/recommandBackground.jpg";
@@ -123,10 +122,10 @@ function Recommend() {
 
     return (
         <div className="section">
-        <div className="Wrapper"  >
-            <img className="recommancBackground" src={recommancBackground} alt="bg2"  />
-            <h3 className="mainText" >당신만을 위한 추천 <br/> 추천할 수 박에</h3>
-        </div>{/* 1개 이용시 필요
+            <div className="Wrapper"  >
+                <img className="recommancBackground" src={recommancBackground} alt="bg2"  />
+                <h3 className="mainText" >당신만을 위한 추천 <br/> 추천할 수 박에</h3>
+            </div>{/* 1개 이용시 필요
             <div className="famous_div">
                 <div className="famous_text_div">
                     <img className="famous_img"  src={recommand_click} alt="famous_img"/>
@@ -296,13 +295,6 @@ function Recommend() {
 
 
 
-=======
-function Recommend() {
-    return (
-        <div>
-            추천페이지
-        </div>
->>>>>>> calendarFDetail_ch
     );
 }
 
