@@ -1,6 +1,4 @@
 
-
-<<<<<<< HEAD
 .fc-day-sun a{
   color: red;
 }
@@ -12,11 +10,7 @@
 .fc-day a {
     text-decoration: none !important; /* 하이퍼링크 밑줄 제거 */
     color: black !important; /* 링크 색상 변경 */
-=======
-.fc-day a {
-  text-decoration: none !important; /* 하이퍼링크 밑줄 제거 */
-  color: black !important; /* 링크 색상 변경 */
->>>>>>> calendarFDetail_ch
+
 }
 
 .fc .fc-button-primary{
@@ -51,7 +45,6 @@
     font-size: large;
 }
 
-<<<<<<< HEAD
 .navbar {
     margin-bottom: 68px; /* 또는 다른 원하는 값 */
 }
@@ -62,12 +55,6 @@
    background-color: yellow;
 }
 */
-=======
-
-.navbar {
-    margin-bottom: 70px;
-
-}
 
 
->>>>>>> calendarFDetail_ch
+

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> calendarFDetail_ch
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 height: 800,
@@ -46,7 +42,4 @@
             });
             calendar.render();
         });
-<<<<<<< HEAD
-=======
 
->>>>>>> calendarFDetail_ch
