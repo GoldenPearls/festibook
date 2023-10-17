@@ -84,7 +84,11 @@ window.onload = function() {
 
                         replyElement.innerHTML =
                             `<div class="fw-bold">${reply.creator_id}</div><br>` +
+<<<<<<< HEAD
                             `<p>${reply.r_contents} <br> 
+=======
+                            `<p>${reply.r_contents} <br>
+>>>>>>> calendarFDetail_ch
                               작성일: ${formattedDate} <br></p>`;
 
 
