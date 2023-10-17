@@ -33,6 +33,15 @@
 
 }
 
+a {
+    text-decoration: none;
+    color: grey;
+}
+
+a:visited {
+    color: grey; /* 방문한 링크의 색상 */
+}
+
 .custom-toast {
     font-family: "bitbit"; /* 여기에 원하는 폰트 이름을 입력하세요. */
     background-color: #333; /* 원하는 배경색을 설정하세요. */
@@ -43,10 +52,10 @@
 
 .page {
     position: absolute;
-    top: 80px;
+    top: 150px;
     bottom: 0;
     width: 100%;
-    height : 90%;
+    height : 80%;
     max-width: 600px;
     padding: 0 20px;
 
@@ -163,12 +172,12 @@
 
 .input_login{
     padding-top: 1vh;
-    padding-right: 49vh;
+    padding-right: 48vh;
 }
 
 .input_password{
     padding-top: 1vh;
-    padding-right: 48vh;
+    padding-right: 47vh;
 }
 
 .text {
@@ -183,7 +192,7 @@
 
 .logoName1{
     position: absolute;
-    top: 43%;
+    top: 47%;
     left: 45%;
     transform: translate(-43%, -93%);
 }
@@ -242,6 +251,7 @@
     margin-right: 40px; /* 이미지 사이 간격 설정 */
 }
 
+
 /* 사이즈가 작아질 때 */
 @media screen and (max-width: 768px) {
 
@@ -253,10 +263,10 @@
         padding: 0 0px;
 
         left: 80%;
-        transform: translate(-75%, -10%); /*위치 바꿀때 유용*/
-        height: 100%;
+        transform: translate(-78%, -3%); /*위치 바꿀때 유용*/
+        height: 90%;
         position: fixed;
-        width: 90vh;
+        width: 60vh;
     }
 
     .custom-toast-container {
@@ -273,11 +283,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 400px;
-        height: 48px;
+        width: 330px;
+        height: 43px;
         border-radius: 8px;
         padding: 16px;
-        margin-top: 8px;
+        margin-top: 4px;
         background-color: white;
         border: 1px solid #e2e0e0;
     }
@@ -302,15 +312,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 70%;
-        min-height: 200px;
-        min-width: 200px;
+        height: 40px!important;
+        width: 210px;
     }
 
     .logoName {
-        padding-top: 1vh;
+        padding-top: 0vh;
         color : lavenderblush;
         font-size: 5vh;
+    }
+
+
+    .logoName1{
+        position: absolute;
+        top: 43%;
+        left: 43%;
+        transform: translate(-43%, -92%);
     }
 
     .input_login, .input_password, .text{
@@ -320,24 +337,24 @@
 
     .input_login{
         padding-top: 1vh;
-        padding-right: 40vh;
+        padding-right: 44vh;
     }
 
     .input_password{
         padding-top: 1vh;
-        padding-right: 39vh;
+        padding-right: 43vh;
     }
 
     .text{
-        width: 400px;
+        width: 350px;
     }
 
     .bottomButton {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 400px;
-        height: 48px;
+        width: 350px;
+        height: 40px;
     }
 }
 

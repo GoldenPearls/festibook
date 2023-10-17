@@ -4,20 +4,24 @@
 
 <mapper namespace="com.in4mation.festibook.repository.member.MemberMapper">
 
-  <!--  <insert id="insert" parameterType="com.in4mation.festibook.dto.member.MemberDTO">
-        INSERT INTO Member_table (member_id, member_password, member_email, member_name, member_nickname)
-        VALUES(#{member_id},#{member_password},#{member_email},#{member_name},#{member_nickname})
-    </insert> -->
-
-    <select id="checkId" parameterType="String" resultType="Boolean">
-        SELECT COUNT(*)
-        FROM Member_table
-        WHERE member_id = #{member_id}
-    </select>
 
     <insert id="insert" parameterType="com.in4mation.festibook.dto.member.MemberDTO">
         INSERT INTO Member_table (member_id, member_password, member_email, member_name, member_nickname)
         VALUES(#{member_id},#{member_password},#{member_email},#{member_name},#{member_nickname})
     </insert>
+
+
+    <select id="isIdDuplicated" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        SELECT COUNT(*) > 0
+        FROM Member_table
+        WHERE member_id = #{member_id}
+    </select>
+
+
+    <select id="isEmailDuplicated" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        SELECT COUNT(*) > 0
+        FROM Member_table
+        WHERE member_email = #{member_email}
+    </select>
 
 </mapper>

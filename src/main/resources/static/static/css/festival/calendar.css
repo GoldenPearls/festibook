@@ -1,0 +1,57 @@
+
+
+.fc-day-sun a{
+  color: red;
+}
+
+.fc-day-sat a{
+  color: blue;
+}
+
+.fc-day a {
+    text-decoration: none !important; /* 하이퍼링크 밑줄 제거 */
+    color: black !important; /* 링크 색상 변경 */
+}
+
+.fc .fc-button-primary{
+    background-color: #EC7373;
+    border-color: white;
+    /*color: #fff;*/
+
+}
+
+
+.fc .fc-button-primary.fc-button-active{
+    background-color: #FFDBDB;
+    color: EA7A7A;
+
+}
+
+.fc-event-title-container{
+    background-color: #BBBABA;
+    /*color: #000;*/
+
+}
+
+.fc-daygrid-event{
+   border-color: #fff;
+   color: black;
+    font-size: large;
+
+}
+
+.fc th {
+    background-color: #FFF9F9;
+    font-size: large;
+}
+
+.navbar {
+    margin-bottom: 70px; /* 또는 다른 원하는 값 */
+}
+
+
+/*
+.fc .fc-button-group > .fc-button {
+   background-color: yellow;
+}
+*/

@@ -4,6 +4,11 @@ function generateCode() {
     if (emailInput) { // input element가 존재하는지 확인
         var email = emailInput.value;
 
+        if (!email) {
+            alert("이메일을 입력해주세요.");
+            return;
+        }
+
         fetch('/generateCode', {
             method:'POST',
             headers:{
@@ -30,6 +35,16 @@ function verifyCode() {
         var email = emailInput.value;
         var code = codeInput.value;
 
+        if (!email) {
+            alert("이메일을 입력해주세요.");
+            return;
+        }
+
+        if (!code) {
+            alert("인증번호를 입력해주세요.");
+            return;
+        }
+
         fetch('/verifyCode', {
             method:'POST',
             headers:{
@@ -45,7 +60,18 @@ function verifyCode() {
                 return response.text();
             })
             .then(function(password) {
-                alert("회원님의 비밀번호는 :" + password + " 입니다.");
+                Swal.fire({
+                    title: '비밀번호 찾기',
+                    text: '임시 비밀번호는 '+ password + '입니다.',
+                    confirmButtonText: '비밀번호 변경으로 가기',
+                    cancelButtonText: '돌아가기',
+                    showCancelButton: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/change_pw";
+                    }
+                });
+
             })
             .catch(function(error) { // 예외 처리
                 //alert("An error occurred: " + error.message);

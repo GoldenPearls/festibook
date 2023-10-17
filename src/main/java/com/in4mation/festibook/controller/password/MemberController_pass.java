@@ -29,7 +29,20 @@ public class MemberController_pass {
     @PostMapping("/generateCode")
     @ResponseBody
     public String generateCode(@RequestBody Map<String, Object> payload) {
+
         String email = (String) payload.get("email");
+
+        // 여기서 delflag 값을 확인합니다.
+        Integer delflag = this.memberServicePass.checkUserStatus(email);
+
+
+
+        if (email == null || !this.memberServicePass.checkEmailExists(email)) {
+            return "없는 계정의 이메일입니다.";
+        }else if (delflag == 1) {
+            return "이미 삭제된 계정입니다.";
+        }
+
         int verificationCode = new Random().nextInt(900000) + 100000; // 6자리 랜덤 숫자 생성
 
         memberServicePass.updateCode(email, verificationCode);

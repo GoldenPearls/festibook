@@ -1,0 +1,211 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Festival Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"  href="/static/css/festival/festivalInfo.css">
+
+
+
+    <!-- 여기에 스타일 시트, 스크립트 파일 등을 추가하세요. -->
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="logo" href="/"><img src="/static/nav/logo4.png" alt="상단 이미지" class="header-image">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/recommend">추천할수박에</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/festival">축제/행사 소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/community">너와 나의 연결 고리</a></li>
+                <li id="loginStatusNavItem" class="nav-item"></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 이벤트 정보를 표시할 내용을 추가하세요. -->
+
+    <div class="fullContainer">
+        <div class="container text-left" style="height: 100vh;">
+
+            <h1 th:text="${festivalInfoVo.festival_name}"></h1>
+
+            <div class="d-flex justify-content-end" style="font-size: 20px;">
+                조회수: <span id="viewsCount" th:text="${updatedViews}"></span></div>
+
+
+
+            <div th:if="${festivalInfoVo}">
+
+
+                <div class="row mb-5">
+                    <div class="col mb-5 d-flex justify-content-center align-items-center">
+                      <img th:src="@{${imagePath}}" alt="Festival Image">
+                    </div>
+                    <!--<p th:text="${festivalInfoVo.festival_no}"></p>-->
+                    <div class="col">
+
+                        <span class="badge rounded-pill bg-success" style="font-weight: normal; padding: 15px 15px 0px 20px; margin-bottom: 30px;" >
+                            <p th:text="${festivalInfoVo.festival_category}" ></p>
+                        </span>
+
+                          <div class="row">
+                              <div class="col-2">
+                                <img th:src="@{/static/images/calendar.png} " alt="Image" style="width: 35px; height: 35px;">
+                              </div>
+                              <div class="col d-flex align-items-center">
+                                  <p th:text="${festivalInfoVo.start_date}"></p>
+                              </div>
+                              <div class="col-1 d-flex justify-content-center align-items-center">
+                                  <p>~</p>
+                              </div>
+                              <div class="col-5 d-flex align-items-center">
+                                  <p th:text="${festivalInfoVo.end_date}"></p>
+                              </div>
+                          </div>
+
+                        <div class="row">
+                            <div class="col-2">
+                                <img th:src="@{/static/images/location.png} " alt="Image" style="width: 35px; height: 35px;">
+                            </div>
+                            <div class="col">
+                            <p th:text="${festivalInfoVo.festival_addr}"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2">
+                                <img th:src="@{/static/images/mail.png} " alt="Image" style="width: 35px; height: 35px;">
+                            </div>
+                            <div class="col">
+                            <p th:text="${festivalInfoVo.festival_zipcode}"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2">
+                                <img th:src="@{/static/images/phone.png} " alt="Image" style="width: 35px; height: 35px;">
+                            </div>
+                            <div class="col">
+                                <p th:text="${festivalInfoVo.festival_phone}"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2">
+                                <img th:src="@{/static/images/homepage.png} " alt="Image" style="width: 35px; height: 35px;">
+                            </div>
+                            <div class="col">
+                                <a th:href="${festivalInfoVo.festival_homepage}" target="_blank" th:text="${festivalInfoVo.festival_homepage}"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px;">
+                        <p th:text="${festivalInfoVo.festival_contents}"></p>
+                    </div>
+
+                    <!-- 다른 축제 정보 필드를 표시 -->
+                </div>
+
+                    <hr class="my-4">
+                    <div class="row festivalLocation">
+                        <div class="col">
+                            <h2>행사장 위치</h2>
+                        </div>
+                    </div>
+                <div class="row justify-content-center map">
+
+                <!-- 다른 내용을 추가하세요. -->
+                    <div id="map" style="width:900px;height:450px;"></div>
+                    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=62459c791826a5f2dc425c8afbb6481f"></script>
+
+                    <!--<script th:inline="javascript">
+                       var locationJson = /*[[ ${locationJson} ]]*/ "";
+                       console.log(locationJson);
+                       var festivalNo = /*[[ ${festivalNo} ]]*/ "";
+                       console.log(festivalNo);
+                    </script>-->
+
+                    <script>
+
+
+                        var mapContainer = document.getElementById('map'); // 지도를 표시할 div
+                        var mapOption = {
+                            center: new kakao.maps.LatLng(37.56764, 126.97960), // 지도의 중심좌표
+                            level: 4, // 지도의 확대 레벨
+                            mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+                        };
+
+                    // 지도를 생성한다
+                    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+                            // 서버에서 위치 정보를 가져오는 함수
+                        function getLocationFromServer(festivalNo) {
+                            $.ajax({
+                                url: '/festivalInfo/location/' + festivalNo,
+                                method: 'GET',
+                                dataType: 'json',
+                                success: function (data) {
+                                    console.log("__________________________________________________");
+                                    console.log(data);
+                                    // 서버에서 받아온 데이터를 파싱합니다.
+                                    var x = data.x; // 위도
+                                    var y = data.y; // 경도
+
+
+                                    // 마커를 생성하고 표시합니다.
+                                    var markerPosition = new kakao.maps.LatLng(y, x);
+                                    var marker = new kakao.maps.Marker({
+                                        position: markerPosition, // 마커의 좌표
+                                        map: map // 마커를 표시할 지도 객체
+                                       });
+
+                                    // 마커를 중심으로 지도를 이동합니다.
+                                    map.setCenter(markerPosition);
+                                },
+                                error: function () {
+                                    alert('위치 정보를 가져오지 못했습니다.');
+                                }
+                            });
+                        }
+
+                        // 클릭 이벤트 처리
+                        $(".festival-button").click(function () {
+                            var festivalNo = $(this).data("festivalNo"); // 클릭한 버튼에 설정된 festival_no 값을 가져옴
+
+                            // 서버에 festivalNo를 보내서 데이터를 가져옵니다.
+                            getLocationFromServer(festivalNo);
+                        });
+
+                        $(function() {
+                            var pathArray = window.location.pathname.split('/');
+                            console.log(pathArray[2]);
+                            getLocationFromServer(pathArray[2]);
+                        });
+                    </script>
+            </div>
+
+                <hr class="my-5">
+        </div>
+    </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/static/js/board/boardDetail.js"></script>
+        <script src="/static/static/js/board/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

@@ -27,12 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService loginService;*/
 
     private final JwtUtils jwtUtils;
-    private final LoginServiceImpl loginService;
+   /* private final LoginServiceImpl loginService;*/
 
     @Autowired
-    public SecurityConfig(@Lazy JwtUtils jwtUtils, LoginServiceImpl loginService) {
+    public SecurityConfig(@Lazy JwtUtils jwtUtils/*, LoginServiceImpl loginService*/) {
         this.jwtUtils = jwtUtils;
-        this.loginService = loginService;
+        /*this.loginService = loginService;*/
     }
 
     @Override // HttpSecurity를 사용하여 Web Security 설정을 오버라이드한다.
@@ -52,17 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
     }
 
-    @Override
+    /*@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
-    }
-
-    /* // void로 쓰면 안됨!!!!
-    @Autowired // AuthenticationManagerBuilder를 주입받아 사용자 세부 서비스를 설정
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
-        // 사용자의 세부 서비스를 설정하고, 비밀번호 인코더를 설정합니다.
     }*/
+
 
     @Bean // AuthenticationManager Bean을 생성하여 Spring Context에 등록
     @Override

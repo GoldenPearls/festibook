@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Katuri';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff') format('woff');
+/*    font-weight: normal;
+    font-style: normal;*/
+}
+
+body {
+    font-family: 'Katuri', sans-serif;
+}
+
+
+.row date{
+         vertical-align: middle; /* 이미지와 텍스트를 수직 가운데 정렬합니다. */
+}
+
+.row justify-content-center map{
+    margin-bottom: 20px;
+    margin-top: 50px;
+
+}
+
+.row.festivalLocation {
+    margin-top: 20px;
+    margin-bottom: 50px; /* 원하는 값으로 조정할 수 있습니다. */
+}
+
+
+
+h1 {
+     letter-spacing: 5px;
+     margin-top: 80px;
+     margin-bottom: 50px;
+     font-weight: 700;
+     font-size: 45px;
+}
+
+h2{
+    font-size: 35px;
+
+}
+
+p{
+    font-size: 25px;
+}
+
+
+

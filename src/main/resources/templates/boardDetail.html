@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="<http://www.thymeleaf.org>">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>상세 보기</title>
+
+    <!-- Favicon-->
+    <!--    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />-->
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    <link href="/static/css/board/de/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+<!-- Responsive navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="logo" href="/"><img src="/static/nav/logo4.png" alt="상단 이미지" class="header-image">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/recommend">추천할수박에</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/festival">축제/행사 소개</a></li>
+                <li class="nav-item"><a class="nav-link" href="http://localhost:8080/community">너와 나의 연결 고리</a></li>
+                <li id="loginStatusNavItem" class="nav-item"></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1" th:text="${detail.title}"></h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2"  th:text="${'작성일 : ' + #dates.format(detail.created_datetime, 'yyyy.MM.dd')}"></div>
+                    <div class="text-muted fst-italic mb-2" th:text="${'수정일 : ' + #dates.format(detail.updated_datetime, 'yyyy.MM.dd')}"></div>
+                    <!-- Post categories-->
+                    <a class="badge bg-secondary text-decoration-none link-light" th:text="${'조회수 : ' + detail.hit_cnt}"></a>
+                    <a class="badge bg-secondary text-decoration-none link-light" th:text="${'작성자 : ' + detail.creator_id}"></a>
+                    <div class="creator-id" style="display: none;" th:text="${detail.creator_id}">작성자의 ID</div> <!--작성자 아이디 안보이게 가져오기 -->
+                    <input type="hidden" id="boardId" th:value="${detail.board_idx}">
+                    <input type="hidden" id="title" th:value="${detail.title}">
+                    <input type="hidden" id="contents" th:value="${detail.contents}">
+                    <input type="hidden" id="classification" th:value="${detail.classification}">
+                    <!-- 수정하기와 삭제하기 버튼 -->
+
+                </header>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4" th:text="${detail.contents}"></p>
+
+                </section>
+            </article>
+
+            <div id="editButtons" style="display: none;">
+                <button id="editButton" type="button" class="btn btn-primary"
+                        style="color: #E6E6FA;
+                        background-color: #ec7373;"
+                >수정하기</button>
+                <button id="deleteButton" type="button" class="btn btn-primary"
+                        style="color: #E6E6FA;
+                        background-color: #ec7373;"
+                >삭제하기</button>
+            </div>
+
+            <!-- Comments section-->
+            <section class="mb-5">
+                <div id="reply-list" class="card bg-light">
+
+                </div>
+
+                <!-- Comment form-->
+                <form id="reply-form" class="mb-4">
+                    <textarea id="r_contents" class="form-control" rows="3" placeholder="댓글을 작성해주세요!"></textarea>
+                    <button type="submit" class="btn btn-primary"
+                            style="color: #E6E6FA;
+                        background-color: #ec7373;"
+                    >댓글 작성하기</button>
+                </form>
+            </section>
+        </div>
+
+
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+            <!-- Categories widget-->
+            <div class="card mb-4">
+                <div class="card-header">돌아가기</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="/board/openBoardList.do">목록으로 돌아가기</a></li>
+                                <li><a href="/">홈페이지로 돌아가기</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Festibook &copy;  Website 2023</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/static/js/board/scripts.js"></script>
+<script src="/static/js/board/boardDetail.js"></script>
+<!--<script src="/static/js/board/boardDelete.js"></script>-->
+<!--<script src="/static/js/board/Reply.js"></script>-->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
