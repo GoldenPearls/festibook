@@ -10,7 +10,10 @@ public class LoginDTO {
     private String member_id; // id
     private String member_password; // password
     private int delflag;
+<<<<<<< HEAD
+=======
 
+>>>>>>> c00362a86538ae2c20ae6dfb49002896df30b21e
     public LoginDTO() {
 
     }

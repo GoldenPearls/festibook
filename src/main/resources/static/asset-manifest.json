@@ -1,5 +1,19 @@
 {
   "files": {
+<<<<<<< HEAD
+    "main.css": "/static/css/main.bc566691.css",
+    "main.js": "/static/js/main.c55c83a7.js",
+    "static/media/loginbackground.png": "/static/media/loginbackground.2bd013d7b32a6ef6764a.png",
+    "static/media/Loginlogo.png": "/static/media/Loginlogo.23a3f1a7c6402aeeff43.png",
+    "index.html": "/index.html",
+    "main.bc566691.css.map": "/static/css/main.bc566691.css.map",
+    "main.c55c83a7.js.map": "/static/js/main.c55c83a7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc566691.css",
+    "static/js/main.c55c83a7.js"
+=======
+<<<<<<< HEAD
     "main.css": "/static/css/main.cb1192a4.css",
     "main.js": "/static/js/main.a08ed0cb.js",
     "static/media/recommandBackground.jpg": "/static/media/recommandBackground.8246b910a1c02c068b75.jpg",
@@ -24,5 +38,19 @@
   "entrypoints": [
     "static/css/main.cb1192a4.css",
     "static/js/main.a08ed0cb.js"
+=======
+    "main.css": "/static/css/main.1109a321.css",
+    "main.js": "/static/js/main.b1468667.js",
+    "static/media/loginbackground.png": "/static/media/loginbackground.2bd013d7b32a6ef6764a.png",
+    "static/media/Loginlogo.png": "/static/media/Loginlogo.23a3f1a7c6402aeeff43.png",
+    "index.html": "/index.html",
+    "main.1109a321.css.map": "/static/css/main.1109a321.css.map",
+    "main.b1468667.js.map": "/static/js/main.b1468667.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1109a321.css",
+    "static/js/main.b1468667.js"
+>>>>>>> calendarFDetail_ch
+>>>>>>> c00362a86538ae2c20ae6dfb49002896df30b21e
   ]
 }

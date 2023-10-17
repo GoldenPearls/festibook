@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useAuth } from "../Login/AuthProvider";
 import './Recommend.css';
 import recommancBackground from "../../img/recommand/recommandBackground.jpg";
@@ -295,6 +296,13 @@ function Recommend() {
 
 
 
+=======
+function Recommend() {
+    return (
+        <div>
+            추천페이지
+        </div>
+>>>>>>> calendarFDetail_ch
     );
 }
 

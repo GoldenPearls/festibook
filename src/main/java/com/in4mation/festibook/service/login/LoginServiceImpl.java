@@ -50,11 +50,12 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
             throw new LoginException("유저를 찾을 수 없습니다.");
         }
 
-        if(user.getDelflag() == 1){ //추가 : delflag가 1인 경우 예외 발생
+
+        if (user.getDelflag() == 1) { // 추가: delflag가 1인 경우 예외 발생
             throw new LoginException("이미 삭제된 계정입니다.");
         }
+        // password check
 
-        // 암호화 거둬내기
         if(!password.equals(user.getMember_password()))
             throw new LoginException("password error");
 

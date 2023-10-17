@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+body {
+=======
 /*body {
+>>>>>>> c00362a86538ae2c20ae6dfb49002896df30b21e
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -25,6 +29,9 @@
     left :585px;
     top :241px;
 
+<<<<<<< HEAD
+}
+=======
 }*/
 
 @font-face {
@@ -119,3 +126,4 @@ input:focus {
 }
 
 
+>>>>>>> c00362a86538ae2c20ae6dfb49002896df30b21e

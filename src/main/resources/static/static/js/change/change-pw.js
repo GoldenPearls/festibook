@@ -54,6 +54,9 @@ window.onload = function() {
                         return response.json();
                     })
                     .then(function(data) {
+<<<<<<< HEAD
+                        alert(data.message); // 받아온 JSON 데이터 중 message 값을 alert로 띄웁니다.
+=======
                         Swal.fire({
                             title: '비밀번호 변경',
                             text: data.message,
@@ -66,6 +69,7 @@ window.onload = function() {
                             }
                         });
 
+>>>>>>> c00362a86538ae2c20ae6dfb49002896df30b21e
                     })
                     .catch(function(error) {
                         console.error(error);
