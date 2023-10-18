@@ -30,7 +30,9 @@ Spring Boot를 활용하여 지역 행사와 대학 축제 정보를 위치와 �
    
 
 ### 🧑‍🤝‍🧑 맴버 구성
-![image](https://github.com/GoldenPearls/festibook/assets/135237155/225223fd-2982-45d1-b0f3-3d3e8160ab55)
+![image](https://github.com/GoldenPearls/festibook/assets/135237155/55a12868-e115-48fd-b48a-f7f8f81eb4fa)
+<br/>
+
 
 
 
