@@ -33,7 +33,7 @@ public class MyPageServicelmpl implements MyPageService{
 //            String savePath = System.getProperty("user.dir") + "\\files";
             //String savePath = "C:\\rcp\\teamproject_test_1\\src\\main\\reactfront\\public";
             //금주님에 한것 String savePath = "C:\\rcp\\teamproject_test_1\\src\\main\\resources\\static\\uploadimg"; // 배포시 경로 바꿔야함
-            String savePath = "C:\\rcp\\teamproject_test_1\\src\\main\\resources\\static\\uploadimg";
+            String savePath = "\\src\\main\\resources\\static\\uploadimg";
 
             /* 파일이 저장되는 폴더가 없으면 폴더를 생성합니다. */
             if (!new File(savePath).exists()) {

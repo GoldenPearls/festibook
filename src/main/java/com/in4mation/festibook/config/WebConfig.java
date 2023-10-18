@@ -35,7 +35,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/uploadimg/**")
-                .addResourceLocations("file:/C:/rcp/teamproject_test_1/src/main/resources/static/uploadimg/"); // 배포시 경로 일치해야함
+                .addResourceLocations("file:/src/main/resources/static/uploadimg/"); // 배포시 경로 일치해야함
     }
 
 }
