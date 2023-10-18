@@ -70,7 +70,7 @@ export default function Login() {
         console.log("Button clicked!");          // 1. 로그 확인
         console.log("ID:", id, "PW:", pw);      // 2. 상태 값 확인
 
-        const endpoint = 'http://localhost:8080/api/login';
+        const endpoint = 'http://61.97.187.120:8080/api/login';
 
 
         let data = JSON.stringify({

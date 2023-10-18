@@ -67,7 +67,7 @@ function Recommend() {
         window.addEventListener('resize', handleResize);
 
 
-        const fetchTop5 = axios.get('http://localhost:8080/festivals/top5', {
+        const fetchTop5 = axios.get('http://61.97.187.120:8080/festivals/top5', {
             headers: {'Content-Type': 'application/json'}
         });
         fetchTop5.then((top5Response) => {
@@ -75,7 +75,7 @@ function Recommend() {
             setTopFestivals(top5Response.data);
         })
 
-        const fetchCurrentMonth = axios.get('http://localhost:8080/festivals/currentMonth', {
+        const fetchCurrentMonth = axios.get('http://61.97.187.120:8080/festivals/currentMonth', {
             headers: {'Content-Type': 'application/json'}
         });
         fetchCurrentMonth.then((currentMonthResponse)=>{
@@ -84,7 +84,7 @@ function Recommend() {
 
         //추천된 축제들을 불러옴
         if( userId != null) {
-            const fetchRecommendedFestivals = axios.get(`http://localhost:8080/recommend/festivals?memberId=${userId}`, {
+            const fetchRecommendedFestivals = axios.get(`http://61.97.187.120:8080/recommend/festivals?memberId=${userId}`, {
                 headers: {'Content-Type': 'application/json'},
                 data : userId
             });

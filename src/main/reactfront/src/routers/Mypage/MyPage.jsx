@@ -68,7 +68,7 @@ function MyPage() {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'http://localhost:8080/mypage/updateInfo',
+                url: 'http://61.97.187.120:8080/mypage/updateInfo',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("jwt")}`
@@ -109,7 +109,7 @@ function MyPage() {
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: `http://localhost:8080/mypage/${memberId}/detail`,
+            url: `http://61.97.187.120:8080/mypage/${memberId}/detail`,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("jwt")}`
@@ -131,7 +131,7 @@ function MyPage() {
                 if (!response.data.member_profile_image) {
                     setProfileImage(myprofile_image);
                 } else {
-                    setProfileImage("http://localhost:8080/uploadimg/"+response.data.member_profile_image); // 배포시 스프링주소로 바꿔야함
+                    setProfileImage("http://61.97.187.120:8080/uploadimg/"+response.data.member_profile_image); // 배포시 스프링주소로 바꿔야함
                 }
             })
             .catch((error) => {

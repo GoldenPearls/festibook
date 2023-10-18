@@ -48,7 +48,7 @@ window.onload = function() {
                             // 로그아웃 처리 (JWT 토큰 제거)
                             localStorage.removeItem('jwt');  // 사용한 스토리지 종류에 맞추어 변경
                             // 메인 페이지로 리다이렉트
-                            window.location.href = "http://localhost:8080/";
+                            window.location.href = "http://61.97.187.120:8080/";
                         }
 
 

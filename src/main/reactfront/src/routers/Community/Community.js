@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Community() {
 
     useEffect(() => {
-        window.location.href = "http://220.230.119.246:8080/board/openBoardList.do";
+        window.location.href = "http://61.97.187.120:8080/board/openBoardList.do";
     }, []);
 
     return null;

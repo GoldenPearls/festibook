@@ -128,9 +128,9 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="http://localhost:8080/recommend">추천할수박에</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://localhost:8080/festival">축제/행사 소개</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://localhost:8080/community">너와 나의 연결 고리</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://61.97.187.120:8080/recommend">추천할수박에</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://61.97.187.120:8080/festival">축제/행사 소개</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://61.97.187.120:8080/community">너와 나의 연결 고리</a></li>
         <li id="loginStatusNavItem" class="nav-item"></li>
       </ul>
     </div>
@@ -157,7 +157,7 @@
   </button>
   <script>
     document.getElementById("calendarButton").addEventListener("click", function() {
-      window.location.href = "http://localhost:8080/calendar";
+      window.location.href = "http://61.97.187.120:8080/calendar";
     });
   </script>
 
@@ -168,7 +168,7 @@
 
   <script>
     document.getElementById("mapButton").addEventListener("click", function() {
-      window.location.href = "http://localhost:8080/festival/map";
+      window.location.href = "http://61.97.187.120:8080/festival/map";
     });
   </script>
 </div>
@@ -179,7 +179,7 @@
   <div th:each="festival : ${festivals}" class="festival-item">
     <img th:src="${festival.festival_image}"
          alt="Festival Image"
-         th:onclick="'window.location.href=\'http://localhost:8080/festivalInfo/' + ${festival.festival_no} + '\''"
+         th:onclick="'window.location.href=\'http://61.97.187.120:8080/festivalInfo/' + ${festival.festival_no} + '\''"
          style="cursor: pointer;"/>
     <div class="festival-info">
       <p th:text="${festival.festival_name}"></p>
@@ -191,7 +191,7 @@
   <div th:each="festival : ${festivals}" class="festival-item">
     <img th:src="${festival.festival_image}"
          alt="Festival Image"
-         th:onclick="'window.location.href=\'http://localhost:8080/festivalInfo/' + ${festival.festival_no} + '\''"
+         th:onclick="'window.location.href=\'http://61.97.187.120:8080/festivalInfo/' + ${festival.festival_no} + '\''"
          style="cursor: pointer; max-width: 400px; max-height: 300px;"/>
     <div class="festival-info">
       <p th:text="${festival.festival_name}"></p>

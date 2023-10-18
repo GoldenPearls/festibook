@@ -36,7 +36,7 @@ window.onload = function() {
                             showCancelButton: true
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = "http://localhost:8080/login";
+                                window.location.href = "http://61.97.187.120:8080/login";
                             }
                         });
 
