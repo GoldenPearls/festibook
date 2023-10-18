@@ -3,7 +3,8 @@
 
 ![Festibook_Logo](https://github.com/GoldenPearls/festibook/assets/135237155/2b720ecf-83b6-4755-b470-1f51b30839fc)
 
-![readme_homepageMain](https://github.com/GoldenPearls/festibook/assets/135237155/1636c305-8995-46e4-8b74-972325edcb40)
+![readme_homepageMain](https://github.com/GoldenPearls/festibook/assets/135237155/ac195023-1612-44fe-9255-87cb4161a27b)
+
 
 ####  팀 노션, 피그마
 [✅Notion](https://incredible-gem-98e.notion.site/in4mation-festibook-bcd05345a2364eaf9ace7d0890651980?pvs=4)
@@ -29,7 +30,7 @@ Spring Boot를 활용하여 지역 행사와 대학 축제 정보를 위치와 �
    
 
 ### 🧑‍🤝‍🧑 맴버 구성
-![image](https://github.com/GoldenPearls/festibook/assets/135237155/aa727cda-da96-4e71-b2ad-06dd031e4e96)
+![image](https://github.com/GoldenPearls/festibook/assets/135237155/225223fd-2982-45d1-b0f3-3d3e8160ab55)
 
 
 
@@ -41,13 +42,14 @@ Spring Boot를 활용하여 지역 행사와 대학 축제 정보를 위치와 �
 
 ## 🪜프로젝트 구조도
 ### 전체 구조
-![image](https://github.com/GoldenPearls/festibook/assets/135237155/0b61ed19-733c-48be-851e-96a99cf5d456)
+![image](https://github.com/GoldenPearls/festibook/assets/135237155/ace4bb26-67bb-44d5-8361-b5b6f0147444)
+
 
 
 
 
 ### ERD
-![image](https://github.com/GoldenPearls/festibook/assets/135237155/c49d321f-7050-4973-a053-2fe73ab52da3)
+![image](https://github.com/GoldenPearls/festibook/assets/135237155/110f03e3-ff1b-49e0-aa70-08ad7f1ac158)
 
 
-=======
+
