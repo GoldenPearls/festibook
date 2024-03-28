@@ -1,2 +1,2 @@
-src/** linguist-documentation=false
-src/** linguist-vendored=false
+java/** linguist-documentation=false
+java/** linguist-vendored=false
